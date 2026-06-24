@@ -1,0 +1,143 @@
+{
+  "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_e2e/ad_blueprint.json",
+  "requests": [
+    {
+      "job_id": "lipstick_nocmarks_v1_hook_key_image_c01",
+      "prompt": "Realistic vertical 9:16 commercial still frame, not a video storyboard. Purpose: customer pain: Wearing lipstick leaves embarrassing lip marks on cups and smudges with everyday use, forcing constant cleanups and touch-ups.. Product: Lipstick. If visible, the product must match the product reference image in color, shape, packaging, and logo/mark. Consistent assets: Adult woman in her late 20s with medium skin tone, warm undertone; Simple light beige knit top, minimal jewelry; Shoulder-length hair in a low, neat bun; Bright home kitchen breakfast nook; Soft natural daylight from a window, even and flattering. Start frame: Vertical 9:16 frame, medium close-up at a light wood kitchen table. The woman (late 20s, medium skin, low bun, beige top) holds a plain white ceramic mug with one small red lipstick mark already on the rim facing the camera. Her other hand lightly supports the mug. Soft natural window light. Background is a clean white-tile backsplash and a small plant. Camera on tripod, steady. No product tube visible yet. The lipstick on her lips looks slightly worn, realistic. Composition: one clear subject, one scene, stable camera, proof detail large and sharp on mobile. No overlay text in the image; overlay text will be added later in post-production.",
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_e2e/key_images/01_hook_start_c01.png",
+      "size": "352*640",
+      "negative_prompt": "No subtitles, captions, UI, watermark, random letters, background text, fake logos, price tags, posters, split screen, collage, extra fingers, warped hands, distorted face, blurry product, blurry proof detail, harsh glare, mirror reflections, glass distortion. Handheld shake, montage, split screen, exaggerated or smeared lipstick all over, multiple or giant stains, dirty or cracked mug, clear glass cup, strong reflections, mirrored.",
+      "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/lipstick/lipstick.png",
+      "product_reference_base64": null,
+      "product_reference_mime_type": null,
+      "metadata": {
+        "shot_id": "shot_01_hook",
+        "role": "hook",
+        "start_seconds": 0.0,
+        "end_seconds": 3.0,
+        "candidate_id": "hook_c01",
+        "candidate_index": 0,
+        "candidate_count": 3,
+        "seed": 100,
+        "num_inference_steps": 28,
+        "guidance_scale": 3.5,
+        "max_sequence_length": 256
+      }
+    },
+    {
+      "job_id": "lipstick_nocmarks_v1_hook_key_image_c02",
+      "prompt": "Realistic vertical 9:16 commercial still frame, not a video storyboard. Purpose: customer pain: Wearing lipstick leaves embarrassing lip marks on cups and smudges with everyday use, forcing constant cleanups and touch-ups.. Product: Lipstick. If visible, the product must match the product reference image in color, shape, packaging, and logo/mark. Consistent assets: Adult woman in her late 20s with medium skin tone, warm undertone; Simple light beige knit top, minimal jewelry; Shoulder-length hair in a low, neat bun; Bright home kitchen breakfast nook; Soft natural daylight from a window, even and flattering. Start frame: Vertical 9:16 frame, medium close-up at a light wood kitchen table. The woman (late 20s, medium skin, low bun, beige top) holds a plain white ceramic mug with one small red lipstick mark already on the rim facing the camera. Her other hand lightly supports the mug. Soft natural window light. Background is a clean white-tile backsplash and a small plant. Camera on tripod, steady. No product tube visible yet. The lipstick on her lips looks slightly worn, realistic. Composition: one clear subject, one scene, stable camera, proof detail large and sharp on mobile. No overlay text in the image; overlay text will be added later in post-production.",
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_e2e/key_images/01_hook_start_c02.png",
+      "size": "352*640",
+      "negative_prompt": "No subtitles, captions, UI, watermark, random letters, background text, fake logos, price tags, posters, split screen, collage, extra fingers, warped hands, distorted face, blurry product, blurry proof detail, harsh glare, mirror reflections, glass distortion. Handheld shake, montage, split screen, exaggerated or smeared lipstick all over, multiple or giant stains, dirty or cracked mug, clear glass cup, strong reflections, mirrored.",
+      "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/lipstick/lipstick.png",
+      "product_reference_base64": null,
+      "product_reference_mime_type": null,
+      "metadata": {
+        "shot_id": "shot_01_hook",
+        "role": "hook",
+        "start_seconds": 0.0,
+        "end_seconds": 3.0,
+        "candidate_id": "hook_c02",
+        "candidate_index": 1,
+        "candidate_count": 3,
+        "seed": 101,
+        "num_inference_steps": 28,
+        "guidance_scale": 3.5,
+        "max_sequence_length": 256
+      }
+    },
+    {
+      "job_id": "lipstick_nocmarks_v1_hook_key_image_c03",
+      "prompt": "Realistic vertical 9:16 commercial still frame, not a video storyboard. Purpose: customer pain: Wearing lipstick leaves embarrassing lip marks on cups and smudges with everyday use, forcing constant cleanups and touch-ups.. Product: Lipstick. If visible, the product must match the product reference image in color, shape, packaging, and logo/mark. Consistent assets: Adult woman in her late 20s with medium skin tone, warm undertone; Simple light beige knit top, minimal jewelry; Shoulder-length hair in a low, neat bun; Bright home kitchen breakfast nook; Soft natural daylight from a window, even and flattering. Start frame: Vertical 9:16 frame, medium close-up at a light wood kitchen table. The woman (late 20s, medium skin, low bun, beige top) holds a plain white ceramic mug with one small red lipstick mark already on the rim facing the camera. Her other hand lightly supports the mug. Soft natural window light. Background is a clean white-tile backsplash and a small plant. Camera on tripod, steady. No product tube visible yet. The lipstick on her lips looks slightly worn, realistic. Composition: one clear subject, one scene, stable camera, proof detail large and sharp on mobile. No overlay text in the image; overlay text will be added later in post-production.",
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_e2e/key_images/01_hook_start_c03.png",
+      "size": "352*640",
+      "negative_prompt": "No subtitles, captions, UI, watermark, random letters, background text, fake logos, price tags, posters, split screen, collage, extra fingers, warped hands, distorted face, blurry product, blurry proof detail, harsh glare, mirror reflections, glass distortion. Handheld shake, montage, split screen, exaggerated or smeared lipstick all over, multiple or giant stains, dirty or cracked mug, clear glass cup, strong reflections, mirrored.",
+      "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/lipstick/lipstick.png",
+      "product_reference_base64": null,
+      "product_reference_mime_type": null,
+      "metadata": {
+        "shot_id": "shot_01_hook",
+        "role": "hook",
+        "start_seconds": 0.0,
+        "end_seconds": 3.0,
+        "candidate_id": "hook_c03",
+        "candidate_index": 2,
+        "candidate_count": 3,
+        "seed": 102,
+        "num_inference_steps": 28,
+        "guidance_scale": 3.5,
+        "max_sequence_length": 256
+      }
+    },
+    {
+      "job_id": "lipstick_nocmarks_v1_ad_key_image_c01",
+      "prompt": "Realistic vertical 9:16 commercial still frame, not a video storyboard. Purpose: product proof: A transfer-resistant lipstick that stays put on lips and keeps cups clean during daily wear.. Product: Lipstick. If visible, the product must match the product reference image in color, shape, packaging, and logo/mark. Consistent assets: Adult woman in her late 20s with medium skin tone, warm undertone; Simple light beige knit top, minimal jewelry; Shoulder-length hair in a low, neat bun; Bright home kitchen breakfast nook; Soft natural daylight from a window, even and flattering. Start frame: Vertical 9:16 medium close-up in the same kitchen setup. The lipstick tube (matte black with metallic band) stands on the light wood table at frame right, label side facing camera per the product image. The woman (low bun, beige top) faces camera with fresh matte red lipstick applied cleanly. She holds a pristine, dry plain white ceramic mug near her mouth, rim clearly visible and spotless. Soft, even daylight; background consistent with white tile and small plant. Tripod shot, steady. Composition: one clear subject, one scene, stable camera, proof detail large and sharp on mobile. No overlay text in the image; overlay text will be added later in post-production.",
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_e2e/key_images/02_ad_start_c01.png",
+      "size": "352*640",
+      "negative_prompt": "No subtitles, captions, UI, watermark, random letters, background text, fake logos, price tags, posters, split screen, collage, extra fingers, warped hands, distorted face, blurry product, blurry proof detail, harsh glare, mirror reflections, glass distortion. Handheld shake, cuts or montage, blurred rim, reflective or glass cup, popping logos in the background, added subtitles, unrealistic shine or smeared lipstick, warped hands, extra.",
+      "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/lipstick/lipstick.png",
+      "product_reference_base64": null,
+      "product_reference_mime_type": null,
+      "metadata": {
+        "shot_id": "shot_02_ad",
+        "role": "ad",
+        "start_seconds": 3.0,
+        "end_seconds": 11.0,
+        "candidate_id": "ad_c01",
+        "candidate_index": 0,
+        "candidate_count": 3,
+        "seed": 103,
+        "num_inference_steps": 28,
+        "guidance_scale": 3.5,
+        "max_sequence_length": 256
+      }
+    },
+    {
+      "job_id": "lipstick_nocmarks_v1_ad_key_image_c02",
+      "prompt": "Realistic vertical 9:16 commercial still frame, not a video storyboard. Purpose: product proof: A transfer-resistant lipstick that stays put on lips and keeps cups clean during daily wear.. Product: Lipstick. If visible, the product must match the product reference image in color, shape, packaging, and logo/mark. Consistent assets: Adult woman in her late 20s with medium skin tone, warm undertone; Simple light beige knit top, minimal jewelry; Shoulder-length hair in a low, neat bun; Bright home kitchen breakfast nook; Soft natural daylight from a window, even and flattering. Start frame: Vertical 9:16 medium close-up in the same kitchen setup. The lipstick tube (matte black with metallic band) stands on the light wood table at frame right, label side facing camera per the product image. The woman (low bun, beige top) faces camera with fresh matte red lipstick applied cleanly. She holds a pristine, dry plain white ceramic mug near her mouth, rim clearly visible and spotless. Soft, even daylight; background consistent with white tile and small plant. Tripod shot, steady. Composition: one clear subject, one scene, stable camera, proof detail large and sharp on mobile. No overlay text in the image; overlay text will be added later in post-production.",
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_e2e/key_images/02_ad_start_c02.png",
+      "size": "352*640",
+      "negative_prompt": "No subtitles, captions, UI, watermark, random letters, background text, fake logos, price tags, posters, split screen, collage, extra fingers, warped hands, distorted face, blurry product, blurry proof detail, harsh glare, mirror reflections, glass distortion. Handheld shake, cuts or montage, blurred rim, reflective or glass cup, popping logos in the background, added subtitles, unrealistic shine or smeared lipstick, warped hands, extra.",
+      "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/lipstick/lipstick.png",
+      "product_reference_base64": null,
+      "product_reference_mime_type": null,
+      "metadata": {
+        "shot_id": "shot_02_ad",
+        "role": "ad",
+        "start_seconds": 3.0,
+        "end_seconds": 11.0,
+        "candidate_id": "ad_c02",
+        "candidate_index": 1,
+        "candidate_count": 3,
+        "seed": 104,
+        "num_inference_steps": 28,
+        "guidance_scale": 3.5,
+        "max_sequence_length": 256
+      }
+    },
+    {
+      "job_id": "lipstick_nocmarks_v1_ad_key_image_c03",
+      "prompt": "Realistic vertical 9:16 commercial still frame, not a video storyboard. Purpose: product proof: A transfer-resistant lipstick that stays put on lips and keeps cups clean during daily wear.. Product: Lipstick. If visible, the product must match the product reference image in color, shape, packaging, and logo/mark. Consistent assets: Adult woman in her late 20s with medium skin tone, warm undertone; Simple light beige knit top, minimal jewelry; Shoulder-length hair in a low, neat bun; Bright home kitchen breakfast nook; Soft natural daylight from a window, even and flattering. Start frame: Vertical 9:16 medium close-up in the same kitchen setup. The lipstick tube (matte black with metallic band) stands on the light wood table at frame right, label side facing camera per the product image. The woman (low bun, beige top) faces camera with fresh matte red lipstick applied cleanly. She holds a pristine, dry plain white ceramic mug near her mouth, rim clearly visible and spotless. Soft, even daylight; background consistent with white tile and small plant. Tripod shot, steady. Composition: one clear subject, one scene, stable camera, proof detail large and sharp on mobile. No overlay text in the image; overlay text will be added later in post-production.",
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_e2e/key_images/02_ad_start_c03.png",
+      "size": "352*640",
+      "negative_prompt": "No subtitles, captions, UI, watermark, random letters, background text, fake logos, price tags, posters, split screen, collage, extra fingers, warped hands, distorted face, blurry product, blurry proof detail, harsh glare, mirror reflections, glass distortion. Handheld shake, cuts or montage, blurred rim, reflective or glass cup, popping logos in the background, added subtitles, unrealistic shine or smeared lipstick, warped hands, extra.",
+      "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/lipstick/lipstick.png",
+      "product_reference_base64": null,
+      "product_reference_mime_type": null,
+      "metadata": {
+        "shot_id": "shot_02_ad",
+        "role": "ad",
+        "start_seconds": 3.0,
+        "end_seconds": 11.0,
+        "candidate_id": "ad_c03",
+        "candidate_index": 2,
+        "candidate_count": 3,
+        "seed": 105,
+        "num_inference_steps": 28,
+        "guidance_scale": 3.5,
+        "max_sequence_length": 256
+      }
+    }
+  ]
+}

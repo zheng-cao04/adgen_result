@@ -1,0 +1,29 @@
+{
+  "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_direct_ref2img/ad_blueprint.json",
+  "requests": [
+    {
+      "job_id": "lipstick_nocmarks_v1_hook_key_image",
+      "prompt": "Realistic vertical 9:16 commercial photo, single still frame. Subject/product: Lipstick. Start frame: Vertical 9:16 frame, medium close-up at a light wood kitchen table. The woman (late 20s, medium skin, low bun, beige top) holds a plain white ceramic mug with one small red lipstick mark already on the rim facing the camera. Her other hand lightly supports the mug. Soft natural window light. Background is a clean white-tile backsplash and a small. If the product is visible, match the reference image.",
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_direct_ref2img/key_images/01_hook_start.png",
+      "size": "288*512",
+      "negative_prompt": "No text, captions, watermark, fake logo, collage, extra fingers, distorted face, warped hands, blurry product.",
+      "reference_image_paths": [],
+      "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/lipstick/lipstick.png",
+      "product_reference_base64": null,
+      "product_reference_mime_type": null,
+      "metadata": {
+        "shot_id": "shot_01_hook",
+        "role": "hook",
+        "start_seconds": 0.0,
+        "end_seconds": 3.0,
+        "candidate_id": "hook_c01",
+        "candidate_index": 0,
+        "candidate_count": 1,
+        "seed": 0,
+        "num_inference_steps": 20,
+        "guidance_scale": 3.5,
+        "max_sequence_length": 192
+      }
+    }
+  ]
+}

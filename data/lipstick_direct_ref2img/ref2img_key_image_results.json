@@ -1,0 +1,25 @@
+[
+  {
+    "provider": "local-ref2img-consistency:/home/linabear/projects/adgen_workspace/adgen/models/Qwen-Image-Edit-2511",
+    "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_direct_ref2img/key_images/ref2img/02_ad_start_ref2img.png",
+    "raw_response": {
+      "model_id": "/home/linabear/projects/adgen_workspace/adgen/models/Qwen-Image-Edit-2511",
+      "width": 256,
+      "height": 448,
+      "seed": 1202,
+      "num_inference_steps": 12,
+      "true_cfg_scale": 4.0,
+      "guidance_scale": 1.0,
+      "reference_image_paths": [
+        "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_direct_ref2img/key_images/01_hook_start.png"
+      ],
+      "product_reference_path": null,
+      "role": "ad",
+      "shot_id": "shot_02_ad",
+      "prompt": "Create one realistic vertical commercial start key image for the target shot. Use reference image 1 as the identity lock: preserve the recurring person's face, hair, skin tone, wardrobe, lighting, and kitchen scene style. Reference shot role: hook. Target shot role: ad. Realistic vertical 9:16 commercial photo, single still frame. Subject/product: Lipstick. Start frame: Vertical 9:16 medium close-up in the same kitchen setup. The lipstick tube (matte black with metallic band) stands on the light wood table at frame right, label side facing camera per the product image. The woman (low bun, beige top) faces camera with fresh matte red lipstick applied cleanly. She holds a pristine, dry plain white ceramic mug near her. If the product is visible, match the reference image. The recurring woman must remain clearly visible as the main subject with face and upper body in frame. Keep the white mug visible when the target shot asks for it. Do not output a product-only close-up or empty background crop. Do not add captions, subtitles, UI, random letters, fake logos, posters, or watermarks.",
+      "negative_prompt": "No text, captions, watermark, fake logo, collage, extra fingers, distorted face, warped hands, blurry product., missing person, missing face, missing woman, product-only close-up, empty background, cropped-out subject",
+      "reference_key_image_path": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_direct_ref2img/key_images/01_hook_start.png",
+      "target_draft_key_image_path": null
+    }
+  }
+]

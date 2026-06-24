@@ -1,0 +1,89 @@
+{
+  "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_direct_ref2img/ad_blueprint_with_ref2img_key_images.json",
+  "requests": [
+    {
+      "job_id": "lipstick_nocmarks_v1_hook",
+      "prompt": "Task: Show the customer pain for Lipstick: Wearing lipstick leaves embarrassing lip marks on cups and smudges with everyday use, forcing constant cleanups and touch-ups.\nProduct: Unlike ordinary lipsticks that leave marks on cups, this lipstick stays put, keeps cups clean, and resists smudging during daily wear. When the product appears, match its appearance, colors, packaging, and logo/mark to the product reference image.\nAssets: keep same character across clips: Adult woman in her late 20s with medium skin tone, warm undertone; Simple light beige knit top, minimal jewelry; Shoulder-length hair in a low, neat bun. Same scene: Bright home kitchen breakfast nook; Soft natural daylight from a window, even and flattering; prop: Plain white ceramic mug (matte finish). Product: matches product reference.\nStart frame intent: Vertical 9:16 frame, medium close-up at a light wood kitchen table. The woman (late 20s, medium skin, low bun, beige top) holds a plain white ceramic mug with one small red lipstick mark already on the rim facing the camera. Her other hand lightly supports the mug. Soft.\nAction: Locked-off vertical medium close-up in the same bright kitchen. The woman in a beige top holds a plain white ceramic mug near camera, rotating it slightly to reveal a single small, crisp red lipstick mark on the rim. She glances at the mark, gives a mild \"ugh\" look, and exhales softly. The camera stays steady and the mark remains clearly visible. Soft daylight, calm mood.\n\nRules: continuous locked-off tripod shot, one scene/subject, no cuts; realistic natural light; stable face and hands; plausible sequential motion.\nBrand/text: real product logo only on the product or packaging from the product reference image. No subtitles, UI, watermarks, posters, price tags, fake logos, or background text.\nAvoid: shaky, montage, split screen, glass/transparent cups, mirrors, reflections, giant stains, spills, drips, warped hands/face/lips, extra fingers, blurred proof details.",
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_direct_ref2img/video/01_hook.mp4",
+      "duration_seconds": 3.0,
+      "fps": 24,
+      "size": "704*1280",
+      "negative_prompt": "Handheld shake, montage, split screen, exaggerated or smeared lipstick all over, multiple or giant stains, dirty or cracked mug, clear glass cup, strong reflections, mirrored or unreadable text, extra logos in background, cluttered kitchen, harsh lighting, flicker, AI artifacts, extra fingers or warped hands, out-of-focus rim, gore or distress.",
+      "start_image_path": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_direct_ref2img/key_images/01_hook_start.png",
+      "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/lipstick/lipstick.png",
+      "image_path": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_direct_ref2img/key_images/01_hook_start.png",
+      "image_base64": null,
+      "image_mime_type": null,
+      "metadata": {
+        "shot_id": "shot_01_hook",
+        "role": "hook",
+        "overlay_text": "Lip marks…again?",
+        "audio_direction": "Light, friendly background music. Soft sigh from the woman. Subtle \"plink\" SFX when she spots the mark. No harsh or comedic stings.",
+        "start_key_image_prompt": "Vertical 9:16 frame, medium close-up at a light wood kitchen table. The woman (late 20s, medium skin, low bun, beige top) holds a plain white ceramic mug with one small red lipstick mark already on the rim facing the camera. Her other hand lightly supports the mug. Soft natural window light. Background is a clean white-tile backsplash and a small plant. Camera on tripod, steady. No product tube visible yet. The lipstick on her lips looks slightly worn, realistic.",
+        "start_image_path": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_direct_ref2img/key_images/01_hook_start.png",
+        "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/lipstick/lipstick.png",
+        "critic_expectation": {
+          "purpose": "Show the customer pain for Lipstick: Wearing lipstick leaves embarrassing lip marks on cups and smudges with everyday use, forcing constant cleanups and touch-ups.",
+          "must_show": [
+            "Locked-off vertical medium close-up in the same bright kitchen. The woman in a beige top holds a plain white ceramic mug near camera, rotating it slightly to reveal a single small, crisp red lipstick mark on the rim. She glances at the mark, gives a mild \"ugh\" look, and exhales softly. The camera stays steady and the mark remains clearly visible. Soft daylight, calm mood.",
+            "single continuous shot with one main subject and physically plausible sequential action",
+            "starts from this key-image state: Vertical 9:16 frame, medium close-up at a light wood kitchen table. The woman (late 20s, medium skin, low bun, beige top) holds a plain white ceramic mug with one small red lipstick mark already on the rim facing the camera. Her other hand.",
+            "same recurring character, wardrobe, and scene from asset memory: Adult woman in her late 20s with medium skin tone, warm undertone; calm, approachable expression.; Simple light beige knit top, minimal."
+          ],
+          "must_avoid": [
+            "Handheld shake, montage, split screen, exaggerated or smeared lipstick all over, multiple or giant stains, dirty or cracked mug, clear glass cup, strong reflections, mirrored or unreadable text, extra logos in background, cluttered kitchen, harsh lighting, flicker, AI.",
+            "unrequested subtitles, captions, UI, watermarks, fake logos, background text, or random letters"
+          ],
+          "quality_checks": [
+            "stable face, hands, objects, and camera motion",
+            "key proof or problem detail is visible, sharp, and easy to understand",
+            "scene, mood, and props match the expected role and prompt",
+            "visible product appearance stays consistent with the product reference image"
+          ]
+        }
+      }
+    },
+    {
+      "job_id": "lipstick_nocmarks_v1_ad",
+      "prompt": "Task: Show the product proof for Lipstick: A transfer-resistant lipstick that stays put on lips and keeps cups clean during daily wear.\nProduct: Unlike ordinary lipsticks that leave marks on cups, this lipstick stays put, keeps cups clean, and resists smudging during daily wear. When the product appears, match its appearance, colors, packaging, and logo/mark to the product reference image.\nAssets: keep same character across clips: Adult woman in her late 20s with medium skin tone, warm undertone; Simple light beige knit top, minimal jewelry; Shoulder-length hair in a low, neat bun. Same scene: Bright home kitchen breakfast nook; Soft natural daylight from a window, even and flattering; prop: Plain white ceramic mug (matte finish). Product: matches product reference.\nStart frame intent: Vertical 9:16 medium close-up in the same kitchen setup. The lipstick tube (matte black with metallic band) stands on the light wood table at frame right, label side facing camera per the product image. The woman (low bun, beige top) faces camera with fresh matte red lipstick applied.\nAction: Same kitchen, same framing and wardrobe. The lipstick bullet stands upright on the table at frame right with its logo side oriented toward camera (as in reference). The woman’s lips are neatly finished with smooth matte red lipstick. She picks up the plain white mug, takes a natural sip, then brings the rim close to the camera so it fills most of the frame, rotating slightly to show the rim is clean with no lipstick transfer. She gives a small confident smile and a subtle nod. Camera remains locked-off and steady.\n\nRules: continuous locked-off tripod shot, one scene/subject, no cuts; realistic natural light; stable face and hands; plausible sequential motion.\nBrand/text: real product logo only on the product or packaging from the product reference image. No subtitles, UI, watermarks, posters, price tags, fake logos, or background text.\nAvoid: shaky, montage, split screen, glass/transparent cups, mirrors, reflections, giant stains, spills, drips, warped hands/face/lips, extra fingers, blurred proof details.",
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_direct_ref2img/video/02_ad.mp4",
+      "duration_seconds": 8.0,
+      "fps": 24,
+      "size": "704*1280",
+      "negative_prompt": "Handheld shake, cuts or montage, blurred rim, reflective or glass cup, popping logos in the background, added subtitles, unrealistic shine or smeared lipstick, warped hands, extra fingers, jitter, flicker, mirrored or stretched product, overexposed highlights, dirty or patterned mug.",
+      "start_image_path": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_direct_ref2img/key_images/ref2img/02_ad_start_ref2img.png",
+      "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/lipstick/lipstick.png",
+      "image_path": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_direct_ref2img/key_images/ref2img/02_ad_start_ref2img.png",
+      "image_base64": null,
+      "image_mime_type": null,
+      "metadata": {
+        "shot_id": "shot_02_ad",
+        "role": "ad",
+        "overlay_text": "No cup marks.",
+        "audio_direction": "Upbeat, clean background track continues. Soft ceramic clink SFX as mug touches table at the end. Voiceover (same woman, warm and concise): \"Transfer-resistant. Cups stay clean.\"",
+        "start_key_image_prompt": "Vertical 9:16 medium close-up in the same kitchen setup. The lipstick tube (matte black with metallic band) stands on the light wood table at frame right, label side facing camera per the product image. The woman (low bun, beige top) faces camera with fresh matte red lipstick applied cleanly. She holds a pristine, dry plain white ceramic mug near her mouth, rim clearly visible and spotless. Soft, even daylight; background consistent with white tile and small plant. Tripod shot, steady.",
+        "start_image_path": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_direct_ref2img/key_images/ref2img/02_ad_start_ref2img.png",
+        "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/lipstick/lipstick.png",
+        "critic_expectation": {
+          "purpose": "Show the product proof for Lipstick: A transfer-resistant lipstick that stays put on lips and keeps cups clean during daily wear.",
+          "must_show": [
+            "Same kitchen, same framing and wardrobe. The lipstick bullet stands upright on the table at frame right with its logo side oriented toward camera (as in reference). The woman’s lips are neatly finished with smooth matte red lipstick. She picks up the plain white mug, takes a natural sip, then brings the rim close to the camera so it fills most of the frame, rotating slightly to show the rim is clean with no lipstick transfer. She gives a small confident smile and a subtle nod. Camera remains.",
+            "single continuous shot with one main subject and physically plausible sequential action",
+            "starts from this key-image state: Vertical 9:16 medium close-up in the same kitchen setup. The lipstick tube (matte black with metallic band) stands on the light wood table at frame right, label side facing camera per the product image. The woman (low bun, beige top) faces camera.",
+            "same recurring character, wardrobe, and scene from asset memory: Adult woman in her late 20s with medium skin tone, warm undertone; calm, approachable expression.; Simple light beige knit top, minimal."
+          ],
+          "must_avoid": [
+            "Handheld shake, cuts or montage, blurred rim, reflective or glass cup, popping logos in the background, added subtitles, unrealistic shine or smeared lipstick, warped hands, extra fingers, jitter, flicker, mirrored or stretched product, overexposed highlights, dirty or patterned.",
+            "unrequested subtitles, captions, UI, watermarks, fake logos, background text, or random letters"
+          ],
+          "quality_checks": [
+            "stable face, hands, objects, and camera motion",
+            "key proof or problem detail is visible, sharp, and easy to understand",
+            "scene, mood, and props match the expected role and prompt",
+            "visible product appearance stays consistent with the product reference image"
+          ]
+        }
+      }
+    }
+  ]
+}

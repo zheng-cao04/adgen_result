@@ -1,0 +1,765 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdGen Current Pipeline</title>
+  <style>
+    :root {
+      --bg: #101114;
+      --panel: #181b21;
+      --line: #2b303a;
+      --text: #eceff4;
+      --muted: #a7adbb;
+      --blue: #7dd3fc;
+      --green: #34d399;
+      --amber: #fbbf24;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+    main { max-width: 1120px; margin: 0 auto; padding: 28px; }
+    h1, h2, h3 { margin: 0; color: #fff; letter-spacing: 0; }
+    h1 { font-size: 30px; }
+    h2 { font-size: 20px; margin-bottom: 10px; }
+    h3 { font-size: 15px; margin-bottom: 8px; color: var(--blue); }
+    p { margin: 6px 0; }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    pre {
+      margin: 10px 0 0;
+      padding: 12px;
+      overflow-x: auto;
+      max-width: 100%;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      color: #dfe6f2;
+      background: #0a0b0f;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .sub { color: var(--muted); margin-top: 6px; }
+    .card {
+      margin-top: 18px;
+      padding: 18px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+    }
+    .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .pill {
+      display: inline-flex;
+      padding: 3px 9px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 12px;
+      background: #20242c;
+    }
+    .pill.green { color: var(--green); border-color: #1e6048; background: #10231c; }
+    .pill.blue { color: var(--blue); border-color: #24546b; background: #0e2029; }
+    .pill.amber { color: var(--amber); border-color: #735516; background: #241e10; }
+    .muted { color: var(--muted); }
+    .small { font-size: 13px; }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .step {
+      min-height: 108px;
+      padding: 12px;
+      background: #11141a;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    .step b { display: block; margin-bottom: 5px; color: #fff; }
+    .step span { color: var(--muted); font-size: 13px; }
+    .state-diagram-wrap {
+      margin-top: 16px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .state-diagram {
+      display: block;
+      width: 100%;
+      min-width: 980px;
+      height: auto;
+    }
+    .state-diagram text {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+    .state-box { fill: #11141a; stroke: var(--line); stroke-width: 1.5; }
+    .state-box.start { fill: #0e2029; stroke: #24546b; }
+    .state-box.critic { fill: #241e10; stroke: #735516; }
+    .state-box.end { fill: #10231c; stroke: #1e6048; }
+    .state-title { fill: #fff; font-size: 15px; font-weight: 700; }
+    .state-subtitle { fill: var(--muted); font-size: 12px; }
+    .state-flow { fill: none; stroke: var(--muted); stroke-width: 2; }
+    .state-pass { fill: none; stroke: var(--green); stroke-width: 2.5; }
+    .state-retry { fill: none; stroke: var(--amber); stroke-width: 2; stroke-dasharray: 6 5; }
+    .state-edge-label {
+      fill: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .state-edge-label.pass { fill: var(--green); }
+    .state-edge-label.retry { fill: var(--amber); }
+    .transition-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .transition {
+      min-height: 92px;
+      padding: 10px;
+      background: #11141a;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-size: 13px;
+    }
+    .transition b { display: block; margin-bottom: 4px; color: var(--amber); }
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .grid > * { min-width: 0; }
+    .json-panel {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .json-panel pre { flex: 1; }
+    figure { margin: 0; }
+    figcaption { margin-bottom: 7px; color: var(--muted); font-size: 13px; }
+    img {
+      display: block;
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #000;
+    }
+    img.tall { aspect-ratio: 9 / 16; object-fit: cover; }
+    video {
+      display: block;
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #000;
+    }
+    video.tall { aspect-ratio: 9 / 16; object-fit: cover; }
+    .links {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .links a {
+      display: block;
+      padding: 9px 10px;
+      color: var(--text);
+      background: #11141a;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-size: 13px;
+      word-break: break-word;
+    }
+    @media (max-width: 850px) {
+      main { padding: 16px; }
+      .steps, .grid, .links, .transition-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>AdGen</h1>
+    <div class="sub">Development snapshot</div>
+
+    <section class="card">
+      <h2>Pipeline Overview</h2>
+      <p>
+        AdGen converts <code>brief.json</code> into executable video generation tasks.
+        The pipeline keeps structured JSON artifacts between planning, key-image generation,
+        video generation, and quality checks, so every stage can be inspected, replaced,
+        and rerun.
+      </p>
+      <div class="pills">
+        <span class="pill blue">brief -> blueprint</span>
+        <span class="pill green">key images -> video jobs</span>
+        <span class="pill amber">critic feedback loop</span>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <b>1. brief.json</b>
+          <span>User input with product or subject details, selling points, and an optional product image.</span>
+        </div>
+        <div class="step">
+          <b>2. ad_blueprint.json</b>
+          <span>The planner creates strategy, asset memory, and two executable hook/ad shots.</span>
+        </div>
+        <div class="step">
+          <b>3. key image stage</b>
+          <span>The pipeline prepares I2V start frames and writes each start_key_image_path back.</span>
+        </div>
+        <div class="step">
+          <b>4. video jobs</b>
+          <span>Each shot is compiled into a provider-neutral image-to-video request.</span>
+        </div>
+        <div class="step">
+          <b>5. video generation</b>
+          <span>The video backend generates clips, then the pipeline concatenates the final video.</span>
+        </div>
+        <div class="step">
+          <b>6. critic</b>
+          <span>A local Qwen-VL critic evaluates the result and either accepts it or routes a retry.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Generation State Machine</h2>
+      <p>
+        The intended control flow is a state machine over artifacts. A successful critic result
+        ends the run. In V1, a failed critic result routes back to <code>video_jobs.json</code>
+        at most once, where the compiled video prompt is adjusted before the clip is regenerated.
+      </p>
+      <div class="state-diagram-wrap">
+        <svg class="state-diagram" viewBox="0 0 1000 430" role="img" aria-labelledby="state-title state-desc">
+          <title id="state-title">AdGen generation state machine</title>
+          <desc id="state-desc">
+            The main path moves from brief to planning, key images, video jobs, generation,
+            critic, and done. Failed critic results loop back to video jobs so the compiled
+            video prompt can be adjusted and regenerated.
+          </desc>
+          <defs>
+            <marker id="arrow-muted" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+              <path d="M0,0 L8,3 L0,6 Z" fill="#a7adbb"></path>
+            </marker>
+            <marker id="arrow-green" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+              <path d="M0,0 L8,3 L0,6 Z" fill="#34d399"></path>
+            </marker>
+            <marker id="arrow-amber" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+              <path d="M0,0 L8,3 L0,6 Z" fill="#fbbf24"></path>
+            </marker>
+          </defs>
+
+          <g transform="translate(40 56)">
+            <rect class="state-box start" width="130" height="74" rx="8"></rect>
+            <text class="state-title" x="14" y="27">Brief</text>
+            <text class="state-subtitle" x="14" y="52">brief.json</text>
+          </g>
+          <g transform="translate(210 56)">
+            <rect class="state-box" width="150" height="74" rx="8"></rect>
+            <text class="state-title" x="14" y="27">Plan</text>
+            <text class="state-subtitle" x="14" y="52">ad_blueprint.json</text>
+          </g>
+          <g transform="translate(400 56)">
+            <rect class="state-box" width="170" height="74" rx="8"></rect>
+            <text class="state-title" x="14" y="27">Key Images</text>
+            <text class="state-subtitle" x="14" y="49">FLUX + ref2img</text>
+          </g>
+          <g transform="translate(610 56)">
+            <rect class="state-box" width="150" height="74" rx="8"></rect>
+            <text class="state-title" x="14" y="27">Video Jobs</text>
+            <text class="state-subtitle" x="14" y="52">video_jobs.json</text>
+          </g>
+          <g transform="translate(800 56)">
+            <rect class="state-box" width="150" height="74" rx="8"></rect>
+            <text class="state-title" x="14" y="27">Generate</text>
+            <text class="state-subtitle" x="14" y="49">clips + concat</text>
+          </g>
+          <g transform="translate(530 250)">
+            <rect class="state-box critic" width="170" height="86" rx="8"></rect>
+            <text class="state-title" x="14" y="29">Critic</text>
+            <text class="state-subtitle" x="14" y="54">critic_report.json</text>
+          </g>
+          <g transform="translate(800 256)">
+            <rect class="state-box end" width="150" height="74" rx="8"></rect>
+            <text class="state-title" x="14" y="27">Done</text>
+            <text class="state-subtitle" x="14" y="52">accepted video</text>
+          </g>
+
+          <path class="state-flow" marker-end="url(#arrow-muted)" d="M170 93 H210"></path>
+          <path class="state-flow" marker-end="url(#arrow-muted)" d="M360 93 H400"></path>
+          <path class="state-flow" marker-end="url(#arrow-muted)" d="M570 93 H610"></path>
+          <path class="state-flow" marker-end="url(#arrow-muted)" d="M760 93 H800"></path>
+          <path class="state-flow" marker-end="url(#arrow-muted)" d="M875 130 V184 H615 V250"></path>
+          <path class="state-pass" marker-end="url(#arrow-green)" d="M700 293 H800"></path>
+          <text class="state-edge-label pass" x="736" y="282">pass</text>
+
+          <path class="state-retry" marker-end="url(#arrow-amber)" d="M615 250 V184 H685 V130"></path>
+          <text class="state-edge-label retry" x="638" y="176">fail: adjust video prompt</text>
+
+          <text class="state-subtitle" x="40" y="386">V1 retry policy:</text>
+          <text class="state-subtitle" x="40" y="411">critic failure -> rebuild video_jobs.json once with an adjusted video prompt -> regenerate the failed clip</text>
+        </svg>
+      </div>
+      <div class="transition-grid">
+        <div class="transition">
+          <b>Pass</b>
+          <span>Accept the generated clips and finish the run.</span>
+        </div>
+        <div class="transition">
+          <b>Fail</b>
+          <span>Return to Stage 4 and adjust the compiled video prompt in <code>video_jobs.json</code>.</span>
+        </div>
+        <div class="transition">
+          <b>Retry</b>
+          <span>Regenerate the failed clip from the same key image using the adjusted video job.</span>
+        </div>
+      </div>
+      <p class="muted small">
+        Plan and key-image risks are handled upstream in V1. The critic loop is intentionally
+        scoped to one video prompt adjustment and one video regeneration. Implemented entry point:
+        <code>scripts/retry_video_from_critic.py</code>.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Stage 1: brief.json -> ad_blueprint.json</h2>
+      <p>
+        The planner stage converts a compact user brief into an executable ad structure.
+        It does not generate media. Its output is a structured blueprint containing the
+        creative strategy, reusable asset memory, and per-clip execution prompts.
+      </p>
+      <div class="json-panel">
+        <h3>Input: brief.json</h3>
+        <pre>{
+  "product": {
+    "name": "Lipstick",
+    "image_path": "examples/lipstick/lipstick.png",
+    "selling_points": [
+      "Unlike ordinary lipsticks that leave marks on cups, this lipstick stays put, keeps cups clean, and resists smudging during daily wear."
+    ]
+  }
+}</pre>
+      </div>
+      <div class="json-panel" style="margin-top:16px;">
+        <h3>Output: ad_blueprint.json</h3>
+        <pre>{
+  "ad_id": "lipstick_nocmarks_v1",
+  "brief": {
+    "product": {
+      "name": "Lipstick",
+      "image_path": "examples/lipstick/lipstick.png",
+      "selling_points": [
+        "Unlike ordinary lipsticks that leave marks on cups, this lipstick stays put, keeps cups clean, and resists smudging during daily wear."
+      ]
+    },
+    "language": "en",
+    "duration_seconds": 11.0
+  },
+  "creative_strategy": {
+    "core_pain": "Wearing lipstick leaves embarrassing lip marks on cups...",
+    "promise": "A transfer-resistant lipstick that stays put on lips..."
+  },
+  "asset_memory": {
+    "character": "woman, beige top, consistent hair/makeup",
+    "scene": "bright home kitchen breakfast nook",
+    "product": "matte black lipstick case, red shade"
+  },
+  "executable_layer": {
+    "duration_seconds": 11.0,
+    "shots": [
+      {
+        "role": "hook",
+        "start_seconds": 0,
+        "end_seconds": 3,
+        "visual_prompt": "show the pain: lipstick mark on a white mug",
+        "start_key_image_prompt": "woman holds a mug with one red lipstick mark"
+      },
+      {
+        "role": "ad",
+        "start_seconds": 3,
+        "end_seconds": 11,
+        "visual_prompt": "show the proof: sip, then clean mug rim",
+        "start_key_image_prompt": "same woman, clean mug, lipstick product visible"
+      }
+    ]
+  }
+}</pre>
+      </div>
+      <p class="muted small">
+        Downstream key-image and video stages consume this structured blueprint instead of
+        reading the raw brief directly.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Stage 2: ad_blueprint.json -> hook key image</h2>
+      <p>
+        The first key-image pass creates the identity reference frame. In the current V1 path,
+        FLUX only renders the hook start frame; later shot key images are handled by ref2img.
+      </p>
+      <div class="json-panel">
+        <h3>Input: ad_blueprint.json</h3>
+        <pre>{
+  "executable_layer": {
+    "shots": [
+      {
+        "role": "hook",
+        "start_key_image_prompt": "Vertical 9:16 frame, medium close-up at a light wood kitchen table. The woman (late 20s, medium skin, low bun, beige top) holds a plain white ceramic mug with one small red lipstick mark already on the rim facing the camera. Her other hand lightly supports the mug. Soft natural window light. Background is a clean white-tile backsplash and a small plant. Camera on tripod, steady. No product tube visible yet. The lipstick on her lips looks slightly worn, realistic."
+      },
+      {
+        "role": "ad",
+        "start_key_image_prompt": "Vertical 9:16 medium close-up in the same kitchen setup. The lipstick tube (matte black with metallic band) stands on the light wood table at frame right, label side facing camera per the product image. The woman (low bun, beige top) faces camera with fresh matte red lipstick applied cleanly. She holds a pristine, dry plain white ceramic mug near her mouth, rim clearly visible and spotless. Soft, even daylight; background consistent with white tile and small plant. Tripod shot, steady."
+      }
+    ]
+  }
+}</pre>
+      </div>
+      <div class="json-panel" style="margin-top:16px;">
+        <h3>Output: key_image_jobs.json + ad_blueprint_with_key_images.json</h3>
+        <pre>{
+  "key_image_jobs": {
+    "requests": [
+      {
+        "job_id": "lipstick_nocmarks_v1_hook_key_image",
+        "output_path": "runs/lipstick_direct_ref2img/key_images/01_hook_start.png",
+        "metadata": {
+          "role": "hook",
+          "shot_id": "shot_01_hook",
+          "num_inference_steps": 20,
+          "guidance_scale": 3.5
+        }
+      }
+    ]
+  },
+  "ad_blueprint_with_key_images": {
+    "shots": [
+      {
+        "role": "hook",
+        "start_key_image_path": "runs/lipstick_direct_ref2img/key_images/01_hook_start.png"
+      },
+      {
+        "role": "ad",
+        "start_key_image_path": null
+      }
+    ]
+  }
+}</pre>
+      </div>
+      <figure style="margin-top:14px; max-width:360px;">
+        <figcaption>Generated hook key image</figcaption>
+        <img class="tall" src="media/lipstick_direct_ref2img/key_images/01_hook_start.png" alt="hook start image">
+      </figure>
+    </section>
+
+    <section class="card">
+      <h2>Stage 3: hook key image -> consistent ad key image</h2>
+      <p>
+        The ref2img stage uses the hook key image as the identity reference and generates the
+        ad start frame directly from the ad prompt. The ad draft image is not generated by default.
+      </p>
+      <div class="json-panel">
+        <h3>Input: ad_blueprint_with_key_images.json + hook key image</h3>
+        <pre>{
+  "reference_image_paths": [
+    "runs/lipstick_direct_ref2img/key_images/01_hook_start.png"
+  ],
+  "target_shot": {
+    "role": "ad",
+    "start_key_image_prompt": "same woman, clean mug, lipstick product visible"
+  }
+}</pre>
+      </div>
+      <div class="json-panel" style="margin-top:16px;">
+        <h3>Output: ref2img_key_image_jobs.json + ad_blueprint_with_ref2img_key_images.json</h3>
+        <pre>{
+  "ref2img_key_image_jobs": {
+    "job_id": "lipstick_nocmarks_v1_ad_ref2img_key_image",
+    "output_path": "runs/lipstick_direct_ref2img/key_images/ref2img/02_ad_start_ref2img.png",
+    "reference_image_paths": [
+      "runs/lipstick_direct_ref2img/key_images/01_hook_start.png"
+    ],
+    "metadata": {
+      "role": "ad",
+      "reference_role": "hook",
+      "target_draft_key_image_path": null
+    }
+  },
+  "ad_blueprint_with_ref2img_key_images": {
+    "shots": [
+      {
+        "role": "hook",
+        "start_key_image_path": "runs/lipstick_direct_ref2img/key_images/01_hook_start.png"
+      },
+      {
+        "role": "ad",
+        "start_key_image_path": "runs/lipstick_direct_ref2img/key_images/ref2img/02_ad_start_ref2img.png"
+      }
+    ]
+  }
+}</pre>
+      </div>
+      <div class="grid" style="margin-top:14px;">
+        <figure>
+          <figcaption>Reference: hook key image</figcaption>
+          <img class="tall" src="media/lipstick_direct_ref2img/key_images/01_hook_start.png" alt="hook start image">
+        </figure>
+        <figure>
+          <figcaption>Output: consistent ad key image</figcaption>
+          <img class="tall" src="media/lipstick_direct_ref2img/key_images/ref2img/02_ad_start_ref2img.png" alt="ad ref2img start image">
+        </figure>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Stage 4: ref2img blueprint -> video_jobs.json</h2>
+      <p>
+        The video job builder consumes the updated blueprint and compiles each shot into an
+        image-to-video request. At this point the video backend does not need to know whether a
+        start image came from FLUX or ref2img.
+      </p>
+      <div class="json-panel">
+        <h3>Input: ad_blueprint_with_ref2img_key_images.json</h3>
+        <pre>{
+  "shots": [
+    {
+      "role": "hook",
+      "start_key_image_path": "runs/lipstick_direct_ref2img/key_images/01_hook_start.png"
+    },
+    {
+      "role": "ad",
+      "start_key_image_path": "runs/lipstick_direct_ref2img/key_images/ref2img/02_ad_start_ref2img.png"
+    }
+  ]
+}</pre>
+      </div>
+      <div class="json-panel" style="margin-top:16px;">
+        <h3>Output: video_jobs.json</h3>
+        <pre>{
+  "requests": [
+    {
+      "role": "hook",
+      "start_image_path": "runs/lipstick_direct_ref2img/key_images/01_hook_start.png",
+      "duration_seconds": 3
+    },
+    {
+      "role": "ad",
+      "start_image_path": "runs/lipstick_direct_ref2img/key_images/ref2img/02_ad_start_ref2img.png",
+      "duration_seconds": 8
+    }
+  ]
+}</pre>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Stage 5: video_jobs.json -> clips + combined video</h2>
+      <p>
+        The generation stage executes each request in <code>video_jobs.json</code>. Each clip is
+        conditioned on its start key image and driven by the compiled video prompt. After hook and
+        ad clips are generated, the local pipeline concatenates them into a single video manifest
+        entry.
+      </p>
+      <div class="json-panel">
+        <h3>Input: video_jobs.json</h3>
+        <pre>{
+  "requests": [
+    {
+      "role": "hook",
+      "prompt": "Task: Show the customer pain for Lipstick: Wearing lipstick leaves embarrassing lip marks on cups...",
+      "start_image_path": "runs/lipstick_direct_ref2img/key_images/01_hook_start.png",
+      "duration_seconds": 3,
+      "fps": 24,
+      "size": "704*1280",
+      "output_path": "runs/lipstick_direct_ref2img/video/01_hook.mp4"
+    },
+    {
+      "role": "ad",
+      "prompt": "Task: Show the product proof for Lipstick: A transfer-resistant lipstick that stays put on lips...",
+      "start_image_path": "runs/lipstick_direct_ref2img/key_images/ref2img/02_ad_start_ref2img.png",
+      "duration_seconds": 8,
+      "fps": 24,
+      "size": "704*1280",
+      "output_path": "runs/lipstick_direct_ref2img/video/02_ad.mp4"
+    }
+  ]
+}</pre>
+      </div>
+      <div class="json-panel" style="margin-top:16px;">
+        <h3>Backend input shape</h3>
+        <pre>{
+  "text_condition": "compiled video prompt",
+  "image_condition": "start key image / first-frame conditioning image",
+  "generation_controls": {
+    "duration_seconds": 8,
+    "fps": 24,
+    "size": "704*1280"
+  }
+}</pre>
+      </div>
+      <div class="json-panel" style="margin-top:16px;">
+        <h3>Output: video_generation_results.json</h3>
+        <pre>[
+  {
+    "provider": "http:&lt;video-backend&gt;",
+    "output_path": "runs/lipstick_direct_ref2img/video/01_hook.mp4"
+  },
+  {
+    "provider": "http:&lt;video-backend&gt;",
+    "output_path": "runs/lipstick_direct_ref2img/video/02_ad.mp4"
+  },
+  {
+    "provider": "ffmpeg-concat",
+    "output_path": "runs/lipstick_direct_ref2img/video/combined.mp4",
+    "input_paths": [
+      "runs/lipstick_direct_ref2img/video/01_hook.mp4",
+      "runs/lipstick_direct_ref2img/video/02_ad.mp4"
+    ]
+  }
+]</pre>
+      </div>
+      <p class="muted small">
+        The latest ref2img run has been compiled to <code>video_jobs.json</code>; video clips have
+        not been re-rendered for that run yet. The media below shows the same final artifact shape
+        from the earlier <code>lipstick_e2e</code> run.
+      </p>
+      <div class="grid" style="margin-top:14px;">
+        <figure>
+          <figcaption>Previous run: hook clip</figcaption>
+          <video class="tall" controls src="media/lipstick_e2e/video/01_hook.mp4"></video>
+        </figure>
+        <figure>
+          <figcaption>Previous run: ad clip</figcaption>
+          <video class="tall" controls src="media/lipstick_e2e/video/02_ad.mp4"></video>
+        </figure>
+      </div>
+      <figure style="margin-top:14px; max-width:420px;">
+        <figcaption>Previous run: combined video</figcaption>
+        <video class="tall" controls src="media/lipstick_e2e/video/combined.mp4"></video>
+      </figure>
+    </section>
+
+    <section class="card">
+      <h2>Stage 6: generated clips -> critic_report.json</h2>
+      <p>
+        The critic stage evaluates generated clips against the compact checklist stored in
+        <code>video_jobs.json</code>. It uses a local Qwen-VL video critic to produce a structured
+        pass/fail report, observed issues, evidence, and retry suggestions.
+      </p>
+      <div class="json-panel">
+        <h3>Input: video_jobs.json + generated mp4 files</h3>
+        <pre>{
+  "clip": "runs/lipstick_direct_ref2img/video/02_ad.mp4",
+  "critic_expectation": {
+    "purpose": "Show the product proof for Lipstick...",
+    "must_show": [
+      "the woman takes a natural sip",
+      "the clean white mug rim is visible and easy to inspect",
+      "same recurring character, wardrobe, and kitchen scene"
+    ],
+    "must_avoid": [
+      "unrequested subtitles, UI, fake logos, random text",
+      "warped hands, blurred proof detail, unstable camera"
+    ]
+  }
+}</pre>
+      </div>
+      <div class="json-panel" style="margin-top:16px;">
+        <h3>Output: critic_report.json</h3>
+        <pre>{
+  "pass": false,
+  "clips": [
+    {
+      "role": "ad",
+      "pass": false,
+      "scores": {
+        "no_visible_text": 1.0,
+        "physical_plausibility": 1.0,
+        "prompt_alignment": 0.0,
+        "visual_quality": 1.0,
+        "intent_clarity": 0.0,
+        "safety_comfort": 1.0
+      },
+      "issues": [
+        "The proof action is missing or unclear."
+      ],
+      "retry_suggestions": [
+        "Regenerate the ad clip with a clearer sip-and-clean-rim action."
+      ]
+    }
+  ]
+}</pre>
+      </div>
+      <div class="transition-grid">
+        <div class="transition">
+          <b>Pass</b>
+          <span>Accept generated clips and end the run.</span>
+        </div>
+        <div class="transition">
+          <b>Fail</b>
+          <span>Use the critic issues and retry suggestions to adjust the video prompt in <code>video_jobs.json</code>.</span>
+        </div>
+        <div class="transition">
+          <b>Retry</b>
+          <span>Regenerate the failed clip from the same start key image, then run the critic again.</span>
+        </div>
+      </div>
+      <p class="muted small">
+        A separate key-image critic also exists for multi-candidate key-image selection. In the
+        current simplified ref2img path, it is not part of the default main run. Video critic
+        failures are handled by <code>scripts/retry_video_from_critic.py</code>, which writes
+        <code>video_jobs_retry_01.json</code> with adjusted video prompts for failed clips and
+        rejects further retries by default.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Related Files</h2>
+      <div class="links">
+        <a href="data/lipstick_direct_ref2img/brief.json">brief.json</a>
+        <a href="data/lipstick_direct_ref2img/ad_blueprint.json">ad_blueprint.json</a>
+        <a href="data/lipstick_direct_ref2img/ad_blueprint_with_key_images.json">ad_blueprint_with_key_images.json</a>
+        <a href="data/lipstick_direct_ref2img/ad_blueprint_with_ref2img_key_images.json">ad_blueprint_with_ref2img_key_images.json</a>
+        <a href="data/lipstick_direct_ref2img/key_image_jobs.json">key_image_jobs.json</a>
+        <a href="data/lipstick_direct_ref2img/key_image_results.json">key_image_results.json</a>
+        <a href="data/lipstick_direct_ref2img/ref2img_key_image_jobs.json">ref2img_key_image_jobs.json</a>
+        <a href="data/lipstick_direct_ref2img/ref2img_key_image_results.json">ref2img_key_image_results.json</a>
+        <a href="data/lipstick_direct_ref2img/video_jobs.json">video_jobs.json</a>
+        <a href="data/lipstick_e2e/key_image_critic_report.json">key_image_critic_report.json</a>
+        <a href="data/lipstick_e2e/critic_report.json">critic_report.json</a>
+        <a href="data/lipstick_e2e/video_generation_results.json">video_generation_results.json</a>
+        <a href="media/lipstick_direct_ref2img/key_images/01_hook_start.png">01_hook_start.png</a>
+        <a href="media/lipstick_direct_ref2img/key_images/ref2img/02_ad_start_ref2img.png">02_ad_start_ref2img.png</a>
+        <a href="media/lipstick_e2e/video/01_hook.mp4">01_hook.mp4</a>
+        <a href="media/lipstick_e2e/video/02_ad.mp4">02_ad.mp4</a>
+        <a href="media/lipstick_e2e/video/combined.mp4">combined.mp4</a>
+      </div>
+    </section>
+  </main>
+  <script>
+    (() => {
+      let lastHtml = null;
+      const url = "/index.html";
+
+      async function checkForUpdate() {
+        try {
+          const response = await fetch(`${url}?reload=${Date.now()}`, { cache: "no-store" });
+          const currentHtml = await response.text();
+          if (lastHtml && currentHtml !== lastHtml) {
+            window.location.reload();
+            return;
+          }
+          lastHtml = currentHtml;
+        } catch {
+          // Ignore transient local-server errors while editing.
+        }
+      }
+
+      setInterval(checkForUpdate, 2000);
+      checkForUpdate();
+    })();
+  </script>
+</body>
+</html>

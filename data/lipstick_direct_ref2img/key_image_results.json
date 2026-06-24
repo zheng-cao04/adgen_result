@@ -1,0 +1,21 @@
+[
+  {
+    "provider": "local-flux-lowmem:/home/linabear/projects/adgen_workspace/adgen/models/FLUX.1-dev",
+    "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_direct_ref2img/key_images/01_hook_start.png",
+    "raw_response": {
+      "model_id": "/home/linabear/projects/adgen_workspace/adgen/models/FLUX.1-dev",
+      "width": 288,
+      "height": 512,
+      "seed": 0,
+      "num_inference_steps": 20,
+      "guidance_scale": 3.5,
+      "max_sequence_length": 192,
+      "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/lipstick/lipstick.png",
+      "low_memory_flux": true,
+      "role": "hook",
+      "shot_id": "shot_01_hook",
+      "prompt": "Realistic vertical 9:16 commercial photo, single still frame. Subject/product: Lipstick. Start frame: Vertical 9:16 frame, medium close-up at a light wood kitchen table. The woman (late 20s, medium skin, low bun, beige top) holds a plain white ceramic mug with one small red lipstick mark already on the rim facing the camera. Her other hand lightly supports the mug. Soft natural window light. Background is a clean white-tile backsplash and a small. If the product is visible, match the reference image.",
+      "negative_prompt": "No text, captions, watermark, fake logo, collage, extra fingers, distorted face, warped hands, blurry product."
+    }
+  }
+]
