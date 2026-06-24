@@ -69,6 +69,94 @@
     .pill.amber { color: var(--amber); border-color: #735516; background: #241e10; }
     .muted { color: var(--muted); }
     .small { font-size: 13px; }
+    .tab-group { margin-top: 14px; }
+    .tab-label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+    .tablist {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .tab-button {
+      min-height: 36px;
+      padding: 8px 11px;
+      color: var(--muted);
+      background: #11141a;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      cursor: pointer;
+      font: inherit;
+      font-size: 13px;
+      line-height: 1.2;
+    }
+    .tab-button:hover {
+      color: var(--text);
+      border-color: #4a5260;
+    }
+    .tab-button[aria-selected="true"] {
+      color: #fff;
+      background: #0e2029;
+      border-color: #24546b;
+      box-shadow: inset 0 0 0 1px rgba(125, 211, 252, 0.2);
+    }
+    .result-list { margin-top: 16px; }
+    .result-item[hidden],
+    .empty-state[hidden] {
+      display: none;
+    }
+    .result-item {
+      display: grid;
+      grid-template-columns: minmax(220px, 360px) minmax(0, 1fr);
+      gap: 18px;
+      padding: 16px 0;
+      border-top: 1px solid var(--line);
+    }
+    .result-item:first-child { border-top: 0; }
+    .result-copy { min-width: 0; }
+    .result-title {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .result-title h3 { margin: 0; }
+    .prior-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .prior-list div {
+      min-width: 0;
+      padding-top: 8px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .prior-list b {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--text);
+    }
+    .empty-state {
+      margin-top: 16px;
+      padding: 14px 0 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .empty-state b {
+      display: block;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
     .steps {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
@@ -175,7 +263,8 @@
     }
     @media (max-width: 850px) {
       main { padding: 16px; }
-      .steps, .grid, .links, .transition-grid { grid-template-columns: 1fr; }
+      .steps, .grid, .links, .transition-grid, .result-item, .prior-list { grid-template-columns: 1fr; }
+      .tab-button { flex: 1 1 140px; }
     }
   </style>
 </head>
@@ -222,6 +311,96 @@
           <b>6. critic</b>
           <span>A local Qwen-VL critic evaluates the result and either accepts it or routes a retry.</span>
         </div>
+      </div>
+    </section>
+
+    <section class="card" data-result-browser>
+      <h2>Result Browser</h2>
+      <p>
+        Current runs are grouped by ad type and product type. Category labels are experiment
+        priors for the GPT planner; video backends still receive concrete shot prompts from
+        <code>ad_blueprint.json</code>.
+      </p>
+      <div class="tab-group">
+        <div class="tab-label">Ad type</div>
+        <div class="tablist" role="tablist" aria-label="Ad type">
+          <button class="tab-button" type="button" role="tab" data-filter-target="ad-type" data-filter-value="hook" aria-selected="true">Hook</button>
+          <button class="tab-button" type="button" role="tab" data-filter-target="ad-type" data-filter-value="full" aria-selected="false">Full Video</button>
+        </div>
+      </div>
+      <div class="tab-group">
+        <div class="tab-label">Product type</div>
+        <div class="tablist" role="tablist" aria-label="Product type">
+          <button class="tab-button" type="button" role="tab" data-filter-target="product-category" data-filter-value="beauty" aria-selected="true">Beauty</button>
+          <button class="tab-button" type="button" role="tab" data-filter-target="product-category" data-filter-value="software_tool" aria-selected="false">Software Tool</button>
+          <button class="tab-button" type="button" role="tab" data-filter-target="product-category" data-filter-value="food" aria-selected="false">Food</button>
+          <button class="tab-button" type="button" role="tab" data-filter-target="product-category" data-filter-value="fashion" aria-selected="false">Fashion</button>
+          <button class="tab-button" type="button" role="tab" data-filter-target="product-category" data-filter-value="electronics" aria-selected="false">Electronics</button>
+          <button class="tab-button" type="button" role="tab" data-filter-target="product-category" data-filter-value="furniture" aria-selected="false">Furniture</button>
+        </div>
+      </div>
+
+      <div class="result-list">
+        <article class="result-item" data-result-item data-ad-type="hook" data-product-category="beauty">
+          <figure>
+            <figcaption>Beauty / Hook</figcaption>
+            <video class="tall" controls src="media/lipstick_e2e/video/01_hook.mp4"></video>
+          </figure>
+          <div class="result-copy">
+            <div class="result-title">
+              <h3>Lipstick transfer hook</h3>
+              <span class="pill blue">hook clip</span>
+              <span class="pill green">beauty</span>
+            </div>
+            <p>
+              A short pain-point clip for the lipstick run: the user notices a visible mark
+              on a white mug before the product proof shot.
+            </p>
+            <div class="prior-list">
+              <div>
+                <b>Planner prior</b>
+                Polished adult model, clean close-up performance, refined makeup, visible cup proof.
+              </div>
+              <div>
+                <b>Route</b>
+                Hook key image first, then image-conditioned video generation.
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="result-item" data-result-item data-ad-type="full" data-product-category="beauty" hidden>
+          <figure>
+            <figcaption>Beauty / Full Video</figcaption>
+            <video class="tall" controls src="media/lipstick_e2e/video/combined.mp4"></video>
+          </figure>
+          <div class="result-copy">
+            <div class="result-title">
+              <h3>Lipstick full ad</h3>
+              <span class="pill amber">hook + ad</span>
+              <span class="pill green">beauty</span>
+            </div>
+            <p>
+              The longer combined result joins the hook clip with the product proof clip,
+              showing the clean-rim transfer-resistance claim.
+            </p>
+            <div class="prior-list">
+              <div>
+                <b>Planner prior</b>
+                Beauty commercial tone, consistent model and scene, macro proof that is easy to inspect.
+              </div>
+              <div>
+                <b>Route</b>
+                Key-image/ref2img planning path, then two generated clips concatenated.
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="empty-state" data-empty-state hidden>
+        <b>No generated result in this slot yet.</b>
+        <span>Software tools, food, fashion, electronics, and furniture runs will appear here as their artifacts are added.</span>
       </div>
     </section>
 
@@ -739,6 +918,53 @@
     </section>
   </main>
   <script>
+    (() => {
+      const browser = document.querySelector("[data-result-browser]");
+      if (!browser) {
+        return;
+      }
+
+      const state = {
+        "ad-type": "hook",
+        "product-category": "beauty",
+      };
+      const buttons = browser.querySelectorAll("[data-filter-target]");
+      const items = browser.querySelectorAll("[data-result-item]");
+      const emptyState = browser.querySelector("[data-empty-state]");
+
+      function render() {
+        buttons.forEach((button) => {
+          const target = button.dataset.filterTarget;
+          const selected = state[target] === button.dataset.filterValue;
+          button.setAttribute("aria-selected", String(selected));
+        });
+
+        let visibleCount = 0;
+        items.forEach((item) => {
+          const visible =
+            item.dataset.adType === state["ad-type"] &&
+            item.dataset.productCategory === state["product-category"];
+          item.hidden = !visible;
+          if (visible) {
+            visibleCount += 1;
+          }
+        });
+
+        if (emptyState) {
+          emptyState.hidden = visibleCount > 0;
+        }
+      }
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          state[button.dataset.filterTarget] = button.dataset.filterValue;
+          render();
+        });
+      });
+
+      render();
+    })();
+
     (() => {
       let lastHtml = null;
       const url = "index.html";
