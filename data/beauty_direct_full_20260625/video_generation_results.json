@@ -1,0 +1,9 @@
+[
+  {
+    "provider": "http",
+    "output_path": "/home/caozheng/projects/adgen/runs/_20260625_011457/video/01_full.mp4",
+    "raw_response": {
+      "content_type": "video/mp4"
+    }
+  }
+]

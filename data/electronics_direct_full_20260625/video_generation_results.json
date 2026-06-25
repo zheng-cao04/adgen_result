@@ -1,0 +1,9 @@
+[
+  {
+    "provider": "http",
+    "output_path": "/home/caozheng/projects/adgen/runs/electronics_20260625_035252/video/01_full.mp4",
+    "raw_response": {
+      "content_type": "video/mp4"
+    }
+  }
+]

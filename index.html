@@ -46,6 +46,19 @@
       font-size: 12px;
       line-height: 1.45;
     }
+    .prompt-details {
+      margin-top: 12px;
+    }
+    .prompt-details summary {
+      cursor: pointer;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .prompt-details pre {
+      max-height: 240px;
+      overflow: auto;
+    }
     .sub { color: var(--muted); margin-top: 6px; }
     .card {
       margin-top: 18px;
@@ -324,18 +337,18 @@
       <div class="tab-group">
         <div class="tab-label">Ad type</div>
         <div class="tablist" role="tablist" aria-label="Ad type">
-          <button class="tab-button" type="button" role="tab" data-filter-target="ad-type" data-filter-value="hook" aria-selected="true">Hook</button>
-          <button class="tab-button" type="button" role="tab" data-filter-target="ad-type" data-filter-value="full" aria-selected="false">Full Video</button>
+          <button class="tab-button" type="button" role="tab" data-filter-target="ad-type" data-filter-value="hook" aria-selected="false">Hook</button>
+          <button class="tab-button" type="button" role="tab" data-filter-target="ad-type" data-filter-value="full" aria-selected="true">Full Video</button>
         </div>
       </div>
       <div class="tab-group">
         <div class="tab-label">Product type</div>
         <div class="tablist" role="tablist" aria-label="Product type">
           <button class="tab-button" type="button" role="tab" data-filter-target="product-category" data-filter-value="beauty" aria-selected="true">Beauty</button>
-          <button class="tab-button" type="button" role="tab" data-filter-target="product-category" data-filter-value="software_tool" aria-selected="false">Software Tool</button>
           <button class="tab-button" type="button" role="tab" data-filter-target="product-category" data-filter-value="food" aria-selected="false">Food</button>
-          <button class="tab-button" type="button" role="tab" data-filter-target="product-category" data-filter-value="fashion" aria-selected="false">Fashion</button>
           <button class="tab-button" type="button" role="tab" data-filter-target="product-category" data-filter-value="electronics" aria-selected="false">Electronics</button>
+          <button class="tab-button" type="button" role="tab" data-filter-target="product-category" data-filter-value="software_tool" aria-selected="false">Software Tool</button>
+          <button class="tab-button" type="button" role="tab" data-filter-target="product-category" data-filter-value="fashion" aria-selected="false">Fashion</button>
           <button class="tab-button" type="button" role="tab" data-filter-target="product-category" data-filter-value="furniture" aria-selected="false">Furniture</button>
         </div>
       </div>
@@ -365,6 +378,117 @@
                 <b>Route</b>
                 Hook key image first, then image-conditioned video generation.
               </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="result-item" data-result-item data-ad-type="full" data-product-category="beauty" hidden>
+          <figure>
+            <figcaption>Beauty / Direct-Full / 2026-06-25</figcaption>
+            <video class="tall" controls src="media/beauty_direct_full_20260625/video/01_full.mp4"></video>
+          </figure>
+          <div class="result-copy">
+            <div class="result-title">
+              <h3>Lipstick direct-full ad</h3>
+              <span class="pill amber">direct-full-t2v</span>
+              <span class="pill green">beauty</span>
+            </div>
+            <p>
+              Latest beauty category full-video run. The one-take prompt asks LTX2.3 to move
+              from lipstick transfer on a white mug into a clean-rim proof shot.
+            </p>
+            <div class="prior-list">
+              <div>
+                <b>Run</b>
+                runs/_20260625_011457
+              </div>
+              <div>
+                <b>Output</b>
+                11s, 704x1280, text-only direct-full route.
+              </div>
+            </div>
+            <details class="prompt-details">
+              <summary>Actual video prompt</summary>
+              <pre>Vertical 9:16 one-take ad for Lipstick: prove A transfer-resistant lipstick that stays put on lips and keeps white cups clean through everyday sips. Same character and setting: Adult woman, early 30s, medium skin tone, polished look, calm and relatable; Ivory blouse with clean neckline; Smooth low bun; Soft studio/vanity setup. Start pain: Vertical close-up at a softly lit vanity. The woman holds a plain white ceramic mug near her lips, noticing a small lipstick mark on the rim. She slowly tilts the mug to present. Shift to proof without cuts or scene changes: Same setting and framing in a clean close-up. Her lips are neatly finished with a rich red matte lipstick. She gently sips from a clean plain white ceramic mug, then lowers it and rotates the rim toward the lens until the rim fills most of the frame, holding it steady to show. Keep one scene, one main subject, controlled camera, natural motion, stable face/hands/product, and sharp proof detail. No subtitles, UI, watermarks, fake logos, random text, extra characters, montage, split screen, or shaky camera.</pre>
+            </details>
+            <div class="links">
+              <a href="data/beauty_direct_full_20260625/ad_blueprint.json">ad_blueprint.json</a>
+              <a href="data/beauty_direct_full_20260625/video_jobs.json">video_jobs.json</a>
+              <a href="data/beauty_direct_full_20260625/video_generation_results.json">results.json</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="result-item" data-result-item data-ad-type="full" data-product-category="electronics" hidden>
+          <figure>
+            <figcaption>Electronics / Direct-Full / 2026-06-25</figcaption>
+            <video class="tall" controls src="media/electronics_direct_full_20260625/video/01_full.mp4"></video>
+          </figure>
+          <div class="result-copy">
+            <div class="result-title">
+              <h3>Apple iPhone direct-full ad</h3>
+              <span class="pill amber">direct-full-t2v</span>
+              <span class="pill green">electronics</span>
+            </div>
+            <p>
+              Latest electronics category full-video run. The prompt demonstrates a fast
+              camera-capture moment in a living-room dog action scene.
+            </p>
+            <div class="prior-list">
+              <div>
+                <b>Run</b>
+                runs/electronics_20260625_035252
+              </div>
+              <div>
+                <b>Output</b>
+                11s, 704x1280, text-only direct-full route.
+              </div>
+            </div>
+            <details class="prompt-details">
+              <summary>Actual video prompt</summary>
+              <pre>Vertical 9:16 one-take ad for Apple iPhone: prove A premium smartphone that opens fast and captures sharp everyday moments in one tap. Same character and setting: Young adult in late 20s with medium skin tone, short dark hair, natural look; White crew-neck tee with a light gray cardigan and dark. Start pain: Vertical, locked-off medium-wide shot in a bright, minimalist living room. The young adult raises a matte black smartphone with the screen dark as a small tan dog springs up to catch a red plush. Shift to proof without cuts or scene changes: Vertical, locked-off close medium shot centered on the smartphone held in both hands at chest height. The camera preview is already open, framing the same small tan dog with a red plush ball in the bright living room. As the dog leaps, the user calmly taps a large white circular shutter button. Keep one scene, one main subject, controlled camera, natural motion, stable face/hands/product, and sharp proof detail. No subtitles, UI, watermarks, fake logos, random text, extra characters, montage, split screen, or shaky camera.</pre>
+            </details>
+            <div class="links">
+              <a href="data/electronics_direct_full_20260625/ad_blueprint.json">ad_blueprint.json</a>
+              <a href="data/electronics_direct_full_20260625/video_jobs.json">video_jobs.json</a>
+              <a href="data/electronics_direct_full_20260625/video_generation_results.json">results.json</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="result-item" data-result-item data-ad-type="full" data-product-category="food" hidden>
+          <figure>
+            <figcaption>Food / Direct-Full / 2026-06-25</figcaption>
+            <video class="tall" controls src="media/food_direct_full_20260625/video/01_full.mp4"></video>
+          </figure>
+          <div class="result-copy">
+            <div class="result-title">
+              <h3>Pan-Seared Steak direct-full ad</h3>
+              <span class="pill amber">direct-full-t2v</span>
+              <span class="pill green">food</span>
+            </div>
+            <p>
+              Latest food category full-video run. The prompt contrasts a pale skillet steak
+              with a sliced, steamy, browned-crust proof moment.
+            </p>
+            <div class="prior-list">
+              <div>
+                <b>Run</b>
+                runs/food_20260625_041922
+              </div>
+              <div>
+                <b>Output</b>
+                11s, 704x1280, text-only direct-full route.
+              </div>
+            </div>
+            <details class="prompt-details">
+              <summary>Actual video prompt</summary>
+              <pre>Vertical 9:16 one-take ad for Pan-Seared Steak: prove A richly seared steak with a browned crust and juicy, rosy center—restaurant-quality presentation and steam. Same character and setting: Single adult home-cook hand model with clean hands and short nails; Charcoal gray apron over a light neutral long-sleeve shirt; Hair off-camera; Cozy home. Start pain: Vertical close-up of a matte black cast-iron skillet on a home kitchen stovetop. A pale, lightly browned steak sits in the center with almost no crust. A right hand with matte stainless tongs gently. Shift to proof without cuts or scene changes: Same kitchen and angle style, now on the wooden butcher-block. A pan-seared steak with a deep mahogany crust rests on the board, steam rising, backlit by warm side light. The hand uses a matte-finish chef’s knife to slice the steak into thick, even slices, revealing a rosy, juicy center. The hand gently. Keep one scene, one main subject, controlled camera, natural motion, stable face/hands/product, and sharp proof detail. No subtitles, UI, watermarks, fake logos, random text, extra characters, montage, split screen, or shaky camera.</pre>
+            </details>
+            <div class="links">
+              <a href="data/food_direct_full_20260625/ad_blueprint.json">ad_blueprint.json</a>
+              <a href="data/food_direct_full_20260625/video_jobs.json">video_jobs.json</a>
+              <a href="data/food_direct_full_20260625/video_generation_results.json">results.json</a>
             </div>
           </div>
         </article>
@@ -914,6 +1038,15 @@
         <a href="media/lipstick_e2e/video/01_hook.mp4">01_hook.mp4</a>
         <a href="media/lipstick_e2e/video/02_ad.mp4">02_ad.mp4</a>
         <a href="media/lipstick_e2e/video/combined.mp4">combined.mp4</a>
+        <a href="data/beauty_direct_full_20260625/ad_blueprint.json">beauty direct-full blueprint</a>
+        <a href="data/beauty_direct_full_20260625/video_jobs.json">beauty direct-full jobs</a>
+        <a href="media/beauty_direct_full_20260625/video/01_full.mp4">beauty direct-full video</a>
+        <a href="data/electronics_direct_full_20260625/ad_blueprint.json">electronics direct-full blueprint</a>
+        <a href="data/electronics_direct_full_20260625/video_jobs.json">electronics direct-full jobs</a>
+        <a href="media/electronics_direct_full_20260625/video/01_full.mp4">electronics direct-full video</a>
+        <a href="data/food_direct_full_20260625/ad_blueprint.json">food direct-full blueprint</a>
+        <a href="data/food_direct_full_20260625/video_jobs.json">food direct-full jobs</a>
+        <a href="media/food_direct_full_20260625/video/01_full.mp4">food direct-full video</a>
       </div>
     </section>
   </main>
@@ -925,7 +1058,7 @@
       }
 
       const state = {
-        "ad-type": "hook",
+        "ad-type": "full",
         "product-category": "beauty",
       };
       const buttons = browser.querySelectorAll("[data-filter-target]");

@@ -1,0 +1,63 @@
+{
+  "source_blueprint": "/home/caozheng/projects/adgen/runs/_20260625_011457/ad_blueprint.json",
+  "requests": [
+    {
+      "job_id": "lipstick_transfer_clean_cup_v1_full",
+      "prompt": "Vertical 9:16 one-take ad for Lipstick: prove A transfer-resistant lipstick that stays put on lips and keeps white cups clean through everyday sips. Same character and setting: Adult woman, early 30s, medium skin tone, polished look, calm and relatable; Ivory blouse with clean neckline; Smooth low bun; Soft studio/vanity setup. Start pain: Vertical close-up at a softly lit vanity. The woman holds a plain white ceramic mug near her lips, noticing a small lipstick mark on the rim. She slowly tilts the mug to present. Shift to proof without cuts or scene changes: Same setting and framing in a clean close-up. Her lips are neatly finished with a rich red matte lipstick. She gently sips from a clean plain white ceramic mug, then lowers it and rotates the rim toward the lens until the rim fills most of the frame, holding it steady to show. Keep one scene, one main subject, controlled camera, natural motion, stable face/hands/product, and sharp proof detail. No subtitles, UI, watermarks, fake logos, random text, extra characters, montage, split screen, or shaky camera.",
+      "output_path": "/home/caozheng/projects/adgen/runs/_20260625_011457/video/01_full.mp4",
+      "duration_seconds": 11.0,
+      "fps": 24,
+      "size": "704*1280",
+      "negative_prompt": "cuts, jump cuts, montage, split screen, scene change, multiple locations, extra characters, subtitles, UI, watermarks, fake logos, random text, shaky camera, flicker, warped hands, distorted face, warped product, blurred proof detail",
+      "start_image_path": null,
+      "product_reference_path": "/home/caozheng/projects/adgen/examples/lipstick/lipstick.png",
+      "image_path": null,
+      "image_base64": null,
+      "image_mime_type": null,
+      "metadata": {
+        "role": "full",
+        "ad_type": "full",
+        "shot_ids": [
+          "shot_01_hook",
+          "shot_02_ad"
+        ],
+        "shot_roles": [
+          "hook",
+          "ad"
+        ],
+        "overlay_texts": [
+          "Cup stains again?",
+          "Sip-proof color. No transfer."
+        ],
+        "audio_directions": [
+          "Soft minimal beat; SFX: gentle ceramic clink as the mug moves; natural light sigh. No VO.",
+          "Upbeat, clean track; SFX: subtle sip. VO (friendly): \"Transfer‑proof lipstick. Keep your cups clean.\""
+        ],
+        "start_image_path": null,
+        "product_reference_path": "/home/caozheng/projects/adgen/examples/lipstick/lipstick.png",
+        "source_blueprint": "/home/caozheng/projects/adgen/runs/_20260625_011457/ad_blueprint.json",
+        "execution_route": "direct-full-t2v",
+        "critic_expectation": {
+          "purpose": "Show a complete one-take ad for Lipstick: Lipstick transferring onto cups and smudging, leaving embarrassing marks during daily use. resolves into A transfer-resistant lipstick that stays put on lips and keeps white cups clean through everyday sips.",
+          "must_show": [
+            "single continuous one-take full ad with no cuts, montage, split screen, or scene changes",
+            "opens with the customer pain: Vertical close-up at a softly lit vanity. The woman holds a plain white ceramic mug near her lips, noticing a small lipstick mark on the rim. She slowly tilts the mug to present the marked rim toward camera, brows knit slightly with a quiet sigh. Keep the camera locked-off and focus on the rim; background stays neutral and softly blurred.",
+            "then transitions naturally into the product proof: Same setting and framing in a clean close-up. Her lips are neatly finished with a rich red matte lipstick. She gently sips from a clean plain white ceramic mug, then lowers it and rotates the rim toward the lens until the rim fills most of the frame, holding it steady to show it remains perfectly clean. She gives a small confident smile. Camera locked-off; smooth, slow movement.",
+            "physically plausible sequential motion in one scene",
+            "same recurring character, wardrobe, and scene from asset memory: Adult woman, early 30s, medium skin tone, polished look, calm and relatable.; Ivory blouse with clean neckline; minimal jewelry to keep."
+          ],
+          "must_avoid": [
+            "cuts, jump cuts, montage, split screen, scene change, multiple locations, extra characters, subtitles, UI, watermarks, fake logos, random text, shaky camera, flicker, warped hands, distorted face, warped product, blurred proof detail",
+            "unrequested subtitles, captions, UI, watermarks, fake logos, background text, or random letters"
+          ],
+          "quality_checks": [
+            "stable face, hands, objects, and camera motion",
+            "the pain-to-proof transition is readable without cuts",
+            "key proof or problem detail is visible, sharp, and easy to understand",
+            "visible product appearance stays consistent with the product reference image"
+          ]
+        }
+      }
+    }
+  ]
+}

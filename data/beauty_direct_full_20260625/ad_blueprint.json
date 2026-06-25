@@ -1,0 +1,72 @@
+{
+  "ad_id": "lipstick_transfer_clean_cup_v1",
+  "brief": {
+    "product": {
+      "name": "Lipstick",
+      "category": "beauty",
+      "image_path": "examples/lipstick/lipstick.png",
+      "selling_points": [
+        "Unlike ordinary lipsticks that leave marks on cups, this lipstick stays put, keeps cups clean, and resists smudging during daily wear."
+      ]
+    },
+    "language": "en",
+    "duration_seconds": 11.0
+  },
+  "creative_strategy": {
+    "core_pain": "Lipstick transferring onto cups and smudging, leaving embarrassing marks during daily use.",
+    "promise": "A transfer-resistant lipstick that stays put on lips and keeps white cups clean through everyday sips."
+  },
+  "asset_memory": {
+    "key_image_path": null,
+    "character": {
+      "appearance": "Adult woman, early 30s, medium skin tone, polished look, calm and relatable.",
+      "wardrobe": "Ivory blouse with clean neckline; minimal jewelry to keep focus on lips and mug.",
+      "hair_makeup": "Smooth low bun; refined makeup with soft matte base, subtle eyeliner; lips in a classic red matte finish.",
+      "performance_style": "Subtle, natural expressions; slow, deliberate movements; confident but understated."
+    },
+    "scene": {
+      "location": "Soft studio/vanity setup in a neutral, modern space.",
+      "lighting": "Soft diffused key light from front-left; even, flattering illumination with gentle highlights.",
+      "background": "Neutral beige background with shallow depth of field; white tabletop with a small round mirror.",
+      "key_props": [
+        "Plain white ceramic mug (matte, no logo)",
+        "Small round vanity mirror",
+        "Lipstick tube placed on tabletop"
+      ]
+    },
+    "product": {
+      "visual_identity": "Lipstick bullet/tube on tabletop and on-lip color should match the provided reference image in shape, finish, and any visible mark; classic red matte finish on lips.",
+      "proof_prop": "Plain white ceramic mug (matte, logo-free) used for transfer test.",
+      "image_path": "examples/lipstick/lipstick.png"
+    }
+  },
+  "executable_layer": {
+    "duration_seconds": 11.0,
+    "shots": [
+      {
+        "shot_id": "shot_01_hook",
+        "start_seconds": 0.0,
+        "end_seconds": 3.0,
+        "role": "hook",
+        "visual_prompt": "Vertical close-up at a softly lit vanity. The woman holds a plain white ceramic mug near her lips, noticing a small lipstick mark on the rim. She slowly tilts the mug to present the marked rim toward camera, brows knit slightly with a quiet sigh. Keep the camera locked-off and focus on the rim; background stays neutral and softly blurred.",
+        "start_key_image_prompt": "A 9:16 close-up frame at a soft-lit vanity: the same adult woman (early 30s, medium skin tone) in an ivory blouse holds a plain white ceramic mug near her lips. A single small, realistic lipstick mark (muted red) is clearly visible on the mug’s rim at center. Her lips show a soft matte red finish. Background is a neutral beige blur with a white tabletop and a small round mirror. Camera locked-off at eye level; soft diffused lighting from front-left; clean hands with natural nails; focus on the mug rim.",
+        "start_key_image_path": null,
+        "negative_prompt": "no glass or transparent mugs; no oversized or messy stains; no shaky handheld; no exaggerated grimaces; no distorted lips or teeth; no extra fingers or duplicated hands; no flicker; no heavy motion blur; no reflective metal surfaces; no background logos or brand text; no split screens; avoid overly glossy lips; avoid harsh shadows.",
+        "text": "Cup stains again?",
+        "audio": "Soft minimal beat; SFX: gentle ceramic clink as the mug moves; natural light sigh. No VO."
+      },
+      {
+        "shot_id": "shot_02_ad",
+        "start_seconds": 3.0,
+        "end_seconds": 11.0,
+        "role": "ad",
+        "visual_prompt": "Same setting and framing in a clean close-up. Her lips are neatly finished with a rich red matte lipstick. She gently sips from a clean plain white ceramic mug, then lowers it and rotates the rim toward the lens until the rim fills most of the frame, holding it steady to show it remains perfectly clean. She gives a small confident smile. Camera locked-off; smooth, slow movement.",
+        "start_key_image_prompt": "A 9:16 close-up at the same soft-lit vanity: the same woman, same ivory blouse and low bun, holds a pristine plain white ceramic mug close to her matte red lips. The rim is clean and large in frame, angled to show a wide, spotless section. Background remains a neutral beige blur; the lipstick tube (matching the provided product image) rests on the white tabletop slightly out of focus. Camera locked-off; soft diffused key light; crisp focus on both lips and mug rim.",
+        "start_key_image_path": null,
+        "negative_prompt": "no transfer marks on the rim; no clear glass or reflective mugs; no shaky handheld; no lip or face distortion; no extra fingers; no flicker or sudden exposure shifts; no brand name hallucinations on props; no steam, water droplets, or condensation; no lipstick color change mid-shot; no jump cuts.",
+        "text": "Sip-proof color. No transfer.",
+        "audio": "Upbeat, clean track; SFX: subtle sip. VO (friendly): \"Transfer‑proof lipstick. Keep your cups clean.\""
+      }
+    ]
+  }
+}
