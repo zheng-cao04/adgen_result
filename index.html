@@ -82,6 +82,66 @@
     .pill.amber { color: var(--amber); border-color: #735516; background: #241e10; }
     .muted { color: var(--muted); }
     .small { font-size: 13px; }
+    .section-subhead { margin-top: 16px; }
+    .field-list {
+      display: grid;
+      grid-template-columns: 170px minmax(0, 1fr);
+      gap: 8px 14px;
+      margin: 12px 0 0;
+      padding: 12px 0 0;
+      border-top: 1px solid var(--line);
+    }
+    .field-list dt {
+      color: #fff;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13px;
+    }
+    .field-list dd {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .compact-details,
+    details.json-panel {
+      margin-top: 12px;
+      background: #11141a;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    .compact-details summary,
+    details.json-panel summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 42px;
+      padding: 10px 12px;
+      color: var(--blue);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 700;
+      list-style: none;
+    }
+    .compact-details summary::-webkit-details-marker,
+    details.json-panel summary::-webkit-details-marker {
+      display: none;
+    }
+    .compact-details summary::after,
+    details.json-panel summary::after {
+      content: "+";
+      flex: 0 0 auto;
+      color: var(--muted);
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .compact-details[open] summary::after,
+    details.json-panel[open] summary::after {
+      content: "-";
+    }
+    .compact-details .field-list {
+      margin: 0 12px 12px;
+      padding-top: 12px;
+    }
     .tab-group { margin-top: 14px; }
     .tab-label {
       color: var(--muted);
@@ -140,6 +200,10 @@
       margin-bottom: 8px;
     }
     .result-title h3 { margin: 0; }
+    .result-media-stack {
+      display: grid;
+      gap: 12px;
+    }
     .prior-list {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -185,38 +249,6 @@
     }
     .step b { display: block; margin-bottom: 5px; color: #fff; }
     .step span { color: var(--muted); font-size: 13px; }
-    .state-diagram-wrap {
-      margin-top: 16px;
-      overflow-x: auto;
-      padding-bottom: 4px;
-    }
-    .state-diagram {
-      display: block;
-      width: 100%;
-      min-width: 980px;
-      height: auto;
-    }
-    .state-diagram text {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      letter-spacing: 0;
-    }
-    .state-box { fill: #11141a; stroke: var(--line); stroke-width: 1.5; }
-    .state-box.start { fill: #0e2029; stroke: #24546b; }
-    .state-box.critic { fill: #241e10; stroke: #735516; }
-    .state-box.end { fill: #10231c; stroke: #1e6048; }
-    .state-title { fill: #fff; font-size: 15px; font-weight: 700; }
-    .state-subtitle { fill: var(--muted); font-size: 12px; }
-    .state-flow { fill: none; stroke: var(--muted); stroke-width: 2; }
-    .state-pass { fill: none; stroke: var(--green); stroke-width: 2.5; }
-    .state-retry { fill: none; stroke: var(--amber); stroke-width: 2; stroke-dasharray: 6 5; }
-    .state-edge-label {
-      fill: var(--muted);
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-    .state-edge-label.pass { fill: var(--green); }
-    .state-edge-label.retry { fill: var(--amber); }
     .transition-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -240,6 +272,26 @@
       flex-direction: column;
     }
     .json-panel pre { flex: 1; }
+    details.json-panel {
+      display: block;
+      padding: 0;
+    }
+    details.json-panel pre {
+      margin: 0 12px 12px;
+      max-height: 420px;
+      overflow: auto;
+    }
+    .collapsible-card {
+      padding: 0;
+    }
+    .collapsible-card > summary {
+      padding: 16px 18px;
+      font-size: 18px;
+    }
+    .collapsible-card > .links {
+      margin: 0;
+      padding: 0 18px 18px;
+    }
     figure { margin: 0; }
     figcaption { margin-bottom: 7px; color: var(--muted); font-size: 13px; }
     img {
@@ -277,6 +329,8 @@
     @media (max-width: 850px) {
       main { padding: 16px; }
       .steps, .grid, .links, .transition-grid, .result-item, .prior-list { grid-template-columns: 1fr; }
+      .field-list { grid-template-columns: 1fr; gap: 4px; }
+      .field-list dd { margin-bottom: 6px; }
       .tab-button { flex: 1 1 140px; }
     }
   </style>
@@ -287,31 +341,51 @@
     <div class="sub">Development snapshot</div>
 
     <section class="card">
-      <h2>Pipeline Overview</h2>
+      <h2>What brief.json is</h2>
       <p>
-        AdGen converts <code>brief.json</code> into executable video generation tasks.
-        The current control plane has two video routes: <code>direct</code> builds one
-        full-length text-only video request, while <code>keyframe</code> uses optional
-        start images for hook/ad image-to-video jobs. JSON artifacts stay inspectable
-        between planning, job building, generation, critic, and retry.
+        <code>brief.json</code> is the pipeline input contract: a compact product and
+        ad request supplied by the user.
       </p>
-      <div class="pills">
-        <span class="pill blue">brief -> blueprint</span>
-        <span class="pill green">direct or keyframe route</span>
-        <span class="pill amber">critic -> GPT retry</span>
-      </div>
+      <details class="compact-details">
+        <summary>brief.json fields</summary>
+        <dl class="field-list">
+          <dt>product.name</dt>
+          <dd>The product or service being advertised.</dd>
+          <dt>product.category</dt>
+          <dd>Optional planner hint such as beauty, food, electronics, software tool, fashion, or furniture.</dd>
+          <dt>product.selling_points</dt>
+          <dd>Benefits, constraints, proof points, or required demo actions the ad should preserve.</dd>
+          <dt>product.image_path</dt>
+          <dd>Optional product reference image for identity. Direct route sends it to image-edit/ref2img to create a full-scene start frame; keyframe route uses it for key-image stages.</dd>
+          <dt>language</dt>
+          <dd>Output language for planner text and generated ad prompts.</dd>
+          <dt>duration_seconds</dt>
+          <dd>Target total video length for the generated ad.</dd>
+          <dt>execution_route</dt>
+          <dd><code>direct</code> asks the planner for one single-shot full-video plan; <code>keyframe</code> asks for hook/ad shots with key-image prompts.</dd>
+        </dl>
+      </details>
+      <h3 class="section-subhead">High-level flow</h3>
+      <p>
+        From that brief, AdGen builds inspectable JSON artifacts at each step. The current
+        control plane has two video routes: <code>direct</code> builds one full-length
+        request and, when a product image is present, first turns that image into a
+        generated start frame; <code>keyframe</code> uses start images for hook/ad
+        image-to-video jobs.
+        After generation, the critic can accept the clip or trigger one GPT prompt rewrite for a retry.
+      </p>
       <div class="steps">
         <div class="step">
           <b>1. brief.json</b>
-          <span>User input with product details, optional category, selling points, image path, and execution intent.</span>
+          <span>The user-facing input contract: product details, constraints, references, and duration.</span>
         </div>
         <div class="step">
           <b>2. ad_blueprint.json</b>
-          <span>The GPT planner creates strategy, asset memory, and two V1 hook/ad time phases.</span>
+          <span>The GPT planner creates strategy, asset memory, and a route-specific execution layer.</span>
         </div>
         <div class="step">
           <b>3. route selection</b>
-          <span><code>direct</code> skips key images. <code>keyframe</code> consumes start_key_image_path values.</span>
+          <span><code>direct</code> may create one direct start frame. <code>keyframe</code> consumes hook/ad start_key_image_path values.</span>
         </div>
         <div class="step">
           <b>4. video jobs</b>
@@ -457,6 +531,63 @@
           </div>
         </article>
 
+        <article class="result-item" data-result-item data-ad-type="full" data-product-category="electronics" hidden>
+          <div class="result-media-stack">
+            <figure>
+              <figcaption>Original direct render: critic failed text artifact</figcaption>
+              <video class="tall" controls src="media/electronics_text_artifact_retry_20260626/video/01_full.mp4"></video>
+            </figure>
+            <figure>
+              <figcaption>Retry render: GPT strengthened no-text prompt</figcaption>
+              <video class="tall" controls src="media/electronics_text_artifact_retry_20260626/video/retry_01/01_full.mp4"></video>
+            </figure>
+          </div>
+          <div class="result-copy">
+            <div class="result-title">
+              <h3>Portable LED Lamp critic retry</h3>
+              <span class="pill amber">critic retry</span>
+              <span class="pill green">electronics</span>
+            </div>
+            <p>
+              The direct route produced a plausible one-shot lamp demo: a hand placed the
+              lamp, pressed the top button, and warm light appeared. The critic failed the
+              original render because unrequested garbled text was visible. GPT rewrote the
+              prompt with stronger no-text constraints, but the retry still shows this as a
+              model-control risk rather than a fully solved planner issue.
+            </p>
+            <div class="prior-list">
+              <div>
+                <b>Critic result</b>
+                Failed for visible text overlays and garbled unrequested text.
+              </div>
+              <div>
+                <b>Retry result</b>
+                Same direct route, one GPT prompt rewrite, then regenerated full clip.
+              </div>
+            </div>
+            <details class="prompt-details">
+              <summary>Critic output and GPT rewrite summary</summary>
+              <pre>{
+  "critic_pass": false,
+  "critic_summary": "A hand places a cylindrical lamp on a wooden table and presses its top button, causing it to light up.",
+  "failure_reasons": [
+    "Text overlays are visible in the video, which are not allowed.",
+    "The text appears to be garbled and unrequested, violating the must-avoid list."
+  ],
+  "retry_summary": "Kept the same one-take bedside table demo and action while strengthening zero-text instructions and specifying unbranded, unmarked objects and surfaces."
+}</pre>
+            </details>
+            <div class="links">
+              <a href="data/electronics_text_artifact_retry_20260626/ad_blueprint.json">ad_blueprint.json</a>
+              <a href="data/electronics_text_artifact_retry_20260626/video_jobs.json">video_jobs.json</a>
+              <a href="data/electronics_text_artifact_retry_20260626/video_generation_results.json">results.json</a>
+              <a href="data/electronics_text_artifact_retry_20260626/critic_report.json">critic_report.json</a>
+              <a href="data/electronics_text_artifact_retry_20260626/video_jobs_retry_01.json">video_jobs_retry_01.json</a>
+              <a href="data/electronics_text_artifact_retry_20260626/video_retry_plan_01.json">video_retry_plan_01.json</a>
+            </div>
+          </div>
+        </article>
+
         <article class="result-item" data-result-item data-ad-type="full" data-product-category="food" hidden>
           <figure>
             <figcaption>Food / Direct / 2026-06-25</figcaption>
@@ -530,112 +661,12 @@
     </section>
 
     <section class="card">
-      <h2>Generation State Machine</h2>
-      <p>
-        The intended control flow is a state machine over artifacts. A successful critic result
-        ends the run. A failed critic result can create <code>video_jobs_retry_01.json</code>
-        at most once, using GPT to rewrite the failed request prompt.
-      </p>
-      <div class="state-diagram-wrap">
-        <svg class="state-diagram" viewBox="0 0 1000 430" role="img" aria-labelledby="state-title state-desc">
-          <title id="state-title">AdGen generation state machine</title>
-          <desc id="state-desc">
-            The main path moves from brief to planning, route choice, video jobs, generation,
-            critic, and done. The direct route skips key images. Failed critic results create
-            retry video jobs with a GPT-rewritten prompt.
-          </desc>
-          <defs>
-            <marker id="arrow-muted" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
-              <path d="M0,0 L8,3 L0,6 Z" fill="#a7adbb"></path>
-            </marker>
-            <marker id="arrow-green" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
-              <path d="M0,0 L8,3 L0,6 Z" fill="#34d399"></path>
-            </marker>
-            <marker id="arrow-amber" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
-              <path d="M0,0 L8,3 L0,6 Z" fill="#fbbf24"></path>
-            </marker>
-          </defs>
-
-          <g transform="translate(40 56)">
-            <rect class="state-box start" width="130" height="74" rx="8"></rect>
-            <text class="state-title" x="14" y="27">Brief</text>
-            <text class="state-subtitle" x="14" y="52">brief.json</text>
-          </g>
-          <g transform="translate(210 56)">
-            <rect class="state-box" width="150" height="74" rx="8"></rect>
-            <text class="state-title" x="14" y="27">Plan</text>
-            <text class="state-subtitle" x="14" y="52">ad_blueprint.json</text>
-          </g>
-          <g transform="translate(400 56)">
-            <rect class="state-box" width="170" height="74" rx="8"></rect>
-            <text class="state-title" x="14" y="27">Route</text>
-            <text class="state-subtitle" x="14" y="49">direct/keyframe</text>
-          </g>
-          <g transform="translate(610 56)">
-            <rect class="state-box" width="150" height="74" rx="8"></rect>
-            <text class="state-title" x="14" y="27">Video Jobs</text>
-            <text class="state-subtitle" x="14" y="52">video_jobs.json</text>
-          </g>
-          <g transform="translate(800 56)">
-            <rect class="state-box" width="150" height="74" rx="8"></rect>
-            <text class="state-title" x="14" y="27">Generate</text>
-            <text class="state-subtitle" x="14" y="49">mp4 outputs</text>
-          </g>
-          <g transform="translate(530 250)">
-            <rect class="state-box critic" width="170" height="86" rx="8"></rect>
-            <text class="state-title" x="14" y="29">Critic</text>
-            <text class="state-subtitle" x="14" y="54">critic_report.json</text>
-          </g>
-          <g transform="translate(800 256)">
-            <rect class="state-box end" width="150" height="74" rx="8"></rect>
-            <text class="state-title" x="14" y="27">Done</text>
-            <text class="state-subtitle" x="14" y="52">accepted video</text>
-          </g>
-
-          <path class="state-flow" marker-end="url(#arrow-muted)" d="M170 93 H210"></path>
-          <path class="state-flow" marker-end="url(#arrow-muted)" d="M360 93 H400"></path>
-          <path class="state-flow" marker-end="url(#arrow-muted)" d="M570 93 H610"></path>
-          <path class="state-flow" marker-end="url(#arrow-muted)" d="M760 93 H800"></path>
-          <path class="state-flow" marker-end="url(#arrow-muted)" d="M875 130 V184 H615 V250"></path>
-          <path class="state-pass" marker-end="url(#arrow-green)" d="M700 293 H800"></path>
-          <text class="state-edge-label pass" x="736" y="282">pass</text>
-
-          <path class="state-retry" marker-end="url(#arrow-amber)" d="M615 250 V184 H685 V130"></path>
-          <text class="state-edge-label retry" x="638" y="176">fail: GPT rewrite</text>
-
-          <text class="state-subtitle" x="40" y="386">V1 retry policy:</text>
-          <text class="state-subtitle" x="40" y="411">critic failure -> write video_jobs_retry_01.json with GPT-rewritten prompt -> regenerate failed role</text>
-        </svg>
-      </div>
-      <div class="transition-grid">
-        <div class="transition">
-          <b>Pass</b>
-          <span>Accept the generated clips and finish the run.</span>
-        </div>
-        <div class="transition">
-          <b>Fail</b>
-          <span>Write <code>video_jobs_retry_01.json</code> with a GPT-rewritten prompt for failed roles.</span>
-        </div>
-        <div class="transition">
-          <b>Retry</b>
-          <span>Regenerate the failed role; direct stays text-only, keyframe keeps the same start image.</span>
-        </div>
-      </div>
-      <p class="muted small">
-        Planner and key-image artifacts are not regenerated by video retry. The critic loop is
-        scoped to one GPT prompt rewrite and one video regeneration. Implemented entry point:
-        <code>scripts/retry_video_from_critic.py</code>.
-      </p>
-    </section>
-
-    <section class="card">
       <h2>Stage 1: brief.json -> ad_blueprint.json</h2>
       <p>
-        The planner stage converts a compact user brief into an executable ad structure.
-        It does not generate media. Its output is a structured blueprint containing the
-        creative strategy, reusable asset memory, and two V1 time phases. Even for a
-        one-shot direct video, the planner still returns hook/ad phases because the V1
-        schema is fixed.
+        The planner stage converts a compact user brief into <code>ad_blueprint.json</code>.
+        The output shape now follows <code>execution_route</code>. Direct route asks GPT
+        for one unified single-shot plan. Keyframe route asks GPT for hook/ad shots and
+        key-image prompts. This stage still does not generate media.
       </p>
       <div class="json-panel">
         <h3>Input: brief.json</h3>
@@ -643,13 +674,14 @@
   "product": {
     "name": "Portable LED Lamp",
     "category": "electronics",
+    "image_path": "input/product.png",
     "selling_points": [
       "A compact portable lamp for desk work, bedside use, and travel.",
       "Show a simple physical demo: place the lamp on a table, press one large button, and show warm light on the tabletop and wall."
     ]
   },
   "language": "en",
-  "execution_intent": "direct_full",
+  "execution_route": "direct",
   "duration_seconds": 11.0
 }</pre>
       </div>
@@ -660,10 +692,11 @@
   "brief": {
     "product": {
       "name": "Portable LED Lamp",
-      "category": "electronics"
+      "category": "electronics",
+      "image_path": "input/product.png"
     },
     "language": "en",
-    "execution_intent": "direct_full",
+    "execution_route": "direct",
     "duration_seconds": 11.0
   },
   "creative_strategy": {
@@ -679,49 +712,75 @@
     },
     "product": {
       "visual_identity": "small unbranded matte portable LED lamp",
-      "image_path": null
+      "image_path": "input/product.png"
     }
   },
   "executable_layer": {
+    "type": "direct_full",
     "duration_seconds": 11.0,
-    "shots": [
-      {
-        "role": "hook",
-        "start_seconds": 0,
-        "end_seconds": 3,
-        "visual_prompt": "fixed camera on a dim bedside table with the lamp unlit",
-        "start_key_image_prompt": "the compact lamp rests unlit beside a plain travel pouch"
-      },
-      {
-        "role": "ad",
-        "start_seconds": 3,
-        "end_seconds": 11,
-        "visual_prompt": "the hand places the lamp, presses the large top button, and the lamp casts warm light",
-        "start_key_image_prompt": "same table, lamp centered and ready to turn on"
-      }
-    ]
+    "single_shot": {
+      "opening_state": "fixed camera on a dim bedside table with the lamp unlit",
+      "continuous_action": "the hand places the lamp and presses the large top button",
+      "proof_moment": "the lamp casts warm light across the tabletop and wall",
+      "final_hold": "hold on the glowing lamp long enough to inspect the proof",
+      "visual_prompt": "one continuous fixed-camera demo: the hand places the compact lamp, presses the top button, and the lamp warms the tabletop and wall",
+      "start_key_image_prompt": "vertical 9:16 still frame: the real portable LED lamp from the product image sits unlit on the wooden bedside table, centered and ready for a hand to press the top button",
+      "start_key_image_path": null,
+      "negative_prompt": "no captions, UI, fake labels, random letters, jump cuts, or extra hands",
+      "text": "",
+      "audio": "soft click, gentle warm ambience, no voiceover"
+    }
   }
 }</pre>
       </div>
       <p class="muted small">
-        Category priors are advisory planner context only. Product reference images, when present,
-        are product identity references for optional key-image/ref2img stages; they are not sent to
-        LTX2.3 as a separate product-reference conditioning image.
+        Category priors are advisory planner context only. In direct route, hook/ad
+        key-image stages are skipped. Product reference images are not sent directly
+        to LTX2.3; when present, image-edit/ref2img renders a full-scene direct start
+        frame and writes <code>single_shot.start_key_image_path</code>.
       </p>
     </section>
 
     <section class="card">
-      <h2>Stage 2A: direct route -> video_jobs.json</h2>
+      <h2>Stage 2A: direct route -> direct start frame -> video_jobs.json</h2>
       <p>
-        The default one-shot path skips key-image generation. The job builder compiles the
-        two planner phases into one full-length text-to-video request with
-        <code>metadata.role = "full"</code>. In this route, <code>start_image_path</code>
-        is null and the video backend receives text only.
+        The one-shot path skips hook/ad key-image generation. When
+        <code>product.image_path</code> is present, AdGen first uses image-edit/ref2img
+        to place the real product into one full-scene start frame. The job builder then
+        reads the updated direct <code>single_shot</code> plan and emits one full-length
+        request with <code>metadata.role = "full"</code>.
       </p>
       <div class="json-panel">
         <h3>Command</h3>
-        <pre>python scripts/build_video_jobs.py \
+        <pre>python scripts/generate_direct_start_frame.py \
   "${RUN_DIR}/ad_blueprint.json" \
+  --model-id models/Qwen-Image-Edit-2511 \
+  --size "352*640"
+
+python scripts/build_video_jobs.py \
+  "${RUN_DIR}/ad_blueprint_with_direct_start_frame.json" \
+  "${RUN_DIR}" \
+  --size "704*1280" \
+  --fps 24 \
+  --execution-route direct</pre>
+      </div>
+      <div class="json-panel" style="margin-top:16px;">
+        <h3>Intermediate: ad_blueprint_with_direct_start_frame.json</h3>
+        <pre>{
+  "executable_layer": {
+    "type": "direct_full",
+    "single_shot": {
+      "visual_prompt": "one continuous fixed-camera demo: the hand places the compact lamp, presses the top button, and the lamp warms the tabletop and wall",
+      "start_key_image_prompt": "vertical 9:16 still frame: the real portable LED lamp from the product image sits unlit on the wooden bedside table, centered and ready for a hand to press the top button",
+      "start_key_image_path": "runs/electronics_.../key_images/direct/01_full_start.png"
+    }
+  }
+}</pre>
+      </div>
+      <div class="json-panel" style="margin-top:16px;">
+        <h3>Build-only command when the start frame already exists</h3>
+        <pre>python scripts/build_video_jobs.py \
+  "${RUN_DIR}/ad_blueprint_with_direct_start_frame.json" \
   "${RUN_DIR}" \
   --size "704*1280" \
   --fps 24 \
@@ -733,17 +792,19 @@
   "requests": [
     {
       "job_id": "portable_lamp_one_take_v1_full",
-      "prompt": "A simple product demo shows Portable LED Lamp. The scene shows a clean bedside table...",
+      "prompt": "Vertical 9:16 raw one-take product ad for Portable LED Lamp. Use the provided start frame as video conditioning; preserve the real product identity already visible in that frame...",
       "output_path": "runs/electronics_.../video/01_full.mp4",
       "duration_seconds": 11.0,
       "fps": 24,
       "size": "704*1280",
-      "start_image_path": null,
-      "product_reference_path": null,
+      "start_image_path": "runs/electronics_.../key_images/direct/01_full_start.png",
+      "product_reference_path": "input/product.png",
       "metadata": {
         "role": "full",
         "execution_route": "direct",
-        "planner_execution_intent": "direct_full",
+        "execution_layer_type": "direct_full",
+        "product_image_conditioning": false,
+        "direct_start_frame_conditioning": true,
         "critic_expectation": {
           "hard_requirements": [
             "single continuous raw video shot with no obvious cut, montage, split screen, or scene change",
@@ -762,9 +823,9 @@
 }</pre>
       </div>
       <p class="muted small">
-        Product reference images remain metadata for optional key-image/ref2img stages.
-        They are not sent to LTX2.3 as separate product-reference conditioning. Only
-        <code>start_image_path</code> is video image conditioning.
+        The raw product image remains identity metadata for image-edit/ref2img. It is
+        not sent to LTX2.3 as a separate product-reference conditioning image. Only the
+        generated <code>start_image_path</code> is video image conditioning.
       </p>
     </section>
 
@@ -998,7 +1059,7 @@ python scripts/generate_video.py "${RUN_DIR}/video_jobs.json" \
         <h3>Backend input shape</h3>
         <pre>{
   "text_condition": "compiled video prompt",
-  "image_condition": "null for direct, start_image_path for keyframe",
+  "image_condition": "generated direct start frame for direct, shot start_image_path for keyframe",
   "generation_controls": {
     "duration_seconds": 11,
     "fps": 24,
@@ -1023,20 +1084,6 @@ python scripts/generate_video.py "${RUN_DIR}/video_jobs.json" \
         appends an <code>ffmpeg-concat</code> result unless <code>--no-concat</code> or
         <code>--only-role</code> is used.
       </p>
-      <div class="grid" style="margin-top:14px;">
-        <figure>
-          <figcaption>Previous run: hook clip</figcaption>
-          <video class="tall" controls src="media/lipstick_e2e/video/01_hook.mp4"></video>
-        </figure>
-        <figure>
-          <figcaption>Previous run: ad clip</figcaption>
-          <video class="tall" controls src="media/lipstick_e2e/video/02_ad.mp4"></video>
-        </figure>
-      </div>
-      <figure style="margin-top:14px; max-width:420px;">
-        <figcaption>Previous run: combined video</figcaption>
-        <video class="tall" controls src="media/lipstick_e2e/video/combined.mp4"></video>
-      </figure>
     </section>
 
     <section class="card">
@@ -1163,68 +1210,8 @@ python scripts/retry_video_from_critic.py \
       </p>
     </section>
 
-    <section class="card">
-      <h2>Case Study</h2>
-      <p>
-        This electronics run is a useful limitation example. The first LTX2.3 direct render
-        mostly completed the intended lamp demo: a hand placed the lamp, pressed the top, and
-        the lamp lit up. The critic correctly failed it for one core artifact: unrequested,
-        garbled visible text. GPT then rewrote the prompt with much stronger no-text constraints,
-        but the retry still did not reliably remove that visual artifact. This is evidence that
-        the critic/retry loop can find a problem without guaranteeing that the same video model
-        can fix it.
-      </p>
-      <div class="grid" style="margin-top:14px;">
-        <figure>
-          <figcaption>Original direct render: action mostly works, text artifact appears</figcaption>
-          <video class="tall" controls src="media/electronics_text_artifact_retry_20260626/video/01_full.mp4"></video>
-        </figure>
-        <figure>
-          <figcaption>GPT retry render: stronger no-text prompt, artifact remains a model risk</figcaption>
-          <video class="tall" controls src="media/electronics_text_artifact_retry_20260626/video/retry_01/01_full.mp4"></video>
-        </figure>
-      </div>
-      <div class="transition-grid">
-        <div class="transition">
-          <b>What worked</b>
-          <span>The direct route produced a plausible one-shot product demo with the lamp action and warm-light proof visible.</span>
-        </div>
-        <div class="transition">
-          <b>What critic caught</b>
-          <span>The critic failed the clip because visible garbled text appeared, violating the raw-video no-text requirement.</span>
-        </div>
-        <div class="transition">
-          <b>What retry showed</b>
-          <span>GPT strengthened the prompt, but no-text control remained imperfect. This is a video model limitation, not just a planner issue.</span>
-        </div>
-      </div>
-      <div class="json-panel" style="margin-top:16px;">
-        <h3>Critic output</h3>
-        <pre>{
-  "pass": false,
-  "summary": "A hand places a cylindrical lamp on a wooden table and presses its top button, causing it to light up.",
-  "failure_reasons": [
-    "Text overlays are visible in the video, which are not allowed.",
-    "The text appears to be garbled and unrequested, violating the must-avoid list."
-  ]
-}</pre>
-      </div>
-      <div class="json-panel" style="margin-top:16px;">
-        <h3>GPT rewrite effect</h3>
-        <pre>{
-  "rewrite_summary": "Kept the same one-take bedside table demo and action while strengthening zero-text instructions and specifying unbranded, unmarked objects and surfaces to prevent unintended overlays or glyphs.",
-  "rewritten_prompt_excerpt": "Do not render any text or symbols of any kind: no captions, subtitles, UI, stickers, logos, labels, letters, numbers, icons, marks, signage, or watermarks anywhere in the frame or on any object. All surfaces are blank and unprinted."
-}</pre>
-      </div>
-      <p class="muted small">
-        Practical takeaway: visible text artifacts should be tracked as a model-capability risk.
-        Prompt rewrite is still useful for retries, but it should not be treated as a guaranteed
-        repair mechanism for artifacts the generator repeatedly produces.
-      </p>
-    </section>
-
-    <section class="card">
-      <h2>Related Files</h2>
+    <details class="card compact-details collapsible-card">
+      <summary>Related Files</summary>
       <div class="links">
         <a href="data/lipstick_direct_ref2img/brief.json">brief.json</a>
         <a href="data/lipstick_direct_ref2img/ad_blueprint.json">ad_blueprint.json</a>
@@ -1259,9 +1246,37 @@ python scripts/retry_video_from_critic.py \
         <a href="media/electronics_text_artifact_retry_20260626/video/01_full.mp4">text artifact original video</a>
         <a href="media/electronics_text_artifact_retry_20260626/video/retry_01/01_full.mp4">text artifact retry video</a>
       </div>
-    </section>
+    </details>
   </main>
   <script>
+    (() => {
+      document.querySelectorAll(".json-panel").forEach((panel) => {
+        if (panel.tagName.toLowerCase() === "details") {
+          return;
+        }
+        const heading = panel.firstElementChild;
+        if (!heading || heading.tagName.toLowerCase() !== "h3") {
+          return;
+        }
+
+        const details = document.createElement("details");
+        details.className = panel.className;
+        details.style.cssText = panel.style.cssText;
+
+        const summary = document.createElement("summary");
+        summary.textContent = heading.textContent;
+        details.append(summary);
+
+        Array.from(panel.childNodes).forEach((node) => {
+          if (node !== heading) {
+            details.append(node);
+          }
+        });
+
+        panel.replaceWith(details);
+      });
+    })();
+
     (() => {
       const browser = document.querySelector("[data-result-browser]");
       if (!browser) {
