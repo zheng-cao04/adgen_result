@@ -290,39 +290,40 @@
       <h2>Pipeline Overview</h2>
       <p>
         AdGen converts <code>brief.json</code> into executable video generation tasks.
-        The pipeline keeps structured JSON artifacts between planning, key-image generation,
-        video generation, and quality checks, so every stage can be inspected, replaced,
-        and rerun.
+        The current control plane has two video routes: <code>direct</code> builds one
+        full-length text-only video request, while <code>keyframe</code> uses optional
+        start images for hook/ad image-to-video jobs. JSON artifacts stay inspectable
+        between planning, job building, generation, critic, and retry.
       </p>
       <div class="pills">
         <span class="pill blue">brief -> blueprint</span>
-        <span class="pill green">key images -> video jobs</span>
-        <span class="pill amber">critic feedback loop</span>
+        <span class="pill green">direct or keyframe route</span>
+        <span class="pill amber">critic -> GPT retry</span>
       </div>
       <div class="steps">
         <div class="step">
           <b>1. brief.json</b>
-          <span>User input with product or subject details, selling points, and an optional product image.</span>
+          <span>User input with product details, optional category, selling points, image path, and execution intent.</span>
         </div>
         <div class="step">
           <b>2. ad_blueprint.json</b>
-          <span>The planner creates strategy, asset memory, and two executable hook/ad shots.</span>
+          <span>The GPT planner creates strategy, asset memory, and two V1 hook/ad time phases.</span>
         </div>
         <div class="step">
-          <b>3. key image stage</b>
-          <span>The pipeline prepares I2V start frames and writes each start_key_image_path back.</span>
+          <b>3. route selection</b>
+          <span><code>direct</code> skips key images. <code>keyframe</code> consumes start_key_image_path values.</span>
         </div>
         <div class="step">
           <b>4. video jobs</b>
-          <span>Each shot is compiled into a provider-neutral image-to-video request.</span>
+          <span>Build provider-neutral requests: one full job for direct, or hook/ad jobs for keyframe.</span>
         </div>
         <div class="step">
           <b>5. video generation</b>
-          <span>The video backend generates clips, then the pipeline concatenates the final video.</span>
+          <span>The HTTP backend prints /version, generates mp4 outputs, and concatenates hook/ad clips when present.</span>
         </div>
         <div class="step">
-          <b>6. critic</b>
-          <span>A local Qwen-VL critic evaluates the result and either accepts it or routes a retry.</span>
+          <b>6. critic + retry</b>
+          <span>Qwen-VL returns pass, summary, and failure_reasons. Failed clips can get a GPT-rewritten prompt.</span>
         </div>
       </div>
     </section>
@@ -330,7 +331,7 @@
     <section class="card" data-result-browser>
       <h2>Result Browser</h2>
       <p>
-        Current runs are grouped by ad type and product type. Category labels are experiment
+        Archived runs are grouped by ad type and product type. Category labels are experiment
         priors for the GPT planner; video backends still receive concrete shot prompts from
         <code>ad_blueprint.json</code>.
       </p>
@@ -384,17 +385,17 @@
 
         <article class="result-item" data-result-item data-ad-type="full" data-product-category="beauty" hidden>
           <figure>
-            <figcaption>Beauty / Direct-Full / 2026-06-25</figcaption>
+            <figcaption>Beauty / Direct / 2026-06-25</figcaption>
             <video class="tall" controls src="media/beauty_direct_full_20260625/video/01_full.mp4"></video>
           </figure>
           <div class="result-copy">
             <div class="result-title">
-              <h3>Lipstick direct-full ad</h3>
-              <span class="pill amber">direct-full-t2v</span>
+              <h3>Lipstick direct ad</h3>
+              <span class="pill amber">direct</span>
               <span class="pill green">beauty</span>
             </div>
             <p>
-              Latest beauty category full-video run. The one-take prompt asks LTX2.3 to move
+              Archived beauty category full-video run. The one-take prompt asked LTX2.3 to move
               from lipstick transfer on a white mug into a clean-rim proof shot.
             </p>
             <div class="prior-list">
@@ -404,11 +405,11 @@
               </div>
               <div>
                 <b>Output</b>
-                11s, 704x1280, text-only direct-full route.
+                11s, 704x1280, text-only direct route.
               </div>
             </div>
             <details class="prompt-details">
-              <summary>Actual video prompt</summary>
+              <summary>Archived prompt from this run</summary>
               <pre>Vertical 9:16 one-take ad for Lipstick: prove A transfer-resistant lipstick that stays put on lips and keeps white cups clean through everyday sips. Same character and setting: Adult woman, early 30s, medium skin tone, polished look, calm and relatable; Ivory blouse with clean neckline; Smooth low bun; Soft studio/vanity setup. Start pain: Vertical close-up at a softly lit vanity. The woman holds a plain white ceramic mug near her lips, noticing a small lipstick mark on the rim. She slowly tilts the mug to present. Shift to proof without cuts or scene changes: Same setting and framing in a clean close-up. Her lips are neatly finished with a rich red matte lipstick. She gently sips from a clean plain white ceramic mug, then lowers it and rotates the rim toward the lens until the rim fills most of the frame, holding it steady to show. Keep one scene, one main subject, controlled camera, natural motion, stable face/hands/product, and sharp proof detail. No subtitles, UI, watermarks, fake logos, random text, extra characters, montage, split screen, or shaky camera.</pre>
             </details>
             <div class="links">
@@ -421,17 +422,17 @@
 
         <article class="result-item" data-result-item data-ad-type="full" data-product-category="electronics" hidden>
           <figure>
-            <figcaption>Electronics / Direct-Full / 2026-06-25</figcaption>
+            <figcaption>Electronics / Direct / 2026-06-25</figcaption>
             <video class="tall" controls src="media/electronics_direct_full_20260625/video/01_full.mp4"></video>
           </figure>
           <div class="result-copy">
             <div class="result-title">
-              <h3>Apple iPhone direct-full ad</h3>
-              <span class="pill amber">direct-full-t2v</span>
+              <h3>Apple iPhone direct ad</h3>
+              <span class="pill amber">direct</span>
               <span class="pill green">electronics</span>
             </div>
             <p>
-              Latest electronics category full-video run. The prompt demonstrates a fast
+              Archived electronics category full-video run. The prompt demonstrates a fast
               camera-capture moment in a living-room dog action scene.
             </p>
             <div class="prior-list">
@@ -441,11 +442,11 @@
               </div>
               <div>
                 <b>Output</b>
-                11s, 704x1280, text-only direct-full route.
+                11s, 704x1280, text-only direct route.
               </div>
             </div>
             <details class="prompt-details">
-              <summary>Actual video prompt</summary>
+              <summary>Archived prompt from this run</summary>
               <pre>Vertical 9:16 one-take ad for Apple iPhone: prove A premium smartphone that opens fast and captures sharp everyday moments in one tap. Same character and setting: Young adult in late 20s with medium skin tone, short dark hair, natural look; White crew-neck tee with a light gray cardigan and dark. Start pain: Vertical, locked-off medium-wide shot in a bright, minimalist living room. The young adult raises a matte black smartphone with the screen dark as a small tan dog springs up to catch a red plush. Shift to proof without cuts or scene changes: Vertical, locked-off close medium shot centered on the smartphone held in both hands at chest height. The camera preview is already open, framing the same small tan dog with a red plush ball in the bright living room. As the dog leaps, the user calmly taps a large white circular shutter button. Keep one scene, one main subject, controlled camera, natural motion, stable face/hands/product, and sharp proof detail. No subtitles, UI, watermarks, fake logos, random text, extra characters, montage, split screen, or shaky camera.</pre>
             </details>
             <div class="links">
@@ -458,17 +459,17 @@
 
         <article class="result-item" data-result-item data-ad-type="full" data-product-category="food" hidden>
           <figure>
-            <figcaption>Food / Direct-Full / 2026-06-25</figcaption>
+            <figcaption>Food / Direct / 2026-06-25</figcaption>
             <video class="tall" controls src="media/food_direct_full_20260625/video/01_full.mp4"></video>
           </figure>
           <div class="result-copy">
             <div class="result-title">
-              <h3>Pan-Seared Steak direct-full ad</h3>
-              <span class="pill amber">direct-full-t2v</span>
+              <h3>Pan-Seared Steak direct ad</h3>
+              <span class="pill amber">direct</span>
               <span class="pill green">food</span>
             </div>
             <p>
-              Latest food category full-video run. The prompt contrasts a pale skillet steak
+              Archived food category full-video run. The prompt contrasts a pale skillet steak
               with a sliced, steamy, browned-crust proof moment.
             </p>
             <div class="prior-list">
@@ -478,11 +479,11 @@
               </div>
               <div>
                 <b>Output</b>
-                11s, 704x1280, text-only direct-full route.
+                11s, 704x1280, text-only direct route.
               </div>
             </div>
             <details class="prompt-details">
-              <summary>Actual video prompt</summary>
+              <summary>Archived prompt from this run</summary>
               <pre>Vertical 9:16 one-take ad for Pan-Seared Steak: prove A richly seared steak with a browned crust and juicy, rosy center—restaurant-quality presentation and steam. Same character and setting: Single adult home-cook hand model with clean hands and short nails; Charcoal gray apron over a light neutral long-sleeve shirt; Hair off-camera; Cozy home. Start pain: Vertical close-up of a matte black cast-iron skillet on a home kitchen stovetop. A pale, lightly browned steak sits in the center with almost no crust. A right hand with matte stainless tongs gently. Shift to proof without cuts or scene changes: Same kitchen and angle style, now on the wooden butcher-block. A pan-seared steak with a deep mahogany crust rests on the board, steam rising, backlit by warm side light. The hand uses a matte-finish chef’s knife to slice the steak into thick, even slices, revealing a rosy, juicy center. The hand gently. Keep one scene, one main subject, controlled camera, natural motion, stable face/hands/product, and sharp proof detail. No subtitles, UI, watermarks, fake logos, random text, extra characters, montage, split screen, or shaky camera.</pre>
             </details>
             <div class="links">
@@ -532,16 +533,16 @@
       <h2>Generation State Machine</h2>
       <p>
         The intended control flow is a state machine over artifacts. A successful critic result
-        ends the run. In V1, a failed critic result routes back to <code>video_jobs.json</code>
-        at most once, where the compiled video prompt is adjusted before the clip is regenerated.
+        ends the run. A failed critic result can create <code>video_jobs_retry_01.json</code>
+        at most once, using GPT to rewrite the failed request prompt.
       </p>
       <div class="state-diagram-wrap">
         <svg class="state-diagram" viewBox="0 0 1000 430" role="img" aria-labelledby="state-title state-desc">
           <title id="state-title">AdGen generation state machine</title>
           <desc id="state-desc">
-            The main path moves from brief to planning, key images, video jobs, generation,
-            critic, and done. Failed critic results loop back to video jobs so the compiled
-            video prompt can be adjusted and regenerated.
+            The main path moves from brief to planning, route choice, video jobs, generation,
+            critic, and done. The direct route skips key images. Failed critic results create
+            retry video jobs with a GPT-rewritten prompt.
           </desc>
           <defs>
             <marker id="arrow-muted" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
@@ -567,8 +568,8 @@
           </g>
           <g transform="translate(400 56)">
             <rect class="state-box" width="170" height="74" rx="8"></rect>
-            <text class="state-title" x="14" y="27">Key Images</text>
-            <text class="state-subtitle" x="14" y="49">FLUX + ref2img</text>
+            <text class="state-title" x="14" y="27">Route</text>
+            <text class="state-subtitle" x="14" y="49">direct/keyframe</text>
           </g>
           <g transform="translate(610 56)">
             <rect class="state-box" width="150" height="74" rx="8"></rect>
@@ -578,7 +579,7 @@
           <g transform="translate(800 56)">
             <rect class="state-box" width="150" height="74" rx="8"></rect>
             <text class="state-title" x="14" y="27">Generate</text>
-            <text class="state-subtitle" x="14" y="49">clips + concat</text>
+            <text class="state-subtitle" x="14" y="49">mp4 outputs</text>
           </g>
           <g transform="translate(530 250)">
             <rect class="state-box critic" width="170" height="86" rx="8"></rect>
@@ -600,10 +601,10 @@
           <text class="state-edge-label pass" x="736" y="282">pass</text>
 
           <path class="state-retry" marker-end="url(#arrow-amber)" d="M615 250 V184 H685 V130"></path>
-          <text class="state-edge-label retry" x="638" y="176">fail: adjust video prompt</text>
+          <text class="state-edge-label retry" x="638" y="176">fail: GPT rewrite</text>
 
           <text class="state-subtitle" x="40" y="386">V1 retry policy:</text>
-          <text class="state-subtitle" x="40" y="411">critic failure -> rebuild video_jobs.json once with an adjusted video prompt -> regenerate the failed clip</text>
+          <text class="state-subtitle" x="40" y="411">critic failure -> write video_jobs_retry_01.json with GPT-rewritten prompt -> regenerate failed role</text>
         </svg>
       </div>
       <div class="transition-grid">
@@ -613,16 +614,16 @@
         </div>
         <div class="transition">
           <b>Fail</b>
-          <span>Return to Stage 4 and adjust the compiled video prompt in <code>video_jobs.json</code>.</span>
+          <span>Write <code>video_jobs_retry_01.json</code> with a GPT-rewritten prompt for failed roles.</span>
         </div>
         <div class="transition">
           <b>Retry</b>
-          <span>Regenerate the failed clip from the same key image using the adjusted video job.</span>
+          <span>Regenerate the failed role; direct stays text-only, keyframe keeps the same start image.</span>
         </div>
       </div>
       <p class="muted small">
-        Plan and key-image risks are handled upstream in V1. The critic loop is intentionally
-        scoped to one video prompt adjustment and one video regeneration. Implemented entry point:
+        Planner and key-image artifacts are not regenerated by video retry. The critic loop is
+        scoped to one GPT prompt rewrite and one video regeneration. Implemented entry point:
         <code>scripts/retry_video_from_critic.py</code>.
       </p>
     </section>
@@ -632,43 +633,54 @@
       <p>
         The planner stage converts a compact user brief into an executable ad structure.
         It does not generate media. Its output is a structured blueprint containing the
-        creative strategy, reusable asset memory, and per-clip execution prompts.
+        creative strategy, reusable asset memory, and two V1 time phases. Even for a
+        one-shot direct video, the planner still returns hook/ad phases because the V1
+        schema is fixed.
       </p>
       <div class="json-panel">
         <h3>Input: brief.json</h3>
         <pre>{
   "product": {
-    "name": "Lipstick",
-    "image_path": "examples/lipstick/lipstick.png",
+    "name": "Portable LED Lamp",
+    "category": "electronics",
     "selling_points": [
-      "Unlike ordinary lipsticks that leave marks on cups, this lipstick stays put, keeps cups clean, and resists smudging during daily wear."
+      "A compact portable lamp for desk work, bedside use, and travel.",
+      "Show a simple physical demo: place the lamp on a table, press one large button, and show warm light on the tabletop and wall."
     ]
-  }
+  },
+  "language": "en",
+  "execution_intent": "direct_full",
+  "duration_seconds": 11.0
 }</pre>
       </div>
       <div class="json-panel" style="margin-top:16px;">
         <h3>Output: ad_blueprint.json</h3>
         <pre>{
-  "ad_id": "lipstick_nocmarks_v1",
+  "ad_id": "portable_lamp_one_take_v1",
   "brief": {
     "product": {
-      "name": "Lipstick",
-      "image_path": "examples/lipstick/lipstick.png",
-      "selling_points": [
-        "Unlike ordinary lipsticks that leave marks on cups, this lipstick stays put, keeps cups clean, and resists smudging during daily wear."
-      ]
+      "name": "Portable LED Lamp",
+      "category": "electronics"
     },
     "language": "en",
+    "execution_intent": "direct_full",
     "duration_seconds": 11.0
   },
   "creative_strategy": {
-    "core_pain": "Wearing lipstick leaves embarrassing lip marks on cups...",
-    "promise": "A transfer-resistant lipstick that stays put on lips..."
+    "core_pain": "A dark desk or bedside corner needs a small light...",
+    "promise": "A compact lamp gives warm light exactly where it is needed."
   },
   "asset_memory": {
-    "character": "woman, beige top, consistent hair/makeup",
-    "scene": "bright home kitchen breakfast nook",
-    "product": "matte black lipstick case, red shade"
+    "character": {
+      "appearance": "one adult right hand, clean nails"
+    },
+    "scene": {
+      "location": "clean wooden bedside table against a plain wall"
+    },
+    "product": {
+      "visual_identity": "small unbranded matte portable LED lamp",
+      "image_path": null
+    }
   },
   "executable_layer": {
     "duration_seconds": 11.0,
@@ -677,33 +689,107 @@
         "role": "hook",
         "start_seconds": 0,
         "end_seconds": 3,
-        "visual_prompt": "show the pain: lipstick mark on a white mug",
-        "start_key_image_prompt": "woman holds a mug with one red lipstick mark"
+        "visual_prompt": "fixed camera on a dim bedside table with the lamp unlit",
+        "start_key_image_prompt": "the compact lamp rests unlit beside a plain travel pouch"
       },
       {
         "role": "ad",
         "start_seconds": 3,
         "end_seconds": 11,
-        "visual_prompt": "show the proof: sip, then clean mug rim",
-        "start_key_image_prompt": "same woman, clean mug, lipstick product visible"
+        "visual_prompt": "the hand places the lamp, presses the large top button, and the lamp casts warm light",
+        "start_key_image_prompt": "same table, lamp centered and ready to turn on"
       }
     ]
   }
 }</pre>
       </div>
       <p class="muted small">
-        Downstream key-image and video stages consume this structured blueprint instead of
-        reading the raw brief directly.
+        Category priors are advisory planner context only. Product reference images, when present,
+        are product identity references for optional key-image/ref2img stages; they are not sent to
+        LTX2.3 as a separate product-reference conditioning image.
       </p>
     </section>
 
     <section class="card">
-      <h2>Stage 2: ad_blueprint.json -> hook key image</h2>
+      <h2>Stage 2A: direct route -> video_jobs.json</h2>
       <p>
-        The first key-image pass creates the identity reference frame. In the current V1 path,
-        FLUX only renders the hook start frame; later shot key images are handled by ref2img.
+        The default one-shot path skips key-image generation. The job builder compiles the
+        two planner phases into one full-length text-to-video request with
+        <code>metadata.role = "full"</code>. In this route, <code>start_image_path</code>
+        is null and the video backend receives text only.
       </p>
       <div class="json-panel">
+        <h3>Command</h3>
+        <pre>python scripts/build_video_jobs.py \
+  "${RUN_DIR}/ad_blueprint.json" \
+  "${RUN_DIR}" \
+  --size "704*1280" \
+  --fps 24 \
+  --execution-route direct</pre>
+      </div>
+      <div class="json-panel" style="margin-top:16px;">
+        <h3>Output: video_jobs.json</h3>
+        <pre>{
+  "requests": [
+    {
+      "job_id": "portable_lamp_one_take_v1_full",
+      "prompt": "A simple product demo shows Portable LED Lamp. The scene shows a clean bedside table...",
+      "output_path": "runs/electronics_.../video/01_full.mp4",
+      "duration_seconds": 11.0,
+      "fps": 24,
+      "size": "704*1280",
+      "start_image_path": null,
+      "product_reference_path": null,
+      "metadata": {
+        "role": "full",
+        "execution_route": "direct",
+        "planner_execution_intent": "direct_full",
+        "critic_expectation": {
+          "hard_requirements": [
+            "single continuous raw video shot with no obvious cut, montage, split screen, or scene change",
+            "main product demo action: the hand places the lamp and turns it on"
+          ],
+          "soft_context": [
+            "Do not fail only because the pain point, emotional transition, or every optional prop is incomplete."
+          ],
+          "must_avoid": [
+            "unrequested subtitles, captions, lower-third text, UI, watermarks, fake logos, background text, or random letters"
+          ]
+        }
+      }
+    }
+  ]
+}</pre>
+      </div>
+      <p class="muted small">
+        Product reference images remain metadata for optional key-image/ref2img stages.
+        They are not sent to LTX2.3 as separate product-reference conditioning. Only
+        <code>start_image_path</code> is video image conditioning.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Stage 2B optional: keyframe route -> hook key image</h2>
+      <p>
+        Use this route when product or character consistency matters more than direct
+        text-only simplicity. The first key-image pass creates a hook start frame.
+        Later shot key images can be produced by ref2img from that hook frame.
+      </p>
+      <div class="json-panel">
+        <h3>Command</h3>
+        <pre>python scripts/generate_key_images.py "${RUN_DIR}/ad_blueprint.json" \
+  --model-path models/FLUX.1-dev \
+  --size 352*640 \
+  --dtype bfloat16 \
+  --steps 28 \
+  --guidance-scale 3.5 \
+  --low-memory-flux \
+  --max-sequence-length 256 \
+  --only-role hook \
+  --candidate-count 3 \
+  --critic-model-path models/Qwen3-VL-8B-Instruct</pre>
+      </div>
+      <div class="json-panel" style="margin-top:16px;">
         <h3>Input: ad_blueprint.json</h3>
         <pre>{
   "executable_layer": {
@@ -758,12 +844,26 @@
     </section>
 
     <section class="card">
-      <h2>Stage 3: hook key image -> consistent ad key image</h2>
+      <h2>Stage 2C optional: hook key image -> ad key image</h2>
       <p>
-        The ref2img stage uses the hook key image as the identity reference and generates the
-        ad start frame directly from the ad prompt. The ad draft image is not generated by default.
+        In the keyframe route, ref2img uses the hook key image as the continuity reference
+        and generates the ad start frame from the ad prompt. This stage is skipped by
+        the direct route.
       </p>
       <div class="json-panel">
+        <h3>Command</h3>
+        <pre>python scripts/ref2img_key_images.py "${RUN_DIR}/ad_blueprint_with_key_images.json" \
+  --model-id models/Qwen-Image-Edit-2511 \
+  --size 352*640 \
+  --dtype bfloat16 \
+  --steps 12 \
+  --true-cfg-scale 4.0 \
+  --guidance-scale 1.0 \
+  --cpu-offload \
+  --candidate-count 3 \
+  --critic-model-path models/Qwen3-VL-8B-Instruct</pre>
+      </div>
+      <div class="json-panel" style="margin-top:16px;">
         <h3>Input: ad_blueprint_with_key_images.json + hook key image</h3>
         <pre>{
   "reference_image_paths": [
@@ -817,13 +917,22 @@
     </section>
 
     <section class="card">
-      <h2>Stage 4: ref2img blueprint -> video_jobs.json</h2>
+      <h2>Stage 3 optional: keyframe blueprint -> video_jobs.json</h2>
       <p>
-        The video job builder consumes the updated blueprint and compiles each shot into an
-        image-to-video request. At this point the video backend does not need to know whether a
-        start image came from FLUX or ref2img.
+        For <code>--execution-route keyframe</code>, the video job builder consumes a
+        blueprint whose shots have <code>start_key_image_path</code> values. Each request
+        becomes an image-to-video job with <code>start_image_path</code> sent to the backend.
       </p>
       <div class="json-panel">
+        <h3>Command</h3>
+        <pre>python scripts/build_video_jobs.py \
+  "${RUN_DIR}/ad_blueprint_with_ref2img_key_images.json" \
+  "${RUN_DIR}" \
+  --size "704*1280" \
+  --fps 24 \
+  --execution-route keyframe</pre>
+      </div>
+      <div class="json-panel" style="margin-top:16px;">
         <h3>Input: ad_blueprint_with_ref2img_key_images.json</h3>
         <pre>{
   "shots": [
@@ -843,14 +952,24 @@
         <pre>{
   "requests": [
     {
-      "role": "hook",
+      "job_id": "lipstick_nocmarks_v1_hook",
+      "prompt": "Vertical 9:16 raw product ad. Goal: Open the ad for Lipstick...",
       "start_image_path": "runs/lipstick_direct_ref2img/key_images/01_hook_start.png",
-      "duration_seconds": 3
+      "duration_seconds": 3.0,
+      "metadata": {
+        "role": "hook",
+        "execution_route": "keyframe"
+      }
     },
     {
-      "role": "ad",
+      "job_id": "lipstick_nocmarks_v1_ad",
+      "prompt": "Vertical 9:16 raw product ad. Goal: Demo Lipstick...",
       "start_image_path": "runs/lipstick_direct_ref2img/key_images/ref2img/02_ad_start_ref2img.png",
-      "duration_seconds": 8
+      "duration_seconds": 8.0,
+      "metadata": {
+        "role": "ad",
+        "execution_route": "keyframe"
+      }
     }
   ]
 }</pre>
@@ -858,45 +977,30 @@
     </section>
 
     <section class="card">
-      <h2>Stage 5: video_jobs.json -> clips + combined video</h2>
+      <h2>Stage 4: video_jobs.json -> generated mp4</h2>
       <p>
-        The generation stage executes each request in <code>video_jobs.json</code>. Each clip is
-        conditioned on its start key image and driven by the compiled video prompt. After hook and
-        ad clips are generated, the local pipeline concatenates them into a single video manifest
-        entry.
+        The generation stage executes each request in <code>video_jobs.json</code> through
+        the HTTP video backend. The client prints the server <code>/version</code> response
+        before generation so a stale remote server is visible immediately. Direct jobs produce
+        one <code>01_full.mp4</code>; keyframe hook/ad jobs can be concatenated into
+        <code>combined.mp4</code>.
       </p>
       <div class="json-panel">
-        <h3>Input: video_jobs.json</h3>
-        <pre>{
-  "requests": [
-    {
-      "role": "hook",
-      "prompt": "Task: Show the customer pain for Lipstick: Wearing lipstick leaves embarrassing lip marks on cups...",
-      "start_image_path": "runs/lipstick_direct_ref2img/key_images/01_hook_start.png",
-      "duration_seconds": 3,
-      "fps": 24,
-      "size": "704*1280",
-      "output_path": "runs/lipstick_direct_ref2img/video/01_hook.mp4"
-    },
-    {
-      "role": "ad",
-      "prompt": "Task: Show the product proof for Lipstick: A transfer-resistant lipstick that stays put on lips...",
-      "start_image_path": "runs/lipstick_direct_ref2img/key_images/ref2img/02_ad_start_ref2img.png",
-      "duration_seconds": 8,
-      "fps": 24,
-      "size": "704*1280",
-      "output_path": "runs/lipstick_direct_ref2img/video/02_ad.mp4"
-    }
-  ]
-}</pre>
+        <h3>Command</h3>
+        <pre>export VIDEO_API_BASE="${VIDEO_API_BASE:-http://127.0.0.1:58083}"
+
+python scripts/generate_video.py "${RUN_DIR}/video_jobs.json" \
+  --backend http \
+  --api-base "${VIDEO_API_BASE}" \
+  --timeout-seconds 7200</pre>
       </div>
       <div class="json-panel" style="margin-top:16px;">
         <h3>Backend input shape</h3>
         <pre>{
   "text_condition": "compiled video prompt",
-  "image_condition": "start key image / first-frame conditioning image",
+  "image_condition": "null for direct, start_image_path for keyframe",
   "generation_controls": {
-    "duration_seconds": 8,
+    "duration_seconds": 11,
     "fps": 24,
     "size": "704*1280"
   }
@@ -906,27 +1010,18 @@
         <h3>Output: video_generation_results.json</h3>
         <pre>[
   {
-    "provider": "http:&lt;video-backend&gt;",
-    "output_path": "runs/lipstick_direct_ref2img/video/01_hook.mp4"
-  },
-  {
-    "provider": "http:&lt;video-backend&gt;",
-    "output_path": "runs/lipstick_direct_ref2img/video/02_ad.mp4"
-  },
-  {
-    "provider": "ffmpeg-concat",
-    "output_path": "runs/lipstick_direct_ref2img/video/combined.mp4",
-    "input_paths": [
-      "runs/lipstick_direct_ref2img/video/01_hook.mp4",
-      "runs/lipstick_direct_ref2img/video/02_ad.mp4"
-    ]
+    "provider": "http://127.0.0.1:58083",
+    "output_path": "runs/electronics_.../video/01_full.mp4",
+    "raw_response": {
+      "server_output_path": "/tmp/adgen-ltx2-video-server/portable_lamp_one_take_v1_full.mp4"
+    }
   }
 ]</pre>
       </div>
       <p class="muted small">
-        The latest ref2img run has been compiled to <code>video_jobs.json</code>; video clips have
-        not been re-rendered for that run yet. The media below shows the same final artifact shape
-        from the earlier <code>lipstick_e2e</code> run.
+        When the job file contains both hook and ad roles, <code>generate_video.py</code>
+        appends an <code>ffmpeg-concat</code> result unless <code>--no-concat</code> or
+        <code>--only-role</code> is used.
       </p>
       <div class="grid" style="margin-top:14px;">
         <figure>
@@ -945,27 +1040,41 @@
     </section>
 
     <section class="card">
-      <h2>Stage 6: generated clips -> critic_report.json</h2>
+      <h2>Stage 5: generated mp4 -> critic_report.json</h2>
       <p>
         The critic stage evaluates generated clips against the compact checklist stored in
         <code>video_jobs.json</code>. It uses a local Qwen-VL video critic to produce a structured
-        pass/fail report, observed issues, evidence, and retry suggestions.
+        pass/fail report. The current schema intentionally removes numeric scores and long
+        evidence fields; it keeps only <code>pass</code>, <code>summary</code>, and
+        <code>failure_reasons</code> per clip.
       </p>
       <div class="json-panel">
-        <h3>Input: video_jobs.json + generated mp4 files</h3>
+        <h3>Command</h3>
+        <pre>python scripts/critic_video.py "${RUN_DIR}/video_jobs.json" \
+  --model-path models/Qwen3-VL-8B-Instruct \
+  --only-role full \
+  --fps 1 \
+  --max-pixels 230400 \
+  --output "${RUN_DIR}/critic_report.json"</pre>
+      </div>
+      <div class="json-panel" style="margin-top:16px;">
+        <h3>Input expectation shape</h3>
         <pre>{
-  "clip": "runs/lipstick_direct_ref2img/video/02_ad.mp4",
-  "critic_expectation": {
-    "purpose": "Show the product proof for Lipstick...",
-    "must_show": [
-      "the woman takes a natural sip",
-      "the clean white mug rim is visible and easy to inspect",
-      "same recurring character, wardrobe, and kitchen scene"
-    ],
-    "must_avoid": [
-      "unrequested subtitles, UI, fake logos, random text",
-      "warped hands, blurred proof detail, unstable camera"
-    ]
+  "metadata": {
+    "role": "full",
+    "critic_expectation": {
+      "purpose": "Judge whether the raw video is a plausible product demo for Portable LED Lamp.",
+      "hard_requirements": [
+        "single continuous raw video shot with no obvious cut, montage, split screen, or scene change",
+        "main product demo action: the lamp is placed, turned on, and the warm light is visible"
+      ],
+      "soft_context": [
+        "Do not fail only because the pain point, emotional transition, or every optional prop is incomplete."
+      ],
+      "must_avoid": [
+        "unrequested subtitles, captions, UI, watermarks, fake logos, background text, or random letters"
+      ]
+    }
   }
 }</pre>
       </div>
@@ -975,21 +1084,13 @@
   "pass": false,
   "clips": [
     {
-      "role": "ad",
+      "job_id": "portable_lamp_one_take_v1_full",
+      "role": "full",
+      "clip_path": "runs/electronics_.../video/01_full.mp4",
       "pass": false,
-      "scores": {
-        "no_visible_text": 1.0,
-        "physical_plausibility": 1.0,
-        "prompt_alignment": 0.0,
-        "visual_quality": 1.0,
-        "intent_clarity": 0.0,
-        "safety_comfort": 1.0
-      },
-      "issues": [
-        "The proof action is missing or unclear."
-      ],
-      "retry_suggestions": [
-        "Regenerate the ad clip with a clearer sip-and-clean-rim action."
+      "summary": "A hand places a small lamp on a table, but the lamp does not visibly light the wall.",
+      "failure_reasons": [
+        "The main product proof is missing: the warm light is not visible on the tabletop or wall."
       ]
     }
   ]
@@ -1002,19 +1103,123 @@
         </div>
         <div class="transition">
           <b>Fail</b>
-          <span>Use the critic issues and retry suggestions to adjust the video prompt in <code>video_jobs.json</code>.</span>
+          <span>Use <code>failure_reasons</code> with the original prompt as input to GPT prompt rewriting.</span>
         </div>
         <div class="transition">
           <b>Retry</b>
-          <span>Regenerate the failed clip from the same start key image, then run the critic again.</span>
+          <span>Regenerate the failed role from <code>video_jobs_retry_01.json</code>, then run the critic again.</span>
         </div>
       </div>
       <p class="muted small">
-        A separate key-image critic also exists for multi-candidate key-image selection. In the
-        current simplified ref2img path, it is not part of the default main run. Video critic
-        failures are handled by <code>scripts/retry_video_from_critic.py</code>, which writes
-        <code>video_jobs_retry_01.json</code> with adjusted video prompts for failed clips and
-        rejects further retries by default.
+        A separate key-image critic still exists for multi-candidate key-image selection, but
+        it is not part of the direct route. Video critic failures are handled by
+        <code>scripts/retry_video_from_critic.py</code>.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Stage 6: critic fail -> GPT prompt retry</h2>
+      <p>
+        Retry no longer has a rule-based prompt patcher. A failed clip is retried only by
+        calling GPT with the original video prompt and the critic summary/failure reasons.
+        The planner output and any start images stay fixed.
+      </p>
+      <div class="json-panel">
+        <h3>Command</h3>
+        <pre>export AZURE_OPENAI_PROMPT_REWRITE_MAX_COMPLETION_TOKENS=8000
+export PROMPT_REWRITE_MAX_WORDS=160
+
+python scripts/retry_video_from_critic.py \
+  "${RUN_DIR}/video_jobs.json" \
+  "${RUN_DIR}/critic_report.json" \
+  --only-role full</pre>
+      </div>
+      <div class="json-panel" style="margin-top:16px;">
+        <h3>Output artifacts</h3>
+        <pre>{
+  "video_jobs_retry_01.json": "same request shape, failed prompt replaced by GPT rewrite",
+  "video_retry_plan_01.json": {
+    "retry_index": 1,
+    "adjusted_requests": [
+      {
+        "role": "full",
+        "job_id": "portable_lamp_one_take_v1_full",
+        "retry_output_path": "runs/electronics_.../video/retry_01/01_full.mp4"
+      }
+    ]
+  }
+}</pre>
+      </div>
+      <div class="json-panel" style="margin-top:16px;">
+        <h3>Regenerate retry job</h3>
+        <pre>python scripts/generate_video.py "${RUN_DIR}/video_jobs_retry_01.json" \
+  --backend http \
+  --api-base "${VIDEO_API_BASE}" \
+  --timeout-seconds 7200</pre>
+      </div>
+      <p class="muted small">
+        The retry script also supports <code>--run-generate</code> and <code>--run-critic</code>,
+        but the explicit two-step form keeps the generated retry job easy to inspect first.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Case Study</h2>
+      <p>
+        This electronics run is a useful limitation example. The first LTX2.3 direct render
+        mostly completed the intended lamp demo: a hand placed the lamp, pressed the top, and
+        the lamp lit up. The critic correctly failed it for one core artifact: unrequested,
+        garbled visible text. GPT then rewrote the prompt with much stronger no-text constraints,
+        but the retry still did not reliably remove that visual artifact. This is evidence that
+        the critic/retry loop can find a problem without guaranteeing that the same video model
+        can fix it.
+      </p>
+      <div class="grid" style="margin-top:14px;">
+        <figure>
+          <figcaption>Original direct render: action mostly works, text artifact appears</figcaption>
+          <video class="tall" controls src="media/electronics_text_artifact_retry_20260626/video/01_full.mp4"></video>
+        </figure>
+        <figure>
+          <figcaption>GPT retry render: stronger no-text prompt, artifact remains a model risk</figcaption>
+          <video class="tall" controls src="media/electronics_text_artifact_retry_20260626/video/retry_01/01_full.mp4"></video>
+        </figure>
+      </div>
+      <div class="transition-grid">
+        <div class="transition">
+          <b>What worked</b>
+          <span>The direct route produced a plausible one-shot product demo with the lamp action and warm-light proof visible.</span>
+        </div>
+        <div class="transition">
+          <b>What critic caught</b>
+          <span>The critic failed the clip because visible garbled text appeared, violating the raw-video no-text requirement.</span>
+        </div>
+        <div class="transition">
+          <b>What retry showed</b>
+          <span>GPT strengthened the prompt, but no-text control remained imperfect. This is a video model limitation, not just a planner issue.</span>
+        </div>
+      </div>
+      <div class="json-panel" style="margin-top:16px;">
+        <h3>Critic output</h3>
+        <pre>{
+  "pass": false,
+  "summary": "A hand places a cylindrical lamp on a wooden table and presses its top button, causing it to light up.",
+  "failure_reasons": [
+    "Text overlays are visible in the video, which are not allowed.",
+    "The text appears to be garbled and unrequested, violating the must-avoid list."
+  ]
+}</pre>
+      </div>
+      <div class="json-panel" style="margin-top:16px;">
+        <h3>GPT rewrite effect</h3>
+        <pre>{
+  "rewrite_summary": "Kept the same one-take bedside table demo and action while strengthening zero-text instructions and specifying unbranded, unmarked objects and surfaces to prevent unintended overlays or glyphs.",
+  "rewritten_prompt_excerpt": "Do not render any text or symbols of any kind: no captions, subtitles, UI, stickers, logos, labels, letters, numbers, icons, marks, signage, or watermarks anywhere in the frame or on any object. All surfaces are blank and unprinted."
+}</pre>
+      </div>
+      <p class="muted small">
+        Practical takeaway: visible text artifacts should be tracked as a model-capability risk.
+        Prompt rewrite is still useful for retries, but it should not be treated as a guaranteed
+        repair mechanism for artifacts the generator repeatedly produces.
       </p>
     </section>
 
@@ -1038,15 +1243,21 @@
         <a href="media/lipstick_e2e/video/01_hook.mp4">01_hook.mp4</a>
         <a href="media/lipstick_e2e/video/02_ad.mp4">02_ad.mp4</a>
         <a href="media/lipstick_e2e/video/combined.mp4">combined.mp4</a>
-        <a href="data/beauty_direct_full_20260625/ad_blueprint.json">beauty direct-full blueprint</a>
-        <a href="data/beauty_direct_full_20260625/video_jobs.json">beauty direct-full jobs</a>
-        <a href="media/beauty_direct_full_20260625/video/01_full.mp4">beauty direct-full video</a>
-        <a href="data/electronics_direct_full_20260625/ad_blueprint.json">electronics direct-full blueprint</a>
-        <a href="data/electronics_direct_full_20260625/video_jobs.json">electronics direct-full jobs</a>
-        <a href="media/electronics_direct_full_20260625/video/01_full.mp4">electronics direct-full video</a>
-        <a href="data/food_direct_full_20260625/ad_blueprint.json">food direct-full blueprint</a>
-        <a href="data/food_direct_full_20260625/video_jobs.json">food direct-full jobs</a>
-        <a href="media/food_direct_full_20260625/video/01_full.mp4">food direct-full video</a>
+        <a href="data/beauty_direct_full_20260625/ad_blueprint.json">beauty direct blueprint</a>
+        <a href="data/beauty_direct_full_20260625/video_jobs.json">beauty direct jobs</a>
+        <a href="media/beauty_direct_full_20260625/video/01_full.mp4">beauty direct video</a>
+        <a href="data/electronics_direct_full_20260625/ad_blueprint.json">electronics direct blueprint</a>
+        <a href="data/electronics_direct_full_20260625/video_jobs.json">electronics direct jobs</a>
+        <a href="media/electronics_direct_full_20260625/video/01_full.mp4">electronics direct video</a>
+        <a href="data/food_direct_full_20260625/ad_blueprint.json">food direct blueprint</a>
+        <a href="data/food_direct_full_20260625/video_jobs.json">food direct jobs</a>
+        <a href="media/food_direct_full_20260625/video/01_full.mp4">food direct video</a>
+        <a href="data/electronics_text_artifact_retry_20260626/video_jobs.json">text artifact source jobs</a>
+        <a href="data/electronics_text_artifact_retry_20260626/critic_report.json">text artifact critic report</a>
+        <a href="data/electronics_text_artifact_retry_20260626/video_jobs_retry_01.json">text artifact retry jobs</a>
+        <a href="data/electronics_text_artifact_retry_20260626/video_retry_plan_01.json">text artifact retry plan</a>
+        <a href="media/electronics_text_artifact_retry_20260626/video/01_full.mp4">text artifact original video</a>
+        <a href="media/electronics_text_artifact_retry_20260626/video/retry_01/01_full.mp4">text artifact retry video</a>
       </div>
     </section>
   </main>

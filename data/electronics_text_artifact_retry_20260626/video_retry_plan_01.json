@@ -1,0 +1,17 @@
+{
+  "source_jobs": "/home/linabear/projects/adgen_workspace/adgen/runs/electronics_20260626_125517/video_jobs.json",
+  "source_critic_report": "/home/linabear/projects/adgen_workspace/adgen/runs/electronics_20260626_125517/critic_report.json",
+  "retry_jobs": "/home/linabear/projects/adgen_workspace/adgen/runs/electronics_20260626_125517/video_jobs_retry_01.json",
+  "created_at": "2026-06-26T17:49:27.260791+00:00",
+  "retry_index": 1,
+  "adjusted_requests": [
+    {
+      "role": "full",
+      "job_id": "portable_led_lamp_df_v1_full",
+      "source_output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/electronics_20260626_125517/video/01_full.mp4",
+      "retry_output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/electronics_20260626_125517/video/retry_01/01_full.mp4",
+      "issue_count": 2,
+      "retry_suggestion_count": 0
+    }
+  ]
+}

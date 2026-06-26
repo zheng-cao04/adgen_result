@@ -1,0 +1,100 @@
+{
+  "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/electronics_20260626_125517/ad_blueprint.json",
+  "requests": [
+    {
+      "job_id": "portable_led_lamp_df_v1_full",
+      "prompt": "A simple one-shot product demo of a Portable LED Lamp. Vertical video, locked-off camera at a slight high angle. Dim, cozy lighting. Show a clean wooden bedside table and the lower portion of a neutral off-white wall. A small gray matte fabric travel pouch sits nearby; it is plain and unbranded. One adult right hand enters frame, places the compact lamp centered on the table, then presses its large circular top button once. The button is plain and unmarked. The lamp turns on with a warm, soft glow that clearly brightens a patch of the tabletop and softly lights the off-white wall behind it. Hold for a moment on the glowing lamp as the hand rests beside it or gently withdraws. Keep the same room and fixed camera for the whole shot, with one main subject, natural steady motion, and stable hands and product shape. Do not render any text or symbols of any kind: no captions, subtitles, UI, stickers, logos, labels, letters, numbers, icons, marks, signage, or watermarks anywhere in the frame or on any object. All surfaces are blank and unprinted.",
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/electronics_20260626_125517/video/retry_01/01_full.mp4",
+      "duration_seconds": 11.0,
+      "fps": 24,
+      "size": "704*1280",
+      "negative_prompt": "cuts, jump cuts, montage, split screen, scene change, multiple locations, extra characters, subtitles, UI, watermarks, fake logos, random text, shaky camera, flicker, warped hands, distorted face, warped product, blurred proof detail",
+      "start_image_path": null,
+      "product_reference_path": null,
+      "image_inputs": [],
+      "image_path": null,
+      "image_base64": null,
+      "image_mime_type": null,
+      "metadata": {
+        "role": "full",
+        "ad_type": "full",
+        "shot_ids": [
+          "shot_01_hook",
+          "shot_02_ad"
+        ],
+        "shot_roles": [
+          "hook",
+          "ad"
+        ],
+        "overlay_texts": [
+          "Too dim?",
+          "Tap once. Warm glow."
+        ],
+        "audio_directions": [
+          "Soft ambient music bed; faint room tone. No voiceover. Subtle cloth rustle as the hand moves.",
+          "Continue soft ambient music. One clear soft click on press, then a gentle whoosh as the light comes on. No voiceover."
+        ],
+        "start_image_path": null,
+        "product_reference_path": null,
+        "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/electronics_20260626_125517/ad_blueprint.json",
+        "execution_route": "direct",
+        "planner_execution_intent": "direct_full",
+        "critic_expectation": {
+          "purpose": "Judge whether the raw video is a plausible product demo for Portable LED Lamp.",
+          "hard_requirements": [
+            "single continuous raw video shot with no obvious cut, montage, split screen, or scene change",
+            "opening setup may include: Vertical video, locked-off camera at a slight high angle showing a clean wooden bedside table and the lower portion of a neutral off-white wall. Lighting is dim and cozy.",
+            "main product demo action: Continuation in the same scene, angle, and lighting. The adult right hand places the compact lamp centered on the wooden table, then presses the large circular top button once.",
+            "physically plausible handling of the product by one main subject"
+          ],
+          "soft_context": [
+            "The opening may hint at this customer context: Working or relaxing in a dim spot without convenient light.",
+            "Do not fail only because the pain point, emotional transition, or every optional prop is incomplete.",
+            "Expected subject and scene style from asset memory: One adult user; only the right hand and forearm are visible to keep focus on the product.; Neutral long-sleeve knit sweater."
+          ],
+          "must_avoid": [
+            "cuts, jump cuts, montage, split screen, scene change, multiple locations, extra characters, subtitles, UI, watermarks, fake logos, random text, shaky camera, flicker, warped hands, distorted face, warped product, blurred proof detail",
+            "unrequested subtitles, captions, lower-third text, UI, watermarks, fake logos, background text, or random letters"
+          ],
+          "quality_checks": [
+            "stable face, hands, objects, and camera motion",
+            "main product action is visible and easy to understand",
+            "visible product appearance stays consistent with the product reference image"
+          ],
+          "retry_feedback": {
+            "previous_summary": "A hand places a cylindrical lamp on a wooden table and presses its top button, causing it to light up. The scene is dimly lit with a neutral wall and a bag in the background.",
+            "failure_reasons": [
+              "Text overlays are visible in the video, which are not allowed.",
+              "The text appears to be garbled and unrequested, violating the must-avoid list."
+            ],
+            "retry_suggestions": []
+          }
+        },
+        "retry_index": 1,
+        "retry_history": [
+          {
+            "retry_index": 1,
+            "source_jobs": "/home/linabear/projects/adgen_workspace/adgen/runs/electronics_20260626_125517/video_jobs.json",
+            "source_critic_report": "/home/linabear/projects/adgen_workspace/adgen/runs/electronics_20260626_125517/critic_report.json",
+            "source_output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/electronics_20260626_125517/video/01_full.mp4",
+            "critic_summary": "A hand places a cylindrical lamp on a wooden table and presses its top button, causing it to light up. The scene is dimly lit with a neutral wall and a bag in the background.",
+            "critic_failure_reasons": [
+              "Text overlays are visible in the video, which are not allowed.",
+              "The text appears to be garbled and unrequested, violating the must-avoid list."
+            ],
+            "critic_retry_suggestions": [],
+            "prompt_rewrite": {
+              "rewritten_prompt": "A simple one-shot product demo of a Portable LED Lamp. Vertical video, locked-off camera at a slight high angle. Dim, cozy lighting. Show a clean wooden bedside table and the lower portion of a neutral off-white wall. A small gray matte fabric travel pouch sits nearby; it is plain and unbranded. One adult right hand enters frame, places the compact lamp centered on the table, then presses its large circular top button once. The button is plain and unmarked. The lamp turns on with a warm, soft glow that clearly brightens a patch of the tabletop and softly lights the off-white wall behind it. Hold for a moment on the glowing lamp as the hand rests beside it or gently withdraws. Keep the same room and fixed camera for the whole shot, with one main subject, natural steady motion, and stable hands and product shape. Do not render any text or symbols of any kind: no captions, subtitles, UI, stickers, logos, labels, letters, numbers, icons, marks, signage, or watermarks anywhere in the frame or on any object. All surfaces are blank and unprinted.",
+              "rewrite_summary": "Kept the same one-take bedside table demo and action while strengthening zero-text instructions and specifying unbranded, unmarked objects and surfaces to prevent unintended overlays or glyphs.",
+              "addressed_failure_reasons": [
+                "Text overlays are visible in the video, which are not allowed.",
+                "The text appears to be garbled and unrequested, violating the must-avoid list."
+              ]
+            }
+          }
+        ],
+        "retry_source_output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/electronics_20260626_125517/video/01_full.mp4"
+      }
+    }
+  ]
+}

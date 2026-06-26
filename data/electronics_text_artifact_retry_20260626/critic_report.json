@@ -1,0 +1,19 @@
+{
+  "source_jobs": "/home/linabear/projects/adgen_workspace/adgen/runs/electronics_20260626_125517/video_jobs.json",
+  "model_path": "/home/linabear/projects/adgen_workspace/adgen/models/Qwen3-VL-8B-Instruct",
+  "created_at": "2026-06-26T17:36:32.621624+00:00",
+  "pass": false,
+  "clips": [
+    {
+      "job_id": "portable_led_lamp_df_v1_full",
+      "role": "full",
+      "clip_path": "/home/linabear/projects/adgen_workspace/adgen/runs/electronics_20260626_125517/video/01_full.mp4",
+      "pass": false,
+      "summary": "A hand places a cylindrical lamp on a wooden table and presses its top button, causing it to light up. The scene is dimly lit with a neutral wall and a bag in the background.",
+      "failure_reasons": [
+        "Text overlays are visible in the video, which are not allowed.",
+        "The text appears to be garbled and unrequested, violating the must-avoid list."
+      ]
+    }
+  ]
+}
