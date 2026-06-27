@@ -362,7 +362,7 @@
           <dt>duration_seconds</dt>
           <dd>Target total video length for the generated ad.</dd>
           <dt>execution_route</dt>
-          <dd><code>direct</code> asks the planner for one single-shot full-video plan; <code>keyframe</code> asks for hook/ad shots with key-image prompts.</dd>
+        <dd><code>direct</code> asks the planner for one full-video prompt; <code>keyframe</code> asks for hook/ad shots with key-image prompts.</dd>
         </dl>
       </details>
       <h3 class="section-subhead">High-level flow</h3>
@@ -665,7 +665,7 @@
       <p>
         The planner stage converts a compact user brief into <code>ad_blueprint.json</code>.
         The output shape now follows <code>execution_route</code>. Direct route asks GPT
-        for one unified single-shot plan. Keyframe route asks GPT for hook/ad shots and
+        for one unified full-video prompt. Keyframe route asks GPT for hook/ad shots and
         key-image prompts. This stage still does not generate media.
       </p>
       <div class="json-panel">
@@ -719,10 +719,6 @@
     "type": "direct_full",
     "duration_seconds": 11.0,
     "single_shot": {
-      "opening_state": "fixed camera on a dim bedside table with the lamp unlit",
-      "continuous_action": "the hand places the lamp and presses the large top button",
-      "proof_moment": "the lamp casts warm light across the tabletop and wall",
-      "final_hold": "hold on the glowing lamp long enough to inspect the proof",
       "visual_prompt": "one continuous fixed-camera demo: the hand places the compact lamp, presses the top button, and the lamp warms the tabletop and wall",
       "start_key_image_prompt": "vertical 9:16 still frame: the real portable LED lamp from the product image sits unlit on the wooden bedside table, centered and ready for a hand to press the top button",
       "start_key_image_path": null,
@@ -792,7 +788,7 @@ python scripts/build_video_jobs.py \
   "requests": [
     {
       "job_id": "portable_lamp_one_take_v1_full",
-      "prompt": "Vertical 9:16 raw one-take product ad for Portable LED Lamp. Use the provided start frame as video conditioning; preserve the real product identity already visible in that frame...",
+      "prompt": "Raw one-take product ad for Portable LED Lamp. Use the provided start frame as video conditioning; preserve the real product identity already visible in that frame...",
       "output_path": "runs/electronics_.../video/01_full.mp4",
       "duration_seconds": 11.0,
       "fps": 24,
@@ -1014,7 +1010,7 @@ python scripts/build_video_jobs.py \
   "requests": [
     {
       "job_id": "lipstick_nocmarks_v1_hook",
-      "prompt": "Vertical 9:16 raw product ad. Goal: Open the ad for Lipstick...",
+      "prompt": "Raw product ad. Goal: Open the ad for Lipstick...",
       "start_image_path": "runs/lipstick_direct_ref2img/key_images/01_hook_start.png",
       "duration_seconds": 3.0,
       "metadata": {
@@ -1024,7 +1020,7 @@ python scripts/build_video_jobs.py \
     },
     {
       "job_id": "lipstick_nocmarks_v1_ad",
-      "prompt": "Vertical 9:16 raw product ad. Goal: Demo Lipstick...",
+      "prompt": "Raw product ad. Goal: Demo Lipstick...",
       "start_image_path": "runs/lipstick_direct_ref2img/key_images/ref2img/02_ad_start_ref2img.png",
       "duration_seconds": 8.0,
       "metadata": {
