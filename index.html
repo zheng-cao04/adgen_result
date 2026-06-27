@@ -772,7 +772,7 @@
         </div>
         <div class="step">
           <b>2. ad_blueprint.json</b>
-          <span>The GPT planner creates strategy, asset memory, and a route-specific execution layer.</span>
+          <span>The GPT planner creates strategy, asset memory, and a route-specific execution layer, without model negative prompts.</span>
         </div>
         <div class="step">
           <b>3. route selection</b>
@@ -795,7 +795,9 @@
         The planner stage converts a compact user brief into <code>ad_blueprint.json</code>.
         The output shape now follows <code>execution_route</code>. Direct route asks GPT
         for one unified full-video prompt. Keyframe route asks GPT for hook/ad shots and
-        key-image prompts. This stage still does not generate media.
+        key-image prompts. This stage no longer stores <code>negative_prompt</code>; model-level
+        avoid lists are owned by later image/video job builders. This stage still does not
+        generate media.
       </p>
       <div class="json-panel">
         <h3>Input: brief.json</h3>
@@ -851,7 +853,6 @@
       "visual_prompt": "one continuous fixed-camera demo: the hand places the compact lamp, presses the top button, and the lamp warms the tabletop and wall",
       "start_key_image_prompt": "vertical 9:16 still frame: the real portable LED lamp from the product image sits unlit on the wooden bedside table, centered and ready for a hand to press the top button",
       "start_key_image_path": null,
-      "negative_prompt": "no captions, UI, fake labels, random letters, jump cuts, or extra hands",
       "text": "",
       "audio": "soft click, gentle warm ambience, no voiceover"
     }
@@ -862,7 +863,9 @@
         Category priors are advisory planner context only. In direct route, hook/ad
         key-image stages are skipped. Product reference images are not sent directly
         to LTX2.3; when present, image-edit/ref2img renders a full-scene direct start
-        frame and writes <code>single_shot.start_key_image_path</code>.
+        frame and writes <code>single_shot.start_key_image_path</code>. The archived
+        blueprint records in this result set have been normalized to the current schema:
+        no shot or <code>single_shot</code> object includes <code>negative_prompt</code>.
       </p>
     </section>
 
