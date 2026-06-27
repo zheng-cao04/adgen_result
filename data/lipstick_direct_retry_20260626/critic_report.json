@@ -1,0 +1,20 @@
+{
+  "source_jobs": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_20260626_211736/video_jobs.json",
+  "model_path": "/home/linabear/projects/adgen_workspace/adgen/models/Qwen3-VL-8B-Instruct",
+  "created_at": "2026-06-27T01:49:27.039371+00:00",
+  "pass": false,
+  "clips": [
+    {
+      "job_id": "lip-no-mark-direct-001_full",
+      "role": "full",
+      "clip_path": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_20260626_211736/video/01_full.mp4",
+      "pass": false,
+      "summary": "A woman holds a white mug and turns it to show the inside, with a lipstick and its case on the table nearby.",
+      "failure_reasons": [
+        "Visible text overlay 'XNOCB' appears in the frame, which is unrequested.",
+        "The woman is not shown wearing lipstick matching the product reference.",
+        "The main product action (lipstick application or transfer) is not visible."
+      ]
+    }
+  ]
+}

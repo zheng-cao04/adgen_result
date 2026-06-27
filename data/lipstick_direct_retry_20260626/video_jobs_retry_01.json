@@ -1,0 +1,117 @@
+{
+  "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_20260626_211736/ad_blueprint_with_direct_start_frame.json",
+  "requests": [
+    {
+      "job_id": "lip-no-mark-direct-001_full",
+      "prompt": "Continue seamlessly from this start frame in a single, locked-off shot. She brings the white ceramic mug to her lips and takes a small, natural sip (slight tilt), then sets the mug back on the table near the lipstick tube. With a calm, deliberate motion, she rotates the mug so the rim faces the camera—show the rim edge clearly rather than the interior—and lifts it closer until the rim occupies more of the frame. The rim remains clean and white with no visible lipstick mark. Hold steady for a clear inspection beat as she gives a subtle, confident smile behind it in soft focus. Keep the lipstick tube visible on the table throughout. Maintain consistent rosy lip color matching the product reference. Lighting stays soft and diffused; motion smooth and minimal. No captions, UI, watermarks, random letters, or invented logos; keep all surfaces blank. Avoid warping, duplicated fingers, heavy motion blur, or shaky camera; preserve natural hands and product shape.",
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_20260626_211736/video/retry_01/01_full.mp4",
+      "duration_seconds": 11.0,
+      "fps": 24,
+      "size": "704*1280",
+      "negative_prompt": "visible lipstick mark on mug rim; smudged or messy lipstick; lipstick on teeth; distorted or uncanny lips; warped or duplicated fingers; extra hands; deformed or transparent mug; glass cup; chipped mug; harsh glare or overexposure; shaky handheld camera; abrupt cuts or montage; split screens; unreadable tiny logos or invented brands; mismatched lip color vs product; extreme close-up warping; heavy motion blur; noisy or cluttered background; mirror reflections; wet, drippy gloss; cracked or overly dry lips., cuts, jump cuts, montage, split screen, scene change, multiple locations, extra characters, subtitles, UI, watermarks, fake logos, random text, shaky camera, flicker, warped hands, distorted face, warped product, blurred proof detail",
+      "start_image_path": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_20260626_211736/key_images/retry_01/01_full_start.png",
+      "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/lipstick/lipstick.png",
+      "image_inputs": [
+        {
+          "role": "start_frame",
+          "path": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_20260626_211736/key_images/retry_01/01_full_start.png",
+          "consumed_by": "video_backend",
+          "video_conditioning": true,
+          "description": "Shot start/key image used as the first-frame I2V conditioning image by the video backend."
+        },
+        {
+          "role": "product_reference",
+          "path": "/home/linabear/projects/adgen_workspace/adgen/examples/lipstick/lipstick.png",
+          "consumed_by": "optional_key_image_stage",
+          "video_conditioning": false,
+          "description": "Product identity reference for optional key-image/ref2img generation. It is not sent to the video backend as a separate product-reference conditioning image."
+        }
+      ],
+      "image_path": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_20260626_211736/key_images/retry_01/01_full_start.png",
+      "image_base64": null,
+      "image_mime_type": null,
+      "metadata": {
+        "role": "full",
+        "ad_type": "full",
+        "overlay_text": "No cup marks • Color stays put",
+        "audio_direction": "Soft, polished upbeat track; subtle sip SFX on the drink; optional gentle VO: “No cup marks. Color stays.” Keep audio clean and minimal.",
+        "visual_prompt": "Locked-off camera medium close-up of an adult woman seated at a minimal light-wood table by a softly lit window. She wears a neutral cream top and a smooth, even application of a rosy lipstick that matches the provided product reference. On the table in front of her: a plain white ceramic mug and the real lipstick tube from the reference with its cap off, bullet exposed, logo facing camera if present. Soft diffused daylight illuminates her face and the tabletop, with a clean, uncluttered beige background. She naturally lifts the white mug with one hand, takes a small comfortable sip, then sets the mug down. With a calm, deliberate motion, she rotates the mug so the rim faces the camera and brings the rim closer until it fills more of the frame; the rim appears clean with no visible lipstick mark. She holds the mug steady for a clear inspection beat while giving a subtle, confident smile. The lipstick tube remains visible on the table near the mug throughout. Final hold keeps the clean white rim large in frame, her lips in soft focus behind it, and the product tube clearly present. Camera stays steady, gentle soft lighting, natural skin texture, smooth minimal movement.",
+        "start_image_path": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_20260626_211736/key_images/retry_01/01_full_start.png",
+        "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/lipstick/lipstick.png",
+        "product_image_conditioning": false,
+        "direct_start_frame_conditioning": true,
+        "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_20260626_211736/ad_blueprint_with_direct_start_frame.json",
+        "execution_route": "direct",
+        "execution_layer_type": "direct_full",
+        "critic_expectation": {
+          "purpose": "Judge whether the raw video is a plausible product demo for Lipstick.",
+          "hard_requirements": [
+            "single continuous raw video shot with no obvious cut, montage, split screen, or scene change",
+            "complete direct prompt: Locked-off camera medium close-up of an adult woman seated at a minimal light-wood table by a softly lit window. She wears a neutral cream top and a smooth, even application of a rosy lipstick that matches the provided product reference. On the table in front.",
+            "physically plausible handling of the product by one main subject"
+          ],
+          "soft_context": [
+            "The shot may hint at this customer context: Lipstick transferring onto cups, leaving embarrassing rim marks and forcing touch-ups.",
+            "Do not fail only because the pain point, emotional transition, or every optional prop is incomplete.",
+            "Expected subject and scene style from asset memory: Adult woman with healthy natural skin and polished makeup focused on smooth, even lips wearing the same shade as the product reference.."
+          ],
+          "must_avoid": [
+            "visible lipstick mark on mug rim; smudged or messy lipstick; lipstick on teeth; distorted or uncanny lips; warped or duplicated fingers; extra hands; deformed or transparent mug; glass cup; chipped mug; harsh glare or overexposure; shaky handheld camera.",
+            "unrequested subtitles, captions, lower-third text, UI, watermarks, fake logos, background text, or random letters"
+          ],
+          "quality_checks": [
+            "stable face, hands, objects, and camera motion",
+            "main product action is visible and easy to understand",
+            "visible product appearance stays consistent with the product reference image"
+          ],
+          "retry_feedback": {
+            "previous_summary": "A woman holds a white mug and turns it to show the inside, with a lipstick and its case on the table nearby.",
+            "failure_reasons": [
+              "Visible text overlay 'XNOCB' appears in the frame, which is unrequested.",
+              "The woman is not shown wearing lipstick matching the product reference.",
+              "The main product action (lipstick application or transfer) is not visible."
+            ],
+            "retry_suggestions": []
+          }
+        },
+        "retry_index": 1,
+        "retry_history": [
+          {
+            "retry_index": 1,
+            "source_jobs": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_20260626_211736/video_jobs.json",
+            "source_critic_report": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_20260626_211736/critic_report.json",
+            "source_output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_20260626_211736/video/01_full.mp4",
+            "critic_summary": "A woman holds a white mug and turns it to show the inside, with a lipstick and its case on the table nearby.",
+            "critic_failure_reasons": [
+              "Visible text overlay 'XNOCB' appears in the frame, which is unrequested.",
+              "The woman is not shown wearing lipstick matching the product reference.",
+              "The main product action (lipstick application or transfer) is not visible."
+            ],
+            "critic_retry_suggestions": [],
+            "prompt_rewrite": {
+              "start_image_prompt": "Locked-off chest-up still of an adult woman seated at a minimal light-wood table by a softly lit window. She wears a neutral cream top and a smooth, even rosy lipstick that matches the provided product reference (satin-matte, not glossy). She lightly holds a plain white ceramic mug just below her lips, about to sip; the rim is clean, plain, and blank with no text or markings. On the table near the mug sits the same lipstick tube from the reference, cap off, bullet exposed, any real brand mark from the reference facing camera; no extra cases or duplicate products. Soft diffused daylight, uncluttered beige background. Stable composition; natural skin texture; no on-screen text, watermarks, or letters anywhere.",
+              "video_prompt": "Continue seamlessly from this start frame in a single, locked-off shot. She brings the white ceramic mug to her lips and takes a small, natural sip (slight tilt), then sets the mug back on the table near the lipstick tube. With a calm, deliberate motion, she rotates the mug so the rim faces the camera—show the rim edge clearly rather than the interior—and lifts it closer until the rim occupies more of the frame. The rim remains clean and white with no visible lipstick mark. Hold steady for a clear inspection beat as she gives a subtle, confident smile behind it in soft focus. Keep the lipstick tube visible on the table throughout. Maintain consistent rosy lip color matching the product reference. Lighting stays soft and diffused; motion smooth and minimal. No captions, UI, watermarks, random letters, or invented logos; keep all surfaces blank. Avoid warping, duplicated fingers, heavy motion blur, or shaky camera; preserve natural hands and product shape.",
+              "rewrite_summary": "Eliminated any chance of text artifacts, ensured the model visibly wears the correct rosy lipstick shade, and clarified the action to show a clear sip followed by a rim-to-camera reveal (not the interior), with the product tube visible and a steady locked-off camera.",
+              "addressed_failure_reasons": [
+                "Removed unrequested text overlay by specifying no text/letters anywhere and blank surfaces.",
+                "Specified the subject wears a rosy lipstick matching the provided product reference.",
+                "Clarified the main product action: visible sip and rim-to-camera inspection showing a clean rim."
+              ]
+            }
+          }
+        ],
+        "retry_source_output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_20260626_211736/video/01_full.mp4",
+        "retry_start_frame": {
+          "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_20260626_211736/key_images/retry_01/01_full_start.png",
+          "job_id": "lip-no-mark-direct-001_full_retry_01_start_frame",
+          "prompt": "Create one realistic vertical 9:16 start frame for the retry video. Use the reference image only for product identity. Locked-off chest-up still of an adult woman seated at a minimal light-wood table by a softly lit window. She wears a neutral cream top and a smooth, even rosy lipstick that matches the provided product reference (satin-matte, not glossy). She lightly holds a plain white ceramic mug just below her lips, about to sip; the rim is clean, plain, and blank with no text or markings. On the table near the mug sits the same lipstick tube from the reference, cap off, bullet exposed, any real brand mark from the reference facing camera; no extra cases or duplicate products. Soft diffused daylight, uncluttered beige background. Stable composition; natural skin texture; no on-screen text, watermarks, or letters anywhere. No captions, UI, overlays, random letters, readable text, or fake logos.",
+          "negative_prompt": "visible lipstick mark on mug rim; smudged or messy lipstick; lipstick on teeth; distorted or uncanny lips; warped or duplicated fingers; extra hands; deformed or transparent mug; glass cup; chipped mug; harsh glare or overexposure; shaky handheld camera; abrupt cuts or montage; split screens; unreadable tiny logos or invented brands; mismatched lip color vs product; extreme close-up warping; heavy motion blur; noisy or cluttered background; mirror reflections; wet, drippy gloss; cracked or overly dry lips., cuts, jump cuts, montage, split screen, scene change, multiple locations, extra characters, subtitles, UI, watermarks, fake logos, random text, shaky camera, flicker, warped hands, distorted face, warped product, blurred proof detail, captions, subtitles, watermark, UI, random letters, readable words, fake logos, extra fingers, warped hands, distorted face, wrong product, blurry product, product-only packshot, empty scene",
+          "reference_image_paths": [
+            "/home/linabear/projects/adgen_workspace/adgen/examples/lipstick/lipstick.png"
+          ],
+          "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/lipstick/lipstick.png"
+        }
+      }
+    }
+  ]
+}

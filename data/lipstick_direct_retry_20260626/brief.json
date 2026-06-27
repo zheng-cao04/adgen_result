@@ -1,6 +1,7 @@
 {
   "product": {
     "name": "Lipstick",
+    "category": "beauty",
     "image_path": "examples/lipstick/lipstick.png",
     "selling_points": [
       "Unlike ordinary lipsticks that leave marks on cups, this lipstick stays put, keeps cups clean, and resists smudging during daily wear."

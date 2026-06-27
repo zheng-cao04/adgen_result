@@ -1,0 +1,23 @@
+[
+  {
+    "job_id": "lip-no-mark-direct-001_direct_start_frame",
+    "prompt": "Create one realistic vertical 9:16 commercial start frame for a one-take product ad. Use reference image 1 as the real product identity lock: preserve the product shape, colors, material, packaging, labels, and visible marks. Place that real product into the requested scene; do not create a product-only packshot. Product: Lipstick. Scene: Minimal light-wood tabletop by a softly lit window in a neutral room. Soft diffused daylight look with gentle fill; no harsh shadows or glare. Neutral beige or soft gray wall, uncluttered background.. Subject: Adult woman with healthy natural skin and polished makeup focused on smooth, even lips wearing the same shade as the product reference. Simple cream or off-white top to keep focus on the lips and product.. Start frame: A single still frame showing the adult woman at a light-wood table by a softly lit window, framed chest-up..",
+    "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_20260626_211736/key_images/direct/01_full_start.png",
+    "size": "352*640",
+    "negative_prompt": "visible lipstick mark on mug rim; smudged or messy lipstick; lipstick on teeth; distorted or uncanny lips; warped or duplicated fingers; extra hands; deformed or transparent mug; glass cup; chipped mug; harsh glare or overexposure; shaky handheld camera; abrupt cuts or montage; split screens; unreadable tiny logos or invented brands; mismatched lip color vs product; extreme close-up warping; heavy motion blur; noisy or cluttered background; mirror reflections; wet, drippy gloss; cracked or overly dry lips., No captions, subtitles, watermark, UI, fake logo, random letters, extra fingers, warped hands, blurry product, wrong product, product-only packshot, empty background.",
+    "reference_image_paths": [
+      "/home/linabear/projects/adgen_workspace/adgen/examples/lipstick/lipstick.png"
+    ],
+    "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/lipstick/lipstick.png",
+    "product_reference_base64": null,
+    "product_reference_mime_type": null,
+    "metadata": {
+      "role": "direct_full",
+      "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/lipstick_20260626_211736/ad_blueprint.json",
+      "candidate_id": "direct_full_c01",
+      "candidate_index": 0,
+      "candidate_count": 1,
+      "seed": 1000
+    }
+  }
+]

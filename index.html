@@ -264,6 +264,78 @@
       font-size: 13px;
     }
     .transition b { display: block; margin-bottom: 4px; color: var(--amber); }
+    .trace-flow {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .trace-step {
+      min-height: 106px;
+      padding: 11px;
+      background: #11141a;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-size: 13px;
+    }
+    .trace-step b {
+      display: block;
+      margin-bottom: 4px;
+      color: #fff;
+    }
+    .trace-step span { color: var(--muted); }
+    .media-compare {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .trace-note {
+      margin-top: 12px;
+      padding: 12px;
+      color: var(--muted);
+      background: #11141a;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-size: 13px;
+    }
+    .finding-list {
+      display: grid;
+      gap: 18px;
+      margin-top: 14px;
+    }
+    .finding {
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+    .finding:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+    .finding-title {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: #fff;
+      font-weight: 700;
+    }
+    .finding-index {
+      flex: 0 0 auto;
+      width: 24px;
+      height: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #061018;
+      background: var(--blue);
+      border-radius: 999px;
+      font-size: 13px;
+      line-height: 1;
+    }
+    .finding-body {
+      margin: 8px 0 0 34px;
+      color: var(--muted);
+    }
     .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
     .grid > * { min-width: 0; }
     .json-panel {
@@ -328,8 +400,9 @@
     }
     @media (max-width: 850px) {
       main { padding: 16px; }
-      .steps, .grid, .links, .transition-grid, .result-item, .prior-list { grid-template-columns: 1fr; }
+      .steps, .grid, .links, .transition-grid, .trace-flow, .media-compare, .result-item, .prior-list { grid-template-columns: 1fr; }
       .field-list { grid-template-columns: 1fr; gap: 4px; }
+      .finding-body { margin-left: 0; }
       .field-list dd { margin-bottom: 6px; }
       .tab-button { flex: 1 1 140px; }
     }
@@ -341,63 +414,49 @@
     <div class="sub">Development snapshot</div>
 
     <section class="card">
-      <h2>What brief.json is</h2>
-      <p>
-        <code>brief.json</code> is the pipeline input contract: a compact product and
-        ad request supplied by the user.
-      </p>
-      <details class="compact-details">
-        <summary>brief.json fields</summary>
-        <dl class="field-list">
-          <dt>product.name</dt>
-          <dd>The product or service being advertised.</dd>
-          <dt>product.category</dt>
-          <dd>Optional planner hint such as beauty, food, electronics, software tool, fashion, or furniture.</dd>
-          <dt>product.selling_points</dt>
-          <dd>Benefits, constraints, proof points, or required demo actions the ad should preserve.</dd>
-          <dt>product.image_path</dt>
-          <dd>Optional product reference image for identity. Direct route sends it to image-edit/ref2img to create a full-scene start frame; keyframe route uses it for key-image stages.</dd>
-          <dt>language</dt>
-          <dd>Output language for planner text and generated ad prompts.</dd>
-          <dt>duration_seconds</dt>
-          <dd>Target total video length for the generated ad.</dd>
-          <dt>execution_route</dt>
-        <dd><code>direct</code> asks the planner for one full-video prompt; <code>keyframe</code> asks for hook/ad shots with key-image prompts.</dd>
-        </dl>
-      </details>
-      <h3 class="section-subhead">High-level flow</h3>
-      <p>
-        From that brief, AdGen builds inspectable JSON artifacts at each step. The current
-        control plane has two video routes: <code>direct</code> builds one full-length
-        request and, when a product image is present, first turns that image into a
-        generated start frame; <code>keyframe</code> uses start images for hook/ad
-        image-to-video jobs.
-        After generation, the critic can accept the clip or trigger one GPT prompt rewrite for a retry.
-      </p>
-      <div class="steps">
-        <div class="step">
-          <b>1. brief.json</b>
-          <span>The user-facing input contract: product details, constraints, references, and duration.</span>
+      <h2>Key Findings</h2>
+      <div class="finding-list">
+        <div class="finding">
+          <div class="finding-title">
+            <span class="finding-index">1</span>
+            <span>Qwen3-VL-8B-Instruct critic catches basic failures, but its wording can be imprecise.</span>
+          </div>
+          <p class="finding-body">
+            In the lipstick run, the critic correctly flagged random text, weak lipstick
+            visibility, and unclear product action. But it described the missing action as
+            "lipstick application or transfer"; that wording was ambiguous for this product,
+            because the actual promise is no transfer to the cup, not visible lipstick transfer.
+          </p>
+          <div class="grid" style="margin-top:14px;">
+            <figure>
+              <figcaption>Example video: lipstick first render before retry</figcaption>
+              <video class="tall" controls src="media/lipstick_direct_retry_20260626/video/01_full.mp4"></video>
+            </figure>
+            <div class="json-panel">
+              <h3>Qwen3-VL critic output for this video</h3>
+              <pre>{
+  "pass": false,
+  "summary": "A woman holds a white mug and turns it to show the inside, with a lipstick and its case on the table nearby.",
+  "failure_reasons": [
+    "Visible text overlay 'XNOCB' appears in the frame, which is unrequested.",
+    "The woman is not shown wearing lipstick matching the product reference.",
+    "The main product action (lipstick application or transfer) is not visible."
+  ],
+  "note": "The first two issues are useful. The third issue is directionally useful but semantically ambiguous: for this product, the intended proof is no lipstick transfer on the cup, not a visible transfer mark."
+}</pre>
+            </div>
+          </div>
         </div>
-        <div class="step">
-          <b>2. ad_blueprint.json</b>
-          <span>The GPT planner creates strategy, asset memory, and a route-specific execution layer.</span>
-        </div>
-        <div class="step">
-          <b>3. route selection</b>
-          <span><code>direct</code> may create one direct start frame. <code>keyframe</code> consumes hook/ad start_key_image_path values.</span>
-        </div>
-        <div class="step">
-          <b>4. video jobs</b>
-          <span>Build provider-neutral requests: one full job for direct, or hook/ad jobs for keyframe.</span>
-        </div>
-        <div class="step">
-          <b>5. video generation</b>
-          <span>The HTTP backend prints /version, generates mp4 outputs, and concatenates hook/ad clips when present.</span>
-        </div>
-        <div class="step">
-          <b>6. critic + retry</b>
-          <span>Qwen-VL returns pass, summary, and failure_reasons. Failed clips can get a GPT-rewritten prompt.</span>
+        <div class="finding">
+          <div class="finding-title">
+            <span class="finding-index">2</span>
+            <span>LTX2.3 often introduces unexplained subtitles or text artifacts.</span>
+          </div>
+          <p class="finding-body">
+            Multiple generated clips show random captions, letters, or fake overlay text
+            even when the prompt explicitly asks for no captions, UI, watermarks, logos, or
+            readable words.
+          </p>
         </div>
       </div>
     </section>
@@ -405,20 +464,20 @@
     <section class="card" data-result-browser>
       <h2>Result Browser</h2>
       <p>
-        Archived runs are grouped by ad type and product type. Category labels are experiment
-        priors for the GPT planner; video backends still receive concrete shot prompts from
-        <code>ad_blueprint.json</code>.
+        Archived runs are grouped first by generation path, then by product category.
+        This keeps prompt-only full-video runs separate from runs that use a product
+        image to create key-image conditioning before video generation.
       </p>
       <div class="tab-group">
-        <div class="tab-label">Ad type</div>
-        <div class="tablist" role="tablist" aria-label="Ad type">
-          <button class="tab-button" type="button" role="tab" data-filter-target="ad-type" data-filter-value="hook" aria-selected="false">Hook</button>
-          <button class="tab-button" type="button" role="tab" data-filter-target="ad-type" data-filter-value="full" aria-selected="true">Full Video</button>
+        <div class="tab-label">Generation path</div>
+        <div class="tablist" role="tablist" aria-label="Generation path">
+          <button class="tab-button" type="button" role="tab" data-filter-target="generation-path" data-filter-value="prompt-only" aria-selected="true">Prompt-only video</button>
+          <button class="tab-button" type="button" role="tab" data-filter-target="generation-path" data-filter-value="product-keyimage" aria-selected="false">Product image + keyimage</button>
         </div>
       </div>
       <div class="tab-group">
-        <div class="tab-label">Product type</div>
-        <div class="tablist" role="tablist" aria-label="Product type">
+        <div class="tab-label">Category</div>
+        <div class="tablist" role="tablist" aria-label="Category">
           <button class="tab-button" type="button" role="tab" data-filter-target="product-category" data-filter-value="beauty" aria-selected="true">Beauty</button>
           <button class="tab-button" type="button" role="tab" data-filter-target="product-category" data-filter-value="food" aria-selected="false">Food</button>
           <button class="tab-button" type="button" role="tab" data-filter-target="product-category" data-filter-value="electronics" aria-selected="false">Electronics</button>
@@ -429,48 +488,21 @@
       </div>
 
       <div class="result-list">
-        <article class="result-item" data-result-item data-ad-type="hook" data-product-category="beauty">
+        <article class="result-item" data-result-item data-generation-path="prompt-only" data-product-category="beauty" hidden>
           <figure>
-            <figcaption>Beauty / Hook</figcaption>
-            <video class="tall" controls src="media/lipstick_e2e/video/01_hook.mp4"></video>
-          </figure>
-          <div class="result-copy">
-            <div class="result-title">
-              <h3>Lipstick transfer hook</h3>
-              <span class="pill blue">hook clip</span>
-              <span class="pill green">beauty</span>
-            </div>
-            <p>
-              A short pain-point clip for the lipstick run: the user notices a visible mark
-              on a white mug before the product proof shot.
-            </p>
-            <div class="prior-list">
-              <div>
-                <b>Planner prior</b>
-                Polished adult model, clean close-up performance, refined makeup, visible cup proof.
-              </div>
-              <div>
-                <b>Route</b>
-                Hook key image first, then image-conditioned video generation.
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="result-item" data-result-item data-ad-type="full" data-product-category="beauty" hidden>
-          <figure>
-            <figcaption>Beauty / Direct / 2026-06-25</figcaption>
+            <figcaption>Prompt-only / Beauty / 2026-06-25</figcaption>
             <video class="tall" controls src="media/beauty_direct_full_20260625/video/01_full.mp4"></video>
           </figure>
           <div class="result-copy">
             <div class="result-title">
-              <h3>Lipstick direct ad</h3>
-              <span class="pill amber">direct</span>
+              <h3>Lipstick prompt-only full video</h3>
+              <span class="pill amber">prompt-only</span>
               <span class="pill green">beauty</span>
             </div>
             <p>
-              Archived beauty category full-video run. The one-take prompt asked LTX2.3 to move
-              from lipstick transfer on a white mug into a clean-rim proof shot.
+              Archived beauty run where LTX2.3 received one full-video prompt and no
+              generated start frame. The prompt moves from lipstick transfer on a white
+              mug into a clean-rim proof shot.
             </p>
             <div class="prior-list">
               <div>
@@ -478,8 +510,8 @@
                 runs/_20260625_011457
               </div>
               <div>
-                <b>Output</b>
-                11s, 704x1280, text-only direct route.
+                <b>Path</b>
+                plan_ad direct, build one full request, generate video with no start_image_path.
               </div>
             </div>
             <details class="prompt-details">
@@ -494,20 +526,21 @@
           </div>
         </article>
 
-        <article class="result-item" data-result-item data-ad-type="full" data-product-category="electronics" hidden>
+        <article class="result-item" data-result-item data-generation-path="prompt-only" data-product-category="electronics" hidden>
           <figure>
-            <figcaption>Electronics / Direct / 2026-06-25</figcaption>
+            <figcaption>Prompt-only / Electronics / 2026-06-25</figcaption>
             <video class="tall" controls src="media/electronics_direct_full_20260625/video/01_full.mp4"></video>
           </figure>
           <div class="result-copy">
             <div class="result-title">
-              <h3>Apple iPhone direct ad</h3>
-              <span class="pill amber">direct</span>
+              <h3>Apple iPhone prompt-only full video</h3>
+              <span class="pill amber">prompt-only</span>
               <span class="pill green">electronics</span>
             </div>
             <p>
-              Archived electronics category full-video run. The prompt demonstrates a fast
-              camera-capture moment in a living-room dog action scene.
+              Archived electronics run where the full ad is generated directly from one
+              text prompt. The scene demonstrates a fast camera-capture moment in a
+              living-room dog action scene.
             </p>
             <div class="prior-list">
               <div>
@@ -515,8 +548,8 @@
                 runs/electronics_20260625_035252
               </div>
               <div>
-                <b>Output</b>
-                11s, 704x1280, text-only direct route.
+                <b>Path</b>
+                No product keyimage; one prompt-conditioned full video.
               </div>
             </div>
             <details class="prompt-details">
@@ -531,7 +564,7 @@
           </div>
         </article>
 
-        <article class="result-item" data-result-item data-ad-type="full" data-product-category="electronics" hidden>
+        <article class="result-item" data-result-item data-generation-path="prompt-only" data-product-category="electronics" hidden>
           <div class="result-media-stack">
             <figure>
               <figcaption>Original direct render: critic failed text artifact</figcaption>
@@ -545,6 +578,7 @@
           <div class="result-copy">
             <div class="result-title">
               <h3>Portable LED Lamp critic retry</h3>
+              <span class="pill amber">prompt-only</span>
               <span class="pill amber">critic retry</span>
               <span class="pill green">electronics</span>
             </div>
@@ -562,7 +596,7 @@
               </div>
               <div>
                 <b>Retry result</b>
-                Same direct route, one GPT prompt rewrite, then regenerated full clip.
+                Same prompt-only route, one GPT prompt rewrite, then regenerated full clip.
               </div>
             </div>
             <details class="prompt-details">
@@ -588,20 +622,20 @@
           </div>
         </article>
 
-        <article class="result-item" data-result-item data-ad-type="full" data-product-category="food" hidden>
+        <article class="result-item" data-result-item data-generation-path="prompt-only" data-product-category="food" hidden>
           <figure>
-            <figcaption>Food / Direct / 2026-06-25</figcaption>
+            <figcaption>Prompt-only / Food / 2026-06-25</figcaption>
             <video class="tall" controls src="media/food_direct_full_20260625/video/01_full.mp4"></video>
           </figure>
           <div class="result-copy">
             <div class="result-title">
-              <h3>Pan-Seared Steak direct ad</h3>
-              <span class="pill amber">direct</span>
+              <h3>Pan-Seared Steak prompt-only full video</h3>
+              <span class="pill amber">prompt-only</span>
               <span class="pill green">food</span>
             </div>
             <p>
-              Archived food category full-video run. The prompt contrasts a pale skillet steak
-              with a sliced, steamy, browned-crust proof moment.
+              Archived food run generated from one full-video prompt. The prompt contrasts
+              a pale skillet steak with a sliced, steamy, browned-crust proof moment.
             </p>
             <div class="prior-list">
               <div>
@@ -609,8 +643,8 @@
                 runs/food_20260625_041922
               </div>
               <div>
-                <b>Output</b>
-                11s, 704x1280, text-only direct route.
+                <b>Path</b>
+                No product image or keyimage; one prompt-conditioned full video.
               </div>
             </div>
             <details class="prompt-details">
@@ -625,30 +659,68 @@
           </div>
         </article>
 
-        <article class="result-item" data-result-item data-ad-type="full" data-product-category="beauty" hidden>
-          <figure>
-            <figcaption>Beauty / Full Video</figcaption>
-            <video class="tall" controls src="media/lipstick_e2e/video/combined.mp4"></video>
-          </figure>
+        <article class="result-item" data-result-item data-generation-path="product-keyimage" data-product-category="beauty" hidden>
+          <div class="result-media-stack">
+            <figure>
+              <figcaption>First direct start frame</figcaption>
+              <img class="tall" src="media/lipstick_direct_retry_20260626/key_images/direct_start.png" alt="First lipstick direct start frame">
+            </figure>
+            <figure>
+              <figcaption>First video: critic failed</figcaption>
+              <video class="tall" controls src="media/lipstick_direct_retry_20260626/video/01_full.mp4"></video>
+            </figure>
+            <figure>
+              <figcaption>Retry start frame</figcaption>
+              <img class="tall" src="media/lipstick_direct_retry_20260626/key_images/retry_start.png" alt="Retry lipstick direct start frame">
+            </figure>
+            <figure>
+              <figcaption>Retry video</figcaption>
+              <video class="tall" controls src="media/lipstick_direct_retry_20260626/video/retry_01/01_full.mp4"></video>
+            </figure>
+          </div>
           <div class="result-copy">
             <div class="result-title">
-              <h3>Lipstick full ad</h3>
-              <span class="pill amber">hook + ad</span>
+              <h3>Lipstick direct critic retry trace</h3>
+              <span class="pill amber">product image + keyimage</span>
+              <span class="pill amber">critic retry</span>
               <span class="pill green">beauty</span>
             </div>
             <p>
-              The longer combined result joins the hook clip with the product proof clip,
-              showing the clean-rim transfer-resistance claim.
+              Current run from <code>brief.json</code> through product-conditioned direct
+              start frame, first full video, critic failure, GPT retry rewrite, regenerated
+              start frame, and regenerated full video.
             </p>
             <div class="prior-list">
               <div>
-                <b>Planner prior</b>
-                Beauty commercial tone, consistent model and scene, macro proof that is easy to inspect.
+                <b>Run</b>
+                runs/lipstick_20260626_211736
               </div>
               <div>
-                <b>Route</b>
-                Key-image/ref2img planning path, then two generated clips concatenated.
+                <b>Critic failure</b>
+                Random text overlay, weak lipstick match, and unclear rim-proof action.
               </div>
+            </div>
+            <details class="prompt-details">
+              <summary>Critic output and retry rewrite</summary>
+              <pre>{
+  "critic_pass": false,
+  "critic_summary": "A woman holds a white mug and turns it to show the inside, with a lipstick and its case on the table nearby.",
+  "failure_reasons": [
+    "Visible text overlay 'XNOCB' appears in the frame, which is unrequested.",
+    "The woman is not shown wearing lipstick matching the product reference.",
+    "The main product action (lipstick application or transfer) is not visible."
+  ],
+  "retry_rewrite_summary": "Eliminated any chance of text artifacts, ensured the model visibly wears the correct rosy lipstick shade, and clarified the action to show a clear sip followed by a rim-to-camera reveal (not the interior), with the product tube visible and a steady locked-off camera."
+}</pre>
+            </details>
+            <div class="links">
+              <a href="data/lipstick_direct_retry_20260626/brief.json">brief.json</a>
+              <a href="data/lipstick_direct_retry_20260626/ad_blueprint.json">ad_blueprint.json</a>
+              <a href="data/lipstick_direct_retry_20260626/ad_blueprint_with_direct_start_frame.json">blueprint + start frame</a>
+              <a href="data/lipstick_direct_retry_20260626/video_jobs.json">video_jobs.json</a>
+              <a href="data/lipstick_direct_retry_20260626/critic_report.json">critic_report.json</a>
+              <a href="data/lipstick_direct_retry_20260626/video_jobs_retry_01.json">video_jobs_retry_01.json</a>
+              <a href="data/lipstick_direct_retry_20260626/video_retry_plan_01.json">video_retry_plan_01.json</a>
             </div>
           </div>
         </article>
@@ -656,7 +728,64 @@
 
       <div class="empty-state" data-empty-state hidden>
         <b>No generated result in this slot yet.</b>
-        <span>Software tools, food, fashion, electronics, and furniture runs will appear here as their artifacts are added.</span>
+        <span>Results will appear here as prompt-only and product-keyimage artifacts are added for each category.</span>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>What brief.json is</h2>
+      <p>
+        <code>brief.json</code> is the pipeline input contract: a compact product and
+        ad request supplied by the user.
+      </p>
+      <details class="compact-details">
+        <summary>brief.json fields</summary>
+        <dl class="field-list">
+          <dt>product.name</dt>
+          <dd>The product or service being advertised.</dd>
+          <dt>product.category</dt>
+          <dd>Optional planner hint such as beauty, food, electronics, software tool, fashion, or furniture.</dd>
+          <dt>product.selling_points</dt>
+          <dd>Benefits, constraints, proof points, or required demo actions the ad should preserve.</dd>
+          <dt>product.image_path</dt>
+          <dd>Optional product reference image. In the product-image path, AdGen sends it to image-edit/ref2img to create the keyimage used by video generation.</dd>
+          <dt>language</dt>
+          <dd>Output language for planner text and generated ad prompts.</dd>
+          <dt>duration_seconds</dt>
+          <dd>Target total video length for the generated ad.</dd>
+          <dt>execution_route</dt>
+          <dd><code>direct</code> asks the planner for one full-video prompt. The result browser separates direct runs by whether they use only text or first create a product-conditioned keyimage.</dd>
+        </dl>
+      </details>
+      <h3 class="section-subhead">High-level flow</h3>
+      <p>
+        From that brief, AdGen builds inspectable JSON artifacts at each step. The current
+        result view compares two direct-generation paths: pure prompt generation, where
+        one full-video prompt is sent to the video model, and product-image generation,
+        where the product image is first turned into a keyimage that conditions the
+        final video.
+      </p>
+      <div class="steps">
+        <div class="step">
+          <b>1. brief.json</b>
+          <span>The user-facing input contract: product details, constraints, references, and duration.</span>
+        </div>
+        <div class="step">
+          <b>2. ad_blueprint.json</b>
+          <span>The GPT planner creates strategy, asset memory, and a route-specific execution layer.</span>
+        </div>
+        <div class="step">
+          <b>3. route selection</b>
+          <span>Choose either prompt-only video or product image to generated keyimage to video.</span>
+        </div>
+        <div class="step">
+          <b>4. video jobs</b>
+          <span>Build one provider-neutral full-video request, with or without a start keyimage.</span>
+        </div>
+        <div class="step">
+          <b>5. video generation</b>
+          <span>The HTTP backend generates the final mp4 from the prompt-only or keyimage-conditioned request.</span>
+        </div>
       </div>
     </section>
 
@@ -826,25 +955,25 @@ python scripts/build_video_jobs.py \
     </section>
 
     <section class="card">
-      <h2>Stage 2B optional: keyframe route -> hook key image</h2>
+      <h2>Archived reference: keyframe route -> hook key image</h2>
       <p>
-        Use this route when product or character consistency matters more than direct
-        text-only simplicity. The first key-image pass creates a hook start frame.
-        Later shot key images can be produced by ref2img from that hook frame.
+        This older keyframe/ref2img artifact is kept as a reference for image consistency
+        experiments. It is not a separate Result Browser category in the current view.
+        The first key-image pass creates a hook start frame; later shot key images can be
+        produced by ref2img from that hook frame.
       </p>
       <div class="json-panel">
         <h3>Command</h3>
-        <pre>python scripts/generate_key_images.py "${RUN_DIR}/ad_blueprint.json" \
+<pre>python scripts/generate_key_images.py "${RUN_DIR}/ad_blueprint.json" \
   --model-path models/FLUX.1-dev \
-  --size 352*640 \
+  --size "288*512" \
   --dtype bfloat16 \
-  --steps 28 \
+  --steps 20 \
   --guidance-scale 3.5 \
   --low-memory-flux \
-  --max-sequence-length 256 \
+  --max-sequence-length 192 \
   --only-role hook \
-  --candidate-count 3 \
-  --critic-model-path models/Qwen3-VL-8B-Instruct</pre>
+  --candidate-count 1</pre>
       </div>
       <div class="json-panel" style="margin-top:16px;">
         <h3>Input: ad_blueprint.json</h3>
@@ -901,24 +1030,24 @@ python scripts/build_video_jobs.py \
     </section>
 
     <section class="card">
-      <h2>Stage 2C optional: hook key image -> ad key image</h2>
+      <h2>Archived reference: hook key image -> ad key image</h2>
       <p>
-        In the keyframe route, ref2img uses the hook key image as the continuity reference
-        and generates the ad start frame from the ad prompt. This stage is skipped by
-        the direct route.
+        In the archived keyframe route, ref2img uses the hook key image as the continuity
+        reference and generates the ad start frame from the ad prompt. This stage is skipped
+        by both current direct-result paths.
       </p>
       <div class="json-panel">
         <h3>Command</h3>
-        <pre>python scripts/ref2img_key_images.py "${RUN_DIR}/ad_blueprint_with_key_images.json" \
+<pre>python scripts/ref2img_key_images.py "${RUN_DIR}/ad_blueprint_with_key_images.json" \
   --model-id models/Qwen-Image-Edit-2511 \
-  --size 352*640 \
+  --size "256*448" \
   --dtype bfloat16 \
   --steps 12 \
   --true-cfg-scale 4.0 \
   --guidance-scale 1.0 \
+  --seed 1202 \
   --cpu-offload \
-  --candidate-count 3 \
-  --critic-model-path models/Qwen3-VL-8B-Instruct</pre>
+  --candidate-count 1</pre>
       </div>
       <div class="json-panel" style="margin-top:16px;">
         <h3>Input: ad_blueprint_with_key_images.json + hook key image</h3>
@@ -974,11 +1103,12 @@ python scripts/build_video_jobs.py \
     </section>
 
     <section class="card">
-      <h2>Stage 3 optional: keyframe blueprint -> video_jobs.json</h2>
+      <h2>Archived reference: keyframe blueprint -> video_jobs.json</h2>
       <p>
-        For <code>--execution-route keyframe</code>, the video job builder consumes a
-        blueprint whose shots have <code>start_key_image_path</code> values. Each request
-        becomes an image-to-video job with <code>start_image_path</code> sent to the backend.
+        For archived <code>--execution-route keyframe</code> runs, the video job builder
+        consumes a blueprint whose shots have <code>start_key_image_path</code> values.
+        Each request becomes an image-to-video job with <code>start_image_path</code> sent
+        to the backend.
       </p>
       <div class="json-panel">
         <h3>Command</h3>
@@ -1067,10 +1197,10 @@ python scripts/generate_video.py "${RUN_DIR}/video_jobs.json" \
         <h3>Output: video_generation_results.json</h3>
         <pre>[
   {
-    "provider": "http://127.0.0.1:58083",
+    "provider": "http",
     "output_path": "runs/electronics_.../video/01_full.mp4",
     "raw_response": {
-      "server_output_path": "/tmp/adgen-ltx2-video-server/portable_lamp_one_take_v1_full.mp4"
+      "content_type": "video/mp4"
     }
   }
 ]</pre>
@@ -1086,7 +1216,7 @@ python scripts/generate_video.py "${RUN_DIR}/video_jobs.json" \
       <h2>Stage 5: generated mp4 -> critic_report.json</h2>
       <p>
         The critic stage evaluates generated clips against the compact checklist stored in
-        <code>video_jobs.json</code>. It uses a local Qwen-VL video critic to produce a structured
+        <code>video_jobs.json</code>. It uses a local Qwen3-VL video critic to produce a structured
         pass/fail report. The current schema intentionally removes numeric scores and long
         evidence fields; it keeps only <code>pass</code>, <code>summary</code>, and
         <code>failure_reasons</code> per clip.
@@ -1127,13 +1257,14 @@ python scripts/generate_video.py "${RUN_DIR}/video_jobs.json" \
   "pass": false,
   "clips": [
     {
-      "job_id": "portable_lamp_one_take_v1_full",
+      "job_id": "portable_led_lamp_df_v1_full",
       "role": "full",
       "clip_path": "runs/electronics_.../video/01_full.mp4",
       "pass": false,
-      "summary": "A hand places a small lamp on a table, but the lamp does not visibly light the wall.",
+      "summary": "A hand places a cylindrical lamp on a wooden table and presses its top button, causing it to light up. The scene is dimly lit with a neutral wall and a bag in the background.",
       "failure_reasons": [
-        "The main product proof is missing: the warm light is not visible on the tabletop or wall."
+        "Text overlays are visible in the video, which are not allowed.",
+        "The text appears to be garbled and unrequested, violating the must-avoid list."
       ]
     }
   ]
@@ -1146,7 +1277,7 @@ python scripts/generate_video.py "${RUN_DIR}/video_jobs.json" \
         </div>
         <div class="transition">
           <b>Fail</b>
-          <span>Use <code>failure_reasons</code> with the original prompt as input to GPT prompt rewriting.</span>
+          <span>Use <code>failure_reasons</code>, the original prompt, and blueprint/request context as input to GPT prompt rewriting.</span>
         </div>
         <div class="transition">
           <b>Retry</b>
@@ -1161,26 +1292,32 @@ python scripts/generate_video.py "${RUN_DIR}/video_jobs.json" \
     </section>
 
     <section class="card">
-      <h2>Stage 6: critic fail -> GPT prompt retry</h2>
+      <h2>Stage 6: critic fail -> GPT retry</h2>
       <p>
-        Retry no longer has a rule-based prompt patcher. A failed clip is retried only by
-        calling GPT with the original video prompt and the critic summary/failure reasons.
-        The planner output and any start images stay fixed.
+        Retry no longer has a rule-based prompt patcher. A failed clip is retried by
+        calling GPT with the original video prompt, critic summary/failure reasons, and
+        blueprint/request context. GPT returns both <code>start_image_prompt</code> and
+        <code>video_prompt</code>. For failed I2V/direct requests, the script generates a
+        fresh retry start frame by default, then writes a retry video job that points at it.
+        Use <code>--skip-retry-start-frame</code> only when the existing start frame should stay fixed.
       </p>
       <div class="json-panel">
         <h3>Command</h3>
-        <pre>export AZURE_OPENAI_PROMPT_REWRITE_MAX_COMPLETION_TOKENS=8000
-export PROMPT_REWRITE_MAX_WORDS=160
-
-python scripts/retry_video_from_critic.py \
+        <pre>python scripts/retry_video_from_critic.py \
   "${RUN_DIR}/video_jobs.json" \
   "${RUN_DIR}/critic_report.json" \
-  --only-role full</pre>
+  --only-role full \
+  --retry-index 1 \
+  --output "${RUN_DIR}/video_jobs_retry_01.json" \
+  --plan-output "${RUN_DIR}/video_retry_plan_01.json" \
+  --retry-start-frame-offload-mode sequential</pre>
       </div>
       <div class="json-panel" style="margin-top:16px;">
         <h3>Output artifacts</h3>
         <pre>{
-  "video_jobs_retry_01.json": "same request shape, failed prompt replaced by GPT rewrite",
+  "key_images/retry_01/retry_start_frame_jobs.json": "image-edit jobs built from GPT start_image_prompt",
+  "key_images/retry_01/retry_start_frame_results.json": "generated retry start-frame metadata",
+  "video_jobs_retry_01.json": "same request shape, failed prompt replaced by GPT video_prompt and start_image_path updated to the retry start frame",
   "video_retry_plan_01.json": {
     "retry_index": 1,
     "adjusted_requests": [
@@ -1206,6 +1343,195 @@ python scripts/retry_video_from_critic.py \
       </p>
     </section>
 
+    <section class="card" id="lipstick-direct-retry-trace">
+      <h2>Lipstick Direct Retry Trace</h2>
+      <p>
+        This is the current product-image direct path run, organized from
+        <code>brief.json</code> to first video, critic failure, retry rewrite, regenerated
+        start frame, and regenerated video.
+      </p>
+      <div class="pills">
+        <span class="pill amber">product image + keyimage</span>
+        <span class="pill amber">critic retry</span>
+        <span class="pill green">beauty</span>
+        <span class="pill blue">runs/lipstick_20260626_211736</span>
+      </div>
+
+      <div class="trace-flow">
+        <div class="trace-step">
+          <b>1. brief.json</b>
+          <span>Product, category, product image path, and transfer-resistance selling point.</span>
+        </div>
+        <div class="trace-step">
+          <b>2. planner</b>
+          <span>GPT writes a direct full-video blueprint with a start-frame prompt.</span>
+        </div>
+        <div class="trace-step">
+          <b>3. first video</b>
+          <span>Qwen image-edit creates the direct start frame; LTX2.3 generates 01_full.mp4.</span>
+        </div>
+        <div class="trace-step">
+          <b>4. critic</b>
+          <span>Qwen3-VL fails the clip for random text, weak lipstick match, and unclear action.</span>
+        </div>
+        <div class="trace-step">
+          <b>5. retry</b>
+          <span>GPT rewrites the start-frame and video prompts; new start frame and video are generated.</span>
+        </div>
+      </div>
+
+      <div class="media-compare">
+        <figure>
+          <figcaption>Product reference</figcaption>
+          <img class="tall" src="media/lipstick_direct_retry_20260626/product.png" alt="Lipstick product reference">
+        </figure>
+        <figure>
+          <figcaption>First direct start frame</figcaption>
+          <img class="tall" src="media/lipstick_direct_retry_20260626/key_images/direct_start.png" alt="First direct start frame">
+        </figure>
+        <figure>
+          <figcaption>First generated video</figcaption>
+          <video class="tall" controls src="media/lipstick_direct_retry_20260626/video/01_full.mp4"></video>
+        </figure>
+        <figure>
+          <figcaption>Retry start frame</figcaption>
+          <img class="tall" src="media/lipstick_direct_retry_20260626/key_images/retry_start.png" alt="Retry direct start frame">
+        </figure>
+        <figure>
+          <figcaption>Regenerated video</figcaption>
+          <video class="tall" controls src="media/lipstick_direct_retry_20260626/video/retry_01/01_full.mp4"></video>
+        </figure>
+      </div>
+
+      <div class="grid" style="margin-top:14px;">
+        <div class="json-panel">
+          <h3>Input brief</h3>
+          <pre>{
+  "product": {
+    "name": "Lipstick",
+    "category": "beauty",
+    "image_path": "examples/lipstick/lipstick.png",
+    "selling_points": [
+      "Unlike ordinary lipsticks that leave marks on cups, this lipstick stays put, keeps cups clean, and resists smudging during daily wear."
+    ]
+  }
+}</pre>
+        </div>
+        <div class="json-panel">
+          <h3>Planner intent</h3>
+          <pre>{
+  "execution_route": "direct",
+  "creative_strategy": {
+    "core_pain": "Lipstick transferring onto cups, leaving embarrassing rim marks and forcing touch-ups.",
+    "promise": "A transfer-resistant lipstick that keeps cups clean while color stays put on your lips through everyday sips."
+  },
+  "single_shot": {
+    "proof_action": "sip from a plain white mug, rotate the rim to camera, show a clean rim"
+  }
+}</pre>
+        </div>
+      </div>
+
+      <div class="grid" style="margin-top:14px;">
+        <div class="json-panel">
+          <h3>Critic result on first video</h3>
+          <pre>{
+  "pass": false,
+  "summary": "A woman holds a white mug and turns it to show the inside, with a lipstick and its case on the table nearby.",
+  "failure_reasons": [
+    "Visible text overlay 'XNOCB' appears in the frame, which is unrequested.",
+    "The woman is not shown wearing lipstick matching the product reference.",
+    "The main product action (lipstick application or transfer) is not visible."
+  ]
+}</pre>
+        </div>
+        <div class="json-panel">
+          <h3>Retry rewrite output</h3>
+          <pre>{
+  "start_image_prompt": "Locked-off chest-up still... rosy lipstick that matches the provided product reference... plain white ceramic mug just below her lips... no on-screen text, watermarks, or letters anywhere.",
+  "video_prompt": "Continue seamlessly from this start frame... take a small natural sip... rotate the mug so the rim faces the camera... The rim remains clean and white with no visible lipstick mark.",
+  "rewrite_summary": "Eliminated text artifacts, ensured the correct lipstick shade, and clarified the sip plus rim-to-camera clean-rim reveal."
+}</pre>
+        </div>
+      </div>
+
+      <details class="prompt-details">
+        <summary>Commands used for this trace</summary>
+        <pre>export BRIEF="examples/lipstick/brief.json"
+export BRIEF_NAME="$(basename "$(dirname "${BRIEF}")")"
+export RUN_DIR="runs/${BRIEF_NAME}_$(date '+%Y%m%d_%H%M%S')"
+export VIDEO_ROUTE=direct
+export VIDEO_API_BASE="http://127.0.0.1:58083"
+
+python scripts/plan_ad.py "${BRIEF}" "${RUN_DIR}" --execution-route "${VIDEO_ROUTE}"
+
+python scripts/generate_direct_start_frame.py "${RUN_DIR}/ad_blueprint.json" \
+  --model-id models/Qwen-Image-Edit-2511 \
+  --size "352*640" \
+  --dtype bfloat16 \
+  --steps 12 \
+  --true-cfg-scale 4.0 \
+  --guidance-scale 1.0 \
+  --cpu-offload \
+  --offload-mode sequential
+
+python scripts/build_video_jobs.py \
+  "${RUN_DIR}/ad_blueprint_with_direct_start_frame.json" \
+  "${RUN_DIR}" \
+  --size "704*1280" \
+  --fps 24 \
+  --execution-route "${VIDEO_ROUTE}"
+
+python scripts/generate_video.py "${RUN_DIR}/video_jobs.json" \
+  --backend http \
+  --api-base "${VIDEO_API_BASE}" \
+  --timeout-seconds 7200
+
+python scripts/critic_video.py "${RUN_DIR}/video_jobs.json" \
+  --model-path models/Qwen3-VL-8B-Instruct \
+  --only-role full \
+  --fps 1 \
+  --max-pixels 230400 \
+  --output "${RUN_DIR}/critic_report.json"
+
+python scripts/retry_video_from_critic.py \
+  "${RUN_DIR}/video_jobs.json" \
+  "${RUN_DIR}/critic_report.json" \
+  --only-role full \
+  --retry-index 1 \
+  --output "${RUN_DIR}/video_jobs_retry_01.json" \
+  --plan-output "${RUN_DIR}/video_retry_plan_01.json" \
+  --retry-start-frame-offload-mode sequential
+
+python scripts/generate_video.py "${RUN_DIR}/video_jobs_retry_01.json" \
+  --backend http \
+  --api-base "${VIDEO_API_BASE}" \
+  --timeout-seconds 7200</pre>
+      </details>
+
+      <div class="trace-note">
+        The copied <code>video_generation_results.json</code> is the latest generation
+        result written after the retry. The first render remains inspectable through
+        <code>video_jobs.json</code>, <code>critic_report.json</code>, and
+        <code>media/lipstick_direct_retry_20260626/video/01_full.mp4</code>.
+      </div>
+
+      <div class="links">
+        <a href="data/lipstick_direct_retry_20260626/brief.json">brief.json</a>
+        <a href="data/lipstick_direct_retry_20260626/ad_blueprint.json">ad_blueprint.json</a>
+        <a href="data/lipstick_direct_retry_20260626/ad_blueprint_with_direct_start_frame.json">ad_blueprint_with_direct_start_frame.json</a>
+        <a href="data/lipstick_direct_retry_20260626/direct_start_frame_jobs.json">direct_start_frame_jobs.json</a>
+        <a href="data/lipstick_direct_retry_20260626/direct_start_frame_results.json">direct_start_frame_results.json</a>
+        <a href="data/lipstick_direct_retry_20260626/video_jobs.json">video_jobs.json</a>
+        <a href="data/lipstick_direct_retry_20260626/critic_report.json">critic_report.json</a>
+        <a href="data/lipstick_direct_retry_20260626/retry_start_frame_jobs.json">retry_start_frame_jobs.json</a>
+        <a href="data/lipstick_direct_retry_20260626/retry_start_frame_results.json">retry_start_frame_results.json</a>
+        <a href="data/lipstick_direct_retry_20260626/video_jobs_retry_01.json">video_jobs_retry_01.json</a>
+        <a href="data/lipstick_direct_retry_20260626/video_retry_plan_01.json">video_retry_plan_01.json</a>
+        <a href="data/lipstick_direct_retry_20260626/video_generation_results.json">video_generation_results.json</a>
+      </div>
+    </section>
+
     <details class="card compact-details collapsible-card">
       <summary>Related Files</summary>
       <div class="links">
@@ -1218,14 +1544,8 @@ python scripts/retry_video_from_critic.py \
         <a href="data/lipstick_direct_ref2img/ref2img_key_image_jobs.json">ref2img_key_image_jobs.json</a>
         <a href="data/lipstick_direct_ref2img/ref2img_key_image_results.json">ref2img_key_image_results.json</a>
         <a href="data/lipstick_direct_ref2img/video_jobs.json">video_jobs.json</a>
-        <a href="data/lipstick_e2e/key_image_critic_report.json">key_image_critic_report.json</a>
-        <a href="data/lipstick_e2e/critic_report.json">critic_report.json</a>
-        <a href="data/lipstick_e2e/video_generation_results.json">video_generation_results.json</a>
         <a href="media/lipstick_direct_ref2img/key_images/01_hook_start.png">01_hook_start.png</a>
         <a href="media/lipstick_direct_ref2img/key_images/ref2img/02_ad_start_ref2img.png">02_ad_start_ref2img.png</a>
-        <a href="media/lipstick_e2e/video/01_hook.mp4">01_hook.mp4</a>
-        <a href="media/lipstick_e2e/video/02_ad.mp4">02_ad.mp4</a>
-        <a href="media/lipstick_e2e/video/combined.mp4">combined.mp4</a>
         <a href="data/beauty_direct_full_20260625/ad_blueprint.json">beauty direct blueprint</a>
         <a href="data/beauty_direct_full_20260625/video_jobs.json">beauty direct jobs</a>
         <a href="media/beauty_direct_full_20260625/video/01_full.mp4">beauty direct video</a>
@@ -1280,7 +1600,7 @@ python scripts/retry_video_from_critic.py \
       }
 
       const state = {
-        "ad-type": "full",
+        "generation-path": "prompt-only",
         "product-category": "beauty",
       };
       const buttons = browser.querySelectorAll("[data-filter-target]");
@@ -1297,7 +1617,7 @@ python scripts/retry_video_from_critic.py \
         let visibleCount = 0;
         items.forEach((item) => {
           const visible =
-            item.dataset.adType === state["ad-type"] &&
+            item.dataset.generationPath === state["generation-path"] &&
             item.dataset.productCategory === state["product-category"];
           item.hidden = !visible;
           if (visible) {
