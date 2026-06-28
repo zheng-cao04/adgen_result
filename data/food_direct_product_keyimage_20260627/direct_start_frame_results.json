@@ -1,0 +1,19 @@
+[
+  {
+    "provider": "http-image",
+    "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/food_20260627_202459/key_images/direct/01_full_start.png",
+    "raw_response": {
+      "content_type": "image/png",
+      "role": "direct_full",
+      "candidate_id": "direct_full_c01",
+      "candidate_index": 0,
+      "candidate_count": 1,
+      "seed": 1000,
+      "prompt": "Create one realistic vertical 9:16 commercial start frame for a one-take product ad. Use reference image 1 as the real product identity lock: preserve the product shape, colors, material, packaging, labels, and visible marks. Place that real product naturally into the requested full scene. Product: Master Kong Iced Black Tea. Scene: Small sunlit balcony or patio with a matte wooden table in front of the seated person. Bright natural afternoon sunlight with soft shadows and light rim from one side; gentle fill so the label is readable. Softly blurred greenery and a simple balcony rail; uncluttered, clean, summery vibe.. Subject: One young adult of any gender, medium build, light healthy skin tone, relaxed demeanor. Light summer t-shirt in beige or pale gray, simple casual look.. Start frame: A sunny balcony scene with a small matte wooden.",
+      "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/food/kangshifu-iced-black-tea.jpg",
+      "reference_image_paths": [
+        "/home/linabear/projects/adgen_workspace/adgen/examples/food/kangshifu-iced-black-tea.jpg"
+      ]
+    }
+  }
+]

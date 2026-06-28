@@ -1,0 +1,19 @@
+[
+  {
+    "provider": "http-image",
+    "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/electronics_20260627_205522/key_images/direct/01_full_start.png",
+    "raw_response": {
+      "content_type": "image/png",
+      "role": "direct_full",
+      "candidate_id": "direct_full_c01",
+      "candidate_index": 0,
+      "candidate_count": 1,
+      "seed": 1000,
+      "prompt": "Create one realistic vertical 9:16 commercial start frame for a one-take product ad. Use reference image 1 as the real product identity lock: preserve the product shape, colors, material, packaging, labels, and visible marks. Place that real product naturally into the requested full scene. Product: Portable LED Lamp. Scene: Cozy bedside/desk nook with a small light-wood table next to a neatly made bed. Evening mood with soft ambient fill; the lamp provides a warm glow that clearly illuminates the surface. Neutral wall with subtle texture; soft-focus edge of a white pillow/duvet to imply bedside use; uncluttered.. Subject: One adult right hand with tidy nails and natural skin tone; hand-only framing with the face outside the camera view. Neutral knit long-sleeve cuff (beige or gray) visible on the forearm.. Start frame: A cozy bedside/desk nook: a light-wood table with the compact.",
+      "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/electronics/portable_lamp.png",
+      "reference_image_paths": [
+        "/home/linabear/projects/adgen_workspace/adgen/examples/electronics/portable_lamp.png"
+      ]
+    }
+  }
+]

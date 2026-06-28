@@ -1,0 +1,16 @@
+{
+  "source_jobs": "/home/linabear/projects/adgen_workspace/adgen/runs/fashion_20260627_213205/video_jobs.json",
+  "model_path": "/home/linabear/projects/adgen_workspace/adgen/models/Qwen3-VL-8B-Instruct",
+  "created_at": "2026-06-28T01:35:45.827204+00:00",
+  "pass": true,
+  "clips": [
+    {
+      "job_id": "ad_brb_foxfield_direct_01_full",
+      "role": "full",
+      "clip_path": "/home/linabear/projects/adgen_workspace/adgen/runs/fashion_20260627_213205/video/01_full.mp4",
+      "pass": true,
+      "summary": "A woman in a beige trench coat walks and turns in a studio, showing the coat's silhouette and details.",
+      "failure_reasons": []
+    }
+  ]
+}

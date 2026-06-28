@@ -1,0 +1,22 @@
+{
+  "source_jobs": "/home/linabear/projects/adgen_workspace/adgen/runs/food_20260627_202459/video_jobs.json",
+  "model_path": "/home/linabear/projects/adgen_workspace/adgen/models/Qwen3-VL-8B-Instruct",
+  "created_at": "2026-06-28T00:44:13.258794+00:00",
+  "pass": false,
+  "clips": [
+    {
+      "job_id": "mk-iced-black-tea_direct_001_full",
+      "role": "full",
+      "clip_path": "/home/linabear/projects/adgen_workspace/adgen/runs/food_20260627_202459/video/01_full.mp4",
+      "pass": false,
+      "summary": "A young adult is shown drinking from a bottle of iced tea on a balcony, with the bottle label facing the camera.",
+      "failure_reasons": [
+        "The bottle label is not clearly facing the viewer in the initial shot as required.",
+        "The cap is not resting beside the bottle in the initial shot as required.",
+        "The subject is not casually dressed in a light summer t-shirt as specified.",
+        "The video contains overlay text 'Fivals' which is not requested.",
+        "The camera is not locked off at table height as required."
+      ]
+    }
+  ]
+}

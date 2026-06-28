@@ -1,0 +1,14 @@
+{
+  "product": {
+    "name": "Burberry Long Silk Cotton Foxfield Trench Coat",
+    "category": "fashion",
+    "image_path": "examples/fashion/burberry-foxfield-trench-coat.jpg",
+    "selling_points": [
+      "A fashionable and elegant long trench coat with a refined oatmeal beige silhouette.",
+      "High-quality silk-cotton faille tailoring with polished heritage details for a sophisticated look."
+    ]
+  },
+  "language": "en",
+  "execution_route": "direct",
+  "duration_seconds": 11.0
+}

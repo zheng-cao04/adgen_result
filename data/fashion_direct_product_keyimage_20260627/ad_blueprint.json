@@ -1,0 +1,52 @@
+{
+  "ad_id": "ad_brb_foxfield_direct_01",
+  "brief": {
+    "product": {
+      "name": "Burberry Long Silk Cotton Foxfield Trench Coat",
+      "category": "fashion",
+      "image_path": "examples/fashion/burberry-foxfield-trench-coat.jpg",
+      "selling_points": [
+        "A fashionable and elegant long trench coat with a refined oatmeal beige silhouette.",
+        "High-quality silk-cotton faille tailoring with polished heritage details for a sophisticated look."
+      ]
+    },
+    "language": "en",
+    "execution_route": "direct",
+    "duration_seconds": 11.0
+  },
+  "creative_strategy": {
+    "core_pain": "Struggling to find a trench coat that feels truly refined—elegant silhouette, premium fabric, and polished details that elevate any outfit.",
+    "promise": "A long, sophisticated trench in silk-cotton faille with a refined oatmeal beige silhouette and heritage tailoring for a timeless, elevated look."
+  },
+  "asset_memory": {
+    "key_image_path": null,
+    "character": {
+      "appearance": "Adult woman, mid-30s, poised, light-medium skin tone, confident editorial posture.",
+      "wardrobe": "Burberry oatmeal beige long trench coat as the hero layer over a simple black turtleneck, tailored black trousers, sleek black ankle boots.",
+      "hair_makeup": "Sleek low bun, minimal natural makeup with soft matte finish.",
+      "performance_style": "Calm, controlled, editorial; slow steps and gentle turns with restrained hand movements."
+    },
+    "scene": {
+      "location": "Minimal studio cyclorama with warm neutral beige backdrop that complements the coat.",
+      "lighting": "Soft, diffused key light from front-left with a gentle rim light to define the silhouette and catch a subtle sheen on the fabric; low contrast, clean studio look.",
+      "background": "Seamless backdrop with no distractions; polished studio floor with a soft reflection.",
+      "key_props": []
+    },
+    "product": {
+      "visual_identity": "Long trench coat in refined oatmeal beige, silk-cotton faille with a subtle sheen, double-breasted front, belted waist tied neatly, epaulettes, storm flap, and polished heritage buttons—match appearance from the provided product reference.",
+      "proof_prop": "none",
+      "image_path": "examples/fashion/burberry-foxfield-trench-coat.jpg"
+    }
+  },
+  "executable_layer": {
+    "type": "direct_full",
+    "duration_seconds": 11.0,
+    "single_shot": {
+      "visual_prompt": "A clean studio fashion shot on a seamless warm beige cyclorama. An adult woman stands center in a long oatmeal beige trench coat made of silk-cotton faille, belt already tied neatly, double-breasted front with polished buttons and heritage details visible. She is styled simply with a black turtleneck and tailored trousers, sleek low bun, and black ankle boots. The camera is steady on a tripod at eye level in a medium-wide full-body framing. Soft diffused light from front-left creates a gentle glow and subtle sheen on the fabric, with a mild rim light to define the silhouette. Action: she takes one slow, confident step forward, then places both hands casually into the coat’s pockets, allowing the coat skirt to sway lightly. She turns her torso slightly to her left to present a three-quarter angle, pausing so the belted waist and clean drape are clearly visible. She then shifts her weight back to center, holding a composed stance as the fabric settles, showcasing the long refined silhouette and texture. The final two seconds hold the pose still so the tailoring and oatmeal tone are easy to inspect. Keep movement minimal and elegant; no rapid spins or exaggerated fluttering fabric.",
+      "start_key_image_prompt": "Studio cyclorama scene with a warm neutral beige backdrop. Eye-level, medium-wide full-body composition of an adult woman centered, wearing the oatmeal beige long trench coat from the provided product reference image: silk-cotton faille with a subtle sheen, double-breasted front, polished buttons, epaulettes, and belt tied neatly at the waist. She faces camera in a composed three-quarter stance with feet together, hands relaxed at her sides, calm expression. Soft diffused key light from front-left with a gentle rim light shaping the silhouette. Clean, distraction-free studio floor with a soft reflection.",
+      "start_key_image_path": null,
+      "text": "Silk‑cotton faille\nRefined oatmeal silhouette\nHeritage tailoring",
+      "audio": "Soft contemporary runway beat with subtle ambience; faint fabric rustle; no voiceover."
+    }
+  }
+}

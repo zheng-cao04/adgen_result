@@ -1,0 +1,55 @@
+{
+  "ad_id": "portable_led_lamp_direct_001",
+  "brief": {
+    "product": {
+      "name": "Portable LED Lamp",
+      "category": "electronics",
+      "image_path": "examples/electronics/portable_lamp.png",
+      "selling_points": [
+        "Compact and easy to carry.",
+        "Soft, warm light for desk, bedside, or travel use."
+      ]
+    },
+    "language": "en",
+    "execution_route": "direct",
+    "duration_seconds": 11.0
+  },
+  "creative_strategy": {
+    "core_pain": "Harsh or insufficient lighting and bulky lamps make late-night reading or desk work uncomfortable and inconvenient to move around.",
+    "promise": "A compact lamp that’s easy to carry and instantly creates a soft, warm pool of light for desk, bedside, or travel."
+  },
+  "asset_memory": {
+    "key_image_path": null,
+    "character": {
+      "appearance": "One adult right hand with tidy nails and natural skin tone; no full face on camera.",
+      "wardrobe": "Neutral knit long-sleeve cuff (beige or gray) visible on the forearm.",
+      "hair_makeup": "Not shown.",
+      "performance_style": "Slow, gentle, and minimal handling to keep the action clear and stable."
+    },
+    "scene": {
+      "location": "Cozy bedside/desk nook with a small light-wood table next to a neatly made bed.",
+      "lighting": "Evening mood with soft ambient fill; the lamp provides a warm glow that clearly illuminates the surface.",
+      "background": "Neutral wall with subtle texture; soft-focus edge of a white pillow/duvet to imply bedside use; uncluttered.",
+      "key_props": [
+        "Open paperback book with cream pages",
+        "Small canvas travel pouch"
+      ]
+    },
+    "product": {
+      "visual_identity": "Compact portable LED lamp as in the reference image, matte finish, smooth diffuser, clean lines; orient any visible brand mark toward camera when possible.",
+      "proof_prop": "Open paperback book pages serving as a surface to show the warm light pool.",
+      "image_path": "examples/electronics/portable_lamp.png"
+    }
+  },
+  "executable_layer": {
+    "type": "direct_full",
+    "duration_seconds": 11.0,
+    "single_shot": {
+      "visual_prompt": "Locked-off camera, medium close view of a small light-wood bedside table in a cozy room. The compact portable LED lamp from the reference image is already on, casting a soft, warm golden pool of light across an open paperback book on the table. Background shows a neutral wall and the edge of a neatly made white bed softly out of focus. Warm, calm evening ambiance. A single right hand with a neutral sweater cuff enters from the right, gently grips the lamp, lifts it a few inches, and slowly rotates it to show its compact size and smooth matte finish while keeping the warm glow visible on the tabletop. The hand sets the lamp back down beside the open book so the warm light clearly illuminates the pages. The same hand then nudges a small canvas travel pouch close to the lamp to suggest carry-friendly size. Hold steady for a final beat on the cozy scene: lamp, open book lit warmly, pouch beside it, brand mark on the lamp unobstructed if present. Subtle soft shadows, no reflections, minimal movement, simple and calm.",
+      "start_key_image_prompt": "A cozy bedside/desk nook: a light-wood table with the compact portable LED lamp from the reference image already turned on, casting a warm golden pool of light onto an open paperback book. A small canvas travel pouch rests to one side of the lamp. Background shows a neutral wall and a softly blurred edge of a white pillow/duvet. Camera is a steady medium close with a slight high angle. The lamp’s brand mark, if present on the product, faces the camera. No hand is in frame yet. Soft, warm evening mood.",
+      "start_key_image_path": null,
+      "text": "Compact. Warm light. Anywhere.",
+      "audio": "Gentle lo-fi beat; soft room tone. Subtle whoosh as the lamp is lifted, soft tap as it is placed down. Optional quiet VO: “Soft, warm light—take it anywhere.”"
+    }
+  }
+}

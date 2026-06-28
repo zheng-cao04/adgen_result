@@ -1,0 +1,54 @@
+{
+  "ad_id": "mk-iced-black-tea_direct_001",
+  "brief": {
+    "product": {
+      "name": "Master Kong Iced Black Tea",
+      "category": "food",
+      "image_path": "examples/food/kangshifu-iced-black-tea.jpg",
+      "selling_points": [
+        "Cool and refreshing for hot days."
+      ]
+    },
+    "language": "en",
+    "execution_route": "direct",
+    "duration_seconds": 11.0
+  },
+  "creative_strategy": {
+    "core_pain": "Feeling overheated and thirsty on hot days, wanting a quick, satisfying cool-down.",
+    "promise": "A chilled sip of Master Kong Iced Black Tea delivers an instant, refreshing cool-off you can feel."
+  },
+  "asset_memory": {
+    "key_image_path": null,
+    "character": {
+      "appearance": "One young adult of any gender, medium build, light healthy skin tone, relaxed demeanor.",
+      "wardrobe": "Light summer t-shirt in beige or pale gray, simple casual look.",
+      "hair_makeup": "Natural hair, minimal makeup; fresh, clean appearance without shine or sweat effects.",
+      "performance_style": "Subtle, real-life actions: small forehead wipe, calm sip, soft smile; gentle, comfortable energy."
+    },
+    "scene": {
+      "location": "Small sunlit balcony or patio with a matte wooden table in front of the seated person.",
+      "lighting": "Bright natural afternoon sunlight with soft shadows and light rim from one side; gentle fill so the label is readable.",
+      "background": "Softly blurred greenery and a simple balcony rail; uncluttered, clean, summery vibe.",
+      "key_props": [
+        "Matte wooden table",
+        "Bottle cap placed beside the bottle"
+      ]
+    },
+    "product": {
+      "visual_identity": "Master Kong Iced Black Tea single-serve bottle; use the product reference for bottle shape, label, and colors; keep the label facing the viewer on the final hold.",
+      "proof_prop": "The chilled bottle itself used for the sip action.",
+      "image_path": "examples/food/kangshifu-iced-black-tea.jpg"
+    }
+  },
+  "executable_layer": {
+    "type": "direct_full",
+    "duration_seconds": 11.0,
+    "single_shot": {
+      "visual_prompt": "Locked-off camera at table height in a sunny balcony setting, medium-close framing on a matte wooden tabletop with a bottle of iced black tea front-center, the label clearly facing the viewer and the cap resting beside it. A casually dressed young adult in a light summer t-shirt sits behind the table, looking a bit warm from the sun. In one continuous, smooth motion, they reach in, pick up the bottle, bring it to their lips, and take a long, refreshing sip. After the sip, they give a small relaxed smile, then bring the bottle closer toward the camera, rotating slightly so the label stays front and centered, holding it steady for a lingering beat as sunlight glows on the bottle. Natural bright afternoon light with soft shadows and gentle background blur of greenery; steady tripod shot with a very slight slow push-in. End on a clean, label-forward product hold.",
+      "start_key_image_prompt": "A sunny balcony scene with a small matte wooden table in the foreground. The Master Kong Iced Black Tea bottle stands upright near front-center with its label facing the viewer; the cap is off and placed beside the bottle on the table. A young adult in a light beige summer t-shirt sits behind the table, relaxed, hands near the bottle, ready to reach for it. Bright natural side light creates soft shadows; background shows softly blurred greenery and a simple balcony rail. Camera is locked at table height in a medium-close composition.",
+      "start_key_image_path": "runs/food_20260627_202459/key_images/direct/01_full_start.png",
+      "text": "Cool off fast.",
+      "audio": "Bright, upbeat summer pop instrumental; subtle cap/clink and sip SFX; a quiet satisfied “ah” after the sip."
+    }
+  }
+}
