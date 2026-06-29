@@ -1,0 +1,9 @@
+[
+  {
+    "provider": "http",
+    "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/precision_compare/fashion_quantization/video/01_full.mp4",
+    "raw_response": {
+      "content_type": "video/mp4"
+    }
+  }
+]

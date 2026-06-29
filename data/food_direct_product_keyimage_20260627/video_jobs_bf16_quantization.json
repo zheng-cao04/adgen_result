@@ -1,0 +1,64 @@
+{
+  "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/food_20260627_202459/ad_blueprint_with_direct_start_frame.json",
+  "requests": [
+    {
+      "job_id": "mk-iced-black-tea_direct_001_full",
+      "prompt": "Raw one-take product ad for Master Kong Iced Black Tea. The scene shows a small sunlit balcony or patio with a matte, and one young adult of any gender, medium enters the frame. Use the provided start frame as video conditioning; preserve the real product identity already visible in that frame and keep the same product throughout the shot. Locked-off camera at table height in a sunny balcony setting, medium-close framing on a matte wooden tabletop with a bottle of iced black tea front-center, the label clearly facing the viewer and the cap resting beside it. A casually dressed young adult in a light summer t-shirt sits behind the table, looking a bit warm from the sun. In one continuous, smooth motion, they reach in, pick up the bottle, bring it to their lips, and take a long, refreshing sip. After the sip, they give a small relaxed smile, then bring the bottle closer toward the camera, rotating slightly so the label stays front and centered, holding it steady for a lingering beat as sunlight glows on the bottle. Natural bright afternoon light with soft. Keep the same room and fixed camera for the whole shot, with one main subject, natural motion, and stable hands and product shape. Clean product-ad frame with only the main subject, the real product, natural props, and the visible scene.",
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/precision_compare/food_quantization/video/01_full.mp4",
+      "duration_seconds": 11.0,
+      "fps": 24,
+      "size": "704*1280",
+      "start_image_path": "/home/linabear/projects/adgen_workspace/adgen/runs/food_20260627_202459/key_images/direct/01_full_start.png",
+      "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/food/kangshifu-iced-black-tea.jpg",
+      "image_inputs": [
+        {
+          "role": "start_frame",
+          "path": "/home/linabear/projects/adgen_workspace/adgen/runs/food_20260627_202459/key_images/direct/01_full_start.png",
+          "consumed_by": "video_backend",
+          "video_conditioning": true,
+          "description": "Shot start/key image used as the first-frame I2V conditioning image by the video backend."
+        },
+        {
+          "role": "product_reference",
+          "path": "/home/linabear/projects/adgen_workspace/adgen/examples/food/kangshifu-iced-black-tea.jpg",
+          "consumed_by": "optional_key_image_stage",
+          "video_conditioning": false,
+          "description": "Product identity reference for optional key-image/ref2img generation. It is not sent to the video backend as a separate product-reference conditioning image."
+        }
+      ],
+      "image_path": "/home/linabear/projects/adgen_workspace/adgen/runs/food_20260627_202459/key_images/direct/01_full_start.png",
+      "metadata": {
+        "role": "full",
+        "ad_type": "full",
+        "overlay_text": "Cool off fast.",
+        "audio_direction": "Bright, upbeat summer pop instrumental; subtle cap/clink and sip SFX; a quiet satisfied “ah” after the sip.",
+        "visual_prompt": "Locked-off camera at table height in a sunny balcony setting, medium-close framing on a matte wooden tabletop with a bottle of iced black tea front-center, the label clearly facing the viewer and the cap resting beside it. A casually dressed young adult in a light summer t-shirt sits behind the table, looking a bit warm from the sun. In one continuous, smooth motion, they reach in, pick up the bottle, bring it to their lips, and take a long, refreshing sip. After the sip, they give a small relaxed smile, then bring the bottle closer toward the camera, rotating slightly so the label stays front and centered, holding it steady for a lingering beat as sunlight glows on the bottle. Natural bright afternoon light with soft shadows and gentle background blur of greenery; steady tripod shot with a very slight slow push-in. End on a clean, label-forward product hold.",
+        "start_image_path": "/home/linabear/projects/adgen_workspace/adgen/runs/food_20260627_202459/key_images/direct/01_full_start.png",
+        "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/food/kangshifu-iced-black-tea.jpg",
+        "product_image_conditioning": false,
+        "direct_start_frame_conditioning": true,
+        "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/food_20260627_202459/ad_blueprint_with_direct_start_frame.json",
+        "execution_route": "direct",
+        "execution_layer_type": "direct_full",
+        "critic_expectation": {
+          "purpose": "Judge whether the raw video is a plausible product demo for Master Kong Iced Black Tea.",
+          "hard_requirements": [
+            "single continuous raw video shot with steady one-take continuity",
+            "complete direct prompt: Locked-off camera at table height in a sunny balcony setting, medium-close framing on a matte wooden tabletop with a bottle of iced black tea front-center, the label clearly facing the viewer and the cap resting beside it. A casually dressed young adult in a light.",
+            "physically plausible handling of the product by one main subject"
+          ],
+          "soft_context": [
+            "The shot may hint at this customer context: Feeling overheated and thirsty on hot days, wanting a quick, satisfying cool-down.",
+            "Focus the judgment on the requested product action, proof visibility, and one-take continuity.",
+            "Expected subject and scene style from asset memory: One young adult of any gender, medium build, light healthy skin tone, relaxed demeanor.; Light summer t-shirt in beige or pale gray."
+          ],
+          "quality_checks": [
+            "stable face, hands, objects, and camera motion",
+            "main product action is visible and easy to understand",
+            "visible product appearance stays consistent with the product reference image"
+          ]
+        }
+      }
+    }
+  ]
+}

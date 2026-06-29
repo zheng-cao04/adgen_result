@@ -1,0 +1,64 @@
+{
+  "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/fashion_20260627_213205/ad_blueprint_with_direct_start_frame.json",
+  "requests": [
+    {
+      "job_id": "ad_brb_foxfield_direct_01_full",
+      "prompt": "Raw one-take product ad for Burberry Long Silk Cotton Foxfield Trench Coat. The scene shows a minimal studio cyclorama with warm neutral beige backdrop, and adult woman, mid-30s, poised, light-medium skin tone enters the frame. A none is nearby. Use the provided start frame as video conditioning; preserve the real product identity already visible in that frame and keep the same product throughout the shot. A clean studio fashion shot on a seamless warm beige cyclorama. An adult woman stands center in a long oatmeal beige trench coat made of silk-cotton faille, belt already tied neatly, double-breasted front with polished buttons and heritage details visible. She is styled simply with a black turtleneck and tailored trousers, sleek low bun, and black ankle boots. The camera is steady on a tripod at eye level in a medium-wide full-body framing. Soft diffused light from front-left creates a gentle glow and subtle sheen on the fabric, with a mild rim light to define the silhouette. Action: she takes one slow, confident step forward, then places both hands casually into the coat’s pockets, allowing the coat skirt to sway lightly. She turns her torso slightly. Keep the same room and fixed camera for the whole shot, with one main subject, natural motion, and stable hands and product shape. Clean product-ad frame with only the main subject, the real product, natural props, and the visible scene.",
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/precision_compare/fashion_quantization/video/01_full.mp4",
+      "duration_seconds": 11.0,
+      "fps": 24,
+      "size": "704*1280",
+      "start_image_path": "/home/linabear/projects/adgen_workspace/adgen/runs/fashion_20260627_213205/key_images/direct/01_full_start.png",
+      "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/fashion/burberry-foxfield-trench-coat.jpg",
+      "image_inputs": [
+        {
+          "role": "start_frame",
+          "path": "/home/linabear/projects/adgen_workspace/adgen/runs/fashion_20260627_213205/key_images/direct/01_full_start.png",
+          "consumed_by": "video_backend",
+          "video_conditioning": true,
+          "description": "Shot start/key image used as the first-frame I2V conditioning image by the video backend."
+        },
+        {
+          "role": "product_reference",
+          "path": "/home/linabear/projects/adgen_workspace/adgen/examples/fashion/burberry-foxfield-trench-coat.jpg",
+          "consumed_by": "optional_key_image_stage",
+          "video_conditioning": false,
+          "description": "Product identity reference for optional key-image/ref2img generation. It is not sent to the video backend as a separate product-reference conditioning image."
+        }
+      ],
+      "image_path": "/home/linabear/projects/adgen_workspace/adgen/runs/fashion_20260627_213205/key_images/direct/01_full_start.png",
+      "metadata": {
+        "role": "full",
+        "ad_type": "full",
+        "overlay_text": "Silk‑cotton faille\nRefined oatmeal silhouette\nHeritage tailoring",
+        "audio_direction": "Soft contemporary runway beat with subtle ambience; faint fabric rustle; no voiceover.",
+        "visual_prompt": "A clean studio fashion shot on a seamless warm beige cyclorama. An adult woman stands center in a long oatmeal beige trench coat made of silk-cotton faille, belt already tied neatly, double-breasted front with polished buttons and heritage details visible. She is styled simply with a black turtleneck and tailored trousers, sleek low bun, and black ankle boots. The camera is steady on a tripod at eye level in a medium-wide full-body framing. Soft diffused light from front-left creates a gentle glow and subtle sheen on the fabric, with a mild rim light to define the silhouette. Action: she takes one slow, confident step forward, then places both hands casually into the coat’s pockets, allowing the coat skirt to sway lightly. She turns her torso slightly to her left to present a three-quarter angle, pausing so the belted waist and clean drape are clearly visible. She then shifts her weight back to center, holding a composed stance as the fabric settles, showcasing the long refined silhouette and texture. The final two seconds hold the pose still so the tailoring and oatmeal tone are easy to inspect. Keep movement minimal and elegant; no rapid spins or exaggerated fluttering fabric.",
+        "start_image_path": "/home/linabear/projects/adgen_workspace/adgen/runs/fashion_20260627_213205/key_images/direct/01_full_start.png",
+        "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/fashion/burberry-foxfield-trench-coat.jpg",
+        "product_image_conditioning": false,
+        "direct_start_frame_conditioning": true,
+        "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/fashion_20260627_213205/ad_blueprint_with_direct_start_frame.json",
+        "execution_route": "direct",
+        "execution_layer_type": "direct_full",
+        "critic_expectation": {
+          "purpose": "Judge whether the raw video is a plausible product demo for Burberry Long Silk Cotton Foxfield Trench Coat.",
+          "hard_requirements": [
+            "single continuous raw video shot with steady one-take continuity",
+            "complete direct prompt: A clean studio fashion shot on a seamless warm beige cyclorama. An adult woman stands center in a long oatmeal beige trench coat made of silk-cotton faille, belt already tied neatly, double-breasted front with polished buttons and heritage details visible. She is styled simply.",
+            "physically plausible handling of the product by one main subject"
+          ],
+          "soft_context": [
+            "The shot may hint at this customer context: Struggling to find a trench coat that feels truly refined—elegant silhouette, premium fabric, and polished details that elevate any outfit.",
+            "Focus the judgment on the requested product action, proof visibility, and one-take continuity.",
+            "Expected subject and scene style from asset memory: Adult woman, mid-30s, poised, light-medium skin tone, confident editorial posture.; Burberry oatmeal beige long trench coat as the hero layer over."
+          ],
+          "quality_checks": [
+            "stable face, hands, objects, and camera motion",
+            "main product action is visible and easy to understand",
+            "visible product appearance stays consistent with the product reference image"
+          ]
+        }
+      }
+    }
+  ]
+}

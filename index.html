@@ -480,6 +480,21 @@
             keep prompts as positive visual instructions only.
           </p>
         </div>
+        <div class="finding">
+          <div class="finding-title">
+            <span class="finding-index">4</span>
+            <span>First-frame conditioning does not guarantee product identity through the full video.</span>
+          </div>
+          <p class="finding-body">
+            Recent product-keyimage tests show that the product can look correct in the
+            first frame while packaging text, labels, or logo-like details drift by the
+            final frame. This is especially visible on text-heavy packaging such as
+            bottled drinks. For these categories, the pipeline should reduce long label
+            exposure, use shorter clips with refreshed keyframes, add first/middle/last
+            frame critic checks, and reserve the final product display for a clean
+            packshot or post-composited product image.
+          </p>
+        </div>
       </div>
     </section>
 
@@ -758,6 +773,10 @@
               <figcaption>First video render</figcaption>
               <video class="tall" controls src="media/food_direct_product_keyimage_20260627/video/01_full.mp4"></video>
             </figure>
+            <figure>
+              <figcaption>BF16 quantization test</figcaption>
+              <video class="tall" controls src="media/food_direct_product_keyimage_20260627/video/bf16/01_full.mp4"></video>
+            </figure>
           </div>
           <div class="result-copy">
             <div class="result-title">
@@ -778,6 +797,11 @@
               <div>
                 <b>Status</b>
                 Critic failed the first render; no post-critic retry was generated for this archive.
+              </div>
+              <div>
+                <b>Quantization test</b>
+                BF16 render reused the same prompt and direct start frame from
+                runs/food_20260627_202459.
               </div>
             </div>
             <details class="prompt-details">
@@ -802,6 +826,8 @@
               <a href="data/food_direct_product_keyimage_20260627/direct_start_frame_results.json">start_frame_results.json</a>
               <a href="data/food_direct_product_keyimage_20260627/video_jobs.json">video_jobs.json</a>
               <a href="data/food_direct_product_keyimage_20260627/video_generation_results.json">results.json</a>
+              <a href="data/food_direct_product_keyimage_20260627/video_jobs_bf16_quantization.json">bf16 video_jobs.json</a>
+              <a href="data/food_direct_product_keyimage_20260627/video_generation_results_bf16_quantization.json">bf16 results.json</a>
               <a href="data/food_direct_product_keyimage_20260627/critic_report.json">critic_report.json</a>
             </div>
           </div>
@@ -820,6 +846,10 @@
             <figure>
               <figcaption>First video render</figcaption>
               <video class="tall" controls src="media/electronics_direct_product_keyimage_20260627/video/01_full.mp4"></video>
+            </figure>
+            <figure>
+              <figcaption>BF16 quantization test</figcaption>
+              <video class="tall" controls src="media/electronics_direct_product_keyimage_20260627/video/bf16/01_full.mp4"></video>
             </figure>
           </div>
           <div class="result-copy">
@@ -844,6 +874,11 @@
                 <b>Status</b>
                 Critic passed the first render; no retry was needed for this archive.
               </div>
+              <div>
+                <b>Quantization test</b>
+                BF16 render reused the same prompt and direct start frame from
+                runs/electronics_20260627_205522.
+              </div>
             </div>
             <details class="prompt-details">
               <summary>Critic output for first render</summary>
@@ -861,6 +896,8 @@
               <a href="data/electronics_direct_product_keyimage_20260627/direct_start_frame_results.json">start_frame_results.json</a>
               <a href="data/electronics_direct_product_keyimage_20260627/video_jobs.json">video_jobs.json</a>
               <a href="data/electronics_direct_product_keyimage_20260627/video_generation_results.json">results.json</a>
+              <a href="data/electronics_direct_product_keyimage_20260627/video_jobs_bf16_quantization.json">bf16 video_jobs.json</a>
+              <a href="data/electronics_direct_product_keyimage_20260627/video_generation_results_bf16_quantization.json">bf16 results.json</a>
               <a href="data/electronics_direct_product_keyimage_20260627/critic_report.json">critic_report.json</a>
             </div>
           </div>
@@ -879,6 +916,10 @@
             <figure>
               <figcaption>First video render</figcaption>
               <video class="tall" controls src="media/fashion_direct_product_keyimage_20260627/video/01_full.mp4"></video>
+            </figure>
+            <figure>
+              <figcaption>BF16 quantization test</figcaption>
+              <video class="tall" controls src="media/fashion_direct_product_keyimage_20260627/video/bf16/01_full.mp4"></video>
             </figure>
           </div>
           <div class="result-copy">
@@ -903,6 +944,11 @@
                 <b>Status</b>
                 Critic passed the first render; no retry was needed for this archive.
               </div>
+              <div>
+                <b>Quantization test</b>
+                BF16 render reused the same prompt and direct start frame from
+                runs/fashion_20260627_213205.
+              </div>
             </div>
             <details class="prompt-details">
               <summary>Critic output for first render</summary>
@@ -920,6 +966,8 @@
               <a href="data/fashion_direct_product_keyimage_20260627/direct_start_frame_results.json">start_frame_results.json</a>
               <a href="data/fashion_direct_product_keyimage_20260627/video_jobs.json">video_jobs.json</a>
               <a href="data/fashion_direct_product_keyimage_20260627/video_generation_results.json">results.json</a>
+              <a href="data/fashion_direct_product_keyimage_20260627/video_jobs_bf16_quantization.json">bf16 video_jobs.json</a>
+              <a href="data/fashion_direct_product_keyimage_20260627/video_generation_results_bf16_quantization.json">bf16 results.json</a>
               <a href="data/fashion_direct_product_keyimage_20260627/critic_report.json">critic_report.json</a>
             </div>
           </div>
