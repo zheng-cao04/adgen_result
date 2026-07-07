@@ -1,0 +1,103 @@
+{
+  "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/food_product_detail/ad_blueprint_with_direct_start_frame.json",
+  "requests": [
+    {
+      "job_id": "ad_mk_ibt_pd_001_full",
+      "prompt": "Raw one-take product ad for Master Kong Iced Black Tea. The scene shows a simple tabletop setup. Use only a right hand enters frame as the only moving person or hand. Use the provided start frame as video conditioning; preserve the real product identity already visible in that frame and keep the same product throughout the shot. A single locked shot on a matte light-gray tabletop with a soft cool blue gradient backdrop. Centered on the table is a chilled bottle of Master Kong Iced Black Tea from the reference—true-to-reference shape, amber tea visible through the plastic, yellow–orange label layout, and subtle beads of condensation already on the bottle. The camera remains steady while the bottle is the hero in crisp, cool light. After a beat, a right hand with a light gray sleeve enters from the right, grasps the bottle smoothly, lifts it slightly, and slowly rotates it to catch highlights on the condensation and the amber tea inside. The hand tilts the bottle gently toward camera for a refreshing, close, inviting angle, then returns it to the same spot, front-facing.. Keep the same room and fixed camera for the whole shot, with one main subject, natural motion, and stable hands and product shape. Clean product-ad frame with only the main subject, the real product, natural props, and the visible scene.",
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/food_product_detail/video/01_full.mp4",
+      "duration_seconds": 6.0,
+      "fps": 25,
+      "size": "704*1280",
+      "start_image_path": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/food_product_detail/direct_start_frames/01_full_start.png",
+      "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/food/kangshifu-iced-black-tea.jpg",
+      "image_inputs": [
+        {
+          "role": "start_frame",
+          "path": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/food_product_detail/direct_start_frames/01_full_start.png",
+          "consumed_by": "video_backend",
+          "video_conditioning": true,
+          "description": "Video start frame used as first-frame I2V conditioning by the video backend."
+        },
+        {
+          "role": "product_reference",
+          "path": "/home/linabear/projects/adgen_workspace/adgen/examples/food/kangshifu-iced-black-tea.jpg",
+          "consumed_by": "optional_start_frame_stage",
+          "video_conditioning": false,
+          "description": "Product identity reference for optional start-frame image-edit generation. It is not sent to the video backend as a separate product-reference conditioning image."
+        }
+      ],
+      "metadata": {
+        "role": "full",
+        "ad_type": "full",
+        "ad_category": "product_detail",
+        "creative_design": {
+          "ad_category": "product_detail",
+          "selected_category_reason": "Product Detail lets us hero the chilled bottle and surface textures (condensation, cool lighting) in one stable shot without relying on precise text legibility or complex pouring. It visually sells 'cool and refreshing' through large, inspectable details and a simple hand interaction.",
+          "candidate_categories": [
+            {
+              "ad_category": "product_detail",
+              "score": 9,
+              "reason": "Close, polished detail of the bottle and condensation conveys 'cooling refreshment' credibly and fits a small model with one simple hand action.",
+              "risk": "Readable label text may drift; avoid depending on exact text while keeping brand shape/color cues."
+            },
+            {
+              "ad_category": "lifestyle",
+              "score": 7,
+              "reason": "Showing a person enjoying a sip reinforces refreshment emotionally.",
+              "risk": "Face generation continuity and drinking motion can be unstable; adds complexity beyond a 6‑second single shot."
+            },
+            {
+              "ad_category": "premium",
+              "score": 7,
+              "reason": "Slick, cool-toned lighting can elevate perceived quality while focusing on packaging.",
+              "risk": "May tempt subtle VFX or reflective setups; needs restraint to stay feasible."
+            },
+            {
+              "ad_category": "demo_proof",
+              "score": 6,
+              "reason": "Could attempt a temperature cue (frosty surface) as 'proof' of cold.",
+              "risk": "Temperature is hard to prove without unreliable effects (frost, mist); better to imply through condensation and color."
+            }
+          ],
+          "selling_angle": "Instant cool refreshment you can see and feel—chilled bottle, crisp light, and a satisfying hand pick-up.",
+          "emotional_tone": "crisp, cool, refreshing, clean",
+          "visual_grammar": "tight product hero: macro detail of chilled bottle -> calm hand interaction -> final front-on hero hold",
+          "proof_mechanism": "Large, inspectable cues of cold: visible condensation on the bottle and cool-toned lighting; simple slow tilt to catch light on the iced tea.",
+          "hook_or_opening": "Start on a chilled bottle of Master Kong Iced Black Tea with visible condensation sparkling under cool, crisp light.",
+          "action_arc": "From a static hero frame, a single hand enters, lifts the bottle, slowly rotates and tilts it toward camera to reveal condensation and amber tea, then sets it back front-facing for a clean hero hold.",
+          "payoff": "Front-facing bottle sitting on the matte surface, condensation visible, cool blue background—clean, refreshing final hold.",
+          "feasibility_notes": "No pouring, drinking, or small-text reliance. Condensation is present but not dripping. Camera stays locked; only the hand and bottle move. No reflective glassware or additional props. Avoid asking for readable brand text; focus on shape, color, and overall label layout."
+        },
+        "overlay_text": "Cool. Refreshing.\nMaster Kong Iced Black Tea",
+        "audio_direction": "Clean, cool pop beat with light high-end sparkle. Subtle whoosh when the hand lifts the bottle and a soft, satisfying set-down thump. No voiceover.",
+        "visual_prompt": "A single locked shot on a matte light-gray tabletop with a soft cool blue gradient backdrop. Centered on the table is a chilled bottle of Master Kong Iced Black Tea from the reference—true-to-reference shape, amber tea visible through the plastic, yellow–orange label layout, and subtle beads of condensation already on the bottle. The camera remains steady while the bottle is the hero in crisp, cool light. After a beat, a right hand with a light gray sleeve enters from the right, grasps the bottle smoothly, lifts it slightly, and slowly rotates it to catch highlights on the condensation and the amber tea inside. The hand tilts the bottle gently toward camera for a refreshing, close, inviting angle, then returns it to the same spot, front-facing. The hand exits frame. Hold for a brief beat on the front-facing bottle with condensation visible against the cool blue background. The entire action is calm and precise, with no other props introduced and no pouring or drinking.",
+        "start_image_path": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/food_product_detail/direct_start_frames/01_full_start.png",
+        "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/food/kangshifu-iced-black-tea.jpg",
+        "product_image_conditioning": false,
+        "direct_start_frame_conditioning": true,
+        "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/food_product_detail/ad_blueprint_with_direct_start_frame.json",
+        "execution_layer_type": "direct_full",
+        "critic_expectation": {
+          "purpose": "Judge whether the raw video is a plausible product demo for Master Kong Iced Black Tea.",
+          "hard_requirements": [
+            "single continuous raw video shot with steady one-take continuity",
+            "complete direct prompt: A single locked shot on a matte light-gray tabletop with a soft cool blue gradient backdrop. Centered on the table is a chilled bottle of Master Kong Iced Black Tea from the reference—true-to-reference shape, amber tea visible through the plastic, yellow–orange label layout, and subtle.",
+            "physically plausible handling of the product by one main subject"
+          ],
+          "soft_context": [
+            "The shot may hint at this customer context: On hot days, people want an instantly cooling drink that feels refreshing the moment they reach for it.",
+            "Focus the judgment on the requested product action, proof visibility, and one-take continuity.",
+            "Creative design expectation: ad_category=product_detail; hook=Start on a chilled bottle of Master Kong Iced Black Tea with visible condensation sparkling under cool, crisp light.; proof=Large, inspectable cues of cold: visible condensation on the bottle and cool-toned lighting; simple slow tilt to catch light on the iced tea..",
+            "Expected subject and scene style from asset memory: Only a right hand enters frame; adult hand with medium-light skin tone and clean, short nails; no rings.; Simple light gray long-sleeve."
+          ],
+          "quality_checks": [
+            "stable face, hands, objects, and camera motion",
+            "main product action is visible and easy to understand",
+            "visible product appearance stays consistent with the product reference image",
+            "ad_category intent is recognizable through the opening, action arc, proof mechanism, and payoff"
+          ]
+        }
+      }
+    }
+  ]
+}

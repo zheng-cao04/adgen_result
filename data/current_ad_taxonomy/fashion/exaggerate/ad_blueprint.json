@@ -1,0 +1,87 @@
+{
+  "ad_id": "burberry_foxfield_exag_0001",
+  "brief": {
+    "product": {
+      "name": "Burberry Long Silk Cotton Foxfield Trench Coat",
+      "category": "fashion",
+      "image_path": "examples/fashion/burberry-foxfield-trench-coat.jpg",
+      "selling_points": [
+        "A fashionable and elegant long trench coat with a refined oatmeal beige silhouette.",
+        "High-quality silk-cotton faille tailoring with polished heritage details for a sophisticated look."
+      ]
+    },
+    "ad_category": "exaggerate",
+    "language": "en",
+    "duration_seconds": 6.0
+  },
+  "creative_strategy": {
+    "core_pain": "Finding a trench that actually flatters the body with a long, refined silhouette and looks truly premium up close.",
+    "promise": "A sophisticated, elongated silhouette in a polished oatmeal beige, tailored in silk-cotton faille that reads instantly premium."
+  },
+  "creative_design": {
+    "ad_category": "exaggerate",
+    "selected_category_reason": "Exaggerate lets us amplify the key benefit—an elegant, elongated silhouette—through a bold but credible lighting shift that dramatically lengthens the coat’s shadow while highlighting the silk-cotton sheen, all within a single clean studio shot.",
+    "candidate_categories": [
+      {
+        "ad_category": "exaggerate",
+        "score": 9,
+        "reason": "Strong visual hook via spotlight and extended shadow sells silhouette instantly while staying grounded in a studio setting.",
+        "risk": "Cloth movement and dressing can glitch; keep action simple and controlled."
+      },
+      {
+        "ad_category": "premium",
+        "score": 8,
+        "reason": "Polished, slow editorial treatment fits Burberry’s luxury feel and shows material quality.",
+        "risk": "May lack a clear attention hook in a short 6s spot."
+      },
+      {
+        "ad_category": "product_detail",
+        "score": 7,
+        "reason": "Close, steady details of fabric and tailoring could prove quality credibly.",
+        "risk": "Tiny stitching or pattern details are hard for small models; risks unreadable micro-details."
+      }
+    ],
+    "selling_angle": "The trench visually lengthens and refines your silhouette, with a subtle silk-cotton sheen that looks premium from any angle.",
+    "emotional_tone": "Confident, elegant, editorial-calm with a bold visual beat.",
+    "visual_grammar": "Single editorial studio shot; bold lighting ramp that exaggerates the coat’s length via an elongated shadow; smooth model movement.",
+    "proof_mechanism": "Dramatic but plausible lighting change that elongates the coat’s shadow to emphasize silhouette, plus a gentle sheen pass across the silk-cotton faille.",
+    "hook_or_opening": "A focused spotlight swells on the hanging coat, beginning to stretch its shadow across the floor.",
+    "action_arc": "From a minimalist studio, a model steps in, lifts the trench from a rack, drapes it over shoulders; the spotlight intensifies, the shadow lengthens toward camera, and the model takes a controlled step and quarter turn to present the refined silhouette and fabric sheen.",
+    "payoff": "A poised final stance with the coat settled elegantly on shoulders, long shadow on the floor, showcasing the refined oatmeal silhouette.",
+    "feasibility_notes": "Kept to one static studio scene with a single clothing rack. Avoided sleeve threading to reduce garment deformation; model simply drapes the coat over shoulders. Exaggeration uses a safe, large lighting change and shadow elongation rather than complex cloth dynamics. No mirrors, patterns, or text in-scene; minimal props for stability."
+  },
+  "asset_memory": {
+    "character": {
+      "appearance": "Adult model with a refined, androgynous look and neutral expression.",
+      "wardrobe": "Black fitted turtleneck and slim black trousers with simple black low-heel boots, to let the oatmeal coat stand out.",
+      "hair_makeup": "Neat low bun or short tidy hair; clean, minimal makeup with natural tones.",
+      "performance_style": "Confident editorial runway calm; slow, controlled movements; restrained gestures."
+    },
+    "scene": {
+      "location": "Minimal studio cyclorama in warm grey-beige.",
+      "lighting": "Soft neutral fill with a controllable spotlight that can intensify and shift slightly forward to create a long shadow.",
+      "background": "Clean seamless backdrop; no graphics or mirrors.",
+      "key_props": [
+        "Simple chrome garment rack centered",
+        "Wooden hanger",
+        "Matte concrete floor"
+      ]
+    },
+    "product": {
+      "visual_identity": "A long oatmeal beige trench coat with a refined silhouette, double-breasted front, waist belt, epaulettes, and subtle silk-cotton faille sheen. Keep color consistent and elegant; avoid forcing tiny logos or plaid details.",
+      "proof_prop": "Chrome garment rack with wooden hanger",
+      "image_path": "examples/fashion/burberry-foxfield-trench-coat.jpg"
+    }
+  },
+  "executable_layer": {
+    "type": "direct_full",
+    "duration_seconds": 6.0,
+    "single_shot": {
+      "visual_prompt": "A single, static-camera studio shot in a warm grey-beige cyclorama with a matte concrete floor. At center is a simple chrome garment rack holding an oatmeal beige long trench coat on a wooden hanger. Soft neutral fill light bathes the scene, and a subtle spotlight circle sits on the floor beneath the rack. After a brief beat, an adult model in a black fitted turtleneck and slim black trousers enters smoothly from the right. They lift the trench from the hanger and, in one controlled motion, drape it over their shoulders. As the coat settles, the spotlight gently intensifies and shifts slightly forward so that the coat’s shadow stretches long toward the camera, exaggerating a tall, refined silhouette. The model takes a small step forward and performs a slow quarter turn, keeping movements minimal and calm. The silk-cotton faille catches a soft sheen as they angle, while the background remains clean and the rack stays in place behind them. The model finishes in a composed pose, slightly angled toward camera, one hand lightly adjusting a lapel, neutral confident expression, with the extended shadow clearly visible on the floor.",
+      "start_frame_prompt": "Transform the provided product image into a full-scene studio start frame: A minimal warm grey-beige cyclorama background with a matte concrete floor. At the center stands a simple chrome garment rack with a wooden hanger holding the oatmeal beige long trench coat. The coat’s long, refined silhouette is visible, with double-breasted front, belt at the waist, and epaulettes, showing a subtle silk-cotton sheen. Soft neutral fill lighting is present with a faint, not-yet-bright spotlight circle on the floor under the rack. No hand or person is visible. No additional props or graphics; keep the scene elegant and uncluttered.",
+      "start_frame_path": null,
+      "text": "Refined silhouette\nSilk-cotton faille\nBurberry Foxfield",
+      "audio": "Modern minimalist fashion beat with a soft low-end pulse; a subtle swell as the spotlight intensifies. No voiceover."
+    }
+  }
+}

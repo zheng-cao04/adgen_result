@@ -1,0 +1,18 @@
+{
+  "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/electronics_rerun_20260706_193609/electronics_demo_proof/ad_blueprint.json",
+  "requests": [
+    {
+      "job_id": "pll-demo-proof-0001_direct_start_frame",
+      "candidate_id": "direct_full_c01",
+      "candidate_index": 0,
+      "candidate_count": 1,
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/electronics_rerun_20260706_193609/electronics_demo_proof/direct_start_frames/01_full_start.png",
+      "prompt": "Create a realistic full-frame start image for a one-take ad. Use product reference image 1 (examples/electronics/portable_lamp.png) as the real identity lock; preserve its shape, colors, material, packaging, labels, and visible marks. Place the same compact portable LED lamp, turned off, on a small light wooden bedside table/desk beside one closed paperback book with a plain cover. Background: plain warm‑gray wall, uncluttered. Dim, cozy ambient light with a warm bias; lamp not glowing but clearly visible. Slightly high, steady camera angle framing lamp and book together on the tabletop. Full physical scene must extend edge to edge—no inner frame, border, inset, pasted image, posters, captions, UI, random text, watermarks, extra logos, black margins, or a central vertical rectangle. Not a product-only packshot. No hand or person in this first frame. Plausible scale and orientation.",
+      "negative_prompt": "No captions, subtitles, watermark, UI, fake logo, random letters, extra fingers, warped hands, blurry product, wrong product, product-only packshot, empty background, inner frame, border, poster, inset image, image inside an image, black margins, dark outer margins, central vertical rectangle, photo within a photo, matted print.",
+      "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/electronics/portable_lamp.png",
+      "reference_image_paths": [
+        "/home/linabear/projects/adgen_workspace/adgen/examples/electronics/portable_lamp.png"
+      ]
+    }
+  ]
+}

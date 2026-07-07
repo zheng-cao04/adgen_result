@@ -1,0 +1,97 @@
+{
+  "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/electronics_product_detail/ad_blueprint_with_direct_start_frame.json",
+  "requests": [
+    {
+      "job_id": "portable_led_lamp_pd_0001_full",
+      "prompt": "Raw one-take product ad for Portable LED Lamp. The scene shows a tidy light-wood desk surface against a soft off-white. Use one adult with medium skin tone as the only moving person or hand. A small beige canvas. Use the provided start frame as video conditioning; preserve the real product identity already visible in that frame and keep the same product throughout the shot. Begin from a calm, static scene: the real portable LED lamp from the provided reference image sits centered on a clean, light wood desk. To its left is a small beige canvas travel pouch with a simple zipper, resting flat. Behind them is a soft off-white wall in gentle daylight. No hand or person is visible in this first moment. After a brief beat, a single adult right hand in a neutral oatmeal knit sleeve enters from the right. The hand gently grasps the lamp, lifts it and slowly rotates it once, showing its compact, palmable size above the desk. The hand then sets the lamp back down near the pouch. As soon as it rests on the desk, the lamp softly illuminates, casting a warm. Keep the same room and fixed camera for the whole shot, with one main subject, natural motion, and stable hands and product shape. Clean product-ad frame with only the main subject, the real product, natural props, and the visible scene.",
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/electronics_product_detail/video/01_full.mp4",
+      "duration_seconds": 6.0,
+      "fps": 25,
+      "size": "704*1280",
+      "start_image_path": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/electronics_product_detail/direct_start_frames/01_full_start.png",
+      "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/electronics/portable_lamp.png",
+      "image_inputs": [
+        {
+          "role": "start_frame",
+          "path": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/electronics_product_detail/direct_start_frames/01_full_start.png",
+          "consumed_by": "video_backend",
+          "video_conditioning": true,
+          "description": "Video start frame used as first-frame I2V conditioning by the video backend."
+        },
+        {
+          "role": "product_reference",
+          "path": "/home/linabear/projects/adgen_workspace/adgen/examples/electronics/portable_lamp.png",
+          "consumed_by": "optional_start_frame_stage",
+          "video_conditioning": false,
+          "description": "Product identity reference for optional start-frame image-edit generation. It is not sent to the video backend as a separate product-reference conditioning image."
+        }
+      ],
+      "metadata": {
+        "role": "full",
+        "ad_type": "full",
+        "ad_category": "product_detail",
+        "creative_design": {
+          "ad_category": "product_detail",
+          "selected_category_reason": "Product Detail best highlights tactile size and surface finish while simply showing the warm light. It fits a single-shot, close-up treatment and avoids relying on precise button presses or tiny indicators.",
+          "candidate_categories": [
+            {
+              "ad_category": "product_detail",
+              "score": 9,
+              "reason": "Close, tactile inspection of the lamp and a clear warm light-up moment sell compactness and cozy light quality.",
+              "risk": "Animating the light turning on must be gentle and readable without showing a specific button."
+            },
+            {
+              "ad_category": "demo_proof",
+              "score": 8,
+              "reason": "A simple turn-on action demonstrates the warm light instantly.",
+              "risk": "Depends on a visible state change; avoid precise finger-to-button contact."
+            },
+            {
+              "ad_category": "lifestyle",
+              "score": 6,
+              "reason": "Context at a desk or bedside reinforces use cases.",
+              "risk": "Adds set complexity and risks distracting details for a short, single-shot execution."
+            }
+          ],
+          "selling_angle": "Take warm, comfortable light anywhere in a compact form.",
+          "emotional_tone": "Calm, cozy, precise",
+          "visual_grammar": "Product hero close-up; single hand interaction; gentle push-in; end on a steady glowing hold.",
+          "proof_mechanism": "Physical scale shown by hand pick-up and proximity to a small travel pouch; warm light visibly pooling on the desk surface.",
+          "hook_or_opening": "A quiet close-up of the real lamp on a clean wood desk beside a small canvas travel pouch in soft daylight.",
+          "action_arc": "From the static desk scene, a hand enters, lifts and slowly rotates the lamp to show its compact size, sets it back down near the pouch; the lamp softly illuminates, casting a warm pool of light; the camera eases in and holds.",
+          "payoff": "A steady, cozy warm glow around the lamp on the desk, clearly compact next to the pouch.",
+          "feasibility_notes": "One scene, one prop (pouch), one hand. No precise button press shown—only a gentle light-up. No logos or tiny text. Minimal camera movement and simple warm lighting change to keep stability."
+        },
+        "overlay_text": "Compact carry. Soft warm glow. Desk • Bedside • Travel.",
+        "audio_direction": "Soft, warm ambient music bed; a subtle, pleasant chime or swell as the lamp lights up; no voiceover.",
+        "visual_prompt": "Begin from a calm, static scene: the real portable LED lamp from the provided reference image sits centered on a clean, light wood desk. To its left is a small beige canvas travel pouch with a simple zipper, resting flat. Behind them is a soft off-white wall in gentle daylight. No hand or person is visible in this first moment. After a brief beat, a single adult right hand in a neutral oatmeal knit sleeve enters from the right. The hand gently grasps the lamp, lifts it and slowly rotates it once, showing its compact, palmable size above the desk. The hand then sets the lamp back down near the pouch. As soon as it rests on the desk, the lamp softly illuminates, casting a warm amber pool of light across the wood surface and lightly touching the pouch. The hand withdraws. The camera makes a subtle, slow push-in toward the glowing lamp and pouch, holding on the cozy, warm light for a calm finish. Keep the desk, pouch, and wall consistent throughout, with no additional objects introduced.",
+        "start_image_path": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/electronics_product_detail/direct_start_frames/01_full_start.png",
+        "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/electronics/portable_lamp.png",
+        "product_image_conditioning": false,
+        "direct_start_frame_conditioning": true,
+        "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/electronics_product_detail/ad_blueprint_with_direct_start_frame.json",
+        "execution_layer_type": "direct_full",
+        "critic_expectation": {
+          "purpose": "Judge whether the raw video is a plausible product demo for Portable LED Lamp.",
+          "hard_requirements": [
+            "single continuous raw video shot with steady one-take continuity",
+            "complete direct prompt: Begin from a calm, static scene: the real portable LED lamp from the provided reference image sits centered on a clean, light wood desk. To its left is a small beige canvas travel pouch with a simple zipper, resting flat. Behind them is a soft.",
+            "physically plausible handling of the product by one main subject"
+          ],
+          "soft_context": [
+            "The shot may hint at this customer context: Big, plug-bound lamps are awkward for tight desks and travel, and harsh light feels uncomfortable at night.",
+            "Focus the judgment on the requested product action, proof visibility, and one-take continuity.",
+            "Creative design expectation: ad_category=product_detail; hook=A quiet close-up of the real lamp on a clean wood desk beside a small canvas travel pouch in soft daylight.; proof=Physical scale shown by hand pick-up and proximity to a small travel pouch; warm light visibly pooling on the desk surface..",
+            "Expected subject and scene style from asset memory: One adult with medium skin tone; only right hand and forearm appear.; Neutral oatmeal long-sleeve knit sweater.; Tidy light-wood desk surface against."
+          ],
+          "quality_checks": [
+            "stable face, hands, objects, and camera motion",
+            "main product action is visible and easy to understand",
+            "visible product appearance stays consistent with the product reference image",
+            "ad_category intent is recognizable through the opening, action arc, proof mechanism, and payoff"
+          ]
+        }
+      }
+    }
+  ]
+}

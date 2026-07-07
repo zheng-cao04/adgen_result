@@ -1,0 +1,13 @@
+{
+  "product": {
+    "name": "Master Kong Iced Black Tea",
+    "category": "food",
+    "image_path": "examples/food/kangshifu-iced-black-tea.jpg",
+    "selling_points": [
+      "Cool and refreshing for hot days."
+    ]
+  },
+  "ad_category": "demo_proof",
+  "language": "en",
+  "duration_seconds": 6.0
+}

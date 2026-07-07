@@ -1,0 +1,14 @@
+{
+  "product": {
+    "name": "Portable LED Lamp",
+    "category": "electronics",
+    "image_path": "examples/electronics/portable_lamp.png",
+    "selling_points": [
+      "Compact and easy to carry.",
+      "Soft, warm light for desk, bedside, or travel use."
+    ]
+  },
+  "ad_category": "premium",
+  "language": "en",
+  "duration_seconds": 6.0
+}

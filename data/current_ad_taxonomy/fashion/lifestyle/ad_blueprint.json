@@ -1,0 +1,88 @@
+{
+  "ad_id": "burberry_foxfield_trench_lifestyle_v1",
+  "brief": {
+    "product": {
+      "name": "Burberry Long Silk Cotton Foxfield Trench Coat",
+      "category": "fashion",
+      "image_path": "examples/fashion/burberry-foxfield-trench-coat.jpg",
+      "selling_points": [
+        "A fashionable and elegant long trench coat with a refined oatmeal beige silhouette.",
+        "High-quality silk-cotton faille tailoring with polished heritage details for a sophisticated look."
+      ]
+    },
+    "ad_category": "lifestyle",
+    "language": "en",
+    "duration_seconds": 6.0
+  },
+  "creative_strategy": {
+    "core_pain": "Looking polished for day-to-night moments without bulky layers; wanting a refined coat that elevates any outfit and feels luxurious yet light.",
+    "promise": "A long, elegant trench that instantly sharpens your look with a smooth silk-cotton drape and heritage tailoring details."
+  },
+  "creative_design": {
+    "ad_category": "lifestyle",
+    "selected_category_reason": "Lifestyle places the trench in a believable leaving-home moment, showing how the silk-cotton drape and refined silhouette elevate a simple outfit. This is credible, emotionally aspirational, and feasible in one continuous shot.",
+    "candidate_categories": [
+      {
+        "ad_category": "lifestyle",
+        "score": 9,
+        "reason": "Natural entryway routine showcases fit, silhouette, and mood. Relatable and elegant without needing micro-detail proofs.",
+        "risk": "Clothing and limbs may warp if movement is complex. Mitigated by slow, minimal motions and cape-style drape instead of sleeve insertion."
+      },
+      {
+        "ad_category": "premium",
+        "score": 8,
+        "reason": "Editorial poise and lighting could highlight luxury and tailoring with a controlled, artful look.",
+        "risk": "Requires pristine studio lighting and ultra-stable posing; risk of fabric render drifting without lifestyle context."
+      },
+      {
+        "ad_category": "product_detail",
+        "score": 7,
+        "reason": "Close-ups of fabric sheen and buttons can underscore quality and tailoring.",
+        "risk": "Micro texture and tiny hardware details may not render reliably on a small open-source model."
+      }
+    ],
+    "selling_angle": "Elevate everyday departures with a lightweight silk-cotton trench that frames the body in a long, refined silhouette.",
+    "emotional_tone": "calm, confident, aspirational",
+    "visual_grammar": "One-take lifestyle vignette in a modern entryway: coat waiting on a rack, model enters, drapes it on, slight turn to reveal silhouette.",
+    "proof_mechanism": "Natural use in context: a simple pre-commute moment and a gentle drape over the shoulders to show length, fall, and polish.",
+    "hook_or_opening": "A pristine trench hanging ready on a minimalist rack in a serene entryway—an inviting ‘about to head out’ moment.",
+    "action_arc": "From a still entryway, the model enters, lifts the trench from the hanger, drapes it cape-style over her shoulders, smooths the lapels, pivots slightly toward the door, and holds a poised stance.",
+    "payoff": "A composed three-quarter pose near the door with the long oatmeal silhouette cleanly visible—effortlessly refined.",
+    "feasibility_notes": "Avoided sleeve insertion and belt-tying to reduce fine hand/fabric complexity. Kept one location, one model, slow motions, minimal props, and a mostly locked camera to preserve garment shape and continuity."
+  },
+  "asset_memory": {
+    "character": {
+      "appearance": "Adult female model with a poised, editorial presence and neutral expression.",
+      "wardrobe": "Black fitted turtleneck, tailored black trousers, black low-profile loafers.",
+      "hair_makeup": "Hair in a neat low bun; natural, polished makeup.",
+      "performance_style": "Slow, graceful movements; confident but restrained, like an editorial fitting moment."
+    },
+    "scene": {
+      "location": "Modern apartment entryway",
+      "lighting": "Soft natural morning light from an off-camera window, even and warm.",
+      "background": "Warm neutral wall, matte light-wood floor, closed light-wood front door on the right.",
+      "key_props": [
+        "matte black clothing rack",
+        "wooden hanger",
+        "slim light-wood bench",
+        "closed light-wood door"
+      ]
+    },
+    "product": {
+      "visual_identity": "Long oatmeal beige trench coat with a clean, refined silhouette, silk-cotton faille look, polished buttons, belt, and heritage-style trench details.",
+      "proof_prop": "Matte black clothing rack and wooden hanger",
+      "image_path": "examples/fashion/burberry-foxfield-trench-coat.jpg"
+    }
+  },
+  "executable_layer": {
+    "type": "direct_full",
+    "duration_seconds": 6.0,
+    "single_shot": {
+      "visual_prompt": "Begin from a calm modern entryway scene: the long oatmeal beige trench coat from the reference image hangs on a wooden hanger from a simple matte black clothing rack at the center. A slim light-wood bench sits along the wall to the left; a closed light-wood front door is on the right. The wall is a warm neutral and the floor is matte light wood, with soft natural morning light washing the space. In one continuous shot with a mostly locked camera, a single adult female model enters from the right, steps to the rack, and lifts the trench coat off the hanger in one smooth motion. She drapes it over her shoulders like a cape without inserting her arms, then gently smooths the lapels and belt area. She turns slightly toward the door into a relaxed three-quarter pose, letting the fabric settle so the long, refined silhouette reads clearly. She holds still for a composed beat as the rack, hanger, bench, and door remain stable in the background. Keep motions slow and elegant; avoid fluttering fabric or fast gestures.",
+      "start_frame_prompt": "Use the same long oatmeal beige trench coat from examples/fashion/burberry-foxfield-trench-coat.jpg and place it neatly on a wooden hanger, centered on a simple matte black clothing rack in a modern apartment entryway. Include a slim light-wood bench against a warm neutral wall on the left and a closed light-wood front door on the right. The floor is matte light wood. Soft natural morning light from an off-frame window creates a gentle, even glow. The scene is minimal and tidy, with no person or hand visible in this first frame.",
+      "start_frame_path": null,
+      "text": "Foxfield Trench\nSilk-cotton drape. Effortlessly refined.",
+      "audio": "Soft, elegant instrumental bed. Subtle foley: a hanger slide and a gentle fabric rustle. No voiceover."
+    }
+  }
+}

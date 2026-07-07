@@ -1,0 +1,82 @@
+{
+  "ad_id": "mk-iced-black-tea-demo-001",
+  "brief": {
+    "product": {
+      "name": "Master Kong Iced Black Tea",
+      "category": "food",
+      "image_path": "examples/food/kangshifu-iced-black-tea.jpg",
+      "selling_points": [
+        "Cool and refreshing for hot days."
+      ]
+    },
+    "ad_category": "demo_proof",
+    "language": "en",
+    "duration_seconds": 6.0
+  },
+  "creative_strategy": {
+    "core_pain": "Feeling overheated and thirsty on a hot day with nothing that cools you down fast.",
+    "promise": "A chilled sip of Master Kong Iced Black Tea delivers instant cool, crisp refreshment."
+  },
+  "creative_design": {
+    "ad_category": "demo_proof",
+    "selected_category_reason": "The product is a ready-to-drink iced tea with a simple benefit: cool refreshment in heat. A single continuous action—pick up, sip, visible relief—provides a clear, trustworthy proof without complex props or liquid pouring.",
+    "candidate_categories": [
+      {
+        "ad_category": "demo_proof",
+        "score": 9,
+        "reason": "Directly proves the cooling benefit via a quick sip and a relief reaction, keeping focus on the bottle.",
+        "risk": "Relying on subtle cues like condensation may be less visible; ensure the actor’s reaction sells the coolness."
+      },
+      {
+        "ad_category": "product_detail",
+        "score": 8,
+        "reason": "Close-up details of the bottle and tea color communicate quality and thirst appeal.",
+        "risk": "Less explicit about the 'cool down fast' benefit without a human-action proof."
+      },
+      {
+        "ad_category": "lifestyle",
+        "score": 7,
+        "reason": "Hot-day outdoor vibe plus a relaxed sip can feel relatable and appetizing.",
+        "risk": "Lifestyle cues can dilute the clear proof if the action focus drifts."
+      }
+    ],
+    "selling_angle": "Instant cool-down: a quick sip that cuts the heat and quenches thirst.",
+    "emotional_tone": "crisp, refreshing, relieved",
+    "visual_grammar": "single-scene, product-forward medium close shot with one simple human action and a clean label-forward hold",
+    "proof_mechanism": "A human heat cue (forehead wipe), quick sip from the bottle, and clear relief expression while showing light condensation on the bottle.",
+    "hook_or_opening": "Sunlit bottle on a warm outdoor table, hinting at heat, with a cool-looking, slightly dewy surface.",
+    "action_arc": "From a sunlit table, a hot-feeling person enters, wipes forehead, grabs the bottle, takes a satisfying sip, then turns the label to camera with a refreshed smile.",
+    "payoff": "Refreshed expression and the bottle held label-forward near the face, signaling cool relief.",
+    "feasibility_notes": "Avoid pouring into glassware and tiny cap-closeups. Keep one actor, one table, one bottle. Let condensation be a soft visual; the main proof is the simple sip and reaction. No additional props or moving objects that require consistency."
+  },
+  "asset_memory": {
+    "character": {
+      "appearance": "Young adult with a friendly, everyday look and natural complexion.",
+      "wardrobe": "Light summer short-sleeve t-shirt in white or pale color.",
+      "hair_makeup": "Neat, practical hair (tied back or short); minimal natural makeup.",
+      "performance_style": "Subtle, realistic gestures: a quick forehead wipe, a satisfied small smile, gentle label-forward hold."
+    },
+    "scene": {
+      "location": "Outdoor patio or balcony table.",
+      "lighting": "Warm midday sunlight suggesting a hot day, with soft shadows.",
+      "background": "Pale stucco wall or sunlit exterior surface, clean and uncluttered.",
+      "key_props": []
+    },
+    "product": {
+      "visual_identity": "Master Kong Iced Black Tea in a plastic bottle with amber tea color and distinctive label consistent with the reference image.",
+      "proof_prop": "The chilled bottle itself (no extra glassware).",
+      "image_path": "examples/food/kangshifu-iced-black-tea.jpg"
+    }
+  },
+  "executable_layer": {
+    "type": "direct_full",
+    "duration_seconds": 6.0,
+    "single_shot": {
+      "visual_prompt": "A single continuous shot begins on a sunlit outdoor patio table with a real plastic bottle of iced black tea placed upright. Warm midday light makes the setting feel hot, while the bottle surface looks slightly dewy and cool. After a brief beat, a young adult steps in from the side, quickly wipes their forehead as a small heat cue, then reaches in, picks up the bottle smoothly, and brings it toward their mouth. They take a short, satisfying sip. As they lower the bottle, their expression relaxes into a refreshed smile. They naturally rotate the bottle so the front label faces the camera and hold it near their face for a clear, steady product-forward finish. The camera remains steady the entire time, keeping the table, pale sunlit wall, and the bottle consistent in frame.",
+      "start_frame_prompt": "Create the first frame using the real iced black tea bottle from the reference image placed on a matte light-wood outdoor table in warm midday sunlight. A pale sunlit stucco wall fills the background, simple and uncluttered. The bottle stands upright near center, with the label slightly angled but visible, and a subtle dewy look to suggest chill. No hand or person is visible in this first frame. Keep the lighting warm and bright to imply a hot day, with soft, natural shadows on the table.",
+      "start_frame_path": "runs/batch_standard_ads_20260706_010143/food_demo_proof/direct_start_frames/01_full_start.png",
+      "text": "Too hot? Cool down fast. | Master Kong Iced Black Tea",
+      "audio": "Light, upbeat summer groove with soft outdoor ambience. Subtle inhale/exhale “ahh” moment timed to the sip; no loud SFX."
+    }
+  }
+}

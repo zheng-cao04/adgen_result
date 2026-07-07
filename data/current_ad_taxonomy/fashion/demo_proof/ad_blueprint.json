@@ -1,0 +1,86 @@
+{
+  "ad_id": "burberry-foxfield-demo-001",
+  "brief": {
+    "product": {
+      "name": "Burberry Long Silk Cotton Foxfield Trench Coat",
+      "category": "fashion",
+      "image_path": "examples/fashion/burberry-foxfield-trench-coat.jpg",
+      "selling_points": [
+        "A fashionable and elegant long trench coat with a refined oatmeal beige silhouette.",
+        "High-quality silk-cotton faille tailoring with polished heritage details for a sophisticated look."
+      ]
+    },
+    "ad_category": "demo_proof",
+    "language": "en",
+    "duration_seconds": 6.0
+  },
+  "creative_strategy": {
+    "core_pain": "Shoppers can’t tell if a premium trench truly has elegant drape, refined silhouette, and polished tailoring from static images alone.",
+    "promise": "In one clean move, see the Foxfield trench’s silk‑cotton faille drape and long, refined oatmeal silhouette elevate any outfit."
+  },
+  "creative_design": {
+    "ad_category": "demo_proof",
+    "selected_category_reason": "A single, continuous try-on shows the coat’s drape and silhouette credibly without cuts. The viewer witnesses the fabric fall and clean lines as the model slips it on—simple, believable proof for a fashion piece.",
+    "candidate_categories": [
+      {
+        "ad_category": "demo_proof",
+        "score": 8,
+        "reason": "One-take wear-and-show makes the drape and silhouette visible, matching the product’s core benefits.",
+        "risk": "Fine tailoring details (buttons/epaulettes) are small; we avoid close-ups and rely on overall silhouette and fabric fall."
+      },
+      {
+        "ad_category": "product_detail",
+        "score": 7,
+        "reason": "Slow, static inspection could showcase texture and seams with minimal motion.",
+        "risk": "May feel too static and less persuasive without seeing the coat on-body."
+      },
+      {
+        "ad_category": "premium",
+        "score": 7,
+        "reason": "Elevated studio aesthetics can reinforce luxury perception.",
+        "risk": "A purely premium mood may lack a concrete on-body proof moment."
+      }
+    ],
+    "selling_angle": "A long, refined oatmeal trench that instantly polishes a simple black outfit with silk‑cotton faille drape.",
+    "emotional_tone": "confident, refined, understated luxury",
+    "visual_grammar": "Locked-off medium-wide studio shot; coat hangs on rack; model enters, lifts, slips on, slight quarter turn; minimal, elegant motion.",
+    "proof_mechanism": "On-body try-on in one take to visibly demonstrate the long, refined silhouette and smooth silk‑cotton drape.",
+    "hook_or_opening": "The trench hangs centered on a minimalist rack under soft warm light, its oatmeal tone and clean lines immediately clear.",
+    "action_arc": "From the static hanging coat, an adult model steps in, lifts the coat, slips it on smoothly, settles the collar with one hand, and turns slightly to show front and side lines.",
+    "payoff": "Model holds a composed stance facing camera at a slight angle—the long, clean silhouette and refined finish clearly visible.",
+    "feasibility_notes": "Avoid tiny actions like buttoning or tight belt tying. Keep camera static and movements slow to prevent fabric flutter dependence. No close-ups of small logos or hardware. Use a simple rack and hanger as the only props; consistent beige studio lighting to hint at gentle sheen without relying on subtle specular cues."
+  },
+  "asset_memory": {
+    "character": {
+      "appearance": "Adult woman with poised editorial presence and neutral expression.",
+      "wardrobe": "Slim black turtleneck and straight black tailored trousers, black low-heeled ankle boots.",
+      "hair_makeup": "Hair in a neat low bun; natural, polished makeup.",
+      "performance_style": "Calm, confident, precise movements; no exaggerated spins or fast steps."
+    },
+    "scene": {
+      "location": "Minimal studio with warm beige cyclorama and matte floor.",
+      "lighting": "Soft, warm, diffused studio key from front-left; gentle fill for even tones.",
+      "background": "Clean beige backdrop with no graphics or mirrors; negative space around the rack.",
+      "key_props": [
+        "Simple matte black garment rack",
+        "Plain light-wood hanger"
+      ]
+    },
+    "product": {
+      "visual_identity": "Burberry Long Silk Cotton Foxfield Trench Coat in refined oatmeal beige, long length, classic lapels, self belt, polished heritage tailoring details, smooth silk‑cotton faille texture.",
+      "proof_prop": "Matte black garment rack with a plain wooden hanger for the try-on pickup.",
+      "image_path": "examples/fashion/burberry-foxfield-trench-coat.jpg"
+    }
+  },
+  "executable_layer": {
+    "type": "direct_full",
+    "duration_seconds": 6.0,
+    "single_shot": {
+      "visual_prompt": "A locked-off, medium-wide shot in a warm beige studio shows a simple matte black garment rack centered on a matte floor. Hanging from a plain light-wood hanger is a long oatmeal beige trench coat (the real Burberry Foxfield trench), its clean lapels and belt visible, softly lit so the silk‑cotton faille looks smooth and refined. After a brief beat, an adult woman wearing a black turtleneck and black tailored trousers steps in from frame right. She calmly lifts the trench from the hanger, brings it slightly closer to her, and slips her arms into the sleeves in one smooth motion without fussing with buttons. She settles the collar with a light touch, then takes a small in-place quarter turn toward her left, presenting the front and side so the long, refined silhouette is clear against the black base outfit. She holds a composed pose for a moment, letting the drape read cleanly under the soft warm light, with the empty rack remaining behind her. The camera never moves, and the action stays slow and elegant.",
+      "start_frame_prompt": "Create a warm beige studio scene with a locked-off medium-wide composition. Center a simple matte black garment rack on a clean matte floor in front of a beige cyclorama. On the rack, hang the real Burberry Foxfield trench coat from the provided reference image, matching its oatmeal beige color, long length, smooth silk‑cotton faille look, lapels, self belt, and polished tailoring details, on a plain light-wood hanger. The coat should be neatly draped on the hanger, facing camera, with the rack and hanger clearly visible. Keep the background empty and minimal. No person or hands are visible in this first frame.",
+      "start_frame_path": null,
+      "text": "Silk‑cotton faille. Refined silhouette.",
+      "audio": "Soft, elegant piano underscore; natural cloth rustle as the coat is lifted and settled; no voiceover."
+    }
+  }
+}

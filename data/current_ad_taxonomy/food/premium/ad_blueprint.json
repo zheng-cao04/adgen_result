@@ -1,0 +1,90 @@
+{
+  "ad_id": "mk-iced-black-tea-premium-001",
+  "brief": {
+    "product": {
+      "name": "Master Kong Iced Black Tea",
+      "category": "food",
+      "image_path": "examples/food/kangshifu-iced-black-tea.jpg",
+      "selling_points": [
+        "Cool and refreshing for hot days."
+      ]
+    },
+    "ad_category": "premium",
+    "language": "en",
+    "duration_seconds": 6.0
+  },
+  "creative_strategy": {
+    "core_pain": "Feeling overheated and thirsty on hot days; most bottled drinks don’t feel instantly cooling or special.",
+    "promise": "A ready-to-drink iced black tea that delivers a cool, crisp moment of refreshment—elevated and satisfying the instant you pick it up."
+  },
+  "creative_design": {
+    "ad_category": "premium",
+    "selected_category_reason": "A restrained, design-led product hero treatment elevates a mainstream bottled tea into a cool, desirable object. With controlled cool-toned lighting, negative space, and a gentle hand interaction, the ad communicates refreshment and quality without risky liquid actions.",
+    "candidate_categories": [
+      {
+        "ad_category": "premium",
+        "score": 9,
+        "reason": "Best fit for elevating the brand with a simple, elegant hero approach. Uses controlled light, slow movement, and negative space to suggest cool refreshment and quality.",
+        "risk": "If over-stylized, it may feel distant; must keep the product recognizable and approachable."
+      },
+      {
+        "ad_category": "product_detail",
+        "score": 8,
+        "reason": "Focuses on bottle form, label, and cap with close-ups; feasible and credible.",
+        "risk": "May underplay the ‘refreshing on hot days’ feeling without a human interaction cue."
+      },
+      {
+        "ad_category": "lifestyle",
+        "score": 7,
+        "reason": "Showing a person enjoying the drink outdoors communicates refreshment clearly.",
+        "risk": "Environment complexity can strain a small video model; adds props and background continuity risks; less ‘premium’ tone."
+      },
+      {
+        "ad_category": "demo_proof",
+        "score": 6,
+        "reason": "Pouring over ice or showing condensation could dramatize coolness.",
+        "risk": "Liquid, ice, and condensation are fragile for small models; transparency and subtle physics reduce feasibility."
+      }
+    ],
+    "selling_angle": "Instant cool-down in the heat—a crisp, iced black tea moment the moment you lift the bottle.",
+    "emotional_tone": "cool, calm, refined, refreshing",
+    "visual_grammar": "clean hero placement, cool studio light, negative space, slow camera push-in, gentle hand lift and label-forward hold",
+    "proof_mechanism": "Premium aesthetic + simple, deliberate hand lift and tilt that implies ready-to-drink refreshment without risky liquid actions.",
+    "hook_or_opening": "Quiet hero bottle on a matte dark stone slab under cool, controlled side light.",
+    "action_arc": "Slow push-in; a single hand enters, gently lifts the bottle, tilts it slightly toward camera to suggest refreshment, then settles into a centered label-forward hold.",
+    "payoff": "Composed final product hold with soft edge highlight, label clear and inviting.",
+    "feasibility_notes": "No pouring, ice, or condensation effects. One matte stone surface, one cool background, one hand only. Gentle push-in and small rotation/tilt keep actions robust for a small video model. No new props introduced after the first frame."
+  },
+  "asset_memory": {
+    "character": {
+      "appearance": "Single adult hand with clean, natural skin tone; forearm partially visible.",
+      "wardrobe": "Off-white linen long-sleeve shirt cuff visible at wrist.",
+      "hair_makeup": "No face shown; no makeup needed.",
+      "performance_style": "Calm, deliberate, premium gestures with smooth, unhurried movement."
+    },
+    "scene": {
+      "location": "Minimalist studio tabletop setup.",
+      "lighting": "Cool, controlled commercial lighting with a soft key from the left, gentle edge highlights, and clean shadows.",
+      "background": "Seamless matte charcoal gray background with ample negative space.",
+      "key_props": [
+        "Matte dark slate stone slab as the tabletop surface"
+      ]
+    },
+    "product": {
+      "visual_identity": "The authentic Master Kong (Kang Shifu) Iced Black Tea bottled drink as in the reference: a plastic bottle with its real label and cap colors, presented upright, label-forward.",
+      "proof_prop": "Matte dark slate stone slab",
+      "image_path": "examples/food/kangshifu-iced-black-tea.jpg"
+    }
+  },
+  "executable_layer": {
+    "type": "direct_full",
+    "duration_seconds": 6.0,
+    "single_shot": {
+      "visual_prompt": "Starting from the composed studio scene with the real Master Kong Iced Black Tea bottle standing on a matte dark slate stone slab against a seamless matte charcoal gray background, the camera makes a slow, steady push-in under cool, controlled side lighting. After a brief beat, a single right hand with a clean, natural look and the cuff of an off-white linen shirt enters smoothly from frame right. The hand gently grips the bottle at mid-body, lifts it with care, rotates it just enough so the label faces the camera, and tilts it slightly toward the lens as if offering a sip—suggesting a cool, refreshing moment without pouring. The lighting remains calm and refined, catching a soft edge highlight on the bottle. The hand then steadies the bottle in a centered, label-forward hero hold above the slab as the slow push-in continues. End with the bottle steady and composed, quiet and premium, with no additional props introduced and the same background maintained throughout.",
+      "start_frame_prompt": "Create a premium studio tabletop scene featuring the real Master Kong Iced Black Tea bottle (from the provided reference) standing upright, label facing camera, on a matte dark slate stone slab. The background is a seamless matte charcoal gray wall with ample negative space. Use cool, controlled commercial lighting with a soft key from the left that creates a gentle edge highlight and clean, soft shadows. Keep the scene minimal and refined: only the bottle, the stone slab, and the plain charcoal background. No glassware, no ice, no condensation effects. No hand or person is visible in this first frame.",
+      "start_frame_path": null,
+      "text": "Master Kong Iced Black Tea — Cool and refreshing for hot days.",
+      "audio": "Light, cool ambient pad; a subtle whoosh as the hand lifts the bottle; a soft chime on the final hero hold. No voiceover."
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "ad_id": "portable_led_lamp_premium_v1",
+  "brief": {
+    "product": {
+      "name": "Portable LED Lamp",
+      "category": "electronics",
+      "image_path": "examples/electronics/portable_lamp.png",
+      "selling_points": [
+        "Compact and easy to carry.",
+        "Soft, warm light for desk, bedside, or travel use."
+      ]
+    },
+    "ad_category": "premium",
+    "language": "en",
+    "duration_seconds": 6.0
+  },
+  "creative_strategy": {
+    "core_pain": "Harsh, bulky lighting or desk lamps take up space and don’t travel well. People want a gentle, warm light they can place anywhere without clutter.",
+    "promise": "A compact portable LED lamp that’s easy to carry and delivers soft, warm light for desk, bedside, or travel."
+  },
+  "creative_design": {
+    "ad_category": "premium",
+    "selected_category_reason": "Premium product-hero best elevates a small, design-led electronic like a portable lamp. A restrained tabletop studio, controlled light, and negative space make the lamp feel refined while a single hand action shows scale and portability. A simple warm glow reveal underscores the softness claim without complex mechanics or UI.",
+    "candidate_categories": [
+      {
+        "ad_category": "premium",
+        "score": 9,
+        "reason": "Design-led product benefits from quiet elegance, controlled lighting, and a hero hold. Minimal action and a subtle warm light reveal signal quality and desirability.",
+        "risk": "Making the light-on moment obvious enough without overexposing the scene; subtlety can read as too static if not timed well."
+      },
+      {
+        "ad_category": "demo_proof",
+        "score": 8,
+        "reason": "A clear, single action—turning the lamp on to cast a warm light pool—directly proves the claim.",
+        "risk": "Can feel utilitarian rather than premium if the set is not refined; requires the light change to be visibly large and warm."
+      },
+      {
+        "ad_category": "product_detail",
+        "score": 7,
+        "reason": "Close material and form inspection can show compactness and surface quality.",
+        "risk": "Too static for 6 seconds and doesn’t easily convey the warm ambience unless the lamp actually turns on, which edges into demo."
+      }
+    ],
+    "selling_angle": "Design-grade portable lamp you can lift with one hand and enjoy a soft, warm glow anywhere.",
+    "emotional_tone": "calm, refined, cozy",
+    "visual_grammar": "premium product-hero tabletop, negative space, controlled commercial lighting, slow hand interaction, gentle camera push-in, warm glow reveal, composed final hold",
+    "proof_mechanism": "A single hand lifts to show compact scale, then a gentle touch activates a visible warm light pool on the matte surface—an immediate, simple proof of softness.",
+    "hook_or_opening": "The lamp sits centered on a matte dark stone tabletop in a minimalist studio, switched off, with subtle rim highlights.",
+    "action_arc": "From a still hero frame, a single hand enters, lifts the lamp briefly to show how compact it is, rotates it slightly, sets it back, then gently taps the top; the lamp turns on, casting a soft warm pool of light as the camera slowly pushes in.",
+    "payoff": "A steady premium hold on the glowing lamp with a calm warm halo on the tabletop and background, the hand withdrawn.",
+    "feasibility_notes": "No tiny button close-ups; the hand’s touch implies activation. One surface, one background, no extra props. Matte stone reduces reflections. The light-on event is a single, obvious warm glow that expands on the tabletop—simple and feasible in one take."
+  },
+  "asset_memory": {
+    "character": {
+      "appearance": "Only one adult hand appears; neatly groomed nails; neutral skin tone; no jewelry.",
+      "wardrobe": "Long-sleeve black top with a clean cuff; sleeve edge may enter frame with the hand.",
+      "hair_makeup": "Not visible.",
+      "performance_style": "Slow, precise, minimal movement with gentle, premium handling."
+    },
+    "scene": {
+      "location": "Commercial tabletop studio.",
+      "lighting": "Soft diffused key from above-left with a subtle rim; low ambient to let the lamp’s warm glow read clearly once activated.",
+      "background": "Deep charcoal, smooth studio backdrop with clean negative space.",
+      "key_props": [
+        "Matte dark stone tabletop slab"
+      ]
+    },
+    "product": {
+      "visual_identity": "The exact portable LED lamp from the reference image: compact, carry-friendly, clean silhouette, neutral finish, minimal detailing; presented powered off at start, then glowing warmly on activation.",
+      "proof_prop": "Matte dark stone tabletop that cleanly shows the lamp’s warm light pool.",
+      "image_path": "examples/electronics/portable_lamp.png"
+    }
+  },
+  "executable_layer": {
+    "type": "direct_full",
+    "duration_seconds": 6.0,
+    "single_shot": {
+      "visual_prompt": "Begin from the same scene: a compact portable LED lamp, exactly as in the reference, sits centered on a matte dark stone tabletop in a minimalist commercial studio. The background is a softly lit deep charcoal wall; the lamp is switched off and softly rim-lit. The camera holds steady, then starts a very gentle push-in. A single adult hand with a black long sleeve enters from the right edge, delicately gripping the sides of the lamp. The hand lifts the lamp a few centimeters to show its compact size, rotates it slightly to reveal its simple form, and places it back in the original centered spot on the stone. With a light, deliberate touch on the top, the lamp turns on smoothly; a soft, warm amber glow blooms and casts a gentle light pool across the matte stone and a faint warm gradient onto the charcoal background. The hand withdraws out of frame as the camera continues its slow push-in, ending on a composed premium hold of the glowing lamp.",
+      "start_frame_prompt": "Transform the actual product from the provided reference image into a premium tabletop scene. The exact portable LED lamp from the reference sits centered on a matte dark stone tabletop in a minimalist commercial studio. The background is a deep charcoal, softly lit backdrop with clean negative space. The lamp is powered off in this first frame, showing subtle rim highlights and a calm, refined look. No hand or person is visible in the first frame. Maintain a stable, straight-on tabletop composition with gentle, controlled studio lighting.",
+      "start_frame_path": null,
+      "text": "Soft warm light\nPortable, anywhere",
+      "audio": "Calm, minimal ambient bed; subtle hand movement whoosh; a soft chime as the lamp turns on; no voiceover."
+    }
+  }
+}

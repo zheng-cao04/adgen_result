@@ -1,0 +1,18 @@
+{
+  "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/electronics_rerun_20260706_193609/electronics_exaggerate/ad_blueprint.json",
+  "requests": [
+    {
+      "job_id": "portable_led_lamp_exag_001_direct_start_frame",
+      "candidate_id": "direct_full_c01",
+      "candidate_index": 0,
+      "candidate_count": 1,
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/electronics_rerun_20260706_193609/electronics_exaggerate/direct_start_frames/01_full_start.png",
+      "prompt": "Create one realistic full-frame start image for a product ad. Use reference image 1 (examples/electronics/portable_lamp.png) as the real product identity lock; preserve its shape, colors, material, packaging, labels, and marks. Full-scene, edge-to-edge physical setting, not a product-only packshot, with no inner frame, borders, insets, pasted image, black/white margins, or central vertical rectangle. Scene: cozy bedside/desk surface. The same compact portable LED lamp sits centered on a light wood bedside table; left: a closed paperback with cream pages; right: a small beige canvas travel pouch. Background: plain matte light-gray wall. Ambient light is dim and slightly cool; the lamp is off. Eye-level close-to-medium shot, shallow depth-of-field, focused on the lamp and tabletop. Product clearly visible at plausible scale and orientation. No hand or person in this first frame. No other objects, text, logos, captions, watermarks.",
+      "negative_prompt": "No captions, subtitles, watermark, UI, fake logo, random letters, extra fingers, warped hands, blurry product, wrong product, product-only packshot, empty background, inner frame, border, poster, inset image, image inside an image, black margins, dark outer margins, central vertical rectangle, photo within a photo, matted print.",
+      "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/electronics/portable_lamp.png",
+      "reference_image_paths": [
+        "/home/linabear/projects/adgen_workspace/adgen/examples/electronics/portable_lamp.png"
+      ]
+    }
+  ]
+}

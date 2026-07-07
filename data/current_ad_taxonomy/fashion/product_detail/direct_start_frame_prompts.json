@@ -1,0 +1,18 @@
+{
+  "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/fashion_product_detail/ad_blueprint.json",
+  "requests": [
+    {
+      "job_id": "pd-burberry-foxfield-001_direct_start_frame",
+      "candidate_id": "direct_full_c01",
+      "candidate_index": 0,
+      "candidate_count": 1,
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/fashion_product_detail/direct_start_frames/01_full_start.png",
+      "prompt": "One realistic full-frame start image for a one-take product ad; the physical studio scene must fill the canvas edge to edge—no inner frame, border, inset, pasted photo, central vertical rectangle, or black/white margins. Use reference image 1 (examples/fashion/burberry-foxfield-trench-coat.jpg) as the real product identity lock and preserve the Burberry Long Silk Cotton Foxfield Trench Coat’s shape, oatmeal‑beige color, silk–cotton faille, labels, and marks. Place the real product, not a packshot, hanging on a simple light‑wood hanger from a minimalist matte‑black clothing rack centered against a seamless warm neutral beige cyclorama. Belt threaded, untied. Soft diffused front‑left key with gentle fill to reveal texture, subtle sheen, and crisp lapel/epaulette edges. Eye‑level medium‑close framing: mid‑torso to just below hem, with part of the rack’s vertical bar visible. Product clearly visible at plausible scale and orientation. No hand/person, no extra props or text.",
+      "negative_prompt": "No captions, subtitles, watermark, UI, fake logo, random letters, extra fingers, warped hands, blurry product, wrong product, product-only packshot, empty background, inner frame, border, poster, inset image, image inside an image, black margins, dark outer margins, central vertical rectangle, photo within a photo, matted print.",
+      "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/fashion/burberry-foxfield-trench-coat.jpg",
+      "reference_image_paths": [
+        "/home/linabear/projects/adgen_workspace/adgen/examples/fashion/burberry-foxfield-trench-coat.jpg"
+      ]
+    }
+  ]
+}

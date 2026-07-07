@@ -1,0 +1,18 @@
+{
+  "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/fashion_exaggerate/ad_blueprint.json",
+  "requests": [
+    {
+      "job_id": "burberry_foxfield_exag_0001_direct_start_frame",
+      "candidate_id": "direct_full_c01",
+      "candidate_index": 0,
+      "candidate_count": 1,
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/fashion_exaggerate/direct_start_frames/01_full_start.png",
+      "prompt": "Full-scene, edge-to-edge studio start frame (no inner frame, border, inset, pasted image, black margins, or central vertical rectangle). Use reference image 1 as the real product identity lock; preserve Burberry Long Silk Cotton Foxfield Trench Coat shape, oatmeal beige color, silk‑cotton sheen, double-breasted front, belt, epaulettes, labels, and any visible marks. Place the product at plausible scale on a wooden hanger centered on a simple chrome garment rack. Background: minimal warm grey‑beige cyclorama with a clean seamless backdrop and matte concrete floor, filling all canvas edges. Lighting: soft neutral fill plus a controllable spotlight that, in this start frame, is faint, forming a subtle circle on the floor under the rack and positioned slightly forward for a long shadow. No hand or person. No additional props, graphics, mirrors, text, logos, watermarks, or posters. Not a product-only packshot.",
+      "negative_prompt": "No captions, subtitles, watermark, UI, fake logo, random letters, extra fingers, warped hands, blurry product, wrong product, product-only packshot, empty background, inner frame, border, poster, inset image, image inside an image, black margins, dark outer margins, central vertical rectangle, photo within a photo, matted print.",
+      "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/fashion/burberry-foxfield-trench-coat.jpg",
+      "reference_image_paths": [
+        "/home/linabear/projects/adgen_workspace/adgen/examples/fashion/burberry-foxfield-trench-coat.jpg"
+      ]
+    }
+  ]
+}

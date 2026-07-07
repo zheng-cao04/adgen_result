@@ -1,0 +1,90 @@
+{
+  "ad_id": "ksf_iced_black_tea_lifestyle_001",
+  "brief": {
+    "product": {
+      "name": "Master Kong Iced Black Tea",
+      "category": "food",
+      "image_path": "examples/food/kangshifu-iced-black-tea.jpg",
+      "selling_points": [
+        "Cool and refreshing for hot days."
+      ]
+    },
+    "ad_category": "lifestyle",
+    "language": "en",
+    "duration_seconds": 6.0
+  },
+  "creative_strategy": {
+    "core_pain": "Feeling overheated and thirsty on hot days, wanting an instant, simple way to cool down.",
+    "promise": "A quick, refreshing sip that cools you down and lifts your mood."
+  },
+  "creative_design": {
+    "ad_category": "lifestyle",
+    "selected_category_reason": "Lifestyle best conveys the product’s refreshing benefit by placing it in a believable hot-day moment. A single person taking a sip in natural sunlight communicates relief and coolness without complex liquid shots or technical proofs.",
+    "candidate_categories": [
+      {
+        "ad_category": "lifestyle",
+        "score": 9,
+        "reason": "Natural context of a warm day and a quick sip makes the refreshment claim intuitive and credible, with minimal execution risk.",
+        "risk": "Heat may not read if the environment cues are weak; we mitigate with sunlit balcony and a straw hat."
+      },
+      {
+        "ad_category": "product_detail",
+        "score": 7,
+        "reason": "Close focus on bottle, color, and crisp lighting can feel appetizing and premium for a drink.",
+        "risk": "Relying on condensation or fine text details is difficult for small video models."
+      },
+      {
+        "ad_category": "demo_proof",
+        "score": 7,
+        "reason": "A clear sip and visible relief is a straightforward, believable proof.",
+        "risk": "Cap motions and micro facial nuances can be subtle; keep motions simple and readable."
+      },
+      {
+        "ad_category": "exaggerate",
+        "score": 4,
+        "reason": "Fantasy cooling effects can grab attention.",
+        "risk": "Requires VFX-like elements (frost, mist) that are unreliable and may look unrealistic."
+      }
+    ],
+    "selling_angle": "Grab-and-sip summer refreshment that cools you down fast.",
+    "emotional_tone": "Warm, relaxed, and satisfying",
+    "visual_grammar": "One-scene lifestyle moment on a sunny balcony table; static camera, medium framing, simple hand action and a satisfied reaction.",
+    "proof_mechanism": "Natural use in a hot-day setting and a genuine post-sip relief expression.",
+    "hook_or_opening": "A sunlit balcony table with the iced black tea bottle and a straw hat signaling a hot day.",
+    "action_arc": "Establish the hot-day table; a person steps in, picks up the bottle, takes a sip, relaxes with a small smile, and holds the bottle near their face.",
+    "payoff": "Content, cooled expression with the bottle held up and sunlight catching it.",
+    "feasibility_notes": "No pouring, no condensation close-ups, and no complex cap manipulation. Only one person and one prop (straw hat) besides the bottle. Static camera; simple hand lift and sip. Avoid reliance on readable label text or tiny details."
+  },
+  "asset_memory": {
+    "character": {
+      "appearance": "One young adult with a friendly look and neutral expression, medium build, light skin tone.",
+      "wardrobe": "Plain white short-sleeve T-shirt and casual summer attire.",
+      "hair_makeup": "Neat, natural hair (short or tied back), minimal natural makeup.",
+      "performance_style": "Subtle, relaxed motions: smooth reach, brief sip, small relieved smile and gentle exhale."
+    },
+    "scene": {
+      "location": "Small sunlit balcony or patio with a light wood table.",
+      "lighting": "Warm afternoon sunlight with soft shadows; bright but not harsh.",
+      "background": "Soft-focus balcony railing and a single leafy green potted plant.",
+      "key_props": [
+        "Natural straw sun hat on the table"
+      ]
+    },
+    "product": {
+      "visual_identity": "A PET bottled iced black tea with amber tea color and a bold label consistent with Master Kong Iced Black Tea. The bottle shape and label colors should match the reference image; do not rely on perfectly readable text.",
+      "proof_prop": "Straw hat",
+      "image_path": "examples/food/kangshifu-iced-black-tea.jpg"
+    }
+  },
+  "executable_layer": {
+    "type": "direct_full",
+    "duration_seconds": 6.0,
+    "single_shot": {
+      "visual_prompt": "Begin from the same sunlit balcony tabletop scene: a light wood table holds the Master Kong Iced Black Tea bottle from the reference image standing upright beside a natural straw sun hat. The background shows a soft-focus balcony railing and one leafy green potted plant. Warm afternoon sunlight creates gentle highlights and soft shadows. The camera remains steady in a medium shot.\nAfter a brief beat, a young adult wearing a plain white short-sleeve T-shirt steps in from the right and reaches to pick up the same bottle from the table. They lift it smoothly and take a quick, satisfying sip. They gently exhale with a small, relaxed smile as if cooled by the drink, then keep the bottle held near their face with the label roughly toward camera while they glance contentedly toward the plants. The straw hat stays where it is on the table and the background remains unchanged. End on this calm, refreshed moment with the bottle and the person’s satisfied expression in frame.",
+      "start_frame_prompt": "Transform the real product in examples/food/kangshifu-iced-black-tea.jpg into a full-scene first frame. Place that exact bottled iced black tea upright on a clean light wood table on a small sunlit balcony or patio. Next to it on the same table, include a simple natural straw sun hat. In the background, show a soft-focus balcony railing and one leafy green potted plant. Use warm afternoon sunlight with gentle, natural highlights and soft shadows to suggest a hot day. Keep the composition as a calm, medium shot that clearly shows the bottle and the surrounding setting. No hand or person is visible in this first frame.",
+      "start_frame_path": "runs/batch_standard_ads_20260706_010143/food_lifestyle/direct_start_frames/01_full_start.png",
+      "text": "Hot day? Cool down fast.\nMaster Kong Iced Black Tea",
+      "audio": "Light, breezy summer pop beat with subtle outdoor ambience; a soft sip sound and a gentle relieved ‘ahh’ after the sip; no voiceover."
+    }
+  }
+}

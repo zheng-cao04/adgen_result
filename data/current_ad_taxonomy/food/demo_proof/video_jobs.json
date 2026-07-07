@@ -1,0 +1,97 @@
+{
+  "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/food_demo_proof/ad_blueprint_with_direct_start_frame.json",
+  "requests": [
+    {
+      "job_id": "mk-iced-black-tea-demo-001_full",
+      "prompt": "Raw one-take product ad for Master Kong Iced Black Tea. The scene shows a outdoor patio or balcony table. Use young adult with a friendly, everyday look as the only moving person or hand. A the chilled bottle itself (no. Use the provided start frame as video conditioning; preserve the real product identity already visible in that frame and keep the same product throughout the shot. A single continuous shot begins on a sunlit outdoor patio table with a real plastic bottle of iced black tea placed upright. Warm midday light makes the setting feel hot, while the bottle surface looks slightly dewy and cool. After a brief beat, a young adult steps in from the side, quickly wipes their forehead as a small heat cue, then reaches in, picks up the bottle smoothly, and brings it toward their mouth. They take a short, satisfying sip. As they lower the bottle, their expression relaxes into a refreshed smile. They naturally rotate the bottle so the front label faces the camera and hold it near their face for a clear, steady product-forward finish. The camera remains steady the entire time, keeping the table. Keep the same room and fixed camera for the whole shot, with one main subject, natural motion, and stable hands and product shape. Clean product-ad frame with only the main subject, the real product, natural props, and the visible scene.",
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/food_demo_proof/video/01_full.mp4",
+      "duration_seconds": 6.0,
+      "fps": 25,
+      "size": "704*1280",
+      "start_image_path": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/food_demo_proof/direct_start_frames/01_full_start.png",
+      "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/food/kangshifu-iced-black-tea.jpg",
+      "image_inputs": [
+        {
+          "role": "start_frame",
+          "path": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/food_demo_proof/direct_start_frames/01_full_start.png",
+          "consumed_by": "video_backend",
+          "video_conditioning": true,
+          "description": "Video start frame used as first-frame I2V conditioning by the video backend."
+        },
+        {
+          "role": "product_reference",
+          "path": "/home/linabear/projects/adgen_workspace/adgen/examples/food/kangshifu-iced-black-tea.jpg",
+          "consumed_by": "optional_start_frame_stage",
+          "video_conditioning": false,
+          "description": "Product identity reference for optional start-frame image-edit generation. It is not sent to the video backend as a separate product-reference conditioning image."
+        }
+      ],
+      "metadata": {
+        "role": "full",
+        "ad_type": "full",
+        "ad_category": "demo_proof",
+        "creative_design": {
+          "ad_category": "demo_proof",
+          "selected_category_reason": "The product is a ready-to-drink iced tea with a simple benefit: cool refreshment in heat. A single continuous action—pick up, sip, visible relief—provides a clear, trustworthy proof without complex props or liquid pouring.",
+          "candidate_categories": [
+            {
+              "ad_category": "demo_proof",
+              "score": 9,
+              "reason": "Directly proves the cooling benefit via a quick sip and a relief reaction, keeping focus on the bottle.",
+              "risk": "Relying on subtle cues like condensation may be less visible; ensure the actor’s reaction sells the coolness."
+            },
+            {
+              "ad_category": "product_detail",
+              "score": 8,
+              "reason": "Close-up details of the bottle and tea color communicate quality and thirst appeal.",
+              "risk": "Less explicit about the 'cool down fast' benefit without a human-action proof."
+            },
+            {
+              "ad_category": "lifestyle",
+              "score": 7,
+              "reason": "Hot-day outdoor vibe plus a relaxed sip can feel relatable and appetizing.",
+              "risk": "Lifestyle cues can dilute the clear proof if the action focus drifts."
+            }
+          ],
+          "selling_angle": "Instant cool-down: a quick sip that cuts the heat and quenches thirst.",
+          "emotional_tone": "crisp, refreshing, relieved",
+          "visual_grammar": "single-scene, product-forward medium close shot with one simple human action and a clean label-forward hold",
+          "proof_mechanism": "A human heat cue (forehead wipe), quick sip from the bottle, and clear relief expression while showing light condensation on the bottle.",
+          "hook_or_opening": "Sunlit bottle on a warm outdoor table, hinting at heat, with a cool-looking, slightly dewy surface.",
+          "action_arc": "From a sunlit table, a hot-feeling person enters, wipes forehead, grabs the bottle, takes a satisfying sip, then turns the label to camera with a refreshed smile.",
+          "payoff": "Refreshed expression and the bottle held label-forward near the face, signaling cool relief.",
+          "feasibility_notes": "Avoid pouring into glassware and tiny cap-closeups. Keep one actor, one table, one bottle. Let condensation be a soft visual; the main proof is the simple sip and reaction. No additional props or moving objects that require consistency."
+        },
+        "overlay_text": "Too hot? Cool down fast. | Master Kong Iced Black Tea",
+        "audio_direction": "Light, upbeat summer groove with soft outdoor ambience. Subtle inhale/exhale “ahh” moment timed to the sip; no loud SFX.",
+        "visual_prompt": "A single continuous shot begins on a sunlit outdoor patio table with a real plastic bottle of iced black tea placed upright. Warm midday light makes the setting feel hot, while the bottle surface looks slightly dewy and cool. After a brief beat, a young adult steps in from the side, quickly wipes their forehead as a small heat cue, then reaches in, picks up the bottle smoothly, and brings it toward their mouth. They take a short, satisfying sip. As they lower the bottle, their expression relaxes into a refreshed smile. They naturally rotate the bottle so the front label faces the camera and hold it near their face for a clear, steady product-forward finish. The camera remains steady the entire time, keeping the table, pale sunlit wall, and the bottle consistent in frame.",
+        "start_image_path": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/food_demo_proof/direct_start_frames/01_full_start.png",
+        "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/food/kangshifu-iced-black-tea.jpg",
+        "product_image_conditioning": false,
+        "direct_start_frame_conditioning": true,
+        "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/food_demo_proof/ad_blueprint_with_direct_start_frame.json",
+        "execution_layer_type": "direct_full",
+        "critic_expectation": {
+          "purpose": "Judge whether the raw video is a plausible product demo for Master Kong Iced Black Tea.",
+          "hard_requirements": [
+            "single continuous raw video shot with steady one-take continuity",
+            "complete direct prompt: A single continuous shot begins on a sunlit outdoor patio table with a real plastic bottle of iced black tea placed upright. Warm midday light makes the setting feel hot, while the bottle surface looks slightly dewy and cool. After a brief beat, a young.",
+            "physically plausible handling of the product by one main subject"
+          ],
+          "soft_context": [
+            "The shot may hint at this customer context: Feeling overheated and thirsty on a hot day with nothing that cools you down fast.",
+            "Focus the judgment on the requested product action, proof visibility, and one-take continuity.",
+            "Creative design expectation: ad_category=demo_proof; hook=Sunlit bottle on a warm outdoor table, hinting at heat, with a cool-looking, slightly dewy surface.; proof=A human heat cue (forehead wipe), quick sip from the bottle, and clear relief expression while showing light condensation on the bottle.; payoff=Refreshed expression.",
+            "Expected subject and scene style from asset memory: Young adult with a friendly, everyday look and natural complexion.; Light summer short-sleeve t-shirt in white or pale color.; Outdoor patio."
+          ],
+          "quality_checks": [
+            "stable face, hands, objects, and camera motion",
+            "main product action is visible and easy to understand",
+            "visible product appearance stays consistent with the product reference image",
+            "ad_category intent is recognizable through the opening, action arc, proof mechanism, and payoff"
+          ]
+        }
+      }
+    }
+  ]
+}

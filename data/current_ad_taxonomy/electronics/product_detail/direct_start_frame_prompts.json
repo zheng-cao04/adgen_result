@@ -1,0 +1,18 @@
+{
+  "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/electronics_product_detail/ad_blueprint.json",
+  "requests": [
+    {
+      "job_id": "portable_led_lamp_pd_0001_direct_start_frame",
+      "candidate_id": "direct_full_c01",
+      "candidate_index": 0,
+      "candidate_count": 1,
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/electronics_product_detail/direct_start_frames/01_full_start.png",
+      "prompt": "One realistic, full-scene start frame for a product ad. Use reference image 1 as the exact product identity—preserve the portable LED lamp’s shape, colors, material, packaging/labels, and any visible marks. Do not make a product-only packshot. The physical scene must fill the canvas edge to edge (no inner frame, border, poster, inset, card, image pasted on a background, black/white/empty margins, or central vertical rectangle). Scene: clean light-wood desk against a plain, soft off-white wall with subtle soft shadow, no decor. Lighting: soft ambient daylight; lamp unlit in this first frame (no amber glow yet). Placement/scale: the lamp sits centered on the desk in a natural orientation; to its left lies a small beige canvas travel pouch with simple zipper, flat and closed. Minimal, tidy scene, no other objects or on-screen text, watermarks or logos. No hand or person visible.",
+      "negative_prompt": "No captions, subtitles, watermark, UI, fake logo, random letters, extra fingers, warped hands, blurry product, wrong product, product-only packshot, empty background, inner frame, border, poster, inset image, image inside an image, black margins, dark outer margins, central vertical rectangle, photo within a photo, matted print.",
+      "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/electronics/portable_lamp.png",
+      "reference_image_paths": [
+        "/home/linabear/projects/adgen_workspace/adgen/examples/electronics/portable_lamp.png"
+      ]
+    }
+  ]
+}

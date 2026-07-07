@@ -1,0 +1,18 @@
+{
+  "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/fashion_lifestyle/ad_blueprint.json",
+  "requests": [
+    {
+      "job_id": "burberry_foxfield_trench_lifestyle_v1_direct_start_frame",
+      "candidate_id": "direct_full_c01",
+      "candidate_index": 0,
+      "candidate_count": 1,
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/fashion_lifestyle/direct_start_frames/01_full_start.png",
+      "prompt": "Full-frame start image, physical scene fills the canvas edge to edge—no inner frame, borders, insets, or margins. Use reference image 1 as the real product identity lock; keep the Burberry Long Silk Cotton Foxfield Trench Coat exactly as in ref (oatmeal beige color, silk-cotton, shape, labels, stitching/marks). Place that same coat neatly on a wooden hanger, centered on a simple matte-black clothing rack in a modern apartment entryway. Left: slim light-wood bench against a warm neutral wall. Right: closed light-wood front door. Floor: matte light wood. Soft natural morning light from an off-camera window, gentle warm, even illumination. Minimal, tidy scene; no person or hand. Product clearly visible at plausible scale and orientation. Not a packshot. No text, UI, posters, watermarks, or extra logos.",
+      "negative_prompt": "No captions, subtitles, watermark, UI, fake logo, random letters, extra fingers, warped hands, blurry product, wrong product, product-only packshot, empty background, inner frame, border, poster, inset image, image inside an image, black margins, dark outer margins, central vertical rectangle, photo within a photo, matted print.",
+      "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/fashion/burberry-foxfield-trench-coat.jpg",
+      "reference_image_paths": [
+        "/home/linabear/projects/adgen_workspace/adgen/examples/fashion/burberry-foxfield-trench-coat.jpg"
+      ]
+    }
+  ]
+}

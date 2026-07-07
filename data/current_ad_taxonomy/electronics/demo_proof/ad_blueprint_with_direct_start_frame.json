@@ -1,0 +1,85 @@
+{
+  "ad_id": "pll-demo-proof-0001",
+  "brief": {
+    "product": {
+      "name": "Portable LED Lamp",
+      "category": "electronics",
+      "image_path": "examples/electronics/portable_lamp.png",
+      "selling_points": [
+        "Compact and easy to carry.",
+        "Soft, warm light for desk, bedside, or travel use."
+      ]
+    },
+    "ad_category": "demo_proof",
+    "language": "en",
+    "duration_seconds": 6.0
+  },
+  "creative_strategy": {
+    "core_pain": "Needing gentle lighting for reading or bedside without taking up space or relying on a bulky lamp.",
+    "promise": "A compact LED lamp that’s easy to carry and casts a soft, warm light wherever you place it."
+  },
+  "creative_design": {
+    "ad_category": "demo_proof",
+    "selected_category_reason": "A single clear action—turning the lamp on—can visibly create a warm light patch on the table and book, proving both the light quality and practical use in one continuous shot while also showing the compact size by brief one-hand lift.",
+    "candidate_categories": [
+      {
+        "ad_category": "demo_proof",
+        "score": 9,
+        "reason": "Turning the lamp on and showing a warm light bloom is a direct, credible proof of benefit in one take.",
+        "risk": "If ambient is too bright, the warm light patch may be less visible; ensure dim, cozy baseline lighting."
+      },
+      {
+        "ad_category": "product_detail",
+        "score": 8,
+        "reason": "Tight, static inspection of size and diffuser could sell compactness and build, but lacks a clear functional moment.",
+        "risk": "Without the lamp turning on, viewers may not perceive light quality; might feel dry."
+      },
+      {
+        "ad_category": "lifestyle",
+        "score": 7,
+        "reason": "A bedside or desk routine can imply use cases and warmth through mood.",
+        "risk": "More scene elements increase drift risk; the proof of light quality may become indirect."
+      }
+    ],
+    "selling_angle": "Pocketable lamp that instantly fills your bedside or desk with soft, warm light.",
+    "emotional_tone": "calm, cozy, trustworthy",
+    "visual_grammar": "single locked bedside/desk shot, hand enters once, one clear on-action, visible warm light bloom on surface and book",
+    "proof_mechanism": "Lamp starts off; hand gently taps top; soft, warm light visibly spreads across the wooden surface and over a closed book.",
+    "hook_or_opening": "A quiet bedside/desk setup with the lamp off beside a closed paperback book.",
+    "action_arc": "Hand enters from the side, briefly lifts the lamp to show compact size, sets it down next to the book, gives a gentle tap; the lamp turns on and casts a warm pool of light that blooms outward.",
+    "payoff": "Hold on the warmly lit book and glowing lamp as the hand exits, leaving a cozy reading-ready scene.",
+    "feasibility_notes": "- Kept one-room, one-surface scene with a single static prop (closed book) to minimize drift.\n- Avoided precise button depiction; a general top tap triggers the light.\n- Ambient lighting is dim but not dark so the product remains visible; the warm light bloom is a large, obvious patch rather than subtle shadows.\n- No screens, text-in-scene, small LEDs, or complex hinges; one hand only and stable camera."
+  },
+  "asset_memory": {
+    "character": {
+      "appearance": "Adult hand only, medium-light skin tone.",
+      "wardrobe": "Neutral long-sleeve knit sweater, light gray.",
+      "hair_makeup": "Not visible (only hand appears).",
+      "performance_style": "Slow, deliberate, gentle movements; calm and tidy."
+    },
+    "scene": {
+      "location": "Small wooden bedside table or desk.",
+      "lighting": "Dim, cozy ambient light with warm bias (lamp initially off).",
+      "background": "Plain warm-gray wall; uncluttered and clean.",
+      "key_props": [
+        "A single closed paperback book with a plain cover."
+      ]
+    },
+    "product": {
+      "visual_identity": "Compact portable LED lamp matching the reference image: small, hand-friendly body with a soft diffuser; neutral matte finish; clean, minimalist look.",
+      "proof_prop": "Closed paperback book used as a surface to show the warm light pool.",
+      "image_path": "examples/electronics/portable_lamp.png"
+    }
+  },
+  "executable_layer": {
+    "type": "direct_full",
+    "duration_seconds": 6.0,
+    "single_shot": {
+      "visual_prompt": "A compact portable LED lamp, matching the reference image, sits turned off on a light wooden bedside table next to a single closed paperback book. The background is a plain warm‑gray wall. The room has dim, cozy ambient light so the lamp and book are clearly visible but there is no glow yet. The camera is locked and steady at a slightly high angle, showing the lamp and book on the tabletop in one composition. After a brief beat, an adult right hand wearing a light gray long‑sleeve sweater enters from the right, gently lifts the lamp for a moment to show its small one‑hand size, then sets it back down close to the book. The hand gives a gentle tap to the top of the lamp; the lamp turns on and a soft, warm pool of light blooms outward across the wood surface and washes over the book cover. The hand slowly rotates the lamp a few degrees to show the cozy glow, then releases and exits the frame. Hold for a moment on the warmly lit book and glowing lamp in the calm bedside scene.",
+      "start_frame_prompt": "Transform the product reference image (examples/electronics/portable_lamp.png) into a calm bedside/desk scene. Show the same compact LED lamp turned off on a light wooden table surface, positioned beside a single closed paperback book with a plain cover. Background is a simple warm‑gray wall with no additional decorations. Lighting is dim and cozy ambient so the product is clearly visible but not glowing. The camera is a steady, slightly high angle framing the lamp and book together on the tabletop. No hand or person is visible in this first frame.",
+      "start_frame_path": "runs/electronics_rerun_20260706_193609/electronics_demo_proof/direct_start_frames/01_full_start.png",
+      "text": "Soft warm light. Easy to carry.",
+      "audio": "Quiet lo‑fi instrumental bed. Subtle tap click when the lamp is touched, followed by a gentle warm chime swell as the light turns on; fade under by the end."
+    }
+  }
+}

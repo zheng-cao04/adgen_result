@@ -1,0 +1,84 @@
+{
+  "ad_id": "ad-ksf-iced-black-tea-exag-001",
+  "brief": {
+    "product": {
+      "name": "Master Kong Iced Black Tea",
+      "category": "food",
+      "image_path": "examples/food/kangshifu-iced-black-tea.jpg",
+      "selling_points": [
+        "Cool and refreshing for hot days."
+      ]
+    },
+    "ad_category": "exaggerate",
+    "language": "en",
+    "duration_seconds": 6.0
+  },
+  "creative_strategy": {
+    "core_pain": "Hot days make you feel overheated and sluggish; many drinks don’t instantly feel cooling.",
+    "promise": "A quick sip delivers an instant cool, refreshing relief."
+  },
+  "creative_design": {
+    "ad_category": "exaggerate",
+    "selected_category_reason": "Exaggeration can turn the cooling benefit into a bold, single-shot lighting shift from hot to cool, keeping it playful and credible without needing complex liquids or VFX.",
+    "candidate_categories": [
+      {
+        "ad_category": "exaggerate",
+        "score": 9,
+        "reason": "Strong visual contrast (warm-to-cool light) instantly communicates refreshment for a bottled tea in one simple, feasible shot.",
+        "risk": "If the lighting shift is too subtle, the exaggeration may feel unclear; ensure a noticeable but natural color temperature change."
+      },
+      {
+        "ad_category": "lifestyle",
+        "score": 7,
+        "reason": "Showing a person enjoying the drink in a summer moment communicates satisfaction and context.",
+        "risk": "Requires more set dressing and continuity; risk of clutter and weaker immediacy vs. a bold hook."
+      },
+      {
+        "ad_category": "product_detail",
+        "score": 6,
+        "reason": "Close-ups of the bottle can look appetizing and brand-forward.",
+        "risk": "Fine details like condensation or label text may drift; less emotional impact than an exaggerated mood shift."
+      }
+    ],
+    "selling_angle": "Instant cool-down refreshment in the heat.",
+    "emotional_tone": "Playful, relieving, crisp.",
+    "visual_grammar": "One-scene exaggerated mood switch: warm, sun-baked look flips to cool, blue tone during a single sip; tight person-and-product framing.",
+    "proof_mechanism": "Dramatic but plausible lighting and color-temperature shift from warm/orange to cool/blue as the sip happens.",
+    "hook_or_opening": "Bottle stands on a sun-warmed tabletop bathed in golden light, signaling a hot day.",
+    "action_arc": "A hand reaches in, grabs the bottle, takes a quick sip; as they sip, the scene’s lighting cools to blue and the person’s expression relaxes; they bring the bottle closer with the label facing camera.",
+    "payoff": "Cool-toned scene holds on the bottle near camera and a small satisfied nod from the person.",
+    "feasibility_notes": "Single locked camera, one subject, no pouring, no ice, no condensation micro-details. The only ‘exaggeration’ is an overall color-temperature and brightness shift, which is a simple, robust cue for open-source models."
+  },
+  "asset_memory": {
+    "character": {
+      "appearance": "One young adult, neutral friendly look, light to medium skin tone, natural appearance.",
+      "wardrobe": "Plain light-colored short-sleeve T-shirt (no logos), casual summer style.",
+      "hair_makeup": "Simple, neat hair; natural makeup with a clean, fresh look.",
+      "performance_style": "Restrained, clear actions: reach, sip, small relieved smile, subtle nod; no big gestures."
+    },
+    "scene": {
+      "location": "Simple indoor tabletop setup.",
+      "lighting": "Start: warm, sunny amber tone; End: cool, soft blue tone after sip.",
+      "background": "Plain beige wall with a soft sunlit patch; uncluttered and clean.",
+      "key_props": [
+        "Light wood tabletop surface"
+      ]
+    },
+    "product": {
+      "visual_identity": "Master Kong Iced Black Tea plastic bottle with amber tea tone and brand label; cap intact; upright and clean.",
+      "proof_prop": "none",
+      "image_path": "examples/food/kangshifu-iced-black-tea.jpg"
+    }
+  },
+  "executable_layer": {
+    "type": "direct_full",
+    "duration_seconds": 6.0,
+    "single_shot": {
+      "visual_prompt": "A single continuous shot of a light-wood tabletop against a plain beige wall. The Master Kong Iced Black Tea bottle from the reference stands upright at center on the table. The scene feels like a hot afternoon: warm, golden sunlight spreads across the wall and tabletop, with a slightly hazy amber tone. After a brief beat, a person enters the frame from the right. Their hand reaches in, picks up the bottle, and brings it to their mouth for a quick sip. As they drink, the overall scene smoothly shifts from warm amber to a cooler blue tone, as if the room’s temperature dropped: the wall and tabletop color temperature cools, the light becomes crisp and refreshing, and the person’s expression relaxes into a small relieved smile. They lower the bottle slightly and bring it closer toward the camera with the label facing forward, holding it steady in the cool-toned light. The person gives a small satisfied nod while holding the bottle near the lens. The camera remains locked throughout, no added props or text in scene.",
+      "start_frame_prompt": "Transform the product reference image into a full-scene first frame: Place the Master Kong Iced Black Tea bottle from the reference image standing upright on a clean light-wood tabletop. Behind it, a plain beige wall shows a gentle, warm sunlit patch to suggest a hot afternoon. Lighting is warm, golden, and slightly amber. No hand or person is visible in this first frame. No additional props are present; the scene is minimal with only the tabletop, the beige wall, and the bottle.",
+      "start_frame_path": "runs/batch_standard_ads_20260706_010143/food_exaggerate/direct_start_frames/01_full_start.png",
+      "text": "Opening (warm tone): Beat the heat\nPayoff (cool tone): Cool in a sip",
+      "audio": "Music: light, sunny groove that shifts to a crisp, cool chime when the sip happens. SFX: a soft whoosh timed with the warm-to-cool lighting change. Performance: a subtle, satisfied ‘ahh’ on the exhale."
+    }
+  }
+}

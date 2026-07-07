@@ -1,0 +1,86 @@
+{
+  "ad_id": "portable_led_lamp_exag_001",
+  "brief": {
+    "product": {
+      "name": "Portable LED Lamp",
+      "category": "electronics",
+      "image_path": "examples/electronics/portable_lamp.png",
+      "selling_points": [
+        "Compact and easy to carry.",
+        "Soft, warm light for desk, bedside, or travel use."
+      ]
+    },
+    "ad_category": "exaggerate",
+    "language": "en",
+    "duration_seconds": 6.0
+  },
+  "creative_strategy": {
+    "core_pain": "Harsh, cold lighting or no light at all makes late-night reading or working unpleasant, and bulky lamps are inconvenient to move.",
+    "promise": "A compact, carry-friendly LED lamp that instantly creates a soft, warm glow wherever you need it—desk, bedside, or on the go."
+  },
+  "creative_design": {
+    "ad_category": "exaggerate",
+    "selected_category_reason": "Exaggerate enables a bold, scene-wide warm-light transformation anchored to the lamp, quickly communicating cozy ambiance and portability in one shot without relying on tiny indicators or complex mechanisms.",
+    "candidate_categories": [
+      {
+        "ad_category": "exaggerate",
+        "score": 9,
+        "reason": "A dramatic cool-to-warm scene shift makes the lighting benefit obvious and attention-grabbing in seconds.",
+        "risk": "Overly strong light effects could look unnatural if not grounded in the lamp."
+      },
+      {
+        "ad_category": "demo_proof",
+        "score": 8,
+        "reason": "A simple on/off demo showing a big warm light patch is clear and credible.",
+        "risk": "May feel less attention-grabbing than an exaggerated shift."
+      },
+      {
+        "ad_category": "product_detail",
+        "score": 7,
+        "reason": "Close inspection can show compact size and diffuser quality.",
+        "risk": "Might not convey cozy ambiance as viscerally within 6 seconds."
+      }
+    ],
+    "selling_angle": "Instant cozy warmth plus pocketable portability.",
+    "emotional_tone": "Playful, warm, and surprising.",
+    "visual_grammar": "One-take tabletop close-to-medium shot, static camera, exaggerated warm-light bloom anchored to the lamp, minimal props.",
+    "proof_mechanism": "A visible cool-to-warm lighting transformation that radiates from the lamp and fills the desk and wall, with the book and pouch warming in color as credible surfaces.",
+    "hook_or_opening": "Dim, cool-toned desk with the lamp off—quiet and slightly stark.",
+    "action_arc": "A single hand enters, taps the lamp; a warm halo expands across the surface and wall; the hand lifts the glowing lamp briefly to show compact size, then places it back near the pouch.",
+    "payoff": "Steady warm, cozy scene with the small lamp glowing beside the travel pouch—portable comfort confirmed.",
+    "feasibility_notes": "Avoids precise button press depiction, tiny LEDs, or complex props. Uses a single hand and stable tabletop to show an obvious warm-light bloom. Minimal set: book and pouch act as large, readable surfaces that visibly warm. One continuous shot with a small lift action only."
+  },
+  "asset_memory": {
+    "character": {
+      "appearance": "One adult hand with medium skin tone; clean, natural look.",
+      "wardrobe": "Long-sleeve neutral knit sweater cuff entering from right.",
+      "hair_makeup": "Not visible; focus remains on the hand only.",
+      "performance_style": "Calm, precise movements: light tap, gentle lift, smooth set-down."
+    },
+    "scene": {
+      "location": "A small bedside/desk surface in a cozy room.",
+      "lighting": "Start dim with cool ambient; after tap, the lamp casts a warm, soft glow that fills the scene.",
+      "background": "Plain matte light-gray wall for clear light color shift.",
+      "key_props": [
+        "Closed paperback book with cream pages",
+        "Small beige canvas travel pouch"
+      ]
+    },
+    "product": {
+      "visual_identity": "Compact portable LED lamp with a matte diffuser and simple clean lines; when on, it emits a soft warm glow.",
+      "proof_prop": "Closed paperback book with cream pages as a surface that visibly warms in the light.",
+      "image_path": "examples/electronics/portable_lamp.png"
+    }
+  },
+  "executable_layer": {
+    "type": "direct_full",
+    "duration_seconds": 6.0,
+    "single_shot": {
+      "visual_prompt": "A single continuous tabletop shot begins with a compact portable LED lamp from the provided reference sitting centered on a light wood bedside table. To the left is a closed paperback book with cream pages; to the right is a small beige canvas travel pouch. The background is a plain matte light‑gray wall. The room is dim with a cool tint, and the lamp is off. The camera is steady, eye‑level, framing the lamp and nearby props closely.\nAfter a brief beat, one adult hand wearing a neutral long‑sleeve sweater cuff enters from the right. The hand gently taps the top of the lamp. The lamp turns on and immediately casts a soft, warm glow that visibly blooms outward from the lamp, warming the table surface, the book’s cream pages, the pouch fabric, and the wall behind into a cozy, amber tone. Keep the glow anchored to the lamp so it feels like a natural light source rather than a special effect.\nThe hand then lifts the glowing lamp smoothly, holding it just above the table to show that it’s compact and easy to carry while the warm halo continues to illuminate the area. After a short pause, the hand places the lamp back down beside the pouch. End on a steady, warmly lit composition of the lamp glowing on the table with the book and pouch softly illuminated. No other objects appear; no text or logos in the scene.",
+      "start_frame_prompt": "Transform the product reference image (examples/electronics/portable_lamp.png) into a natural in‑scene start frame: the same compact portable LED lamp sits centered on a light wood bedside table. To the left lies a closed paperback book with cream pages, and to the right sits a small beige canvas travel pouch. The background is a plain matte light‑gray wall. The ambient lighting is dim and slightly cool; the lamp is off. Compose an eye‑level, close‑to‑medium shot focused on the lamp and tabletop with shallow depth‑of‑field. No hand or person is visible in this first frame. Do not include any other objects, text, or logos.",
+      "start_frame_path": null,
+      "text": "Tap for warm, cozy light. Compact & travel‑ready.",
+      "audio": "A playful pluck on tap, followed by a gentle warm pad swell as the light blooms; subtle room tone throughout."
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/food_demo_proof/ad_blueprint.json",
+  "requests": [
+    {
+      "job_id": "mk-iced-black-tea-demo-001_direct_start_frame",
+      "candidate_id": "direct_full_c01",
+      "candidate_index": 0,
+      "candidate_count": 1,
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/food_demo_proof/direct_start_frames/01_full_start.png",
+      "prompt": "Single realistic full-frame start image for a one-take ad. Use reference image 1 as the real product identity lock; preserve Master Kong Iced Black Tea bottle shape, colors, material, packaging, labels, visible marks. Place the same real bottle upright near center on a matte light-wood outdoor patio/balcony table at plausible scale, label slightly angled yet readable, subtle condensation/dew. Background: pale sunlit stucco wall, clean and uncluttered. Warm midday sunlight like a hot day, with soft natural shadows across the table. No hand or person. The physical scene must fill edge to edge—no inner frame, borders, posters, insets, pasted imagery, black margins, or central vertical rectangle. Not a product-only packshot. No captions, random text, extra or fake logos, or watermarks.",
+      "negative_prompt": "No captions, subtitles, watermark, UI, fake logo, random letters, extra fingers, warped hands, blurry product, wrong product, product-only packshot, empty background, inner frame, border, poster, inset image, image inside an image, black margins, dark outer margins, central vertical rectangle, photo within a photo, matted print.",
+      "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/food/kangshifu-iced-black-tea.jpg",
+      "reference_image_paths": [
+        "/home/linabear/projects/adgen_workspace/adgen/examples/food/kangshifu-iced-black-tea.jpg"
+      ]
+    }
+  ]
+}

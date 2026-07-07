@@ -1,0 +1,86 @@
+{
+  "ad_id": "burberry_foxfield_premium_001",
+  "brief": {
+    "product": {
+      "name": "Burberry Long Silk Cotton Foxfield Trench Coat",
+      "category": "fashion",
+      "image_path": "examples/fashion/burberry-foxfield-trench-coat.jpg",
+      "selling_points": [
+        "A fashionable and elegant long trench coat with a refined oatmeal beige silhouette.",
+        "High-quality silk-cotton faille tailoring with polished heritage details for a sophisticated look."
+      ]
+    },
+    "ad_category": "premium",
+    "language": "en",
+    "duration_seconds": 6.0
+  },
+  "creative_strategy": {
+    "core_pain": "Finding a trench coat that looks truly refined and premium rather than ordinary, with fabric and tailoring that read as luxurious in real life.",
+    "promise": "A long oatmeal beige trench tailored in silk-cotton faille with polished heritage details that instantly communicates quiet luxury and a sophisticated silhouette."
+  },
+  "creative_design": {
+    "ad_category": "premium",
+    "selected_category_reason": "Premium lets the coat feel expensive through restraint, controlled light, negative space, and a composed product hold. For a luxury trench, tactile material and silhouette presence sell desirability without needing complex actions or locations.",
+    "candidate_categories": [
+      {
+        "ad_category": "premium",
+        "score": 9,
+        "reason": "Best fit for luxury fashion: quiet studio, controlled highlights on silk-cotton faille, composed final hold.",
+        "risk": "Fabric texture and subtle sheen can be hard to render; must avoid complex fabric motion."
+      },
+      {
+        "ad_category": "product_detail",
+        "score": 8,
+        "reason": "Close-ups on buttons, belt, and faille texture can prove craftsmanship without needing a model.",
+        "risk": "May feel too technical and lose the elevated mood if over-detailed."
+      },
+      {
+        "ad_category": "lifestyle",
+        "score": 6,
+        "reason": "A model walking could show silhouette and movement.",
+        "risk": "Open-source models may warp garments and struggle with walking; risk to premium polish."
+      }
+    ],
+    "selling_angle": "Quiet luxury through silk-cotton faille texture and a refined oatmeal silhouette under controlled studio light.",
+    "emotional_tone": "Understated, elegant, confident, refined.",
+    "visual_grammar": "Studio product hero with negative space, soft directional key light, slow camera push-in, gentle human touch for scale.",
+    "proof_mechanism": "Tactile sheen and structure under soft light; a single elegant hand lightly touches the lapel to suggest crisp tailoring without stressing fabric physics.",
+    "hook_or_opening": "A long oatmeal beige trench hangs centered on a minimalist black rack in a warm cream studio; soft light reveals the silk-cotton faille.",
+    "action_arc": "From a still, composed start, the camera performs a slow push-in. A well-groomed hand enters briefly to lightly smooth the lapel and align the belt, then exits as the camera settles into a centered hero composition.",
+    "payoff": "A calm, symmetrical final hold of the trench centered on the rack, belt neatly arranged, fabric catching a gentle highlight.",
+    "feasibility_notes": "Avoided a walking model or wearing sequence to reduce garment distortion. No logo emphasis. One simple prop (rack + hanger). Single gentle hand interaction and a slow push-in keep motion clear and survivable for small video models."
+  },
+  "asset_memory": {
+    "character": {
+      "appearance": "Only a refined hand/forearm appears: well-groomed, neutral nails, light to medium skin tone, no jewelry.",
+      "wardrobe": "Slim black long-sleeve fine-knit top covering the forearm.",
+      "hair_makeup": "Not visible; focus is on the hand being clean and elegant.",
+      "performance_style": "Calm, minimal movement, precise and slow."
+    },
+    "scene": {
+      "location": "Quiet studio cyclorama.",
+      "lighting": "Soft directional key from camera-left with gentle fill; subtle highlight to reveal faille texture.",
+      "background": "Warm cream seamless backdrop continuous with floor, minimal shadows, no visual clutter.",
+      "key_props": [
+        "Slim black metal clothing rack",
+        "Natural wood hanger"
+      ]
+    },
+    "product": {
+      "visual_identity": "Long oatmeal beige trench coat in silk-cotton faille with polished heritage tailoring details (epaulettes, storm flap, belted waist, classic buttons). Refined, matte-lustre finish.",
+      "proof_prop": "Black metal clothing rack with a natural wood hanger to present the garment cleanly.",
+      "image_path": "examples/fashion/burberry-foxfield-trench-coat.jpg"
+    }
+  },
+  "executable_layer": {
+    "type": "direct_full",
+    "duration_seconds": 6.0,
+    "single_shot": {
+      "visual_prompt": "A warm, minimal studio scene. Center frame: a long oatmeal beige trench coat from the reference image hangs on a natural wood hanger, which sits on a slim black metal clothing rack. The backdrop is a warm cream seamless cyclorama that continues into the floor. Soft directional light from camera-left creates a gentle highlight along the coat’s faille texture, with a very subtle, clean shadow on the floor. The shot begins still and composed, then the camera performs a slow, smooth push-in toward the coat. After the first moment, a well-groomed hand and forearm in a slim black knit sleeve enters from frame right and lightly smooths the coat’s left lapel once, then gently straightens the belt so it lies flat, keeping all movements slow and precise. The hand exits the frame. As the camera continues its unhurried push-in, the subtle sheen of the silk-cotton faille catches the light naturally, emphasizing the refined oatmeal tone and the coat’s long, elegant silhouette on the rack. The shot comes to rest in a centered, symmetrical hero composition of the trench, calm and premium.",
+      "start_frame_prompt": "Transform the reference image of the trench coat into a full studio scene: The long oatmeal beige trench coat from the reference image is hanging neatly on a natural wood hanger, centered on a slim black metal clothing rack. The rack stands on a warm cream seamless cyclorama that continues into the floor, creating a clean, uncluttered background with ample negative space. Soft directional light from the left reveals the subtle sheen and texture of the silk-cotton faille while keeping shadows minimal and tidy. No person or hand is visible in the first frame; only the coat on the hanger and the black metal rack appear against the warm cream backdrop and floor.",
+      "start_frame_path": null,
+      "text": "Silk-cotton faille. Refined silhouette.",
+      "audio": "Low, understated piano bed with a soft room tone; a subtle cloth rustle as the hand touches the lapel; no voiceover."
+    }
+  }
+}

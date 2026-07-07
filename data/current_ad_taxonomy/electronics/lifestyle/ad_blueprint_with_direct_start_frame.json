@@ -1,0 +1,87 @@
+{
+  "ad_id": "portable_led_lamp_lifestyle_v1",
+  "brief": {
+    "product": {
+      "name": "Portable LED Lamp",
+      "category": "electronics",
+      "image_path": "examples/electronics/portable_lamp.png",
+      "selling_points": [
+        "Compact and easy to carry.",
+        "Soft, warm light for desk, bedside, or travel use."
+      ]
+    },
+    "ad_category": "lifestyle",
+    "language": "en",
+    "duration_seconds": 6.0
+  },
+  "creative_strategy": {
+    "core_pain": "Harsh overhead lighting or no light where you need it, and bulky lamps that aren’t convenient to move for bedtime, desk work, or travel.",
+    "promise": "A compact lamp you can place or carry anywhere that gives a soft, warm glow for cozy reading and everyday tasks."
+  },
+  "creative_design": {
+    "ad_category": "lifestyle",
+    "selected_category_reason": "Lifestyle lets us place the lamp in a believable bedside routine where warm light and portability are obvious without complex mechanics. A single cozy scene with one hand turning it on sells both comfort and compactness credibly.",
+    "candidate_categories": [
+      {
+        "ad_category": "lifestyle",
+        "score": 9,
+        "reason": "Shows the lamp in a real bedside/desk use occasion with natural warm light and a simple carry cue.",
+        "risk": "If the ambient lighting is too bright, the warm glow may be less noticeable."
+      },
+      {
+        "ad_category": "demo_proof",
+        "score": 8,
+        "reason": "A one-shot turn-on moment clearly demonstrates warm light output.",
+        "risk": "Focusing only on the light-on may underplay portability and lifestyle context."
+      },
+      {
+        "ad_category": "product_detail",
+        "score": 7,
+        "reason": "Close-ups of compact form and diffuser can sell design and size.",
+        "risk": "May feel clinical and less emotive than a lifestyle scene."
+      }
+    ],
+    "selling_angle": "Cozy, warm light you can place anywhere—small enough to carry, perfect for bedside or desk moments.",
+    "emotional_tone": "Warm, calm, and relaxed",
+    "visual_grammar": "One cozy bedside scene with gentle ambient light; the lamp is the hero with a simple hand interaction and a visible warm light patch.",
+    "proof_mechanism": "Natural use: lamp turns on and casts a soft warm glow onto a nearby book; one-hand lift shows compact, easy-to-carry size.",
+    "hook_or_opening": "A quiet bedside table with the compact lamp beside a book and a small travel pouch, lamp still off.",
+    "action_arc": "From a calm bedside setup, a hand enters, gently touches the lamp to turn it on, warm light spreads across the book, then lifts and sets the lamp back to show its lightweight portability, ending on a cozy lit scene.",
+    "payoff": "The lamp sits glowing warmly beside the book and pouch, signaling comfort and portability.",
+    "feasibility_notes": "Kept to one scene, one hand, and two simple props (book and small pouch). Avoided showing a tiny button press; the action is a gentle top touch. No bag insertion or complex mechanisms. The warm glow is a single noticeable light patch on the book for clear readability."
+  },
+  "asset_memory": {
+    "character": {
+      "appearance": "One adult with neutral skin tone; only the right hand and forearm appear.",
+      "wardrobe": "Soft knit long-sleeve sweater in light beige to keep focus on the lamp.",
+      "hair_makeup": "Hair off-camera; clean, natural look; short clean nails.",
+      "performance_style": "Gentle, unhurried movements with a single clear interaction."
+    },
+    "scene": {
+      "location": "Cozy bedroom bedside table",
+      "lighting": "Dim, warm evening ambience with enough base light to see the product clearly; additional warmth comes from the lamp after it turns on.",
+      "background": "Soft fabric headboard and neutral-colored wall with a lightly blurred depth-of-field.",
+      "key_props": [
+        "Light-wood bedside table",
+        "Small paperback book",
+        "Small canvas travel pouch"
+      ]
+    },
+    "product": {
+      "visual_identity": "Compact portable LED lamp as in the reference image, with a clean, matte finish and a soft diffused light emitter; minimal or no visible branding.",
+      "proof_prop": "Small paperback book for visible warm light spill",
+      "image_path": "examples/electronics/portable_lamp.png"
+    }
+  },
+  "executable_layer": {
+    "type": "direct_full",
+    "duration_seconds": 6.0,
+    "single_shot": {
+      "visual_prompt": "A single, calm shot begins on a cozy bedside table. The exact portable LED lamp from the reference sits centered on a light-wood nightstand. To its left is a small paperback book, and to its right a small canvas travel pouch. The room has gentle evening ambience; the lamp is off. The camera remains steady with a slight, slow micro push-in. After a beat, an adult right hand in a light beige knit sleeve enters from the right, gently touches the top of the lamp. The lamp turns on and blooms a soft, warm glow that clearly spreads onto the book’s pages, making the area feel cozy. The hand lightly lifts the lamp an inch to show it’s lightweight and compact, then sets it back down closer to the book, keeping the warm light on the pages. Hold a quiet moment on the glowing lamp, book, and pouch together in the same frame for a comfortable finish.",
+      "start_frame_prompt": "Create the first frame of a cozy bedside scene using the exact portable LED lamp from the product reference image. Place the lamp centered on a light-wood bedside table. To the left of the lamp, place a small paperback book; to the right, place a small canvas travel pouch. Keep the lamp turned off in this first frame. The background shows a soft fabric headboard and a neutral wall with gentle evening ambience. No hand or person is visible in the first frame. The camera view is a simple, stable eye-level angle that captures the lamp, book, and pouch together on the nightstand.",
+      "start_frame_path": "runs/electronics_rerun_20260706_193609/electronics_lifestyle/direct_start_frames/01_full_start.png",
+      "text": "Warm light, anywhere.",
+      "audio": "Soft, warm instrumental bed (light guitar). Add a subtle chime when the lamp turns on; gentle room tone throughout."
+    }
+  }
+}

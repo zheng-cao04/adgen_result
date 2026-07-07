@@ -1,0 +1,18 @@
+{
+  "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/food_premium_20260706_002227/ad_blueprint.json",
+  "requests": [
+    {
+      "job_id": "mk-iced-black-tea-premium-001_direct_start_frame",
+      "candidate_id": "direct_full_c01",
+      "candidate_index": 0,
+      "candidate_count": 1,
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/food_premium_20260706_002227/direct_start_frames/01_full_start.png",
+      "prompt": "Generate a realistic full-scene commercial start frame using reference image 1 as the product identity lock: the real Master Kong Iced Black Tea bottle, shape/colors/material/packaging/labels/marks unchanged. Place the bottle upright at plausible scale, label facing camera, on a matte dark slate stone slab in a minimalist studio tabletop setup. Background: seamless matte charcoal-gray wall with ample negative space. Lighting: cool, controlled commercial look with a soft key from the left, gentle edge highlights, clean soft shadows. Keep the scene minimal and refined—only the bottle, the stone slab, and the plain charcoal background. No glassware, ice, condensation, captions, UI, random text, posters, watermarks, or extra logos. No hand or person visible. Fill the entire image; do not create a product-only packshot and do not use inner frame, border, poster, inset, card, or pasted image.",
+      "negative_prompt": "No captions, subtitles, watermark, UI, fake logo, random letters, extra fingers, warped hands, blurry product, wrong product, product-only packshot, empty background, inner frame, border, poster, inset image, image inside an image.",
+      "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/food/kangshifu-iced-black-tea.jpg",
+      "reference_image_paths": [
+        "/home/linabear/projects/adgen_workspace/adgen/examples/food/kangshifu-iced-black-tea.jpg"
+      ]
+    }
+  ]
+}

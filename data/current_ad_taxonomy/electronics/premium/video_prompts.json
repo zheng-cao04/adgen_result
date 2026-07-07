@@ -1,0 +1,15 @@
+{
+  "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/electronics_premium_20260706_230604/ad_blueprint_with_direct_start_frame.json",
+  "requests": [
+    {
+      "job_id": "portable_led_lamp_premium_v1_full",
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/electronics_premium_20260706_230604/video/01_full.mp4",
+      "ad_category": "premium",
+      "video_model_prompt": "Raw one-take product ad for Portable LED Lamp. The scene shows a commercial tabletop studio. Use only one adult hand appears as the only moving person or hand. Use the provided start frame as video conditioning; preserve the real product identity already visible in that frame and keep the same product throughout the shot. Begin from the same scene: a compact portable LED lamp, exactly as in the reference, sits centered on a matte dark stone tabletop in a minimalist commercial studio. The background is a softly lit deep charcoal wall; the lamp is switched off and softly rim-lit. The camera holds steady, then starts a very gentle push-in. A single adult hand with a black long sleeve enters from the right edge, delicately gripping the sides of the lamp. The hand lifts the lamp a few centimeters to show its compact size, rotates it slightly to reveal its simple form, and places it back in the original centered spot on the stone. With a light, deliberate touch on the top, the lamp turns on smoothly; a soft, warm amber. Keep the same room and fixed camera for the whole shot, with one main subject, natural motion, and stable hands and product shape. Clean product-ad frame with only the main subject, the real product, natural props, and the visible scene.",
+      "planner_visual_prompt": "Begin from the same scene: a compact portable LED lamp, exactly as in the reference, sits centered on a matte dark stone tabletop in a minimalist commercial studio. The background is a softly lit deep charcoal wall; the lamp is switched off and softly rim-lit. The camera holds steady, then starts a very gentle push-in. A single adult hand with a black long sleeve enters from the right edge, delicately gripping the sides of the lamp. The hand lifts the lamp a few centimeters to show its compact size, rotates it slightly to reveal its simple form, and places it back in the original centered spot on the stone. With a light, deliberate touch on the top, the lamp turns on smoothly; a soft, warm amber glow blooms and casts a gentle light pool across the matte stone and a faint warm gradient onto the charcoal background. The hand withdraws out of frame as the camera continues its slow push-in, ending on a composed premium hold of the glowing lamp.",
+      "start_image_path": "/home/linabear/projects/adgen_workspace/adgen/runs/electronics_premium_20260706_230604/direct_start_frames/01_full_start.png",
+      "overlay_text": "Soft warm light\nPortable, anywhere",
+      "audio_direction": "Calm, minimal ambient bed; subtle hand movement whoosh; a soft chime as the lamp turns on; no voiceover."
+    }
+  ]
+}

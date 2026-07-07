@@ -1,0 +1,15 @@
+{
+  "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/food_demo_proof/ad_blueprint_with_direct_start_frame.json",
+  "requests": [
+    {
+      "job_id": "mk-iced-black-tea-demo-001_full",
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/food_demo_proof/video/01_full.mp4",
+      "ad_category": "demo_proof",
+      "video_model_prompt": "Raw one-take product ad for Master Kong Iced Black Tea. The scene shows a outdoor patio or balcony table. Use young adult with a friendly, everyday look as the only moving person or hand. A the chilled bottle itself (no. Use the provided start frame as video conditioning; preserve the real product identity already visible in that frame and keep the same product throughout the shot. A single continuous shot begins on a sunlit outdoor patio table with a real plastic bottle of iced black tea placed upright. Warm midday light makes the setting feel hot, while the bottle surface looks slightly dewy and cool. After a brief beat, a young adult steps in from the side, quickly wipes their forehead as a small heat cue, then reaches in, picks up the bottle smoothly, and brings it toward their mouth. They take a short, satisfying sip. As they lower the bottle, their expression relaxes into a refreshed smile. They naturally rotate the bottle so the front label faces the camera and hold it near their face for a clear, steady product-forward finish. The camera remains steady the entire time, keeping the table. Keep the same room and fixed camera for the whole shot, with one main subject, natural motion, and stable hands and product shape. Clean product-ad frame with only the main subject, the real product, natural props, and the visible scene.",
+      "planner_visual_prompt": "A single continuous shot begins on a sunlit outdoor patio table with a real plastic bottle of iced black tea placed upright. Warm midday light makes the setting feel hot, while the bottle surface looks slightly dewy and cool. After a brief beat, a young adult steps in from the side, quickly wipes their forehead as a small heat cue, then reaches in, picks up the bottle smoothly, and brings it toward their mouth. They take a short, satisfying sip. As they lower the bottle, their expression relaxes into a refreshed smile. They naturally rotate the bottle so the front label faces the camera and hold it near their face for a clear, steady product-forward finish. The camera remains steady the entire time, keeping the table, pale sunlit wall, and the bottle consistent in frame.",
+      "start_image_path": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/food_demo_proof/direct_start_frames/01_full_start.png",
+      "overlay_text": "Too hot? Cool down fast. | Master Kong Iced Black Tea",
+      "audio_direction": "Light, upbeat summer groove with soft outdoor ambience. Subtle inhale/exhale “ahh” moment timed to the sip; no loud SFX."
+    }
+  ]
+}

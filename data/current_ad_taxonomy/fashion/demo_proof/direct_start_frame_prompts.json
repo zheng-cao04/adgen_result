@@ -1,0 +1,18 @@
+{
+  "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/fashion_demo_proof/ad_blueprint.json",
+  "requests": [
+    {
+      "job_id": "burberry-foxfield-demo-001_direct_start_frame",
+      "candidate_id": "direct_full_c01",
+      "candidate_index": 0,
+      "candidate_count": 1,
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/fashion_demo_proof/direct_start_frames/01_full_start.png",
+      "prompt": "Use reference image 1 as the real product identity lock for the Burberry Long Silk Cotton Foxfield Trench Coat; preserve shape, oatmeal beige color, silk‑cotton faille, lapels, self belt, labels, packaging, and visible marks. Full-scene start frame: warm beige studio cyclorama and matte floor filling the canvas edge to edge—no borders, insets, inner frames, black margins, or a central vertical rectangle. Locked-off medium-wide shot. Center a simple matte black garment rack on the floor; hang the coat on a plain light‑wood hanger, neatly draped, facing camera; rack and hanger clearly visible; plausible scale and orientation. Lighting: soft, warm, diffused key from front-left with gentle fill for even tones. Clean beige backdrop, no graphics, mirrors, captions, UI, text, watermarks, or extra logos. Background empty and minimal. No person or hands in this first frame. Not a packshot.",
+      "negative_prompt": "No captions, subtitles, watermark, UI, fake logo, random letters, extra fingers, warped hands, blurry product, wrong product, product-only packshot, empty background, inner frame, border, poster, inset image, image inside an image, black margins, dark outer margins, central vertical rectangle, photo within a photo, matted print.",
+      "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/fashion/burberry-foxfield-trench-coat.jpg",
+      "reference_image_paths": [
+        "/home/linabear/projects/adgen_workspace/adgen/examples/fashion/burberry-foxfield-trench-coat.jpg"
+      ]
+    }
+  ]
+}

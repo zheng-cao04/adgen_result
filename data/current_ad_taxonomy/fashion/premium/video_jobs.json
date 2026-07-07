@@ -1,0 +1,97 @@
+{
+  "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/fashion_premium/ad_blueprint_with_direct_start_frame.json",
+  "requests": [
+    {
+      "job_id": "burberry_foxfield_premium_001_full",
+      "prompt": "Raw one-take product ad for Burberry Long Silk Cotton Foxfield Trench Coat. The scene shows a quiet studio cyclorama. Use only a refined hand/forearm appears: well-groomed, neutral as the only moving person or hand. A slim black metal clothing rack is nearby. Use the provided start frame as video conditioning; preserve the real product identity already visible in that frame and keep the same product throughout the shot. A warm, minimal studio scene. Center frame: a long oatmeal beige trench coat from the reference image hangs on a natural wood hanger, which sits on a slim black metal clothing rack. The backdrop is a warm cream seamless cyclorama that continues into the floor. Soft directional light from camera-left creates a gentle highlight along the coat’s faille texture, with a very subtle, clean shadow on the floor. The shot begins still and composed, then the camera performs a slow, smooth push-in toward the coat. After the first moment, a well-groomed hand and forearm in a slim black knit sleeve enters from frame right and lightly smooths the coat’s left lapel once, then gently straightens the belt so it lies flat, keeping all movements slow. Keep the same room and fixed camera for the whole shot, with one main subject, natural motion, and stable hands and product shape. Clean product-ad frame with only the main subject, the real product, natural props, and the visible scene.",
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/fashion_premium/video/01_full.mp4",
+      "duration_seconds": 6.0,
+      "fps": 25,
+      "size": "704*1280",
+      "start_image_path": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/fashion_premium/direct_start_frames/01_full_start.png",
+      "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/fashion/burberry-foxfield-trench-coat.jpg",
+      "image_inputs": [
+        {
+          "role": "start_frame",
+          "path": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/fashion_premium/direct_start_frames/01_full_start.png",
+          "consumed_by": "video_backend",
+          "video_conditioning": true,
+          "description": "Video start frame used as first-frame I2V conditioning by the video backend."
+        },
+        {
+          "role": "product_reference",
+          "path": "/home/linabear/projects/adgen_workspace/adgen/examples/fashion/burberry-foxfield-trench-coat.jpg",
+          "consumed_by": "optional_start_frame_stage",
+          "video_conditioning": false,
+          "description": "Product identity reference for optional start-frame image-edit generation. It is not sent to the video backend as a separate product-reference conditioning image."
+        }
+      ],
+      "metadata": {
+        "role": "full",
+        "ad_type": "full",
+        "ad_category": "premium",
+        "creative_design": {
+          "ad_category": "premium",
+          "selected_category_reason": "Premium lets the coat feel expensive through restraint, controlled light, negative space, and a composed product hold. For a luxury trench, tactile material and silhouette presence sell desirability without needing complex actions or locations.",
+          "candidate_categories": [
+            {
+              "ad_category": "premium",
+              "score": 9,
+              "reason": "Best fit for luxury fashion: quiet studio, controlled highlights on silk-cotton faille, composed final hold.",
+              "risk": "Fabric texture and subtle sheen can be hard to render; must avoid complex fabric motion."
+            },
+            {
+              "ad_category": "product_detail",
+              "score": 8,
+              "reason": "Close-ups on buttons, belt, and faille texture can prove craftsmanship without needing a model.",
+              "risk": "May feel too technical and lose the elevated mood if over-detailed."
+            },
+            {
+              "ad_category": "lifestyle",
+              "score": 6,
+              "reason": "A model walking could show silhouette and movement.",
+              "risk": "Open-source models may warp garments and struggle with walking; risk to premium polish."
+            }
+          ],
+          "selling_angle": "Quiet luxury through silk-cotton faille texture and a refined oatmeal silhouette under controlled studio light.",
+          "emotional_tone": "Understated, elegant, confident, refined.",
+          "visual_grammar": "Studio product hero with negative space, soft directional key light, slow camera push-in, gentle human touch for scale.",
+          "proof_mechanism": "Tactile sheen and structure under soft light; a single elegant hand lightly touches the lapel to suggest crisp tailoring without stressing fabric physics.",
+          "hook_or_opening": "A long oatmeal beige trench hangs centered on a minimalist black rack in a warm cream studio; soft light reveals the silk-cotton faille.",
+          "action_arc": "From a still, composed start, the camera performs a slow push-in. A well-groomed hand enters briefly to lightly smooth the lapel and align the belt, then exits as the camera settles into a centered hero composition.",
+          "payoff": "A calm, symmetrical final hold of the trench centered on the rack, belt neatly arranged, fabric catching a gentle highlight.",
+          "feasibility_notes": "Avoided a walking model or wearing sequence to reduce garment distortion. No logo emphasis. One simple prop (rack + hanger). Single gentle hand interaction and a slow push-in keep motion clear and survivable for small video models."
+        },
+        "overlay_text": "Silk-cotton faille. Refined silhouette.",
+        "audio_direction": "Low, understated piano bed with a soft room tone; a subtle cloth rustle as the hand touches the lapel; no voiceover.",
+        "visual_prompt": "A warm, minimal studio scene. Center frame: a long oatmeal beige trench coat from the reference image hangs on a natural wood hanger, which sits on a slim black metal clothing rack. The backdrop is a warm cream seamless cyclorama that continues into the floor. Soft directional light from camera-left creates a gentle highlight along the coat’s faille texture, with a very subtle, clean shadow on the floor. The shot begins still and composed, then the camera performs a slow, smooth push-in toward the coat. After the first moment, a well-groomed hand and forearm in a slim black knit sleeve enters from frame right and lightly smooths the coat’s left lapel once, then gently straightens the belt so it lies flat, keeping all movements slow and precise. The hand exits the frame. As the camera continues its unhurried push-in, the subtle sheen of the silk-cotton faille catches the light naturally, emphasizing the refined oatmeal tone and the coat’s long, elegant silhouette on the rack. The shot comes to rest in a centered, symmetrical hero composition of the trench, calm and premium.",
+        "start_image_path": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/fashion_premium/direct_start_frames/01_full_start.png",
+        "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/fashion/burberry-foxfield-trench-coat.jpg",
+        "product_image_conditioning": false,
+        "direct_start_frame_conditioning": true,
+        "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/fashion_premium/ad_blueprint_with_direct_start_frame.json",
+        "execution_layer_type": "direct_full",
+        "critic_expectation": {
+          "purpose": "Judge whether the raw video is a plausible product demo for Burberry Long Silk Cotton Foxfield Trench Coat.",
+          "hard_requirements": [
+            "single continuous raw video shot with steady one-take continuity",
+            "complete direct prompt: A warm, minimal studio scene. Center frame: a long oatmeal beige trench coat from the reference image hangs on a natural wood hanger, which sits on a slim black metal clothing rack. The backdrop is a warm cream seamless cyclorama that continues into the floor..",
+            "physically plausible handling of the product by one main subject"
+          ],
+          "soft_context": [
+            "The shot may hint at this customer context: Finding a trench coat that looks truly refined and premium rather than ordinary, with fabric and tailoring that read as.",
+            "Focus the judgment on the requested product action, proof visibility, and one-take continuity.",
+            "Creative design expectation: ad_category=premium; hook=A long oatmeal beige trench hangs centered on a minimalist black rack in a warm cream studio; soft light reveals the silk-cotton faille.; proof=Tactile sheen and structure under soft light; a single elegant hand lightly touches the lapel to suggest crisp tailoring.",
+            "Expected subject and scene style from asset memory: Only a refined hand/forearm appears: well-groomed, neutral nails, light to medium skin tone, no jewelry.; Slim black long-sleeve fine-knit top covering."
+          ],
+          "quality_checks": [
+            "stable face, hands, objects, and camera motion",
+            "main product action is visible and easy to understand",
+            "visible product appearance stays consistent with the product reference image",
+            "ad_category intent is recognizable through the opening, action arc, proof mechanism, and payoff"
+          ]
+        }
+      }
+    }
+  ]
+}

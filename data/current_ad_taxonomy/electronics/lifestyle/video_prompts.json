@@ -1,0 +1,15 @@
+{
+  "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/electronics_rerun_20260706_193609/electronics_lifestyle/ad_blueprint_with_direct_start_frame.json",
+  "requests": [
+    {
+      "job_id": "portable_led_lamp_lifestyle_v1_full",
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/electronics_rerun_20260706_193609/electronics_lifestyle/video/01_full.mp4",
+      "ad_category": "lifestyle",
+      "video_model_prompt": "Raw one-take product ad for Portable LED Lamp. The scene shows a cozy bedroom bedside table. Use one adult with neutral skin tone as the only moving person or hand. Use the provided start frame as video conditioning; preserve the real product identity already visible in that frame and keep the same product throughout the shot. A single, calm shot begins on a cozy bedside table. The exact portable LED lamp from the reference sits centered on a light-wood nightstand. To its left is a small paperback book, and to its right a small canvas travel pouch. The room has gentle evening ambience; the lamp is off. The camera remains steady with a slight, slow micro push-in. After a beat, an adult right hand in a light beige knit sleeve enters from the right, gently touches the top of the lamp. The lamp turns on and blooms a soft, warm glow that clearly spreads onto the book’s pages, making the area feel cozy. The hand lightly lifts the lamp an inch to show it’s lightweight and compact, then sets it back down. Keep the same room and fixed camera for the whole shot, with one main subject, natural motion, and stable hands and product shape. Clean product-ad frame with only the main subject, the real product, natural props, and the visible scene.",
+      "planner_visual_prompt": "A single, calm shot begins on a cozy bedside table. The exact portable LED lamp from the reference sits centered on a light-wood nightstand. To its left is a small paperback book, and to its right a small canvas travel pouch. The room has gentle evening ambience; the lamp is off. The camera remains steady with a slight, slow micro push-in. After a beat, an adult right hand in a light beige knit sleeve enters from the right, gently touches the top of the lamp. The lamp turns on and blooms a soft, warm glow that clearly spreads onto the book’s pages, making the area feel cozy. The hand lightly lifts the lamp an inch to show it’s lightweight and compact, then sets it back down closer to the book, keeping the warm light on the pages. Hold a quiet moment on the glowing lamp, book, and pouch together in the same frame for a comfortable finish.",
+      "start_image_path": "/home/linabear/projects/adgen_workspace/adgen/runs/electronics_rerun_20260706_193609/electronics_lifestyle/direct_start_frames/01_full_start.png",
+      "overlay_text": "Warm light, anywhere.",
+      "audio_direction": "Soft, warm instrumental bed (light guitar). Add a subtle chime when the lamp turns on; gentle room tone throughout."
+    }
+  ]
+}

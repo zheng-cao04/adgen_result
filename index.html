@@ -64,6 +64,39 @@
       overflow: auto;
     }
     .sub { color: var(--muted); margin-top: 6px; }
+    .system-strip {
+      margin-top: 18px;
+      padding: 14px;
+      background: #11141a;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    .system-strip h2 {
+      margin-bottom: 12px;
+      font-size: 16px;
+    }
+    .system-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .system-cell {
+      min-width: 0;
+      padding: 11px;
+      background: #181b21;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-size: 13px;
+    }
+    .system-cell b {
+      display: block;
+      margin-bottom: 5px;
+      color: #fff;
+    }
+    .system-cell span {
+      display: block;
+      color: var(--muted);
+    }
     .card {
       margin-top: 18px;
       padding: 18px;
@@ -341,6 +374,85 @@
       margin: 8px 0 0 34px;
       color: var(--muted);
     }
+    .taxonomy-hero {
+      display: grid;
+      grid-template-columns: minmax(220px, 320px) minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+      margin-top: 14px;
+    }
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .category-cell {
+      min-width: 0;
+      min-height: 168px;
+      padding: 12px;
+      background: #11141a;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-size: 13px;
+    }
+    .category-cell b {
+      display: block;
+      margin-bottom: 6px;
+      color: #fff;
+    }
+    .category-cell span {
+      display: block;
+      color: var(--muted);
+    }
+    .category-cell code {
+      display: inline-block;
+      margin-bottom: 7px;
+      color: var(--blue);
+    }
+    .food-matrix {
+      display: grid;
+      gap: 18px;
+      margin-top: 16px;
+    }
+    .food-row {
+      display: grid;
+      grid-template-columns: minmax(260px, 430px) minmax(0, 1fr);
+      gap: 18px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+    .food-row:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+    .food-media {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .run-meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .run-meta div {
+      min-width: 0;
+      padding: 9px;
+      color: var(--muted);
+      background: #11141a;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-size: 12px;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+    .run-meta b {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--text);
+    }
     .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
     .grid > * { min-width: 0; }
     .json-panel {
@@ -409,7 +521,8 @@
     }
     @media (max-width: 850px) {
       main { padding: 16px; }
-      .steps, .grid, .links, .transition-grid, .trace-flow, .media-compare, .result-item, .prior-list { grid-template-columns: 1fr; }
+      .steps, .grid, .links, .transition-grid, .trace-flow, .media-compare, .result-item, .prior-list, .taxonomy-hero, .category-grid, .food-row, .run-meta, .system-grid { grid-template-columns: 1fr; }
+      .food-media { grid-template-columns: 1fr; }
       .field-list { grid-template-columns: 1fr; gap: 4px; }
       .finding-body { margin-left: 0; }
       .field-list dd { margin-bottom: 6px; }
@@ -421,6 +534,28 @@
   <main>
     <h1>AdGen</h1>
     <div class="sub">Development snapshot</div>
+
+    <section class="system-strip" aria-label="Current system basics">
+      <h2>Current System Basics</h2>
+      <div class="system-grid">
+        <div class="system-cell">
+          <b>Planner</b>
+          <span>GPT-5, Azure deployment <code>gpt-5-2025-08-07</code>.</span>
+        </div>
+        <div class="system-cell">
+          <b>Image Edit</b>
+          <span>Qwen-Image-Edit 2511 for start-frame generation.</span>
+        </div>
+        <div class="system-cell">
+          <b>Video Generation</b>
+          <span>LTX-2.3 22B full bf16.</span>
+        </div>
+        <div class="system-cell">
+          <b>Video Defaults</b>
+          <span>Default duration is 6 seconds. Video jobs use <code>fps=25</code>.</span>
+        </div>
+      </div>
+    </section>
 
     <section class="card">
       <h2>Key Findings</h2>
@@ -494,6 +629,670 @@
             frame critic checks, and reserve the final product display for a clean
             packshot or post-composited product image.
           </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="current-ad-taxonomy">
+      <h2>Ad Categories and Results</h2>
+      <h3 class="section-subhead">Ad Category Library</h3>
+      <p class="muted small">
+        <code>product.category</code> says what the product is. <code>brief.ad_category</code>
+        says how the ad should sell the same product. Selling points stay as product claims;
+        the planner translates them into each category's visual grammar.
+      </p>
+      <div class="category-grid">
+        <div class="category-cell">
+          <b>Premium</b>
+          <code>premium</code>
+          <span>Make the product feel premium through restraint, material surfaces, controlled commercial light, negative space, and slow movement.</span>
+        </div>
+        <div class="category-cell">
+          <b>Product Detail</b>
+          <code>product_detail</code>
+          <span>Sell tactile quality by showing large, inspectable product details: surface, texture, shape, edge, finish, and controlled handling.</span>
+        </div>
+        <div class="category-cell">
+          <b>Lifestyle</b>
+          <code>lifestyle</code>
+          <span>Place the product in a believable routine, environment, or occasion so the benefit feels naturally useful and emotionally clear.</span>
+        </div>
+        <div class="category-cell">
+          <b>Demo Proof</b>
+          <code>demo_proof</code>
+          <span>Make the main claim credible through one visible use case, function, contrast, or result that can be inspected in one shot.</span>
+        </div>
+        <div class="category-cell">
+          <b>Exaggerate</b>
+          <code>exaggerate</code>
+          <span>Use a bold visual hook or amplified effect tied to the selling point, then return to a clear product-centered payoff.</span>
+        </div>
+      </div>
+
+      <div class="tab-group" data-taxonomy-browser>
+        <div class="tab-label">Product</div>
+        <div class="tablist" role="tablist" aria-label="Taxonomy product">
+          <button class="tab-button" type="button" role="tab" data-taxonomy-product="food" aria-selected="true">Food</button>
+          <button class="tab-button" type="button" role="tab" data-taxonomy-product="electronics" aria-selected="false">Electronics</button>
+          <button class="tab-button" type="button" role="tab" data-taxonomy-product="fashion" aria-selected="false">Fashion</button>
+        </div>
+      </div>
+
+      <div class="taxonomy-product-panel" data-taxonomy-product-panel="food">
+      <h3 class="section-subhead">Food: One Product, Five Ad Categories</h3>
+      <p class="muted small">
+        Same product and same selling point: Master Kong Iced Black Tea as a cool,
+        refreshing drink for hot days. Only <code>ad_category</code> changes.
+        All videos below are verified at <code>704x1280</code>, 6.12 seconds, 153 frames.
+      </p>
+
+      <div class="food-matrix">
+        <article class="food-row">
+          <div class="food-media">
+            <figure>
+              <figcaption>Premium start frame</figcaption>
+              <img class="tall" loading="lazy" src="media/current_ad_taxonomy/food/premium/start_frame.png" alt="Premium food direct start frame">
+            </figure>
+            <figure>
+              <figcaption>Premium video</figcaption>
+              <video class="tall" controls preload="metadata" src="media/current_ad_taxonomy/food/premium/01_full.mp4"></video>
+            </figure>
+          </div>
+          <div class="result-copy">
+            <div class="result-title">
+              <h3>Premium</h3>
+              <span class="pill amber">product hero</span>
+              <span class="pill green">food</span>
+            </div>
+            <p>
+              The same refreshment claim is presented as a refined hero object:
+              a chilled bottle on a dark slate slab, slow push-in, restrained hand lift,
+              label-forward final hold.
+            </p>
+            <div class="run-meta">
+              <div><b>Run</b>runs/food_premium_20260706_002227</div>
+              <div><b>Proof style</b>Desirability and controlled product presence.</div>
+              <div><b>Best use</b>When the goal is brand feel and product appetite.</div>
+            </div>
+            <div class="links">
+              <a href="data/current_ad_taxonomy/food/brief_premium.json">brief</a>
+              <a href="data/current_ad_taxonomy/food/premium/ad_blueprint.json">blueprint</a>
+              <a href="data/current_ad_taxonomy/food/premium/video_prompts.json">video prompt</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="food-row">
+          <div class="food-media">
+            <figure>
+              <figcaption>Product detail start frame</figcaption>
+              <img class="tall" loading="lazy" src="media/current_ad_taxonomy/food/product_detail/start_frame.png" alt="Product detail food direct start frame">
+            </figure>
+            <figure>
+              <figcaption>Product detail video</figcaption>
+              <video class="tall" controls preload="metadata" src="media/current_ad_taxonomy/food/product_detail/01_full.mp4"></video>
+            </figure>
+          </div>
+          <div class="result-copy">
+            <div class="result-title">
+              <h3>Product Detail</h3>
+              <span class="pill amber">detail proof</span>
+              <span class="pill green">food</span>
+            </div>
+            <p>
+              The refreshment claim is expressed through inspectable cold cues:
+              condensation, amber tea, cool light, and a slow hand rotation that keeps
+              the bottle close and readable.
+            </p>
+            <div class="run-meta">
+              <div><b>Run</b>runs/batch_standard_ads_20260706_010143/food_product_detail</div>
+              <div><b>Proof style</b>Large visible condensation and product surface detail.</div>
+              <div><b>Best use</b>When product look and tactile cues carry the ad.</div>
+            </div>
+            <div class="links">
+              <a href="data/current_ad_taxonomy/food/brief_product_detail.json">brief</a>
+              <a href="data/current_ad_taxonomy/food/product_detail/ad_blueprint.json">blueprint</a>
+              <a href="data/current_ad_taxonomy/food/product_detail/video_prompts.json">video prompt</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="food-row">
+          <div class="food-media">
+            <figure>
+              <figcaption>Lifestyle start frame</figcaption>
+              <img class="tall" loading="lazy" src="media/current_ad_taxonomy/food/lifestyle/start_frame.png" alt="Lifestyle food direct start frame">
+            </figure>
+            <figure>
+              <figcaption>Lifestyle video</figcaption>
+              <video class="tall" controls preload="metadata" src="media/current_ad_taxonomy/food/lifestyle/01_full.mp4"></video>
+            </figure>
+          </div>
+          <div class="result-copy">
+            <div class="result-title">
+              <h3>Lifestyle</h3>
+              <span class="pill amber">routine</span>
+              <span class="pill green">food</span>
+            </div>
+            <p>
+              The drink becomes part of a summer balcony moment: straw hat, sunlight,
+              a quick sip, and a relaxed expression that sells the feeling of cooling down.
+            </p>
+            <div class="run-meta">
+              <div><b>Run</b>runs/batch_standard_ads_20260706_010143/food_lifestyle</div>
+              <div><b>Proof style</b>Natural use context and post-sip relief.</div>
+              <div><b>Best use</b>When the product benefit is routine or mood-based.</div>
+            </div>
+            <div class="links">
+              <a href="data/current_ad_taxonomy/food/brief_lifestyle.json">brief</a>
+              <a href="data/current_ad_taxonomy/food/lifestyle/ad_blueprint.json">blueprint</a>
+              <a href="data/current_ad_taxonomy/food/lifestyle/video_prompts.json">video prompt</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="food-row">
+          <div class="food-media">
+            <figure>
+              <figcaption>Demo proof start frame</figcaption>
+              <img class="tall" loading="lazy" src="media/current_ad_taxonomy/food/demo_proof/start_frame.png" alt="Demo proof food direct start frame">
+            </figure>
+            <figure>
+              <figcaption>Demo proof video</figcaption>
+              <video class="tall" controls preload="metadata" src="media/current_ad_taxonomy/food/demo_proof/01_full.mp4"></video>
+            </figure>
+          </div>
+          <div class="result-copy">
+            <div class="result-title">
+              <h3>Demo Proof</h3>
+              <span class="pill amber">visible result</span>
+              <span class="pill green">food</span>
+            </div>
+            <p>
+              For food, the proof is intentionally simple: a hot-day cue, a quick sip,
+              and a visible relaxed reaction. It avoids fake comparison or complex
+              liquid physics because those would be brittle for the video model.
+            </p>
+            <div class="run-meta">
+              <div><b>Run</b>runs/batch_standard_ads_20260706_010143/food_demo_proof</div>
+              <div><b>Proof style</b>Heat cue, sip, refreshed expression.</div>
+              <div><b>Best use</b>When a claim has a simple inspectable action or result.</div>
+            </div>
+            <div class="links">
+              <a href="data/current_ad_taxonomy/food/brief_demo_proof.json">brief</a>
+              <a href="data/current_ad_taxonomy/food/demo_proof/ad_blueprint.json">blueprint</a>
+              <a href="data/current_ad_taxonomy/food/demo_proof/video_prompts.json">video prompt</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="food-row">
+          <div class="food-media">
+            <figure>
+              <figcaption>Exaggerate start frame</figcaption>
+              <img class="tall" loading="lazy" src="media/current_ad_taxonomy/food/exaggerate/start_frame.png" alt="Exaggerate food direct start frame">
+            </figure>
+            <figure>
+              <figcaption>Exaggerate video</figcaption>
+              <video class="tall" controls preload="metadata" src="media/current_ad_taxonomy/food/exaggerate/01_full.mp4"></video>
+            </figure>
+          </div>
+          <div class="result-copy">
+            <div class="result-title">
+              <h3>Exaggerate</h3>
+              <span class="pill amber">attention hook</span>
+              <span class="pill green">food</span>
+            </div>
+            <p>
+              The same refreshment claim becomes a heightened visual cue: warm afternoon
+              light shifts cooler during the sip, making the cool-down promise more
+              immediate without leaving the single-shot setup.
+            </p>
+            <div class="run-meta">
+              <div><b>Run</b>runs/batch_standard_ads_20260706_010143/food_exaggerate</div>
+              <div><b>Proof style</b>Amplified warm-to-cool light shift.</div>
+              <div><b>Best use</b>When the ad needs a stronger attention hook.</div>
+            </div>
+            <div class="links">
+              <a href="data/current_ad_taxonomy/food/brief_exaggerate.json">brief</a>
+              <a href="data/current_ad_taxonomy/food/exaggerate/ad_blueprint.json">blueprint</a>
+              <a href="data/current_ad_taxonomy/food/exaggerate/video_prompts.json">video prompt</a>
+            </div>
+          </div>
+        </article>
+      </div>
+      </div>
+
+      <div class="taxonomy-product-panel" data-taxonomy-product-panel="electronics" hidden>
+      <h3 class="section-subhead">Electronics: One Product, Five Ad Categories</h3>
+      <p class="muted small">
+        Same product and same selling points: a compact portable LED lamp with soft,
+        warm light for desk, bedside, or travel use. Only <code>ad_category</code> changes.
+        All videos below are verified at <code>704x1280</code>, 6.12 seconds, 153 frames.
+      </p>
+
+      <div class="taxonomy-hero">
+        <figure>
+          <figcaption>Electronics product reference</figcaption>
+          <img class="tall" loading="lazy" src="media/current_ad_taxonomy/electronics/product_reference.png" alt="Portable LED lamp product reference">
+        </figure>
+        <div>
+          <h3>Portable LED Lamp</h3>
+          <div class="run-meta">
+            <div><b>Product claim</b>Compact and easy to carry.</div>
+            <div><b>Benefit</b>Soft, warm light for desk, bedside, or travel use.</div>
+            <div><b>Comparison focus</b>Same lamp, five different selling grammars.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="food-matrix">
+        <article class="food-row">
+          <div class="food-media">
+            <figure>
+              <figcaption>Premium start frame</figcaption>
+              <img class="tall" loading="lazy" src="media/current_ad_taxonomy/electronics/premium/start_frame.png" alt="Premium electronics direct start frame">
+            </figure>
+            <figure>
+              <figcaption>Premium video</figcaption>
+              <video class="tall" controls preload="metadata" src="media/current_ad_taxonomy/electronics/premium/01_full.mp4"></video>
+            </figure>
+          </div>
+          <div class="result-copy">
+            <div class="result-title">
+              <h3>Premium</h3>
+              <span class="pill amber">design hero</span>
+              <span class="pill green">electronics</span>
+            </div>
+            <p>
+              The lamp is treated as a design object: composed tabletop styling,
+              controlled warm glow, slow handling, and a calm final hero hold.
+            </p>
+            <div class="run-meta">
+              <div><b>Run</b>runs/electronics_premium_20260706_230604</div>
+              <div><b>Proof style</b>Warm light pool plus compact scale cue.</div>
+              <div><b>Best use</b>When the product should feel refined and giftable.</div>
+            </div>
+            <div class="links">
+              <a href="data/current_ad_taxonomy/electronics/brief_premium.json">brief</a>
+              <a href="data/current_ad_taxonomy/electronics/premium/ad_blueprint.json">blueprint</a>
+              <a href="data/current_ad_taxonomy/electronics/premium/video_prompts.json">video prompt</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="food-row">
+          <div class="food-media">
+            <figure>
+              <figcaption>Product detail start frame</figcaption>
+              <img class="tall" loading="lazy" src="media/current_ad_taxonomy/electronics/product_detail/start_frame.png" alt="Product detail electronics direct start frame">
+            </figure>
+            <figure>
+              <figcaption>Product detail video</figcaption>
+              <video class="tall" controls preload="metadata" src="media/current_ad_taxonomy/electronics/product_detail/01_full.mp4"></video>
+            </figure>
+          </div>
+          <div class="result-copy">
+            <div class="result-title">
+              <h3>Product Detail</h3>
+              <span class="pill amber">scale cue</span>
+              <span class="pill green">electronics</span>
+            </div>
+            <p>
+              The ad sells portability through close, inspectable handling: the lamp is
+              picked up and shown beside a small pouch while the warm light remains clear.
+            </p>
+            <div class="run-meta">
+              <div><b>Run</b>runs/batch_standard_ads_20260706_010143/electronics_product_detail</div>
+              <div><b>Proof style</b>Hand scale, pouch comparison, visible glow.</div>
+              <div><b>Best use</b>When size, shape, and handling need to be inspected.</div>
+            </div>
+            <div class="links">
+              <a href="data/current_ad_taxonomy/electronics/brief_product_detail.json">brief</a>
+              <a href="data/current_ad_taxonomy/electronics/product_detail/ad_blueprint.json">blueprint</a>
+              <a href="data/current_ad_taxonomy/electronics/product_detail/video_prompts.json">video prompt</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="food-row">
+          <div class="food-media">
+            <figure>
+              <figcaption>Lifestyle start frame</figcaption>
+              <img class="tall" loading="lazy" src="media/current_ad_taxonomy/electronics/lifestyle/start_frame.png" alt="Lifestyle electronics direct start frame">
+            </figure>
+            <figure>
+              <figcaption>Lifestyle video</figcaption>
+              <video class="tall" controls preload="metadata" src="media/current_ad_taxonomy/electronics/lifestyle/01_full.mp4"></video>
+            </figure>
+          </div>
+          <div class="result-copy">
+            <div class="result-title">
+              <h3>Lifestyle</h3>
+              <span class="pill amber">reading routine</span>
+              <span class="pill green">electronics</span>
+            </div>
+            <p>
+              The lamp is placed into a believable reading moment: a hand sets it beside
+              a book, turns it on, and leaves the table in a cozy pool of light.
+            </p>
+            <div class="run-meta">
+              <div><b>Run</b>runs/electronics_rerun_20260706_193609/electronics_lifestyle</div>
+              <div><b>Proof style</b>Natural desk use and visible warm illumination.</div>
+              <div><b>Best use</b>When the benefit is tied to a familiar routine.</div>
+            </div>
+            <div class="links">
+              <a href="data/current_ad_taxonomy/electronics/brief_lifestyle.json">brief</a>
+              <a href="data/current_ad_taxonomy/electronics/lifestyle/ad_blueprint.json">blueprint</a>
+              <a href="data/current_ad_taxonomy/electronics/lifestyle/video_prompts.json">video prompt</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="food-row">
+          <div class="food-media">
+            <figure>
+              <figcaption>Demo proof start frame</figcaption>
+              <img class="tall" loading="lazy" src="media/current_ad_taxonomy/electronics/demo_proof/start_frame.png" alt="Demo proof electronics direct start frame">
+            </figure>
+            <figure>
+              <figcaption>Demo proof video</figcaption>
+              <video class="tall" controls preload="metadata" src="media/current_ad_taxonomy/electronics/demo_proof/01_full.mp4"></video>
+            </figure>
+          </div>
+          <div class="result-copy">
+            <div class="result-title">
+              <h3>Demo Proof</h3>
+              <span class="pill amber">visible function</span>
+              <span class="pill green">electronics</span>
+            </div>
+            <p>
+              This is the clearest demo-proof case: the lamp turns on in one shot and
+              casts a warm patch of light over a book, directly proving the use.
+            </p>
+            <div class="run-meta">
+              <div><b>Run</b>runs/electronics_rerun_20260706_193609/electronics_demo_proof</div>
+              <div><b>Proof style</b>On-camera illumination change.</div>
+              <div><b>Best use</b>When the claim has a direct visible result.</div>
+            </div>
+            <div class="links">
+              <a href="data/current_ad_taxonomy/electronics/brief_demo_proof.json">brief</a>
+              <a href="data/current_ad_taxonomy/electronics/demo_proof/ad_blueprint.json">blueprint</a>
+              <a href="data/current_ad_taxonomy/electronics/demo_proof/video_prompts.json">video prompt</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="food-row">
+          <div class="food-media">
+            <figure>
+              <figcaption>Exaggerate start frame</figcaption>
+              <img class="tall" loading="lazy" src="media/current_ad_taxonomy/electronics/exaggerate/start_frame.png" alt="Exaggerate electronics direct start frame">
+            </figure>
+            <figure>
+              <figcaption>Exaggerate video</figcaption>
+              <video class="tall" controls preload="metadata" src="media/current_ad_taxonomy/electronics/exaggerate/01_full.mp4"></video>
+            </figure>
+          </div>
+          <div class="result-copy">
+            <div class="result-title">
+              <h3>Exaggerate</h3>
+              <span class="pill amber">room transform</span>
+              <span class="pill green">electronics</span>
+            </div>
+            <p>
+              The same warm-light claim becomes a bigger visual hook: the scene shifts
+              from dim to warmly inviting, while the compact lamp remains the payoff.
+            </p>
+            <div class="run-meta">
+              <div><b>Run</b>runs/electronics_rerun_20260706_193609/electronics_exaggerate</div>
+              <div><b>Proof style</b>Amplified dim-to-warm lighting change.</div>
+              <div><b>Best use</b>When the ad needs a more obvious attention beat.</div>
+            </div>
+            <div class="links">
+              <a href="data/current_ad_taxonomy/electronics/brief_exaggerate.json">brief</a>
+              <a href="data/current_ad_taxonomy/electronics/exaggerate/ad_blueprint.json">blueprint</a>
+              <a href="data/current_ad_taxonomy/electronics/exaggerate/video_prompts.json">video prompt</a>
+            </div>
+          </div>
+        </article>
+      </div>
+      </div>
+
+      <div class="taxonomy-product-panel" data-taxonomy-product-panel="fashion" hidden>
+      <h3 class="section-subhead">Fashion: One Product, Five Ad Categories</h3>
+      <p class="muted small">
+        Same product and same selling points: an elegant Burberry long trench coat with
+        refined oatmeal silhouette and silk-cotton faille tailoring. Only
+        <code>ad_category</code> changes. All videos below are verified at
+        <code>704x1280</code>, 6.12 seconds, 153 frames.
+      </p>
+
+      <div class="taxonomy-hero">
+        <figure>
+          <figcaption>Fashion product reference</figcaption>
+          <img class="tall" loading="lazy" src="media/current_ad_taxonomy/fashion/product_reference.jpg" alt="Burberry Foxfield trench coat product reference">
+        </figure>
+        <div>
+          <h3>Burberry Long Silk Cotton Foxfield Trench Coat</h3>
+          <div class="run-meta">
+            <div><b>Product claim</b>Elegant long oatmeal beige silhouette.</div>
+            <div><b>Benefit</b>Silk-cotton tailoring and polished heritage details.</div>
+            <div><b>Comparison focus</b>Same coat, five different selling grammars.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="food-matrix">
+        <article class="food-row">
+          <div class="food-media">
+            <figure>
+              <figcaption>Premium start frame</figcaption>
+              <img class="tall" loading="lazy" src="media/current_ad_taxonomy/fashion/premium/start_frame.png" alt="Premium fashion direct start frame">
+            </figure>
+            <figure>
+              <figcaption>Premium video</figcaption>
+              <video class="tall" controls preload="metadata" src="media/current_ad_taxonomy/fashion/premium/01_full.mp4"></video>
+            </figure>
+          </div>
+          <div class="result-copy">
+            <div class="result-title">
+              <h3>Premium</h3>
+              <span class="pill amber">quiet luxury</span>
+              <span class="pill green">fashion</span>
+            </div>
+            <p>
+              The coat is staged like a luxury hero object: controlled studio light,
+              restrained movement, gentle lapel touch, and a composed rack presentation.
+            </p>
+            <div class="run-meta">
+              <div><b>Run</b>runs/batch_standard_ads_20260706_010143/fashion_premium</div>
+              <div><b>Proof style</b>Material sheen and structured silhouette.</div>
+              <div><b>Best use</b>When the product should feel elevated and refined.</div>
+            </div>
+            <div class="links">
+              <a href="data/current_ad_taxonomy/fashion/brief_premium.json">brief</a>
+              <a href="data/current_ad_taxonomy/fashion/premium/ad_blueprint.json">blueprint</a>
+              <a href="data/current_ad_taxonomy/fashion/premium/video_prompts.json">video prompt</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="food-row">
+          <div class="food-media">
+            <figure>
+              <figcaption>Product detail start frame</figcaption>
+              <img class="tall" loading="lazy" src="media/current_ad_taxonomy/fashion/product_detail/start_frame.png" alt="Product detail fashion direct start frame">
+            </figure>
+            <figure>
+              <figcaption>Product detail video</figcaption>
+              <video class="tall" controls preload="metadata" src="media/current_ad_taxonomy/fashion/product_detail/01_full.mp4"></video>
+            </figure>
+          </div>
+          <div class="result-copy">
+            <div class="result-title">
+              <h3>Product Detail</h3>
+              <span class="pill amber">fabric detail</span>
+              <span class="pill green">fashion</span>
+            </div>
+            <p>
+              The ad stays close to inspectable fashion cues: fabric drape, lapel shape,
+              epaulettes, belt line, and a steady front-facing coat hold.
+            </p>
+            <div class="run-meta">
+              <div><b>Run</b>runs/batch_standard_ads_20260706_010143/fashion_product_detail</div>
+              <div><b>Proof style</b>Visible drape, finish, and tailoring shape.</div>
+              <div><b>Best use</b>When material and construction are the selling point.</div>
+            </div>
+            <div class="links">
+              <a href="data/current_ad_taxonomy/fashion/brief_product_detail.json">brief</a>
+              <a href="data/current_ad_taxonomy/fashion/product_detail/ad_blueprint.json">blueprint</a>
+              <a href="data/current_ad_taxonomy/fashion/product_detail/video_prompts.json">video prompt</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="food-row">
+          <div class="food-media">
+            <figure>
+              <figcaption>Lifestyle start frame</figcaption>
+              <img class="tall" loading="lazy" src="media/current_ad_taxonomy/fashion/lifestyle/start_frame.png" alt="Lifestyle fashion direct start frame">
+            </figure>
+            <figure>
+              <figcaption>Lifestyle video</figcaption>
+              <video class="tall" controls preload="metadata" src="media/current_ad_taxonomy/fashion/lifestyle/01_full.mp4"></video>
+            </figure>
+          </div>
+          <div class="result-copy">
+            <div class="result-title">
+              <h3>Lifestyle</h3>
+              <span class="pill amber">departure moment</span>
+              <span class="pill green">fashion</span>
+            </div>
+            <p>
+              The coat enters a believable getting-ready moment: a model drapes it on
+              before leaving, turning silhouette and polish into an everyday benefit.
+            </p>
+            <div class="run-meta">
+              <div><b>Run</b>runs/batch_standard_ads_20260706_010143/fashion_lifestyle</div>
+              <div><b>Proof style</b>Natural try-on context and composed pose.</div>
+              <div><b>Best use</b>When styling context matters more than proof.</div>
+            </div>
+            <div class="links">
+              <a href="data/current_ad_taxonomy/fashion/brief_lifestyle.json">brief</a>
+              <a href="data/current_ad_taxonomy/fashion/lifestyle/ad_blueprint.json">blueprint</a>
+              <a href="data/current_ad_taxonomy/fashion/lifestyle/video_prompts.json">video prompt</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="food-row">
+          <div class="food-media">
+            <figure>
+              <figcaption>Demo proof start frame</figcaption>
+              <img class="tall" loading="lazy" src="media/current_ad_taxonomy/fashion/demo_proof/start_frame.png" alt="Demo proof fashion direct start frame">
+            </figure>
+            <figure>
+              <figcaption>Demo proof video</figcaption>
+              <video class="tall" controls preload="metadata" src="media/current_ad_taxonomy/fashion/demo_proof/01_full.mp4"></video>
+            </figure>
+          </div>
+          <div class="result-copy">
+            <div class="result-title">
+              <h3>Demo Proof</h3>
+              <span class="pill amber">try-on proof</span>
+              <span class="pill green">fashion</span>
+            </div>
+            <p>
+              For fashion, proof becomes a one-take try-on: the model puts on the coat
+              so the long silhouette, drape, and outfit-polishing effect can be inspected.
+            </p>
+            <div class="run-meta">
+              <div><b>Run</b>runs/batch_standard_ads_20260706_010143/fashion_demo_proof</div>
+              <div><b>Proof style</b>On-body silhouette and drape demonstration.</div>
+              <div><b>Best use</b>When fit or silhouette is the claim to verify.</div>
+            </div>
+            <div class="links">
+              <a href="data/current_ad_taxonomy/fashion/brief_demo_proof.json">brief</a>
+              <a href="data/current_ad_taxonomy/fashion/demo_proof/ad_blueprint.json">blueprint</a>
+              <a href="data/current_ad_taxonomy/fashion/demo_proof/video_prompts.json">video prompt</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="food-row">
+          <div class="food-media">
+            <figure>
+              <figcaption>Exaggerate start frame</figcaption>
+              <img class="tall" loading="lazy" src="media/current_ad_taxonomy/fashion/exaggerate/start_frame.png" alt="Exaggerate fashion direct start frame">
+            </figure>
+            <figure>
+              <figcaption>Exaggerate video</figcaption>
+              <video class="tall" controls preload="metadata" src="media/current_ad_taxonomy/fashion/exaggerate/01_full.mp4"></video>
+            </figure>
+          </div>
+          <div class="result-copy">
+            <div class="result-title">
+              <h3>Exaggerate</h3>
+              <span class="pill amber">silhouette hook</span>
+              <span class="pill green">fashion</span>
+            </div>
+            <p>
+              The silhouette claim is amplified with a dramatic but plausible lighting
+              cue: a long elegant shadow and sheen pass make the coat feel more striking.
+            </p>
+            <div class="run-meta">
+              <div><b>Run</b>runs/batch_standard_ads_20260706_010143/fashion_exaggerate</div>
+              <div><b>Proof style</b>Amplified shadow and material highlight.</div>
+              <div><b>Best use</b>When the ad needs a more memorable visual hook.</div>
+            </div>
+            <div class="links">
+              <a href="data/current_ad_taxonomy/fashion/brief_exaggerate.json">brief</a>
+              <a href="data/current_ad_taxonomy/fashion/exaggerate/ad_blueprint.json">blueprint</a>
+              <a href="data/current_ad_taxonomy/fashion/exaggerate/video_prompts.json">video prompt</a>
+            </div>
+          </div>
+        </article>
+      </div>
+      </div>
+
+      <h3 class="section-subhead">Current Direct Product-Image Flow</h3>
+      <p class="muted small">
+        Current AdGen V1 uses one executable route: <code>direct_full</code>. The planner
+        chooses an advertising creative category, writes one direct full-video prompt, and
+        the pipeline optionally creates a product-conditioned start frame before LTX2.3
+        generates one continuous 6-second video.
+      </p>
+
+      <div class="taxonomy-hero">
+        <figure>
+          <figcaption>Example product reference used by the flow</figcaption>
+          <img class="tall" loading="lazy" src="media/current_ad_taxonomy/food/product_reference.jpg" alt="Master Kong Iced Black Tea product reference">
+        </figure>
+        <div>
+          <h3>Direct product-image flow</h3>
+          <div class="steps">
+            <div class="step">
+              <b>1. brief.json</b>
+              <span>Product, selling points, product image, selected <code>ad_category</code>, and duration.</span>
+            </div>
+            <div class="step">
+              <b>2. Planner</b>
+              <span>GPT writes strategy, category reasoning, asset memory, <code>visual_prompt</code>, and <code>start_frame_prompt</code>.</span>
+            </div>
+            <div class="step">
+              <b>3. Start frame</b>
+              <span>Qwen Image Edit turns the product reference into a full-scene first frame at <code>704*1280</code>.</span>
+            </div>
+            <div class="step">
+              <b>4. Video job</b>
+              <span><code>build_video_jobs.py</code> emits one I2V request with the start frame as conditioning.</span>
+            </div>
+            <div class="step">
+              <b>5. Video</b>
+              <span>LTX2.3 generates <code>video/01_full.mp4</code>, one continuous direct shot.</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -984,11 +1783,10 @@
       <h2>Current End-to-End Flow</h2>
       <p>
         The current AdGen demo path is a direct full-video workflow. The planner always
-        creates one <code>ad_blueprint.json</code> first. The first branch is whether the
-        brief includes <code>product.image_path</code>: product-image briefs create a
-        direct start frame before video generation; prompt-only briefs skip that image
-        stage. The second branch happens after the critic: pass accepts the run, fail
-        writes a retry job and regenerates.
+        creates one <code>ad_blueprint.json</code> first. When the brief includes
+        <code>product.image_path</code>, Qwen Image Edit creates a full-scene direct start
+        frame before video generation. LTX2.3 then receives one I2V request and writes
+        <code>video/01_full.mp4</code>.
       </p>
 
       <div class="steps">
@@ -1002,7 +1800,7 @@
         </div>
         <div class="step">
           <b>3. Branch: product image</b>
-          <span>If <code>product.image_path</code> exists, Qwen Image Edit creates <code>key_images/direct/01_full_start.png</code>.</span>
+          <span>If <code>product.image_path</code> exists, Qwen Image Edit creates <code>direct_start_frames/01_full_start.png</code>.</span>
         </div>
         <div class="step">
           <b>4. Build jobs</b>
@@ -1014,51 +1812,38 @@
         </div>
         <div class="step">
           <b>6. Branch: critic</b>
-          <span>Qwen3-VL either passes the clip or triggers a GPT rewrite plus retry video generation.</span>
+          <span>Optional Qwen3-VL evaluation either accepts the clip or feeds a GPT rewrite/retry path.</span>
         </div>
       </div>
 
       <div class="json-panel" style="margin-top:16px;">
         <h3>Command template</h3>
-        <pre>export BRIEF="examples/electronics/brief.json"
-export BRIEF_NAME="$(basename "$(dirname "${BRIEF}")")"
-export RUN_DIR="runs/${BRIEF_NAME}_$(date '+%Y%m%d_%H%M%S')"
+        <pre>export BRIEF="examples/food/brief_premium.json"
+export RUN_DIR="runs/food_premium_$(date '+%Y%m%d_%H%M%S')"
 
-export VIDEO_ROUTE=direct
-export IMG_API_BASE="http://127.0.0.1:58084"
+export IMG_API_BASE="http://127.0.0.1:58014"
 export VIDEO_API_BASE="http://127.0.0.1:58083"
-export VIDEO_BLUEPRINT="${RUN_DIR}/ad_blueprint.json"
 
-python scripts/plan_ad.py "${BRIEF}" "${RUN_DIR}" --execution-route "${VIDEO_ROUTE}"
+python scripts/plan_ad.py "${BRIEF}" "${RUN_DIR}"
 
 # Branch A: product.image_path exists, so product image -> direct start frame -> video.
 python scripts/generate_direct_start_frame.py "${RUN_DIR}/ad_blueprint.json" \
   --backend http \
   --api-base "${IMG_API_BASE}" \
-  --model-id models/Qwen-Image-Edit-2511 \
-  --size "704*1280" \
-  --dtype bfloat16 \
-  --steps 12 \
-  --true-cfg-scale 4.0 \
-  --guidance-scale 1.0 \
-  --timeout-seconds 1800
-
-export VIDEO_BLUEPRINT="${RUN_DIR}/ad_blueprint_with_direct_start_frame.json"
+  --size "704*1280"
 
 # Branch B: no product.image_path, so skip image-edit and keep:
 # export VIDEO_BLUEPRINT="${RUN_DIR}/ad_blueprint.json"
+export VIDEO_BLUEPRINT="${RUN_DIR}/ad_blueprint_with_direct_start_frame.json"
 
 python scripts/build_video_jobs.py \
   "${VIDEO_BLUEPRINT}" \
   "${RUN_DIR}" \
-  --size "704*1280" \
-  --fps 24 \
-  --execution-route "${VIDEO_ROUTE}"
+  --size "704*1280"
 
 python scripts/generate_video.py "${RUN_DIR}/video_jobs.json" \
   --backend http \
-  --api-base "${VIDEO_API_BASE}" \
-  --timeout-seconds 7200
+  --api-base "${VIDEO_API_BASE}"
 
 python scripts/critic_video.py "${RUN_DIR}/video_jobs.json" \
   --model-path models/Qwen3-VL-8B-Instruct \
@@ -1071,13 +1856,11 @@ python scripts/critic_video.py "${RUN_DIR}/video_jobs.json" \
 # Critic fail: rewrite and regenerate.
 python scripts/retry_video_from_critic.py \
   "${RUN_DIR}/video_jobs.json" \
-  "${RUN_DIR}/critic_report.json" \
-  --only-role full
+  "${RUN_DIR}/critic_report.json"
 
 python scripts/generate_video.py "${RUN_DIR}/video_jobs_retry_01.json" \
   --backend http \
-  --api-base "${VIDEO_API_BASE}" \
-  --timeout-seconds 7200</pre>
+  --api-base "${VIDEO_API_BASE}"</pre>
       </div>
 
     </section>
@@ -1933,6 +2716,43 @@ python scripts/generate_video.py "${RUN_DIR}/video_jobs_retry_01.json" \
 
         panel.replaceWith(details);
       });
+    })();
+
+    (() => {
+      const browser = document.querySelector("[data-taxonomy-browser]");
+      if (!browser) {
+        return;
+      }
+
+      const buttons = browser.querySelectorAll("[data-taxonomy-product]");
+      const panels = document.querySelectorAll("[data-taxonomy-product-panel]");
+      let activeProduct = "food";
+
+      function render() {
+        buttons.forEach((button) => {
+          const selected = button.dataset.taxonomyProduct === activeProduct;
+          button.setAttribute("aria-selected", String(selected));
+        });
+
+        panels.forEach((panel) => {
+          const visible = panel.dataset.taxonomyProductPanel === activeProduct;
+          panel.hidden = !visible;
+          if (!visible) {
+            panel.querySelectorAll("video").forEach((video) => {
+              video.pause();
+            });
+          }
+        });
+      }
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          activeProduct = button.dataset.taxonomyProduct;
+          render();
+        });
+      });
+
+      render();
     })();
 
     (() => {

@@ -1,0 +1,18 @@
+{
+  "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/electronics_rerun_20260706_193609/electronics_lifestyle/ad_blueprint.json",
+  "requests": [
+    {
+      "job_id": "portable_led_lamp_lifestyle_v1_direct_start_frame",
+      "candidate_id": "direct_full_c01",
+      "candidate_index": 0,
+      "candidate_count": 1,
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/electronics_rerun_20260706_193609/electronics_lifestyle/direct_start_frames/01_full_start.png",
+      "prompt": "One realistic full-frame start image for a one-take ad. Use reference image 1 as identity lock; preserve the exact portable LED lamp’s shape, colors, material, packaging, labels, and marks. Full-bleed scene; no inner frames, borders, insets, pasted image, black margins, or a central vertical rectangle. Bedside at eye level: the lamp centered on a light-wood bedside table; small paperback book to its left, small canvas travel pouch to its right. Background: soft fabric headboard and neutral wall with lightly blurred depth of field. Dim, warm evening lighting with enough base light to see the product clearly; lamp is OFF in this first frame (warmer glow comes later). Show plausible scale and orientation. No hand or person. Not a product-only packshot. No captions, UI, text, posters, watermarks, or logos. Physical table and wall extend to all canvas edges.",
+      "negative_prompt": "No captions, subtitles, watermark, UI, fake logo, random letters, extra fingers, warped hands, blurry product, wrong product, product-only packshot, empty background, inner frame, border, poster, inset image, image inside an image, black margins, dark outer margins, central vertical rectangle, photo within a photo, matted print.",
+      "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/electronics/portable_lamp.png",
+      "reference_image_paths": [
+        "/home/linabear/projects/adgen_workspace/adgen/examples/electronics/portable_lamp.png"
+      ]
+    }
+  ]
+}

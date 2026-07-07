@@ -1,0 +1,97 @@
+{
+  "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/fashion_lifestyle/ad_blueprint_with_direct_start_frame.json",
+  "requests": [
+    {
+      "job_id": "burberry_foxfield_trench_lifestyle_v1_full",
+      "prompt": "Raw one-take product ad for Burberry Long Silk Cotton Foxfield Trench Coat. The scene shows a modern apartment entryway. Use adult female model with a poised, editorial as the only moving person or hand. A matte black clothing rack is nearby. Use the provided start frame as video conditioning; preserve the real product identity already visible in that frame and keep the same product throughout the shot. Begin from a calm modern entryway scene: the long oatmeal beige trench coat from the reference image hangs on a wooden hanger from a simple matte black clothing rack at the center. A slim light-wood bench sits along the wall to the left; a closed light-wood front door is on the right. The wall is a warm neutral and the floor is matte light wood, with soft natural morning light washing the space. In one continuous shot with a mostly locked camera, a single adult female model enters from the right, steps to the rack, and lifts the trench coat off the hanger in one smooth motion. She drapes it over her shoulders like a cape without inserting her arms, then gently smooths the lapels. Keep the same room and fixed camera for the whole shot, with one main subject, natural motion, and stable hands and product shape. Clean product-ad frame with only the main subject, the real product, natural props, and the visible scene.",
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/fashion_lifestyle/video/01_full.mp4",
+      "duration_seconds": 6.0,
+      "fps": 25,
+      "size": "704*1280",
+      "start_image_path": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/fashion_lifestyle/direct_start_frames/01_full_start.png",
+      "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/fashion/burberry-foxfield-trench-coat.jpg",
+      "image_inputs": [
+        {
+          "role": "start_frame",
+          "path": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/fashion_lifestyle/direct_start_frames/01_full_start.png",
+          "consumed_by": "video_backend",
+          "video_conditioning": true,
+          "description": "Video start frame used as first-frame I2V conditioning by the video backend."
+        },
+        {
+          "role": "product_reference",
+          "path": "/home/linabear/projects/adgen_workspace/adgen/examples/fashion/burberry-foxfield-trench-coat.jpg",
+          "consumed_by": "optional_start_frame_stage",
+          "video_conditioning": false,
+          "description": "Product identity reference for optional start-frame image-edit generation. It is not sent to the video backend as a separate product-reference conditioning image."
+        }
+      ],
+      "metadata": {
+        "role": "full",
+        "ad_type": "full",
+        "ad_category": "lifestyle",
+        "creative_design": {
+          "ad_category": "lifestyle",
+          "selected_category_reason": "Lifestyle places the trench in a believable leaving-home moment, showing how the silk-cotton drape and refined silhouette elevate a simple outfit. This is credible, emotionally aspirational, and feasible in one continuous shot.",
+          "candidate_categories": [
+            {
+              "ad_category": "lifestyle",
+              "score": 9,
+              "reason": "Natural entryway routine showcases fit, silhouette, and mood. Relatable and elegant without needing micro-detail proofs.",
+              "risk": "Clothing and limbs may warp if movement is complex. Mitigated by slow, minimal motions and cape-style drape instead of sleeve insertion."
+            },
+            {
+              "ad_category": "premium",
+              "score": 8,
+              "reason": "Editorial poise and lighting could highlight luxury and tailoring with a controlled, artful look.",
+              "risk": "Requires pristine studio lighting and ultra-stable posing; risk of fabric render drifting without lifestyle context."
+            },
+            {
+              "ad_category": "product_detail",
+              "score": 7,
+              "reason": "Close-ups of fabric sheen and buttons can underscore quality and tailoring.",
+              "risk": "Micro texture and tiny hardware details may not render reliably on a small open-source model."
+            }
+          ],
+          "selling_angle": "Elevate everyday departures with a lightweight silk-cotton trench that frames the body in a long, refined silhouette.",
+          "emotional_tone": "calm, confident, aspirational",
+          "visual_grammar": "One-take lifestyle vignette in a modern entryway: coat waiting on a rack, model enters, drapes it on, slight turn to reveal silhouette.",
+          "proof_mechanism": "Natural use in context: a simple pre-commute moment and a gentle drape over the shoulders to show length, fall, and polish.",
+          "hook_or_opening": "A pristine trench hanging ready on a minimalist rack in a serene entryway—an inviting ‘about to head out’ moment.",
+          "action_arc": "From a still entryway, the model enters, lifts the trench from the hanger, drapes it cape-style over her shoulders, smooths the lapels, pivots slightly toward the door, and holds a poised stance.",
+          "payoff": "A composed three-quarter pose near the door with the long oatmeal silhouette cleanly visible—effortlessly refined.",
+          "feasibility_notes": "Avoided sleeve insertion and belt-tying to reduce fine hand/fabric complexity. Kept one location, one model, slow motions, minimal props, and a mostly locked camera to preserve garment shape and continuity."
+        },
+        "overlay_text": "Foxfield Trench\nSilk-cotton drape. Effortlessly refined.",
+        "audio_direction": "Soft, elegant instrumental bed. Subtle foley: a hanger slide and a gentle fabric rustle. No voiceover.",
+        "visual_prompt": "Begin from a calm modern entryway scene: the long oatmeal beige trench coat from the reference image hangs on a wooden hanger from a simple matte black clothing rack at the center. A slim light-wood bench sits along the wall to the left; a closed light-wood front door is on the right. The wall is a warm neutral and the floor is matte light wood, with soft natural morning light washing the space. In one continuous shot with a mostly locked camera, a single adult female model enters from the right, steps to the rack, and lifts the trench coat off the hanger in one smooth motion. She drapes it over her shoulders like a cape without inserting her arms, then gently smooths the lapels and belt area. She turns slightly toward the door into a relaxed three-quarter pose, letting the fabric settle so the long, refined silhouette reads clearly. She holds still for a composed beat as the rack, hanger, bench, and door remain stable in the background. Keep motions slow and elegant; avoid fluttering fabric or fast gestures.",
+        "start_image_path": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/fashion_lifestyle/direct_start_frames/01_full_start.png",
+        "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/fashion/burberry-foxfield-trench-coat.jpg",
+        "product_image_conditioning": false,
+        "direct_start_frame_conditioning": true,
+        "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/fashion_lifestyle/ad_blueprint_with_direct_start_frame.json",
+        "execution_layer_type": "direct_full",
+        "critic_expectation": {
+          "purpose": "Judge whether the raw video is a plausible product demo for Burberry Long Silk Cotton Foxfield Trench Coat.",
+          "hard_requirements": [
+            "single continuous raw video shot with steady one-take continuity",
+            "complete direct prompt: Begin from a calm modern entryway scene: the long oatmeal beige trench coat from the reference image hangs on a wooden hanger from a simple matte black clothing rack at the center. A slim light-wood bench sits along the wall to the left; a closed.",
+            "physically plausible handling of the product by one main subject"
+          ],
+          "soft_context": [
+            "The shot may hint at this customer context: Looking polished for day-to-night moments without bulky layers; wanting a refined coat that elevates any outfit and feels luxurious yet.",
+            "Focus the judgment on the requested product action, proof visibility, and one-take continuity.",
+            "Creative design expectation: ad_category=lifestyle; hook=A pristine trench hanging ready on a minimalist rack in a serene entryway—an inviting ‘about to head out’ moment.; proof=Natural use in context: a simple pre-commute moment and a gentle drape over the shoulders to show length, fall, and polish.; payoff=A composed.",
+            "Expected subject and scene style from asset memory: Adult female model with a poised, editorial presence and neutral expression.; Black fitted turtleneck, tailored black trousers, black low-profile loafers.; Modern apartment."
+          ],
+          "quality_checks": [
+            "stable face, hands, objects, and camera motion",
+            "main product action is visible and easy to understand",
+            "visible product appearance stays consistent with the product reference image",
+            "ad_category intent is recognizable through the opening, action arc, proof mechanism, and payoff"
+          ]
+        }
+      }
+    }
+  ]
+}
