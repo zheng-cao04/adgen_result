@@ -1,7 +1,7 @@
 [
   {
     "provider": "http",
-    "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/fashion_premium/video/01_full.mp4",
+    "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/fashion_premium_modelprompt_20260708_124810/video/01_full.mp4",
     "raw_response": {
       "content_type": "video/mp4"
     }

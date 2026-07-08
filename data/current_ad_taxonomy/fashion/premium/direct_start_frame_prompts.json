@@ -1,13 +1,13 @@
 {
-  "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/fashion_premium/ad_blueprint.json",
+  "source_blueprint": "/home/linabear/projects/adgen_workspace/adgen/runs/fashion_premium_modelprompt_20260708_124810/ad_blueprint.json",
   "requests": [
     {
-      "job_id": "burberry_foxfield_premium_001_direct_start_frame",
+      "job_id": "burberry_foxfield_premium_01_direct_start_frame",
       "candidate_id": "direct_full_c01",
       "candidate_index": 0,
       "candidate_count": 1,
-      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/batch_standard_ads_20260706_010143/fashion_premium/direct_start_frames/01_full_start.png",
-      "prompt": "Use reference image 1 as the real product identity lock: Burberry Long Silk Cotton Foxfield Trench Coat. Preserve exact shape, oatmeal-beige color, silk‑cotton faille texture, labels, and any visible marks. Render a full-frame studio start scene that fills the canvas edge to edge (no inner frame, borders, insets, central vertical rectangle, or margins). The coat hangs neatly on a natural wood hanger, centered on a slim black metal clothing rack, at plausible scale and orientation. The rack stands on a warm cream seamless cyclorama continuous with the floor and backdrop, clean and uncluttered. Lighting: soft directional key from camera-left with gentle fill; subtle highlight revealing the faille sheen; minimal shadows. No person or hand visible in the first frame. Keep only the coat, hanger, and rack; no extra props or text/logos. Not a product-only packshot; show the full studio scene.",
+      "output_path": "/home/linabear/projects/adgen_workspace/adgen/runs/fashion_premium_modelprompt_20260708_124810/direct_start_frames/01_full_start.png",
+      "prompt": "Use reference image 1 as the real product identity lock for the Burberry Long Silk Cotton Foxfield Trench Coat; preserve its long oatmeal-beige shape, colors, silk‑cotton faille material, labels, and visible marks. Create a realistic commercial full-scene start frame that fills the canvas edge to edge—no inner frame, borders, insets, pasted image, or margins. Minimal editorial studio runway: warm cream cyclorama backdrop and matching matte cream runway floor, clean and audience-free, no set dressing or props. Soft warm lighting with gentle frontal key and subtle rim defining the coat’s outline. Show a poised adult model already wearing the same coat, fully belted, centered in elegant three‑quarter stance, arms relaxed at sides; product clearly visible at plausible scale and orientation. No product-only packshot. No text, UI, posters, extra logos, or watermarks.",
       "negative_prompt": "No captions, subtitles, watermark, UI, fake logo, random letters, extra fingers, warped hands, blurry product, wrong product, product-only packshot, empty background, inner frame, border, poster, inset image, image inside an image, black margins, dark outer margins, central vertical rectangle, photo within a photo, matted print.",
       "product_reference_path": "/home/linabear/projects/adgen_workspace/adgen/examples/fashion/burberry-foxfield-trench-coat.jpg",
       "reference_image_paths": [
